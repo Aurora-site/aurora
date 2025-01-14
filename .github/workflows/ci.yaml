@@ -1,0 +1,25 @@
+name: ci-workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: 🛠️ Run Pre-commit Hooks
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install prettier plugins
+        run: npm install -D prettier@^3.3.3 prettier-plugin-tailwindcss@^0.6.5 prettier-plugin-astro@^0.14.1
+      - uses: pre-commit/action@v3.0.1
