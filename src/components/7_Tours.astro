@@ -1,0 +1,113 @@
+<style>
+  .tours {
+    padding: 50px 20px;
+  }
+
+  /* .tours h2 {
+      font-size: 36px;
+          }
+
+    .tours p {
+      margin: 20px 0;
+    }*/
+
+  .tour-card {
+    display: inline-block;
+    /* width: 30%;*/
+    margin: 1.5%;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .tour-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .tour-card h3 {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .tour-card p {
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-size: 18px;
+  }
+
+  .tour-card button {
+    padding: 10px 15px;
+    background: white;
+    color: black;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 18px;
+  }
+
+  .tour-card button:hover {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+
+  .tour-card_description {
+    padding: 0 10px;
+  }
+
+  .cards {
+    display: inline-block;
+  }
+
+  @media (min-width: 768px) {
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<section class="tours">
+  <div class="container">
+    <h2>Фотоохота с профессиональными гидами</h2>
+    <p>
+      А если у Вас не получается поймать Северное сияние самостоятельно или Вы
+      приехали с этой целью в северные широты и очень ограничены по времени, то
+      Вы можете обратить за помощью к гидам и туроператорам, которые занимаются
+      этим профессионально.
+    </p>
+
+    <div class="cards">
+      <div class="tour-card">
+        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <div class="tour-card_description">
+          <h3>Северное сияние</h3>
+          <p>Мурманская область. Очень классный тур</p>
+          <button>Подробнее</button>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <div class="tour-card_description">
+          <h3>Северное сияние</h3>
+          <p>Мурманская область. Очень классный тур</p>
+          <button>Подробнее</button>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <div class="tour-card_description">
+          <h3>Северное сияние</h3>
+          <p>Мурманская область. Очень классный тур</p>
+          <button>Подробнее</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

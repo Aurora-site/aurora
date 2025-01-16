@@ -1,0 +1,55 @@
+<!-- Шапка -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="/src/assets/logo.png" alt="Лого" />
+    </div>
+    <div class="navigation">
+      <nav>
+        <a href="#app">Приложение</a>
+        <a href="#map">Прямо сейчас</a>
+        <a href="index">Индекс</a>
+        <a href="#how-to-see">Как увидеть</a>
+        <a href="#where-to-see">Где увидеть</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: url("/src/assets/aurora-header.png") no-repeat center center /
+      cover;
+    background-color: #001b24;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    width: 100%;
+    position: relative;
+  }
+
+  .navigation {
+    display: block;
+  }
+
+  .logo {
+    position: absolute;
+    margin: -22px 0px;
+  }
+
+  .header nav {
+    position: relative;
+    display: inline-block;
+  }
+
+  .header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 30px;
+    font-weight: normal;
+  }
+
+  .header nav a:hover {
+    text-decoration: underline;
+  }
+</style>

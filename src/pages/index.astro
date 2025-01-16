@@ -1,12 +1,49 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from "../layouts/header.astro";
+import Description from "../components/1_Description.astro";
+import MapSection from "../components/2_MapSection.astro";
+import Charts from "../components/3_Charts.astro";
+import AppDownload from "../components/4_AppDownload.astro";
+import HowToSee from "../components/5_HowToSee.astro";
+import WhereToSee from "../components/6_WhereToSee.astro";
+import Tours from "../components/7_Tours.astro";
+import Footer from "../layouts/footer.astro";
 ---
 
-<Layout>
-  <div class="flex flex-col bg-red-300">aboba</div>
-  <Welcome />
-</Layout>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Северное сияние</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/src/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Хэдер -->
+    <Header />
+    <!-- Компонент описания -->
+    <Description />
+
+    <!-- Компонент карты -->
+    <MapSection />
+
+    <!-- Компонент графиков -->
+    <Charts />
+
+    <AppDownload />
+
+    <!-- Компонент "Как увидеть" -->
+    <HowToSee />
+
+    <!-- Компонент "Где увидеть" -->
+    <WhereToSee />
+
+    <!-- Компонент "Туры" -->
+    <Tours />
+
+    <Footer />
+  </body>
+</html>

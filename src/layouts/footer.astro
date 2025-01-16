@@ -1,0 +1,129 @@
+<style>
+  /* Подвал */
+  /* Основной стиль для футера */
+  .footer {
+    background: url("/src/assets/aurora-footer.png") no-repeat center center /
+      cover;
+    background-color: #001b24;
+    color: white;
+    padding: 60px 20px;
+    height: 481px;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .footer-left {
+    max-width: 50%;
+    display: inline;
+  }
+
+  .footer-left-up {
+    display: flex;
+    width: fit-content;
+  }
+
+  .footer-logo {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .footer-contacts {
+    margin: 0 0 0 60px;
+  }
+
+  .footer-contacts h3 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+  }
+
+  .footer-contacts a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  .footer-contacts a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-rights {
+    font-size: 12px;
+    margin-top: 40px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-right h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-right ul li {
+    margin: 5px 0;
+  }
+
+  .footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .footer-right ul li a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- Подвал -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <!-- Левая часть: Лого и контакты -->
+      <div class="footer-left">
+        <div class="footer-left-up">
+          <div class="footer-logo">
+            <img src="/src/assets/PD_logo.png" alt="Polar Digital" />
+          </div>
+          <div class="footer-contacts">
+            <h3>Контакты</h3>
+            <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
+          </div>
+        </div>
+
+        <p class="footer-rights">
+          Все права на сайт и фотографии защищены авторским правом<br /><br />
+          Данные предоставлены Национальным управлением океанических и атмосферных
+          исследований (NOAA)
+        </p>
+      </div>
+
+      <!-- Правая часть: Ссылки -->
+      <div class="footer-right">
+        <h3>Северное сияние</h3>
+        <ul>
+          <li><a href="#map">Карта</a></li>
+          <li><a href="#app">Приложение</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

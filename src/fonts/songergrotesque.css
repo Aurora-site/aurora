@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "SONGER Grotesque";
+  src:
+    local("SONGER Grotesque Medium"),
+    local("SONGERGrotesque-Medium"),
+    url("Songergrotesquemedium.woff2") format("woff2"),
+    url("Songergrotesquemedium.woff") format("woff"),
+    url("Songergrotesquemedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SONGER Grotesque";
+  src:
+    local("SONGER Grotesque"),
+    local("SONGERGrotesque"),
+    url("Songergrotesque.woff2") format("woff2"),
+    url("Songergrotesque.woff") format("woff"),
+    url("Songergrotesque.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SONGER Grotesque";
+  src:
+    local("SONGER Grotesque Heavy"),
+    local("SONGERGrotesque-Heavy"),
+    url("Songergrotesqueheavy.woff2") format("woff2"),
+    url("Songergrotesqueheavy.woff") format("woff"),
+    url("Songergrotesqueheavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SONGER Grotesque";
+  src:
+    local("SONGER Grotesque Bold"),
+    local("SONGERGrotesque-Bold"),
+    url("Songergrotesquebold.woff2") format("woff2"),
+    url("Songergrotesquebold.woff") format("woff"),
+    url("Songergrotesquebold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SONGER Grotesque";
+  src:
+    local("SONGER Grotesque ExtraBold"),
+    local("SONGERGrotesque-ExtraBold"),
+    url("Songergrotesqueextrabold.woff2") format("woff2"),
+    url("Songergrotesqueextrabold.woff") format("woff"),
+    url("Songergrotesqueextrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
