@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import PDLogo from "../assets/PD_logo.png";
+---
+
 <style>
   /* Подвал */
   /* Основной стиль для футера */
@@ -29,9 +34,7 @@
   }
 
   .footer-logo {
-    font-size: 2em;
-    font-weight: bold;
-    line-height: 1.2;
+    margin: 6px 0 0 0;
   }
 
   .footer-contacts {
@@ -101,7 +104,7 @@
       <div class="footer-left">
         <div class="footer-left-up">
           <div class="footer-logo">
-            <img src="/src/assets/PD_logo.png" alt="Polar Digital" />
+            <Image src={PDLogo} alt="Polar Digital" />
           </div>
           <div class="footer-contacts">
             <h3>Контакты</h3>

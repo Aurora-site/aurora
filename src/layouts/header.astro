@@ -1,14 +1,19 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/logo.png";
+---
+
 <!-- Шапка -->
 <header class="header">
   <div class="container">
     <div class="logo">
-      <img src="/src/assets/logo.png" alt="Лого" />
+      <Image src={Logo} alt="Лого" />
     </div>
     <div class="navigation">
       <nav>
         <a href="#app">Приложение</a>
         <a href="#map">Прямо сейчас</a>
-        <a href="index">Индекс</a>
+        <a href="#index">Индекс</a>
         <a href="#how-to-see">Как увидеть</a>
         <a href="#where-to-see">Где увидеть</a>
       </nav>

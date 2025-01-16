@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import aurora1 from "../assets/aurora-1.png";
+---
+
 <style>
   .how-to-see {
     padding: 50px 20px;
@@ -63,9 +68,9 @@
       вдохновляющий на всю жизнь.
     </p>
     <div class="images">
-      <img src="/src/assets/aurora-1.png" alt="Северное сияние" />
-      <img src="/src/assets/aurora-1.png" alt="Северное сияние" />
-      <img src="/src/assets/aurora-1.png" alt="Северное сияние" />
+      <Image src={aurora1} alt="Северное Сияние" />
+      <Image src={aurora1} alt="Северное Сияние" />
+      <Image src={aurora1} alt="Северное Сияние" />
     </div>
   </div>
 </section>

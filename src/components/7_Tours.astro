@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import tour1 from "../assets/tour-1.png"; // Image is 360x360
+---
+
 <style>
   .tours {
     padding: 50px 20px;
@@ -14,13 +19,10 @@
   .tour-card {
     display: inline-block;
     /* width: 30%;*/
-    margin: 1.5%;
-    padding: 20px;
-    text-align: left;
   }
 
   .tour-card img {
-    width: 100%;
+    width: 360px;
     border-radius: 5px;
     margin-bottom: 10px;
   }
@@ -56,17 +58,19 @@
   }
 
   .tour-card_description {
-    padding: 0 10px;
   }
 
   .cards {
-    display: inline-block;
+    margin: 40px 0 100px 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  @media (min-width: 768px) {
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
+  @media (max-width: 768px) {
+    .tour-card {
+      padding: 20px 0;
     }
   }
 </style>
@@ -83,7 +87,7 @@
 
     <div class="cards">
       <div class="tour-card">
-        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <Image src={tour1} alt="Тур" />
         <div class="tour-card_description">
           <h3>Северное сияние</h3>
           <p>Мурманская область. Очень классный тур</p>
@@ -92,7 +96,7 @@
       </div>
 
       <div class="tour-card">
-        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <Image src={tour1} alt="Тур" />
         <div class="tour-card_description">
           <h3>Северное сияние</h3>
           <p>Мурманская область. Очень классный тур</p>
@@ -101,7 +105,7 @@
       </div>
 
       <div class="tour-card">
-        <img src="/src/assets/tour-1.png" alt="Тур 1" />
+        <Image src={tour1} alt="Тур" />
         <div class="tour-card_description">
           <h3>Северное сияние</h3>
           <p>Мурманская область. Очень классный тур</p>

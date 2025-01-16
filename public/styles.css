@@ -1,6 +1,6 @@
 @font-face {
   font-family: "SongerGrotesque";
-  src: url("/src/fonts/Songergrotesque.woff2") format("woff2");
+  src: url("/fonts/Songergrotesque.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -8,25 +8,15 @@
 
 @font-face {
   font-family: "SongerGrotesqueBold";
-  src: url("/src/fonts/Songergrotesquebold.woff2") format("woff2");
+  src: url("/fonts/Songergrotesquebold.woff2") format("woff2");
   font-weight: 700;
   font-style: bold;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "SongerGrotesqueBold";
-  src: url("fonts/Songergrotesquebold.woff2") format("woff2");
-  src: url("fonts/Songergrotesquebold.woff") format("woff");
-  src: url("fonts/Songergrotesquebold.ttf") format("ttf");
-  font-weight: bold;
-  font-style: bold;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "SongerGrotesqueHeavy";
-  src: url("/src/fonts/Songergrotesqueheavy.woff2") format("woff2");
+  src: url("/fonts/Songergrotesqueheavy.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -34,7 +24,7 @@
 
 @font-face {
   font-family: "Monsterrat-Alternates";
-  src: url("/src/fonts/Songergrotesqueheavy.woff2") format("woff2");
+  src: url("/fonts/Songergrotesqueheavy.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
