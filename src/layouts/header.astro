@@ -6,17 +6,25 @@ import Logo from "../assets/logo.png";
 <!-- Шапка -->
 <header class="header">
   <div class="container">
-    <div class="logo">
-      <Image src={Logo} alt="Лого" />
-    </div>
-    <div class="navigation">
-      <nav>
-        <a href="#app">Приложение</a>
-        <a href="#map">Прямо сейчас</a>
-        <a href="#index">Индекс</a>
-        <a href="#how-to-see">Как увидеть</a>
-        <a href="#where-to-see">Где увидеть</a>
-      </nav>
+    <div class="container_head">
+      <div class="logo">
+        <Image src={Logo} alt="Лого" />
+      </div>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navigation" id="navigation">
+        <button class="close" id="close">&times;</button>
+        <nav class="nav">
+          <a href="#app">Приложение</a>
+          <a href="#map">Прямо сейчас</a>
+          <a href="#index">Индекс</a>
+          <a href="#how-to-see">Как увидеть</a>
+          <a href="#where-to-see">Где увидеть</a>
+        </nav>
+      </div>
     </div>
   </div>
 </header>
@@ -27,14 +35,16 @@ import Logo from "../assets/logo.png";
       cover;
     background-color: #001b24;
     color: white;
-    text-align: center;
-    padding: 40px 0;
     width: 100%;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
   }
 
-  .navigation {
-    display: block;
+  .container_head {
+    width: 100%;
   }
 
   .logo {
@@ -42,19 +52,132 @@ import Logo from "../assets/logo.png";
     margin: -22px 0px;
   }
 
-  .header nav {
-    position: relative;
-    display: inline-block;
+  .navigation {
+    display: flex;
+    justify-content: center;
   }
 
-  .header nav a {
+  .navigation nav a {
     color: white;
     text-decoration: none;
-    margin: 0 30px;
+    margin: 0 15px;
     font-weight: normal;
   }
 
-  .header nav a:hover {
+  .navigation nav a:hover {
     text-decoration: underline;
   }
+
+  .burger {
+    display: none;
+    width: 30px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-left: auto; /* Перемещает бургер в крайний правый угол */
+  }
+
+  .burger span {
+    display: block;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #001b24;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .mobile-nav nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .mobile-nav nav a:hover {
+    text-decoration: underline;
+  }
+
+  .mobile-nav.open {
+    right: 0;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 48px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .mobile-nav.open .close {
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .navigation {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: flex;
+    }
+
+    .header {
+      padding: 40px 0;
+    }
+
+    .nav {
+      display: contents;
+    }
+  }
+
+  @media (max-width: 812px) {
+    .container_head {
+      padding: 0 20px;
+    }
+  }
 </style>
+
+<script is:client>
+  const burger = document.getElementById("burger");
+  const navigation = document.getElementById("navigation");
+  const close = document.getElementById("close");
+
+  burger.addEventListener("click", () => {
+    navigation.classList.toggle("mobile-nav");
+    navigation.classList.toggle("open");
+  });
+
+  close.addEventListener("click", () => {
+    navigation.classList.remove("open");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (!navigation.contains(e.target) && !burger.contains(e.target)) {
+      navigation.classList.remove("open");
+    }
+  });
+</script>

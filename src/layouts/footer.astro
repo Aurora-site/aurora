@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import PDLogo from "../assets/PD_logo.png";
+import PDtg from "../assets/PD_tg.svg";
 ---
 
 <style>
@@ -17,6 +18,7 @@ import PDLogo from "../assets/PD_logo.png";
 
   .footer-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
     max-width: 100%;
@@ -26,19 +28,21 @@ import PDLogo from "../assets/PD_logo.png";
   .footer-left {
     max-width: 50%;
     display: inline;
+    margin: 0 60px 0 0;
   }
 
   .footer-left-up {
     display: flex;
+    flex-wrap: wrap;
     width: fit-content;
   }
 
   .footer-logo {
-    margin: 6px 0 0 0;
+    margin: 6px 60px 0 0;
   }
 
   .footer-contacts {
-    margin: 0 0 0 60px;
+    margin: 0;
   }
 
   .footer-contacts h3 {
@@ -94,6 +98,65 @@ import PDLogo from "../assets/PD_logo.png";
   .footer-right ul li a:hover {
     text-decoration: underline;
   }
+
+  .image_tg {
+    float: right;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-contacts {
+      margin: 40px 0 0 0;
+    }
+  }
+
+  @media (max-width: 538px) {
+    .footer-right {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .footer-right ul li {
+      margin: 0;
+    }
+    .footer-right h3 {
+      margin: 0;
+    }
+    .footer-contacts h3 {
+      margin: 0;
+    }
+
+    .footer-rights {
+      margin: 20px 0 0 0;
+    }
+    .image_tg {
+      float: left;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .footer-logo {
+      width: 90px;
+    }
+
+    .footer-contacts h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .footer-contacts a {
+      font-size: 14px;
+    }
+
+    .footer-right {
+      text-align: left;
+    }
+    .footer-right h3 {
+      font-size: 16px;
+    }
+
+    .footer-right ul li a {
+      font-size: 14px;
+    }
+  }
 </style>
 
 <!-- Подвал -->
@@ -111,12 +174,6 @@ import PDLogo from "../assets/PD_logo.png";
             <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
           </div>
         </div>
-
-        <p class="footer-rights">
-          Все права на сайт и фотографии защищены авторским правом<br /><br />
-          Данные предоставлены Национальным управлением океанических и атмосферных
-          исследований (NOAA)
-        </p>
       </div>
 
       <!-- Правая часть: Ссылки -->
@@ -125,8 +182,18 @@ import PDLogo from "../assets/PD_logo.png";
         <ul>
           <li><a href="#map">Карта</a></li>
           <li><a href="#app">Приложение</a></li>
+          <li>
+            <a href="t.me/polar_digital"
+              ><Image class="image_tg" src={PDtg} alt="Telegram" />
+            </a>
+          </li>
         </ul>
       </div>
     </div>
+    <p class="footer-rights">
+      Все права на сайт и фотографии защищены авторским правом<br /><br />
+      Данные предоставлены Национальным управлением океанических и атмосферных исследований
+      (NOAA)
+    </p>
   </div>
 </footer>
