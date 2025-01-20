@@ -1,33 +1,14 @@
 ---
 import Map from "../components/Map.astro";
+import { AuroraNow } from "./reactive/AuroraNow";
 ---
 
 <style>
-  .map-section {
-    padding: 50px 20px;
-  }
-
   /* .map-section h2 {
 font-size: 36px;
 margin-bottom: 20px;
 
   }*/
-
-  .map-section p {
-    margin: 0 auto;
-    font-size: 1em;
-    line-height: 1.5;
-    text-align: left;
-  }
-
-  .dropbox {
-    font-size: 24px;
-    margin: 20px 0;
-  }
-
-  .k-index_now {
-    font-size: 16px;
-  }
 
   .map-placeholder {
     background: #eee;
@@ -42,17 +23,15 @@ margin-bottom: 20px;
   }
 </style>
 
-<section class="map-section" id="map">
+<section class="px-5 py-12" id="map">
   <div class="container">
     <h2>Сияние прямо сейчас</h2>
     <p>
       Здесь вы можете наблюдать за динамическим отображением сияния в реальном
       времени
     </p>
-    <div class="dropbox">Мурманск</div>
-    <div class="k-index_now">
-      <p>Текущий K-индекс: <span>2</span></p>
-    </div>
+    <div class="py-5 text-2xl">Мурманск</div>
+    <AuroraNow client:only="react" />
     <div class="map-placeholder">Здесь будет карта</div>
     <div class=""><Map /></div>
   </div>

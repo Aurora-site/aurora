@@ -8,35 +8,34 @@ import { useQuery } from "@tanstack/react-query";
 export const AuroraNow = () => {
   const state = useGeolocation();
   const client = useStore(queryClient);
-  const { data: auroraMapData } = useQuery(
+  const { data: auroraProbabilityData } = useQuery(
     {
-      queryKey: ["auroraMap"],
+      queryKey: ["auroraProbability"],
       queryFn: async () => {
-        const a = await ApiService.apiAuroraMapApiV1AuroraMapGet();
-        return a;
+        if (!state.latitude || !state.longitude) {
+          return null;
+        }
+        const res =
+          await ApiService.apiAuroraNooaProbabilityApiV1AuroraNooaProbabilityPost(
+            {
+              lat: state.latitude,
+              lon: state.longitude,
+            },
+          );
+        return res;
       },
+      refetchInterval: 500,
     },
     client,
   );
+
   return (
     <div>
-      <div>Сияние прямо сейчас</div>
-      <div className="">
-        Здесь вы можете наблюдать за динамическим отображением сияния в реальном
-        времени
-      </div>
-      <div
-        className=""
-        onClick={async () => {
-          console.log("Show dropdown");
-        }}
-      >
-        Мурманск {state.latitude} {state.longitude}{" "}
-        {auroraMapData?.["Data Format"]}
-      </div>
-      <div>
-        <div>В Вашей геолокации вероятность в ближайший час</div>
-        <div className="text-lg">20</div>
+      <div className="flex items-center gap-2">
+        <p>Текущий K-индекс:</p>
+        <div className="rounded-full bg-green-500 px-3 text-2xl font-bold">
+          {auroraProbabilityData?.probability.toFixed(0) || "?"}%
+        </div>
       </div>
     </div>
   );
