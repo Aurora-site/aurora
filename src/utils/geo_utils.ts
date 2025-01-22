@@ -59,12 +59,6 @@ export function useGeolocation(options = {}) {
       }));
     };
 
-    navigator.geolocation.getCurrentPosition(
-      onEvent,
-      onEventError,
-      optionsRef.current,
-    );
-
     const watchId = navigator.geolocation.watchPosition(
       onEvent,
       onEventError,
