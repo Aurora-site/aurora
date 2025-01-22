@@ -1,33 +1,10 @@
 ---
-import Chart3 from "./Chart_3.astro";
-import Chart27 from "./Chart_27.astro";
+import { ChartTabs } from "./reactive/ChartTabs";
 ---
 
-<style>
-  .charts {
-    padding: 50px 20px;
-  }
-
-  .index_27 h2 {
-    margin-top: 120px;
-  }
-
-  .chart-placeholder {
-    background: #f9f9f9;
-    height: 300px;
-    border: 2px dashed #ccc;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    color: #666;
-  }
-</style>
-
-<section class="charts" id="index">
+<section class="px-12 py-5" id="index">
   <div class="container">
-    <h2>Индекс северного сияния на 3 суток</h2>
+    <h2>Индекс северного сияния</h2>
     <p>
       Здесь вы можете наблюдать график индекса северного сияния! Этот график
       отображает текущий уровень активности северного сияния (KP-индекс) в
@@ -36,18 +13,6 @@ import Chart27 from "./Chart_27.astro";
       Следите за изменениями индекса, чтобы спланировать свои наблюдения и не
       пропустить шанс увидеть это потрясающее природное явление.
     </p>
-
-    <div class="chart-placeholder"><Chart3 /></div>
-
-    <div class="index_27">
-      <h2>Индекс северного сияния на 27 суток</h2>
-      <p>
-        Здесь представлен график индекса северного сияния. Помните, что индекс,
-        как и погода, может меняться. Используйте этот график для общего
-        ориентирования на месяц, а для более точного прогноза рекомендуем
-        обращаться к краткосрочным прогнозам.
-      </p>
-    </div>
-    <div class="chart-placeholder"><Chart27 /></div>
+    <ChartTabs client:only="react" />
   </div>
 </section>

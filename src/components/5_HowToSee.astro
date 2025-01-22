@@ -135,18 +135,20 @@ import aurora1 from "../assets/aurora-1.png";
   </div>
 </section>
 
-<script is:client>
-  const slider = document.getElementById("slider");
-  const slideLeft = document.getElementById("slideLeft");
-  const slideRight = document.getElementById("slideRight");
+<script is:inline>
+  {
+    const slider = document.getElementById("slider");
+    const slideLeft = document.getElementById("slideLeft");
+    const slideRight = document.getElementById("slideRight");
 
-  // Прокрутка влево
-  slideLeft.addEventListener("click", () => {
-    slider.scrollBy({ left: -380, behavior: "smooth" });
-  });
+    // Прокрутка влево
+    slideLeft.addEventListener("click", () => {
+      slider.scrollBy({ left: -380, behavior: "smooth" });
+    });
 
-  // Прокрутка вправо
-  slideRight.addEventListener("click", () => {
-    slider.scrollBy({ left: 380, behavior: "smooth" });
-  });
+    // Прокрутка вправо
+    slideRight.addEventListener("click", () => {
+      slider.scrollBy({ left: 380, behavior: "smooth" });
+    });
+  }
 </script>
