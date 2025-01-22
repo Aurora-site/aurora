@@ -15,7 +15,7 @@ import Logo from "../assets/logo.png";
         <span></span>
         <span></span>
       </div>
-      <div class="navigation" id="navigation">
+      <div class="navigation flex" id="navigation">
         <button class="close" id="close">&times;</button>
         <nav class="nav">
           <a href="#app">Приложение</a>
@@ -161,23 +161,18 @@ import Logo from "../assets/logo.png";
   }
 </style>
 
-<script is:client>
+<script is:inline>
   const burger = document.getElementById("burger");
   const navigation = document.getElementById("navigation");
   const close = document.getElementById("close");
 
   burger.addEventListener("click", () => {
-    navigation.classList.toggle("mobile-nav");
-    navigation.classList.toggle("open");
+    navigation.classList.add("open");
+    navigation.classList.add("mobile-nav");
   });
 
   close.addEventListener("click", () => {
     navigation.classList.remove("open");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (!navigation.contains(e.target) && !burger.contains(e.target)) {
-      navigation.classList.remove("open");
-    }
+    navigation.classList.remove("mobile-nav");
   });
 </script>
