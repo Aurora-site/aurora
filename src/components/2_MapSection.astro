@@ -1,29 +1,10 @@
 ---
-import Map from "../components/Map.astro";
+import { AuroraMap } from "./reactive/AuroraMap";
 import { AuroraNow } from "./reactive/AuroraNow";
 ---
 
-<style>
-  /* .map-section h2 {
-font-size: 36px;
-margin-bottom: 20px;
-
-  }*/
-
-  .map-placeholder {
-    background: #eee;
-    height: 400px;
-    border: 2px dashed #ccc;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    color: #666;
-  }
-</style>
-
 <section class="px-5 py-12" id="map">
+  <!-- TODO: либо убрать отсюда класс конейнер чтобы тайлы лифлета не ломались -->
   <div class="container">
     <h2><a href="#map">Сияние прямо сейчас</a></h2>
     <p>
@@ -32,7 +13,6 @@ margin-bottom: 20px;
     </p>
     <div class="py-5 text-2xl">Мурманск</div>
     <AuroraNow client:only="react" />
-    <div class="map-placeholder">Здесь будет карта</div>
-    <div class=""><Map /></div>
+    <AuroraMap client:only="react" />
   </div>
 </section>
