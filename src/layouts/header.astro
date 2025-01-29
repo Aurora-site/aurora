@@ -6,26 +6,24 @@ import "../styles/tailwind.css";
 
 <!-- Шапка -->
 <header class="header">
-  <div class="container">
-    <div class="container_head">
-      <div class="logo">
-        <Image src={Logo} alt="Лого" />
-      </div>
-      <div class="burger" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="navigation flex" id="navigation">
-        <button class="close" id="close">&times;</button>
-        <nav class="nav">
-          <a href="#app">Приложение</a>
-          <a href="#map">Прямо сейчас</a>
-          <a href="#index">Индекс</a>
-          <a href="#how-to-see">Как увидеть</a>
-          <a href="#where-to-see">Где увидеть</a>
-        </nav>
-      </div>
+  <div class="w-full px-5">
+    <div class="logo">
+      <Image src={Logo} alt="Лого" />
+    </div>
+    <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="navigation flex" id="navigation">
+      <button class="close" id="close">&times;</button>
+      <nav class="nav">
+        <a href="#app">Приложение</a>
+        <a href="#map">Прямо сейчас</a>
+        <a href="#index">Индекс</a>
+        <a href="#how-to-see">Как увидеть</a>
+        <a href="#where-to-see">Где увидеть</a>
+      </nav>
     </div>
   </div>
 </header>
@@ -42,10 +40,6 @@ import "../styles/tailwind.css";
     justify-content: space-between;
     align-items: center;
     height: 100px;
-  }
-
-  .container_head {
-    width: 100%;
   }
 
   .logo {

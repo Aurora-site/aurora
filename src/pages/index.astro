@@ -8,44 +8,28 @@ import HowToSee from "../components/5_HowToSee.astro";
 import WhereToSee from "../components/6_WhereToSee.astro";
 import Tours from "../components/7_Tours.astro";
 import Footer from "../layouts/footer.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="ru" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Северное сияние</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Шапка -->
-    <Header />
-    <!-- Компонент описания -->
-    <Description />
+<Layout>
+  <!-- Компонент описания -->
+  <Description />
 
-    <!-- Компонент карты -->
-    <MapSection />
+  <!-- Компонент карты -->
+  <MapSection />
 
-    <!-- Компонент графиков -->
-    <Charts />
+  <!-- Компонент графиков -->
+  <Charts />
 
-    <!-- Компонент приложения -->
-    <AppDownload />
+  <!-- Компонент приложения -->
+  <AppDownload />
 
-    <!-- Компонент "Как увидеть" -->
-    <HowToSee />
+  <!-- Компонент "Как увидеть" -->
+  <HowToSee />
 
-    <!-- Компонент "Где увидеть" -->
-    <WhereToSee />
+  <!-- Компонент "Где увидеть" -->
+  <WhereToSee />
 
-    <!-- Компонент "Туры" -->
-    <Tours />
-
-    <!-- Подвал-->
-    <Footer />
-  </body>
-</html>
+  <!-- Компонент "Туры" -->
+  <Tours />
+</Layout>
