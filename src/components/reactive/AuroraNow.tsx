@@ -4,6 +4,7 @@ import "../../api/config";
 import { queryClient } from "../../stores/query";
 import { useGeolocation } from "../../utils/geo_utils";
 import { useQuery } from "@tanstack/react-query";
+import { CitySelect } from "./CitySelect";
 
 export const AuroraNow = () => {
   const state = useGeolocation();
@@ -30,6 +31,7 @@ export const AuroraNow = () => {
 
   return (
     <div>
+      <CitySelect />
       <div className="flex items-center gap-2">
         <p>В Вашей геолокации вероятность в ближайший час:</p>
         <div className="rounded-full bg-green-500 px-3 text-2xl font-bold">
