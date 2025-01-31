@@ -35,3 +35,7 @@
     padding-inline: 80px;
   }
 }
+
+@theme {
+  --color-pepe: oklch(20.61% 0.0383 222.74);
+}
