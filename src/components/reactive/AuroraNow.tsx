@@ -35,7 +35,7 @@ export const AuroraNow = () => {
       <div className="flex items-center gap-2">
         <p>В Вашей геолокации вероятность в ближайший час:</p>
         <div className="rounded-full bg-green-500 px-3 text-2xl font-bold">
-          {auroraProbabilityData?.probability.toFixed(0) || "?"}%
+          {auroraProbabilityData?.probability.toFixed(0) || "😶‍🌫️"}%
         </div>
       </div>
     </div>
