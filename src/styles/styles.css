@@ -44,17 +44,10 @@ h1 {
   color: #333;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  min-width: 320px;
-  margin: 0 auto;
-}
-
-.container h2 {
+.container h2,
+.giga-text {
   font-family: "SongerGrotesqueBold", sans-serif;
   font-size: 36px;
-  color: #333;
   margin: 20px 0;
 }
 

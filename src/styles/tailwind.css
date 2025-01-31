@@ -21,9 +21,10 @@
 @utility container {
   padding-inline: 10px;
   margin-inline: auto;
+  max-width: 1400px;
 
   @variant sm {
-    padding-inline: 20px;
+    padding-inline: 40px;
   }
 
   @variant lg {
@@ -31,6 +32,6 @@
   }
 
   @variant xl {
-    padding-inline: 0px;
+    padding-inline: 80px;
   }
 }
