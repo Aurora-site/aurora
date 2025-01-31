@@ -38,4 +38,5 @@
 
 @theme {
   --color-pepe: oklch(20.61% 0.0383 222.74);
+  --color-tab-active: oklch(66.57% 0.1135 214.79);
 }
