@@ -8,13 +8,15 @@ import { CommonKpChart } from "./CommonKpChart";
 import { colorFormat } from "../../utils/graph_utils";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
-function formatDate(time: string, date: string) {
+export function formatDate(time: string, date: string) {
   dayjs.extend(utc);
+  dayjs.extend(customParseFormat);
   const h = dayjs()
     .utc()
     .set("hour", parseInt(time.slice(0, 2)));
-  return `${dayjs(date).format("DD.MM")} ${h.local().format("HH")}:00`;
+  return `${dayjs(date, "MMM DD").format("DD.MM")} ${h.local().format("HH")}:00`;
 }
 
 const transformData = (inputData: NooaAuroraKp3Col[]) => {
