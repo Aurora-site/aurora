@@ -25,6 +25,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.474.0",
     "nanostores": "^0.11.3",
+    "ol": "^10.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",

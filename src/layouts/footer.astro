@@ -161,37 +161,39 @@ import PDtg from "../assets/PD_tg.svg";
 
 <!-- Подвал -->
 <footer class="footer">
-  <div class="footer-container">
-    <!-- Левая часть: Лого и контакты -->
-    <div class="footer-left">
-      <div class="footer-left-up">
-        <div class="footer-logo">
-          <Image src={PDLogo} alt="Polar Digital" />
-        </div>
-        <div class="footer-contacts">
-          <h3>Контакты</h3>
-          <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
+  <div class="container">
+    <div class="footer-container">
+      <!-- Левая часть: Лого и контакты -->
+      <div class="footer-left">
+        <div class="footer-left-up">
+          <div class="footer-logo">
+            <Image src={PDLogo} alt="Polar Digital" />
+          </div>
+          <div class="footer-contacts">
+            <h3>Контакты</h3>
+            <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Правая часть: Ссылки -->
-    <div class="footer-right">
-      <h3>Северное сияние</h3>
-      <ul>
-        <li><a href="#map">Карта</a></li>
-        <li><a href="#app">Приложение</a></li>
-        <li>
-          <a href="t.me/polar_digital"
-            ><Image class="image_tg" src={PDtg} alt="Telegram" />
-          </a>
-        </li>
-      </ul>
+      <!-- Правая часть: Ссылки -->
+      <div class="footer-right">
+        <h3>Северное сияние</h3>
+        <ul>
+          <li><a href="#map">Карта</a></li>
+          <li><a href="#app">Приложение</a></li>
+          <li>
+            <a href="t.me/polar_digital"
+              ><Image class="image_tg" src={PDtg} alt="Telegram" />
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+    <p class="footer-rights">
+      Все права на сайт и фотографии защищены авторским правом<br /><br />
+      Данные предоставлены Национальным управлением океанических и атмосферных исследований
+      (NOAA)
+    </p>
   </div>
-  <p class="footer-rights">
-    Все права на сайт и фотографии защищены авторским правом<br /><br />
-    Данные предоставлены Национальным управлением океанических и атмосферных исследований
-    (NOAA)
-  </p>
 </footer>
