@@ -69,7 +69,7 @@ import tour1 from "../assets/tour-1.png"; // Image is 360x360
     margin: 0;
   }
 
-  .slider-button {
+  .tours_slider-button {
     position: absolute;
     top: 35%; /* Вертикальное центрирование */
     transform: translateY(-50%); /* Корректное центрирование */
@@ -78,15 +78,15 @@ import tour1 from "../assets/tour-1.png"; // Image is 360x360
     border: none;
     cursor: pointer;
     padding: 5px 15px;
-    z-index: 1000; /* Поверх карточек */
+    z-index: 2000; /* Поверх карточек */
     font-size: 30px;
   }
 
-  .slider-button.left {
+  .tours_slider-button.left {
     left: -50px;
   }
 
-  .slider-button.right {
+  .tours_slider-button.right {
     right: -50px;
   }
 
@@ -95,7 +95,7 @@ import tour1 from "../assets/tour-1.png"; // Image is 360x360
       padding: 20px 0;
     }
 
-    .slider-button {
+    .tours_slider-button {
       display: none;
     }
   }
@@ -117,9 +117,9 @@ import tour1 from "../assets/tour-1.png"; // Image is 360x360
   </p>
 
   <div class="tour-slider-container">
-    <button class="slider-button left" id="slideLeft">&#8249;</button>
+    <button class="tours_slider-button left" id="slideLeft1">&#8249;</button>
 
-    <div class="cards" id="slider">
+    <div class="cards" id="slider1">
       <div class="tour-card">
         <Image src={tour1} alt="Тур" />
         <div class="tour-card_description">
@@ -165,15 +165,15 @@ import tour1 from "../assets/tour-1.png"; // Image is 360x360
         </div>
       </div>
     </div>
-    <button class="slider-button right" id="slideRight">&#8250;</button>
+    <button class="tours_slider-button right" id="slideRight1">&#8250;</button>
   </div>
 </section>
 
 <script is:inline>
   {
-    const slider = document.getElementById("slider");
-    const slideLeft = document.getElementById("slideLeft");
-    const slideRight = document.getElementById("slideRight");
+    const slider = document.getElementById("slider1");
+    const slideLeft = document.getElementById("slideLeft1");
+    const slideRight = document.getElementById("slideRight1");
 
     // Прокрутка влево
     slideLeft.addEventListener("click", () => {

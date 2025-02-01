@@ -15,16 +15,16 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiService } from "../../api/client";
 import "../../api/config";
 import "ol/ol.css";
+import "/src/styles/AuroraMap.css";
 
-// Функция для вычисления цвета с прозрачностью 50%
 function getColorFromWeight(weight) {
   const t = Math.min(Math.max(weight, 0), 1);
   const gradient = [
-    { stop: 0.1, color: [226, 255, 227, 1] }, // бело-зелёный
-    { stop: 0.2, color: [138, 245, 111, 1] }, // Зелёный
-    { stop: 0.4, color: [255, 255, 29, 1] }, // Жёлтый
-    { stop: 0.6, color: [250, 137, 24, 1] }, // Оранжевый
-    { stop: 1, color: [255, 67, 67, 1] }, // Красный
+    { stop: 0.1, color: [226, 255, 227, 1] },
+    { stop: 0.2, color: [138, 245, 111, 1] },
+    { stop: 0.4, color: [255, 255, 29, 1] },
+    { stop: 0.6, color: [250, 137, 24, 1] },
+    { stop: 1, color: [255, 67, 67, 1] },
   ];
 
   let lower = gradient[0],
@@ -39,16 +39,12 @@ function getColorFromWeight(weight) {
   }
 
   const range = upper.stop - lower.stop;
-  const tNorm = range === 0 ? 0 : (t - lower.stop) / range; // Защита от деления на 0
-
+  const tNorm = range === 0 ? 0 : (t - lower.stop) / range;
   const color = lower.color.map((c, index) =>
     Math.round(c + (upper.color[index] - c) * tNorm),
   );
 
-  // Делаем прозрачность 50% от вычисленной
-  const alpha = color[3] * 0.1;
-
-  return `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
+  return `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] * 0.02})`;
 }
 
 export function AuroraMap() {
@@ -56,64 +52,9 @@ export function AuroraMap() {
   const mapRef = useRef(null);
   const client = useStore(queryClient);
 
-  const { data: auroraMapData, isLoading } = useQuery(
-    {
-      queryKey: ["aurora-openlayers-map"],
-      queryFn: async () => {
-        const res = await ApiService.apiAuroraMapApiV1AuroraMapGet();
-        // Фильтруем и нормируем значение "weight" (нормировка зависит от ваших данных)
-        return res.coordinates
-          .filter((x) => x[2] > 10)
-          .map((x) => [x[1], x[0] > 180 ? x[0] - 360 : x[0], x[2] / 100]); // нормировка значения weight
-      },
-    },
-    client,
-  );
-
   useEffect(() => {
-    if (mapContainerRef.current && !mapRef.current && !isLoading) {
-      const vectorSource = new VectorSource();
-
-      // Добавляем фичи с сохранением значения вероятности
-      auroraMapData.forEach((point) => {
-        const feature = new Feature({
-          geometry: new Point(fromLonLat([point[1], point[0]])),
-        });
-        feature.set("weight", point[2]); // значение должно быть от 0 до 1
-        vectorSource.addFeature(feature);
-      });
-
-      // Создаём векторный слой с функцией стиля, которая учитывает зум и широту точки
-      const vectorLayer = new VectorLayer({
-        source: vectorSource,
-        style: (feature) => {
-          const weight = feature.get("weight");
-          const color = getColorFromWeight(weight);
-          // Получаем текущий зум карты
-          const zoom = mapRef.current.getView().getZoom() || 2;
-
-          // Получаем координаты фичи в проекции карты и преобразуем в lon/lat
-          const coordinate = feature.getGeometry().getCoordinates();
-          const [lon, lat] = toLonLat(coordinate);
-
-          // Можно задать корректировку радиуса в зависимости от широты.
-          // Например, чем дальше от экватора (больше |lat|), тем больше радиус.
-          // Здесь радиус вычисляется как базовый размер, зависящий от зума,
-          // умноженный на коэффициент (1 + |lat|/90), где 90 — максимальное значение широты.
-          const radius = zoom * 1.5 * (1 + (3 * Math.abs(lat) ** 1.2) / 90);
-
-          return new Style({
-            image: new CircleStyle({
-              radius,
-              fill: new Fill({ color }),
-            }),
-          });
-        },
-      });
-
-      const tileLayer = new TileLayer({
-        source: new OSM(),
-      });
+    if (mapContainerRef.current && !mapRef.current) {
+      const tileLayer = new TileLayer({ source: new OSM() });
       const view = new View({
         center: fromLonLat([30, 70]),
         zoom: 3,
@@ -124,21 +65,91 @@ export function AuroraMap() {
 
       mapRef.current = new Map({
         target: mapContainerRef.current,
-        layers: [tileLayer, vectorLayer],
+        layers: [tileLayer],
         view: view,
       });
+    }
+  }, []);
 
-      // Обновляем стили при изменении зума
-      mapRef.current.getView().on("change:resolution", () => {
-        vectorLayer.changed();
+  const { data: auroraMapData, isLoading } = useQuery(
+    {
+      queryKey: ["aurora-openlayers-map"],
+      queryFn: async () => {
+        const res = await ApiService.apiAuroraMapApiV1AuroraMapGet();
+        return res.coordinates
+          .filter((x) => x[2] > 10)
+          .map((x) => [x[1], x[0] > 180 ? x[0] - 360 : x[0], x[2] / 100]);
+      },
+    },
+    client,
+  );
+
+  useEffect(() => {
+    if (mapRef.current && auroraMapData && !isLoading) {
+      const vectorSource = new VectorSource();
+      auroraMapData.forEach((point) => {
+        const feature = new Feature({
+          geometry: new Point(fromLonLat([point[1], point[0]])),
+        });
+        feature.set("weight", point[2]);
+        vectorSource.addFeature(feature);
       });
+
+      const vectorLayer = new VectorLayer({
+        source: vectorSource,
+        style: (feature) => {
+          const weight = feature.get("weight");
+          const color = getColorFromWeight(weight);
+          const zoom = mapRef.current.getView().getZoom() || 2;
+          const coordinate = feature.getGeometry().getCoordinates();
+          const [lon, lat] = toLonLat(coordinate);
+          const radius = zoom * 1 * (1 + (3 * Math.abs(lat) ** 1.3) / 90);
+          const alpha = 0.02 + (zoom - 3) * 0.002;
+
+          return new Style({
+            image: new CircleStyle({
+              radius: radius * 1.6,
+              fill: new Fill({
+                color: color.replace(/\d+\.?\d*\)$/, `${alpha})`),
+              }),
+            }),
+          });
+        },
+      });
+
+      mapRef.current.addLayer(vectorLayer);
+      mapRef.current
+        .getView()
+        .on("change:resolution", () => vectorLayer.changed());
     }
   }, [auroraMapData, isLoading]);
 
   return (
-    <div
-      ref={mapContainerRef}
-      style={{ width: "100%", height: "500px", paddingTop: "25px" }}
-    ></div>
+    <div className="aurora-map-container">
+      <div
+        ref={mapContainerRef}
+        style={{ width: "100%", height: "100%", paddingTop: "25px" }}
+      ></div>
+
+      {/* Легенда */}
+      <div className="legend">
+        <h4>Вероятность сияния</h4>
+        {[
+          { color: "rgba(226, 255, 227, 1)", label: "0% - 10%" },
+          { color: "rgba(138, 245, 111, 1)", label: "10% - 20%" },
+          { color: "rgba(255, 255, 29, 1)", label: "20% - 40%" },
+          { color: "rgba(250, 137, 24, 1)", label: "40% - 60%" },
+          { color: "rgba(255, 67, 67, 1)", label: "60% - 100%" },
+        ].map(({ color, label }) => (
+          <div key={label} className="legend-item">
+            <div
+              className="legend-color"
+              style={{ backgroundColor: color }}
+            ></div>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
