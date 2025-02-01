@@ -24,7 +24,7 @@ export const ChartTabs = () => {
           <Tabs.Trigger
             className={cn(
               className,
-              activeTab === "tab1" && "bg-tab-active text-white",
+              activeTab === "tab1" && "bg-(--color-tab-active) text-white",
             )}
             value="tab1"
           >
@@ -33,7 +33,7 @@ export const ChartTabs = () => {
           <Tabs.Trigger
             className={cn(
               className,
-              activeTab === "tab2" && "bg-tab-active text-white",
+              activeTab === "tab2" && "bg-(--color-tab-active) text-white",
             )}
             value="tab2"
           >
