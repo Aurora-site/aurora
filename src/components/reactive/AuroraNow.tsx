@@ -5,22 +5,25 @@ import { queryClient } from "../../stores/query";
 import { useGeolocation } from "../../utils/geo_utils";
 import { useQuery } from "@tanstack/react-query";
 import { CitySelect } from "./CitySelect";
+import { cityAtom } from "../../stores/citiy";
+import { useEffect } from "react";
 
 export const AuroraNow = () => {
-  const state = useGeolocation();
+  // const state = useGeolocation();
   const client = useStore(queryClient);
-  const { data: auroraProbabilityData } = useQuery(
+  const city = useStore(cityAtom);
+  const { data: auroraProbabilityData, refetch: refetchProbability } = useQuery(
     {
       queryKey: ["auroraProbability"],
       queryFn: async () => {
-        if (!state.latitude || !state.longitude) {
-          throw new Error("Geo pos not allowed");
+        if (!city.lat || !city.long) {
+          throw new Error("Geo pos not awalilable");
         }
         const res =
           await ApiService.apiAuroraNooaProbabilityApiV1AuroraNooaProbabilityPost(
             {
-              lat: state.latitude,
-              lon: state.longitude,
+              lat: city.lat,
+              lon: city.long,
             },
           );
         return res;
@@ -28,7 +31,9 @@ export const AuroraNow = () => {
     },
     client,
   );
-
+  useEffect(() => {
+    refetchProbability();
+  }, [city]);
   return (
     <div>
       <CitySelect />
