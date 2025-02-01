@@ -13,6 +13,7 @@ import { useStore } from "@nanostores/react";
 import { queryClient } from "../../stores/query";
 import { useQuery } from "@tanstack/react-query";
 import { ApiService } from "../../api/client";
+import "../../api/config";
 import "ol/ol.css";
 
 // Функция для вычисления цвета с прозрачностью 50%
