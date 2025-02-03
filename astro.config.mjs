@@ -20,4 +20,11 @@ export default defineConfig({
       }),
     },
   },
+  i18n: {
+    defaultLocale: "ru",
+    locales: ["en", "ru", "cn"],
+    // routing: {
+    //   prefixDefaultLocale: true,
+    // },
+  },
 });

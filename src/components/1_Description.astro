@@ -1,3 +1,9 @@
+---
+import { useAstroTranslations } from "../i18n/utils";
+
+const t = useAstroTranslations(Astro);
+---
+
 <style>
   /* .description {
     text-align: center;
@@ -24,8 +30,8 @@
 </style>
 
 <section class="description pt-36 pb-5 text-center" id="description">
-  <h1>Северное сияние</h1>
-  <h2>Как увидеть?</h2>
+  <h1>{t("description.title")}</h1>
+  <h2>{t("description.how")}</h2>
   <p>
     Северное сияние, или Аврора бореалис, — это одно из самых завораживающих
     природных явлений, наблюдаемое в высоких широтах, близких к полюсам. Оно
