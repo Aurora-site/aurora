@@ -60,7 +60,7 @@ export function AuroraMap() {
         zoom: 3,
         minZoom: 3,
         maxZoom: 4.5,
-        extent: transformExtent([-180, -85, 180, 85], "EPSG:4326", "EPSG:3857"),
+        extent: transformExtent([-180, -85, 200, 85], "EPSG:4326", "EPSG:3857"),
       });
 
       mapRef.current = new Map({
@@ -77,7 +77,7 @@ export function AuroraMap() {
       queryFn: async () => {
         const res = await ApiService.apiAuroraMapApiV1AuroraMapGet();
         return res.coordinates
-          .filter((x) => x[2] > 10)
+          .filter((x) => x[2] > 5)
           .map((x) => [x[1], x[0] > 180 ? x[0] - 360 : x[0], x[2] / 100]);
       },
     },
@@ -91,6 +91,7 @@ export function AuroraMap() {
         const feature = new Feature({
           geometry: new Point(fromLonLat([point[1], point[0]])),
         });
+        feature.setStyle(null);
         feature.set("weight", point[2]);
         vectorSource.addFeature(feature);
       });
@@ -104,17 +105,18 @@ export function AuroraMap() {
           const coordinate = feature.getGeometry().getCoordinates();
           const [lon, lat] = toLonLat(coordinate);
           const radius = zoom * 1 * (1 + (3 * Math.abs(lat) ** 1.3) / 90);
-          const alpha = 0.02 + (zoom - 3) * 0.002;
+          const alpha = 0.03 + (zoom - 3) * 0.002;
 
           return new Style({
             image: new CircleStyle({
-              radius: radius * 1.6,
+              radius: radius * 1.65,
               fill: new Fill({
                 color: color.replace(/\d+\.?\d*\)$/, `${alpha})`),
               }),
             }),
           });
         },
+        renderMode: "image", // Использует Canvas, вместо векторного рендеринга
       });
 
       mapRef.current.addLayer(vectorLayer);
@@ -126,10 +128,7 @@ export function AuroraMap() {
 
   return (
     <div className="aurora-map-container">
-      <div
-        ref={mapContainerRef}
-        style={{ width: "100%", height: "100%", paddingTop: "25px" }}
-      ></div>
+      <div ref={mapContainerRef} className="h-full w-full pt-[25px]"></div>
 
       {/* Легенда */}
       <div className="legend">

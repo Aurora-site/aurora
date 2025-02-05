@@ -43,7 +43,7 @@ export const AuroraNow = () => {
       <CitySelect />
       <div className="flex items-center gap-2">
         <p>{t("aurora.probability")}</p>
-        <div className="rounded-full bg-green-500 px-3 text-2xl font-bold">
+        <div className="content-center rounded-full bg-green-500 px-3 text-[16px] font-bold">
           {auroraProbabilityData?.probability.toFixed(0) || "😶‍🌫️"}%
         </div>
       </div>

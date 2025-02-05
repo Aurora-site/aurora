@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import aurora1 from "../assets/aurora-1.png";
+import aurora1 from "../assets/1.png";
+import aurora2 from "../assets/2.png";
+import aurora3 from "../assets/3.png";
 ---
 
 <style>
@@ -8,6 +10,7 @@ import aurora1 from "../assets/aurora-1.png";
     max-width: 100%;
     height: auto;
     margin: 20px 0;
+    border-radius: 20px;
   }
 
   .how-to-see p {
@@ -26,8 +29,8 @@ import aurora1 from "../assets/aurora-1.png";
     overflow-x: auto; /* Горизонтальная прокрутка */
     scroll-behavior: smooth; /* Плавная прокрутка */
     margin: 40px 0 0 0;
-    padding: 10px;
     white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
+    justify-content: space-between;
   }
 
   .image-slider-container {
@@ -44,8 +47,8 @@ import aurora1 from "../assets/aurora-1.png";
     position: absolute;
     top: 50%; /* Вертикальное центрирование */
     transform: translateY(-50%); /* Корректное центрирование */
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-    color: white;
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
     border: none;
     cursor: pointer;
     padding: 5px 15px;
@@ -74,7 +77,7 @@ import aurora1 from "../assets/aurora-1.png";
 </style>
 
 <section class="how-to-see py-12" id="how-to-see">
-  <h2><a href="#how-to-see">Как увидеть?</a></h2>
+  <h2><a href="#how-to-see">Как увидеть северное сияние?</a></h2>
   <p>
     Наблюдение за северным сиянием — это удивительное зрелище, требующее
     подготовки и терпения.
@@ -113,16 +116,10 @@ import aurora1 from "../assets/aurora-1.png";
         <Image src={aurora1} alt="Северное Сияние" />
       </div>
       <div class="imag">
-        <Image src={aurora1} alt="Северное Сияние" />
+        <Image src={aurora2} alt="Северное Сияние" />
       </div>
       <div class="imag">
-        <Image src={aurora1} alt="Северное Сияние" />
-      </div>
-      <div class="imag">
-        <Image src={aurora1} alt="Северное Сияние" />
-      </div>
-      <div class="imag">
-        <Image src={aurora1} alt="Северное Сияние" />
+        <Image src={aurora3} alt="Северное Сияние" />
       </div>
     </div>
     <button class="slider-button right" id="slideRight">&#8250;</button>
@@ -131,18 +128,40 @@ import aurora1 from "../assets/aurora-1.png";
 
 <script is:inline>
   {
-    const slider = document.getElementById("slider");
-    const slideLeft = document.getElementById("slideLeft");
-    const slideRight = document.getElementById("slideRight");
+    function initSlider() {
+      const slider = document.getElementById("slider");
+      const slideLeft = document.getElementById("slideLeft");
+      const slideRight = document.getElementById("slideRight");
 
-    // Прокрутка влево
-    slideLeft.addEventListener("click", () => {
-      slider.scrollBy({ left: -380, behavior: "smooth" });
-    });
+      if (!slider) return;
 
-    // Прокрутка вправо
-    slideRight.addEventListener("click", () => {
-      slider.scrollBy({ left: 380, behavior: "smooth" });
-    });
+      // Проверяем, нужен ли скролл
+      const totalWidth = Array.from(slider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = slider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        // Показываем кнопки и активируем прокрутку
+        slideLeft.style.display = "block";
+        slideRight.style.display = "block";
+
+        slideLeft.addEventListener("click", () => {
+          slider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        slideRight.addEventListener("click", () => {
+          slider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        // Скрываем кнопки, если скролл не нужен
+        slideLeft.style.display = "none";
+        slideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
   }
 </script>

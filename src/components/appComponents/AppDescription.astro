@@ -1,0 +1,194 @@
+---
+import { Image } from "astro:assets";
+import store from "/src/assets/store.png";
+---
+
+<style>
+  .description h1 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 64px;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0;
+  }
+
+  /*  .description p {
+      margin: 0 auto;
+      font-size: 1em;
+      line-height: 1.5;
+      text-align: left;
+    }*/
+
+  .app_screens {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px;
+    white-space: nowrap;
+    justify-content: space-between;
+  }
+
+  .app-slider-container {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .stores_cards {
+    flex: 0 0 auto;
+    width: 350px;
+    height: 350px;
+    background-color: #386e784d;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .store_img {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .just-button {
+    background-color: #18a5bf;
+    padding: 10px 50px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 20px; /* Закрепляем кнопку внизу */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+    color: white;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .Name {
+    font-size: 20px;
+    padding: 0 10px;
+    text-align: center;
+  }
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+  }
+
+  .slider-button.right {
+    right: -50px;
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 482px) {
+    .imag,
+    .stores_cards {
+      width: 90%;
+    }
+  }
+</style>
+
+<section class="description pt-[80px] pb-5 text-center" id="description">
+  <h1>Северное сияние</h1>
+  <h1>Приложение с уведомлением</h1>
+  <p class="pt-16 text-left">
+    Планируете наблюдение за северным сиянием? Наше приложение — ваш идеальный
+    спутник! Получайте точные прогнозы, уведомления о высоком Kp-индексе и
+    солнечных вспышках. Не дайте метеоусловиям испортить ваше приключение —
+    будьте всегда на шаг впереди! Скачайте и начните свое путешествие к
+    волшебству прямо сейчас!
+  </p>
+  <h2 class="pb-[60px] text-left">Установите приложение к себе в телефон</h2>
+
+  <div class="app-slider-container">
+    <button class="slider-button left" id="appSlideLeft">&#8249;</button>
+    <div class="app_screens" id="appSlider">
+      <div class="stores_cards">
+        <div class="store_img">
+          <Image src={store} alt="Скрин приложения" />
+        </div>
+        <p class="Name pt-1.5 text-center font-bold">App Store</p>
+        <div class="pt-1.5">Для мобильных устройств на iOS</div>
+        <button class="just-button">Скачать</button>
+      </div>
+
+      <div class="stores_cards">
+        <div class="store_img">
+          <Image src={store} alt="Скрин приложения" />
+        </div>
+        <p class="Name pt-1.5 text-center font-bold">App Store</p>
+        <div class="pt-1.5">Для мобильных устройств на iOS</div>
+        <button class="just-button">Скачать</button>
+      </div>
+
+      <div class="stores_cards">
+        <div class="store_img">
+          <Image src={store} alt="Скрин приложения" />
+        </div>
+        <p class="Name pt-1.5 text-center font-bold">App Store</p>
+        <div class="pt-1.5">Для мобильных устройств на iOS</div>
+        <button class="just-button">Скачать</button>
+      </div>
+    </div>
+    <button class="slider-button right" id="appSlideRight">&#8250;</button>
+  </div>
+</section>
+
+<script is:inline>
+  {
+    function initSlider() {
+      const appSlider = document.getElementById("appSlider");
+      const appSlideLeft = document.getElementById("appSlideLeft");
+      const appSlideRight = document.getElementById("appSlideRight");
+
+      if (!appSlider) return;
+
+      // Проверяем, нужен ли скролл
+      const totalWidth = Array.from(appSlider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = appSlider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        // Показываем кнопки и активируем прокрутку
+        appSlideLeft.style.display = "block";
+        appSlideRight.style.display = "block";
+
+        appSlideLeft.addEventListener("click", () => {
+          appSlider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        appSlideRight.addEventListener("click", () => {
+          appSlider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        // Скрываем кнопки, если скролл не нужен
+        appSlideLeft.style.display = "none";
+        appSlideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
+  }
+</script>

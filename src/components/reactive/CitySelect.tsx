@@ -45,7 +45,7 @@ export const CitySelect = () => {
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger onClick={() => setSerachQuery("")} asChild>
-          <div className="flex cursor-pointer items-center gap-4 py-5 text-2xl underline">
+          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[20px] underline">
             {city.name || "Мурманск"}
             <ChevronDown className="h-4 w-4" />
           </div>

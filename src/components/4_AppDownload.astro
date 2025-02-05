@@ -1,3 +1,7 @@
+---
+import App from "../pages/app.astro";
+---
+
 <style>
   /* .app-download h2 {
       font-size: 36px;
@@ -11,10 +15,10 @@
   .app-download button {
     padding: 20px 20px;
     font-size: 24px;
-    background: linear-gradient(to right, #006909, #bcf7ff);
+    background: linear-gradient(to right, #006909, #18a5bf);
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 45px;
     cursor: pointer;
     position: relative;
     width: 100%;
@@ -26,12 +30,21 @@
   .app-download button:hover {
     background: #218838;
   }
+
+  @media (max-width: 578px) {
+    .app-download button {
+      font-size: 16px;
+    }
+  }
 </style>
 
 <section class="app-download py-12" id="app">
-  <h2><a href="#app">Следите за северным сиянием</a></h2>
+  <h2><a href="#app">Следить за северным сиянием</a></h2>
   <p>
-    Удобно следить за индексом можно с помощью нашего мобильного приложения...
+    Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
+    вы сможете не только следить за изменениями, но и получать пуш-уведомления о
+    повышении вероятности, чтобы не упустить высокий шанс.
   </p>
-  <button>Приложение с уведомлением</button>
+
+  <a href="/app"><button>Приложение с уведомлением</button></a>
 </section>

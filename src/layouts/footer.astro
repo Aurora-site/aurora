@@ -25,10 +25,31 @@ import PDtg from "../assets/PD_tg.svg";
     margin: 0 auto;
   }
 
+  .footer-container li {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+
+  .footer-container a {
+    font-size: 14px;
+  }
+
+  .footer-container li:hover {
+    text-decoration: underline;
+  }
+
+  .footer-container h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .footer-container a:hover {
+    text-decoration: underline;
+  }
+
   .footer-left {
     max-width: 50%;
     display: inline;
-    margin: 0 60px 0 0;
+    padding: 0 10px 0 0;
   }
 
   .footer-left-up {
@@ -41,120 +62,50 @@ import PDtg from "../assets/PD_tg.svg";
     margin: 6px 60px 0 0;
   }
 
-  .footer-contacts {
-    margin: 0;
-  }
-
-  .footer-contacts h3 {
-    font-size: 20px;
-    margin: 0 0 10px 0;
-    font-weight: bold;
-  }
-
   .footer-contacts a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: normal;
-  }
-
-  .footer-contacts a:hover {
-    text-decoration: underline;
+    padding: 5px 0;
   }
 
   .footer-rights {
     font-size: 12px;
-    margin-top: 40px;
-    line-height: 1.4;
+    padding-top: 40px;
     font-weight: 300;
   }
 
-  .footer-right {
-    text-align: right;
-  }
-
-  .footer-right h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .footer-right ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-right ul li {
-    margin: 5px 0;
-  }
-
-  .footer-right ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-  }
-
-  .footer-right ul li a:hover {
-    text-decoration: underline;
+  .footer-mid {
+    text-align: left;
+    padding: 0 10px;
   }
 
   .image_tg {
-    float: right;
+    float: left;
   }
 
   @media (max-width: 1024px) {
     .footer-contacts {
-      margin: 40px 0 0 0;
+    }
+  }
+
+  @media (max-width: 812px) {
+    .footer-contacts {
+      padding: 20px 0 0 0;
+    }
+    .footer-left {
+      margin: 0 50px 0 0;
+    }
+    .footer-docs {
+      padding: 20px 0 0 0;
+    }
+  }
+  @media (max-width: 558px) {
+    .footer-mid {
+      padding: 20px 0 0 0;
     }
   }
 
   @media (max-width: 538px) {
-    .footer-right {
-      text-align: left;
-      margin-top: 20px;
-    }
-
-    .footer-right ul li {
-      margin: 0;
-    }
-    .footer-right h3 {
-      margin: 0;
-    }
-    .footer-contacts h3 {
-      margin: 0;
-    }
-
-    .footer-rights {
-      margin: 20px 0 0 0;
-    }
-    .image_tg {
-      float: left;
-    }
-  }
-
-  @media (max-width: 450px) {
-    .footer-logo {
-      width: 90px;
-    }
-
-    .footer-contacts h3 {
-      margin: 0;
-      font-size: 16px;
-    }
-    .footer-contacts a {
-      font-size: 14px;
-    }
-
-    .footer-right {
-      text-align: left;
-    }
-    .footer-right h3 {
-      font-size: 16px;
-    }
-
-    .footer-right ul li a {
-      font-size: 14px;
+    .footer {
+      height: auto;
     }
   }
 </style>
@@ -176,8 +127,8 @@ import PDtg from "../assets/PD_tg.svg";
         </div>
       </div>
 
-      <!-- Правая часть: Ссылки -->
-      <div class="footer-right">
+      <!-- Серединная часть: Ссылки -->
+      <div class="footer-mid">
         <h3>Северное сияние</h3>
         <ul>
           <li><a href="#map">Карта</a></li>
@@ -187,6 +138,15 @@ import PDtg from "../assets/PD_tg.svg";
               ><Image class="image_tg" src={PDtg} alt="Telegram" />
             </a>
           </li>
+        </ul>
+      </div>
+
+      <!-- Правая часть: Документация -->
+      <div class="footer-docs">
+        <div class="text-[20px] font-bold">Документы</div>
+        <ul>
+          <li><a href="#map">Политика конфиденциальности</a></li>
+          <li><a href="#app">Согласие на обработку персональных данных</a></li>
         </ul>
       </div>
     </div>
