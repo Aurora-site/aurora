@@ -2,33 +2,43 @@
 import { Image } from "astro:assets";
 import Logo from "../assets/logo.png";
 import "../styles/tailwind.css";
+import { LanguagePicker } from "../components/reactive/LanguagePicker";
 ---
 
 <!-- Шапка -->
 <header class="header">
   <div class="container">
-    <div class="logo">
-      <Image src={Logo} alt="Лого" />
-    </div>
-    <div class="burger" id="burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="navigation flex" id="navigation">
-      <button class="close" id="close">&times;</button>
-      <nav class="nav">
-        <a href="#app">Приложение</a>
-        <a href="#map">Прямо сейчас</a>
-        <a href="#index">Индекс</a>
-        <a href="#how-to-see">Как увидеть</a>
-        <a href="#where-to-see">Где увидеть</a>
-      </nav>
+    <div class="lala">
+      <div class="logo">
+        <Image src={Logo} alt="Лого" />
+      </div>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navigation" id="navigation">
+        <button class="close" id="close">&times;</button>
+        <nav class="nav">
+          <a href="#app">Приложение</a>
+          <a href="#map">Прямо сейчас</a>
+          <a href="#index">Индекс</a>
+          <a href="#how-to-see">Как увидеть</a>
+          <a href="#where-to-see">Где увидеть</a>
+        </nav>
+      </div>
+      <div class="lang">
+        <LanguagePicker client:only="react" />
+      </div>
     </div>
   </div>
 </header>
 
 <style>
+  .lala {
+    display: flex;
+    justify-content: space-between;
+  }
   .header {
     background: url("/src/assets/aurora-header.png") no-repeat center center /
       cover;
@@ -43,14 +53,15 @@ import "../styles/tailwind.css";
   }
 
   .logo {
-    position: absolute;
-    margin: -22px 0px;
-    width: 70px;
+    /* position: absolute;
+    margin: -22px 0px; */
+    width: 85px;
   }
 
   .navigation {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .navigation nav a {
@@ -72,6 +83,7 @@ import "../styles/tailwind.css";
     justify-content: space-between;
     cursor: pointer;
     margin-left: auto; /* Перемещает бургер в крайний правый угол */
+    margin-top: 31px;
   }
 
   .burger span {
@@ -86,7 +98,7 @@ import "../styles/tailwind.css";
     top: 0;
     right: -100%;
     width: 250px;
-    height: 100vh;
+    height: 100%;
     background: #001b24;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: right 0.3s ease-in-out;
@@ -127,10 +139,20 @@ import "../styles/tailwind.css";
   .mobile-nav.open .close {
     display: block;
   }
+  .lang {
+    width: 85px;
+  }
 
   @media (max-width: 1024px) {
     .navigation {
       display: none;
+    }
+
+    .lang {
+      display: block;
+      /* margin-top: 20px; */
+      text-align: center;
+      width: 100px;
     }
 
     .burger {
@@ -161,6 +183,32 @@ import "../styles/tailwind.css";
   const burger = document.getElementById("burger");
   const navigation = document.getElementById("navigation");
   const close = document.getElementById("close");
+  const lang = document.querySelector(".lang");
+  const lala = document.querySelector(".lala");
+
+  // Функция перемещения lang
+  function moveLangToNav() {
+    if (window.innerWidth <= 1024) {
+      if (!navigation.contains(lang)) {
+        navigation.appendChild(lang);
+        console.log("Moved lang to navigation");
+      }
+    } else {
+      if (navigation.contains(lang)) {
+        navigation.removeChild(lang); // Удаляем lang из navigation перед возвратом
+      }
+      if (!lala.contains(lang)) {
+        lala.appendChild(lang);
+        console.log("Moved lang to lala");
+      }
+    }
+  }
+
+  // Запускаем функцию при загрузке страницы
+  document.addEventListener("DOMContentLoaded", moveLangToNav);
+
+  // Перемещение lang при изменении размера экрана
+  window.addEventListener("resize", moveLangToNav);
 
   burger.addEventListener("click", () => {
     navigation.classList.add("open");

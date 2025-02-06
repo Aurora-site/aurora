@@ -1,7 +1,7 @@
-export const languages = {
-  en: "English",
-  ru: "Русский",
-  cn: "中文",
+export const flagUrls: Record<string, string> = {
+  cn: "https://flagcdn.com/w40/cn.png",
+  ru: "https://flagcdn.com/w40/ru.png",
+  en: "https://flagcdn.com/w40/us.png",
 };
 
 export const defaultLang = "ru";

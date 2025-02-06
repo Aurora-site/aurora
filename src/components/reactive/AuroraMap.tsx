@@ -104,8 +104,9 @@ export function AuroraMap() {
           const zoom = mapRef.current.getView().getZoom() || 2;
           const coordinate = feature.getGeometry().getCoordinates();
           const [lon, lat] = toLonLat(coordinate);
-          const radius = zoom * 1 * (1 + (3 * Math.abs(lat) ** 1.3) / 90);
-          const alpha = 0.03 + (zoom - 3) * 0.002;
+          const radius =
+            zoom ** 1.1 * 1 * (1 + (3 * Math.abs(lat) ** 1.3) / 90);
+          const alpha = 0.02 + (zoom - 2) * 0.002;
 
           return new Style({
             image: new CircleStyle({
