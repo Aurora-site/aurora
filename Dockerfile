@@ -1,7 +1,8 @@
-FROM node:20-alpine AS frontend
+FROM node:22-alpine AS frontend
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable pnpm
+RUN corepack enable
+RUN corepack prepare pnpm@10.0.0 --activate
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \

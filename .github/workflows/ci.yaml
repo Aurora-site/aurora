@@ -21,8 +21,32 @@ jobs:
         with:
           node-version: 20
       - name: Install prettier plugins
-        run: npm install -D prettier@^3.3.3 prettier-plugin-tailwindcss@^0.6.5 prettier-plugin-astro@^0.14.1
+        run: >
+          npm install -D --force
+          prettier@^3.3.3
+          prettier-plugin-tailwindcss@^0.6.5
+          prettier-plugin-astro@^0.14.1
       - uses: pre-commit/action@v3.0.1
+
+  test:
+    name: 🧪 Run Tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - name: use test env var
+        run: cp .env.example .env
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test-ci
 
   build-frontend:
     name: 🏗️ Run Frontend Build
@@ -31,7 +55,9 @@ jobs:
     permissions:
       contents: read
       packages: write
-    needs: check
+    needs:
+      - check
+      - test
     steps:
       - uses: actions/checkout@v4.1.7
 
@@ -57,16 +83,17 @@ jobs:
 
       - name: Build and push Docker image
         id: push
-        uses: docker/build-push-action@v6.5.0
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           build-args: |
             API_URL=${{ vars.API_URL }}
           platforms: linux/amd64
-          file: ./Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   deploy-frontend:
     name: 🚢 Deploy Frontend Docker Image

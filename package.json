@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest"
+    "test": "vitest",
+    "test-ci": "vitest run",
+    "lint": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
