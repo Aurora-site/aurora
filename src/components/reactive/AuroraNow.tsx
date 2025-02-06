@@ -7,12 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { CitySelect } from "./CitySelect";
 import { cityAtom } from "../../stores/citiy";
 import { useEffect } from "react";
-import { useTranslations } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
+import { useLocale } from "../../i18n/utils";
 
 export const AuroraNow = () => {
-  const locale = useStore(localeAtom);
-  const t = useTranslations(locale);
+  const t = useLocale(localeAtom);
   // const state = useGeolocation();
   const client = useStore(queryClient);
   const city = useStore(cityAtom);

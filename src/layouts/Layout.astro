@@ -22,10 +22,10 @@ const t = useAstroTranslations(Astro);
   </head>
   <body>
     <Header />
+    <LanguagePicker client:only="react" />
     <div class="container">
       <slot />
     </div>
     <Footer />
-    <LanguagePicker client:only="react" />
   </body>
 </html>
