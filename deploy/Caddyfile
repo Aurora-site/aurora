@@ -1,4 +1,5 @@
 :8000 {
-    root * /srv/dist
-    file_server
+	root * /srv/dist
+	encode zstd gzip
+	file_server
 }
