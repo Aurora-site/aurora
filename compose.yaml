@@ -2,7 +2,10 @@ services:
   aurora-web:
     image: ghcr.io/aurora-site/aurora-web:latest
     container_name: aurora-web
-    build: .
+    build:
+      context: .
+      args:
+        API_URL: https://test-aurora-api.akorz.duckdns.org
     restart: unless-stopped
     ports:
       - 8000:8000
