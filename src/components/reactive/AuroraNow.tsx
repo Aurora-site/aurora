@@ -2,7 +2,6 @@ import { useStore } from "@nanostores/react";
 import { ApiService } from "../../api/client";
 import "../../api/config";
 import { queryClient } from "../../stores/query";
-import { useGeolocation } from "../../utils/geo_utils";
 import { useQuery } from "@tanstack/react-query";
 import { CitySelect } from "./CitySelect";
 import { cityAtom } from "../../stores/citiy";
@@ -12,7 +11,6 @@ import { useLocale } from "../../i18n/utils";
 
 export const AuroraNow = () => {
   const t = useLocale(localeAtom);
-  // const state = useGeolocation();
   const client = useStore(queryClient);
   const city = useStore(cityAtom);
   const { data: auroraProbabilityData, refetch: refetchProbability } = useQuery(

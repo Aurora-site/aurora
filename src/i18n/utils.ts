@@ -22,8 +22,11 @@ export function useTranslations(lang: keyof typeof ui) {
   };
 }
 
-export function useAstroLocale(a: { currentLocale: string }) {
-  const l = a.currentLocale;
+// plaseholder type for astro object cus its not available in runtime
+type Astro = { currentLocale?: string };
+
+export function useAstroLocale(a: Astro) {
+  const l = a.currentLocale as keyof typeof ui;
   if (l in ui) return l as keyof typeof ui;
   return defaultLang;
 }
@@ -32,9 +35,6 @@ export function useLocale(localeAtom: WritableAtom) {
   const locale = useStore(localeAtom);
   return useTranslations(locale);
 }
-
-// plaseholder type for astro object cus its not available in runtime
-type Astro = { currentLocale: string };
 
 export function useAstroTranslations(a: Astro) {
   return useTranslations(useAstroLocale(a));

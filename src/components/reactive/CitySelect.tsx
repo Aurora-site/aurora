@@ -1,9 +1,8 @@
-import { ChevronDown, MoveDown, Search, X } from "lucide-react";
+import { ChevronDown, Search, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,

@@ -65,5 +65,10 @@ export const KpGraph3 = () => {
     },
     client,
   );
-  return <CommonKpChart data={data || []} xTick={<CustomizedXTick />} />;
+  return (
+    <CommonKpChart
+      data={data || []}
+      xTick={<CustomizedXTick x={0} y={0} payload={undefined} />}
+    />
+  );
 };

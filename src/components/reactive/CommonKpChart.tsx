@@ -1,3 +1,4 @@
+import type React from "react";
 import type { FC } from "react";
 import {
   ResponsiveContainer,
@@ -15,7 +16,7 @@ interface CommonKpChart {
     kp_index: number;
     fill?: string;
   }[];
-  xTick?: any;
+  xTick?: React.ReactNode;
 }
 
 export const CommonKpChart: FC<CommonKpChart> = ({
@@ -28,6 +29,7 @@ export const CommonKpChart: FC<CommonKpChart> = ({
         <ResponsiveContainer height={464}>
           <BarChart data={transformedData} margin={{ bottom: 50 }}>
             <CartesianGrid strokeDasharray="3 3" />
+            {/* @ts-ignore */}
             <XAxis dataKey="date" tick={xTick} interval={0} />
             <YAxis domain={[0, 9]} className="fixed" />
             <Tooltip
