@@ -1,5 +1,10 @@
 import { expect, test } from "vitest";
-import { getLangFromHref, getLangFromUrl, useTranslations } from "./utils";
+import {
+  getLangFromHref,
+  getLangFromUrl,
+  getLocalizedUrl,
+  useTranslations,
+} from "./utils";
 
 test("getLangFromUrl", () => {
   expect(getLangFromUrl(new URL("http://localhost/en/"))).toBe("en");
@@ -14,5 +19,12 @@ test("getLangFromHref", () => {
 });
 
 test("useTranslations", () => {
-  expect(useTranslations("en")("description.title")).toBe("Southern Lights");
+  expect(useTranslations("en")("description.title")).toBe("Aurora");
+});
+
+test("getLocalizedUrl", () => {
+  expect(getLocalizedUrl("en", "/en/")).toBe("/en/");
+  expect(getLocalizedUrl("ru", "/en/app")).toBe("/app/");
+  expect(getLocalizedUrl("cn", "/en/app")).toBe("/cn/app/");
+  expect(getLocalizedUrl("cn", "/en/app/")).toBe("/cn/app/");
 });

@@ -1,12 +1,11 @@
 ---
-import App from "../pages/app.astro";
-import { useAstroTranslations } from "../i18n/utils";
+import {
+  getLocalizedUrl,
+  useAstroLocale,
+  useAstroTranslations,
+} from "../i18n/utils";
+const l = useAstroLocale(Astro);
 const t = useAstroTranslations(Astro);
-import { getLocalizedUrl } from "../i18n/utils";
-const supportedLangs = ["ru", "en", "cn"]; // добавь нужные языки
-const pathParts = Astro.url.pathname.split("/");
-const currentLang = supportedLangs.includes(pathParts[1]) ? pathParts[1] : ""; // если язык не найден, оставляем пустую строку
-console.log("currentLang:", currentLang);
 ---
 
 <style>
@@ -51,7 +50,7 @@ console.log("currentLang:", currentLang);
     {t("AppDownload.text")}
   </p>
 
-  <a href={getLocalizedUrl("/app", currentLang)}
+  <a href={getLocalizedUrl(l, "/app")}
     ><button>{t("AppDownload.button")}</button></a
   >
   <!-- <a href={`/${currentLang}/app`}><button>{t("AppDownload.button")}</button></a> -->
