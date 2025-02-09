@@ -23,13 +23,13 @@ const t = useAstroTranslations(Astro);
       </div>
       <div class="navigation" id="navigation">
         <button class="close" id="close">&times;</button>
-        <nav class="nav">
+        <!-- <nav class="nav">
           <a href="#app">{t("H.app")}</a>
           <a href="#map">{t("H.map")}</a>
           <a href="#index">{t("H.index")}</a>
           <a href="#how-to-see">{t("H.how")}</a>
           <a href="#where-to-see">{t("H.where")}</a>
-        </nav>
+        </nav> -->
       </div>
       <div class="lang">
         <LanguagePicker client:only="react" />
@@ -189,7 +189,6 @@ const t = useAstroTranslations(Astro);
   const close = document.getElementById("close");
   const lang = document.querySelector(".lang");
   const lala = document.querySelector(".lala");
-  const nav = document.querySelector(".nav"); // Получаем сам <nav>
 
   // Функция перемещения lang
   function moveLangToNav() {
@@ -215,46 +214,13 @@ const t = useAstroTranslations(Astro);
   // Перемещение lang при изменении размера экрана
   window.addEventListener("resize", moveLangToNav);
 
-  // burger.addEventListener("click", () => {
-  //   navigation.classList.add("open");
-  //   navigation.classList.add("mobile-nav");
-  // });
-
-  // close.addEventListener("click", () => {
-  //   navigation.classList.remove("open");
-  //   navigation.classList.remove("mobile-nav");
-  // });
-
-  // Открытие меню
   burger.addEventListener("click", () => {
     navigation.classList.add("open");
     navigation.classList.add("mobile-nav");
   });
 
-  // Функция для закрытия меню
-  const closeMenu = () => {
+  close.addEventListener("click", () => {
     navigation.classList.remove("open");
     navigation.classList.remove("mobile-nav");
-  };
-
-  // Закрытие по кнопке "крестик"
-  close.addEventListener("click", closeMenu);
-
-  // Закрытие при клике вне меню
-  document.addEventListener("click", (event) => {
-    if (
-      navigation.classList.contains("open") &&
-      !navigation.contains(event.target) && // Клик вне меню
-      !burger.contains(event.target) // Исключаем бургер
-    ) {
-      closeMenu();
-    }
-  });
-
-  // Закрытие при клике на любой пункт <nav>
-  nav.addEventListener("click", (event) => {
-    if (event.target.tagName.toLowerCase() === "a") {
-      closeMenu();
-    }
   });
 </script>

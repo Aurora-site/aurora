@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import store from "/src/assets/store.png";
+import { useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
 ---
 
 <style>
@@ -8,11 +10,15 @@ import store from "/src/assets/store.png";
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
   }
+  .app {
+    font-family: "SongerGrotesqueBold";
+    font-size: 64px;
+  }
 
   .description h2 {
     font-family: "SongerGrotesqueBold";
-    font-size: 24px;
-    margin: 60px 0;
+    font-size: 36px;
+    /* margin: 60px 0; */
   }
 
   /*  .description p {
@@ -21,6 +27,20 @@ import store from "/src/assets/store.png";
       line-height: 1.5;
       text-align: left;
     }*/
+
+  .description ul {
+    display: block;
+    padding-top: 60px;
+    font-size: 36px;
+    text-align: left;
+    list-style: disc; /* Добавляем маркеры */
+    padding-left: 20px; /* Отступ для корректного отображения */
+  }
+
+  .description ul li {
+    font-family: "SongerGrotesqueBold";
+    font-size: 36px;
+  }
 
   .app_screens {
     display: flex;
@@ -77,7 +97,7 @@ import store from "/src/assets/store.png";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: black;
+    color: white;
     border: none;
     cursor: pointer;
     padding: 5px 15px;
@@ -95,7 +115,16 @@ import store from "/src/assets/store.png";
 
   @media (max-width: 952px) {
     .slider-button {
-      display: none;
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .description ul li {
+      font-size: 24px;
+    }
+    .description h2 {
+      font-size: 24px;
     }
   }
 
@@ -105,19 +134,32 @@ import store from "/src/assets/store.png";
       width: 90%;
     }
   }
+  @media (max-width: 440px) {
+    .app {
+      font-size: 40px;
+    }
+  }
 </style>
 
-<section class="description pt-[80px] pb-5 text-center" id="description">
-  <h1>Северное сияние</h1>
-  <h1>Приложение с уведомлением</h1>
+<section
+  class="description bg-[url('/images/auroraback_mb.png')] bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[url('/images/auroraback_app.png')] md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>{t("App.title")}</h1>
+  <div class="app">{t("App.app")}</div>
   <p class="pt-16 text-left">
-    Планируете наблюдение за северным сиянием? Наше приложение — ваш идеальный
-    спутник! Получайте точные прогнозы, уведомления о высоком Kp-индексе и
-    солнечных вспышках. Не дайте метеоусловиям испортить ваше приключение —
-    будьте всегда на шаг впереди! Скачайте и начните свое путешествие к
-    волшебству прямо сейчас!
+    {t("App.text1")}
   </p>
-  <h2 class="pb-[60px] text-left">Установите приложение к себе в телефон</h2>
+  <ul>
+    <li>{t("App.point1")}</li>
+    <li>{t("App.point2")}</li>
+    <li>{t("App.point3")}</li>
+    <li>{t("App.point4")}</li>
+    <li>{t("App.point5")}</li>
+  </ul>
+  <h2 class="pt-[60px] pb-[60px] text-left text-[36px]">
+    {t("App.mini-title1")}
+  </h2>
 
   <div class="app-slider-container">
     <button class="slider-button left" id="appSlideLeft">&#8249;</button>

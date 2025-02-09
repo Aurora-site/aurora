@@ -1,5 +1,12 @@
 ---
-
+import App from "../pages/app.astro";
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+import { getLocalizedUrl } from "../i18n/utils";
+const supportedLangs = ["ru", "en", "cn"]; // добавь нужные языки
+const pathParts = Astro.url.pathname.split("/");
+const currentLang = supportedLangs.includes(pathParts[1]) ? pathParts[1] : ""; // если язык не найден, оставляем пустую строку
+console.log("currentLang:", currentLang);
 ---
 
 <style>
@@ -39,12 +46,14 @@
 </style>
 
 <section class="app-download py-12" id="app">
-  <h2><a href="#app">Следить за северным сиянием</a></h2>
+  <h2><a href="#app">{t("AppDownload.title")}</a></h2>
   <p>
-    Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
-    вы сможете не только следить за изменениями, но и получать пуш-уведомления о
-    повышении вероятности, чтобы не упустить высокий шанс.
+    {t("AppDownload.text")}
   </p>
 
-  <a href="/app"><button>Приложение с уведомлением</button></a>
+  <a href={getLocalizedUrl("/app", currentLang)}
+    ><button>{t("AppDownload.button")}</button></a
+  >
+  <!-- <a href={`/${currentLang}/app`}><button>{t("AppDownload.button")}</button></a> -->
+  <!-- <a href="/app"><button>{t("AppDownload.button")}</button></a> -->
 </section>

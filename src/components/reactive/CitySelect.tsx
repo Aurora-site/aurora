@@ -92,12 +92,12 @@ export const CitySelect = () => {
                 ))}
             </div>
           </div>
-          <button
+          {/* <button
             onClick={handleSearch}
             className="mt-auto mb-0 flex cursor-pointer self-center rounded-full bg-slate-300 px-5 py-2 text-black"
           >
             Ok
-          </button>
+          </button> */}
         </DialogContent>
       </Dialog>
     </div>

@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import tour1 from "../assets/4.png"; // Image is 360x360
 import tour2 from "../assets/5.png"; // Image is 360x360
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
 ---
 
 <style>
@@ -17,11 +19,16 @@ import tour2 from "../assets/5.png"; // Image is 360x360
     scroll-behavior: smooth; /* Плавная прокрутка */
     margin: 40px 0 100px 0;
     white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
+    padding-bottom: 30px;
   }
 
   .tour-card {
     flex: 0 0 auto; /* Фиксирует размер карточки */
     width: 360px;
+    box-shadow: 10px 10px 10px #00000040;
+    background-image: linear-gradient(#ffffff99, #ffffff00);
+    border-radius: 20px;
+    margin: 0 0 10px 0;
   }
 
   .tour-card img {
@@ -52,6 +59,7 @@ import tour2 from "../assets/5.png"; // Image is 360x360
     transition: background 0.3s;
     font-size: 18px;
     width: 190px;
+    margin-bottom: 10px;
   }
 
   .tour-card button:hover {
@@ -91,21 +99,25 @@ import tour2 from "../assets/5.png"; // Image is 360x360
 
   .erid {
     font-size: 6px;
+    padding-left: 10px;
   }
   .title {
     margin: 20px 0 10px 0;
+    padding-left: 10px;
   }
   .tour_price {
     margin-bottom: 16px;
+    padding-left: 10px;
   }
   .text {
     margin-bottom: 10px;
     font-size: 18px;
+    padding-left: 10px;
   }
 
   @media (max-width: 952px) {
     .tour-card {
-      padding: 20px 0;
+      /* padding: 20px 0; */
     }
 
     .tours_slider-button {
@@ -121,12 +133,9 @@ import tour2 from "../assets/5.png"; // Image is 360x360
 </style>
 
 <section class="tours py-12">
-  <h2>Фотоохота с профессиональными гидами</h2>
+  <h2>{t("Tours.title")}</h2>
   <p>
-    А если у Вас не получается поймать Северное сияние самостоятельно или Вы
-    приехали с этой целью в северные широты и очень ограничены по времени, то Вы
-    можете обратить за помощью к гидам и туроператорам, которые занимаются этим
-    профессионально.
+    {t("Tours.text")}
   </p>
 
   <div class="tour-slider-container">
@@ -140,7 +149,7 @@ import tour2 from "../assets/5.png"; // Image is 360x360
           <div class="title"><h3>Сияние севера на Кольском</h3></div>
           <div class="text">Мурманская область. Очень классный тур</div>
           <div class="tour_price"><h3>12345 ₽</h3></div>
-          <button>Подробнее</button>
+          <div class="mt-[10px] pl-[10px]"><button>Подробнее</button></div>
         </div>
       </div>
 
@@ -151,7 +160,7 @@ import tour2 from "../assets/5.png"; // Image is 360x360
           <div class="title"><h3>Сияние севера на Кольском</h3></div>
           <div class="text">Мурманская область. Очень классный тур</div>
           <div class="tour_price"><h3>50000 р</h3></div>
-          <button>Подробнее</button>
+          <div class="pl-[10px]"><button>Подробнее</button></div>
         </div>
       </div>
     </div>

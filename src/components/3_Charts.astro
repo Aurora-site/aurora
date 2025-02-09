@@ -1,21 +1,28 @@
 ---
 import { ChartTabs } from "./reactive/ChartTabs";
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
 ---
 
-<section class="py-5" id="index">
+<section
+  class="bg-[url('/images/starsback_index.png')] bg-[80px_0px] bg-no-repeat py-5 md:bg-[620px_0px] lg:bg-[820px_0px] xl:bg-[950px_0px]"
+  id="index"
+>
+  <div
+    class="absolute top-[1690px] left-[-159px] max-w-[500px] sm:top-[1217px] sm:left-[-41px] 2xl:left-[0px]"
+  >
+    <img src="/images/auroraback_index.png" alt="" />
+  </div>
   <h2>
-    <a href="#index">Индекс северного сияния на 3 и 27 суток </a>
+    <a href="#index">{t("Charts.title")}</a>
   </h2>
-  <p>
-    Здесь вы можете наблюдать график индекса северного сияния! Этот график
-    отображает текущий уровень активности северного сияния (KP-индекс) в
-    реальном времени. Индекс варьируется от 0 до 9, где более высокие значения
-    указывают на большую вероятность наблюдения сияния в северных широтах.
-  </p>
-  <p>
-    Следите за изменениями индекса, чтобы спланировать свои наблюдения и не
-    пропустить шанс увидеть это потрясающее природное явление. Для более точного
-    прогноза рекомендуем обращаться к краткосрочным прогнозам.
-  </p>
+  <div class="">
+    <p>
+      {t("Charts.text1")}
+    </p>
+    <p>
+      {t("Charts.text2")}
+    </p>
+  </div>
   <ChartTabs client:only="react" />
 </section>

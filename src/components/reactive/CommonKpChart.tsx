@@ -25,7 +25,11 @@ export const CommonKpChart: FC<CommonKpChart> = ({
 }) => {
   return (
     <div className="relative overflow-x-scroll lg:overflow-x-hidden">
-      <div className={"ml-[-40px] w-[300%] sm:w-[200%] lg:w-[150%] xl:w-full"}>
+      <div
+        className={
+          "ml-[-40px] w-[300%] text-black sm:w-[200%] lg:w-[150%] xl:w-full"
+        }
+      >
         <ResponsiveContainer height={464}>
           <BarChart data={transformedData} margin={{ bottom: 50 }}>
             <CartesianGrid strokeDasharray="3 3" />

@@ -1,6 +1,5 @@
 ---
 import { useAstroTranslations } from "../i18n/utils";
-
 const t = useAstroTranslations(Astro);
 ---
 
@@ -23,20 +22,20 @@ const t = useAstroTranslations(Astro);
 
   .description p {
     margin: 0 auto;
-    font-size: 1em;
-    line-height: 1.5;
+    font-size: 16px;
+    /* line-height: 1.5; */
     text-align: left;
   }
 </style>
 
-<section class="description pt-[80px] pb-5 text-center" id="description">
+<section
+  class="description bg-[url('/images/auroraback_mb.png')] bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[url('/images/auroraback.png')] md:bg-[0px_20px]"
+  id="description"
+>
   <h1>{t("description.title")}</h1>
   <h2>{t("description.how")}</h2>
-  <p>Северное сияние, полярное сияние или Аврора Бореалис (Aurora Borealis).</p>
+  <p>{t("description.text1")}</p>
   <p>
-    Хотите увидеть северное сияние в реальном времени? Наш сайт поможет вам
-    спланировать идеальную фотоохоту! На интерактивной карте вы можете
-    отслеживать перемещение северного сияния, узнавать индекс активности
-    (KP-индекс) и вероятность наблюдения в вашем регионе.
+    {t("description.text2")}
   </p>
 </section>

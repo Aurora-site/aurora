@@ -1,4 +1,6 @@
 ---
+import { useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
 import { Image } from "astro:assets";
 import screen1 from "/src/assets/screenshot1.png";
 import screen2 from "/src/assets/screenshot2.png";
@@ -13,7 +15,7 @@ import screen3 from "/src/assets/screenshot3.png";
 
   .description h2 {
     font-family: "SongerGrotesqueBold";
-    font-size: 24px;
+    font-size: 36px;
   }
 
   .description ul {
@@ -55,11 +57,11 @@ import screen3 from "/src/assets/screenshot3.png";
     border-radius: 20px;
     box-shadow: 4px 4px 6px #00000040;
   }
-  .slider-button {
+  .screen-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: black;
+    color: white;
     border: none;
     cursor: pointer;
     padding: 5px 15px;
@@ -67,17 +69,22 @@ import screen3 from "/src/assets/screenshot3.png";
     font-size: 30px;
   }
 
-  .slider-button.left {
+  .screen-button.left {
     left: -50px;
   }
 
-  .slider-button.right {
+  .screen-button.right {
     right: -50px;
   }
 
   @media (max-width: 952px) {
-    .slider-button {
-      display: none;
+    .screen-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 640px) {
+    .description h2 {
+      font-size: 24px;
     }
   }
 
@@ -89,13 +96,6 @@ import screen3 from "/src/assets/screenshot3.png";
 </style>
 
 <section class="description pt-[40px] pb-5 text-center" id="description">
-  <ul>
-    <li>удобно и актуально</li>
-    <li>все просто и понятно</li>
-    <li>без лишней информации</li>
-    <li>с определением геолокации</li>
-    <li>с уведомлением о высокой вероятности</li>
-  </ul>
   <div class="screen-slider-container">
     <button class="screen-button left" id="screenSlideLeft">&#8249;</button>
     <div class="app_screens pt-24" id="screenSlider">
@@ -109,17 +109,13 @@ import screen3 from "/src/assets/screenshot3.png";
         <Image class="img" src={screen3} alt="Скрин приложения" />
       </div>
     </div>
-    <button class="slider-button right" id="screenSlideRight">&#8250;</button>
+    <button class="screen-button right" id="screenSlideRight">&#8250;</button>
   </div>
   <div class="pt-[60px] text-left">
-    <h2>Светите ярче с нашим приложением!</h2>
+    <h2>{t("App.mini-title2")}</h2>
   </div>
-  <p class="pt-[60px] pb-[70px] text-left">
-    Наблюдение за северным сиянием стало проще! С нашим приложением вы получите
-    доступ к точным прогнозам и уведомлениям о солнечных вспышках. Настройте
-    оповещения, чтобы не пропустить ни одной возможности увидеть это
-    незабываемое зрелище. Присоединяйтесь к сообществу любителей северного
-    сияния — скачайте наше приложение уже сегодня!
+  <p class="pt-[40px] pb-[70px] text-left">
+    {t("App.text-final")}
   </p>
 </section>
 

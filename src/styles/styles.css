@@ -37,12 +37,13 @@ body {
   padding: 0;
   overflow-x: hidden;
   max-width: 100%;
+  color: white;
 }
 
 h1 {
   font-family: "SongerGrotesqueBold", sans-serif;
   font-size: 36px;
-  color: #000;
+  /* color: #000; */
 }
 
 .container h2,

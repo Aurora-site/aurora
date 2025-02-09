@@ -39,3 +39,34 @@ export function useLocale(localeAtom: WritableAtom) {
 export function useAstroTranslations(a: Astro) {
   return useTranslations(useAstroLocale(a));
 }
+
+// Функция, которая добавляет текущий язык в путь URL
+export function getLocalizedUrl(path: string, currentLang: keyof typeof ui) {
+  const parts = path.split("/").filter(Boolean); // Убираем пустые элементы
+
+  // Если язык не указан, просто возвращаем путь без изменений
+  if (!currentLang) {
+    return path;
+  }
+
+  if (parts[0] in ui) {
+    parts[0] = currentLang; // Заменяем существующий язык
+  } else {
+    parts.unshift(currentLang); // Добавляем язык в начало
+  }
+
+  return "/" + parts.join("/");
+}
+
+// Функция для смены языка, но с сохранением текущей страницы
+export function switchLanguage(newLang: keyof typeof ui, currentUrl: string) {
+  const parts = currentUrl.split("/").filter(Boolean);
+
+  if (parts[0] in ui) {
+    parts[0] = newLang; // Заменяем язык
+  } else {
+    parts.unshift(newLang); // Добавляем язык в начало
+  }
+
+  return "/" + parts.join("/");
+}

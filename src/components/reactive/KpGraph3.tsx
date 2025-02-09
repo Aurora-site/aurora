@@ -41,7 +41,13 @@ function CustomizedXTick({
   const [date, time] = payload.value.split(" ");
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={0} y={0} dy={16} className="text-sm font-semibold">
+      <text
+        x={0}
+        y={0}
+        dy={16}
+        className="text-[12px] font-semibold md:text-sm"
+        fill="white"
+      >
         <tspan textAnchor="middle" x="0">
           {time}
         </tspan>

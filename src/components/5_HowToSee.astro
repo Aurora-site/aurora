@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import aurora1 from "../assets/1.png";
 import aurora2 from "../assets/2.png";
 import aurora3 from "../assets/3.png";
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
 ---
 
 <style>
@@ -76,38 +78,34 @@ import aurora3 from "../assets/3.png";
   }
 </style>
 
-<section class="how-to-see py-12" id="how-to-see">
-  <h2><a href="#how-to-see">Как увидеть северное сияние?</a></h2>
+<section
+  class="how-to-see bg-[url('/images/auroraback_how.png')] bg-contain bg-[0px_50px] bg-no-repeat py-12 sm:bg-[0px_20px]"
+  id="how-to-see"
+>
+  <h2><a href="#how-to-see">{t("HowToSee.title")}</a></h2>
   <p>
-    Наблюдение за северным сиянием — это удивительное зрелище, требующее
-    подготовки и терпения.
+    {t("HowToSee.text1")}
   </p>
   <ul>
     <li>
-      1. Прогноз активности. Следите за солнечной активностью с помощью нашего
-      ресурса. Индекс Kp выше 4-5 указывает на высокую вероятность.
+      1. {t("HowToSee.point1")}
     </li>
     <li>
-      2. Погода. Ясное небо — обязательное условие. Если прогноз обещает
-      облачность, подумайте о смене места или дня.
+      2. {t("HowToSee.point2")}
     </li>
     <li>
-      3. Выбор места. Ищите локации вдали от городских огней, чтобы световое
-      загрязнение не мешало.
+      3. {t("HowToSee.point3")}
     </li>
     <li>
-      4. Терпение. Сияние может появиться неожиданно, поэтому будьте готовы
-      ждать в тепле и с комфортом.
+      4. {t("HowToSee.point4")}
     </li>
     <li>
-      5. Фотосъёмка. Для более качественных фотографий используйте штатив,
-      длинную выдержку и высокие ISO.
+      5. {t("HowToSee.point5")}
     </li>
   </ul>
   <p></p>
   <p>
-    Северное сияние — это не только зрелище, но и глубокий эмоциональный опыт,
-    вдохновляющий на всю жизнь.
+    {t("HowToSee.text2")}
   </p>
   <div class="image-slider-container">
     <button class="slider-button left" id="slideLeft">&#8249;</button>
