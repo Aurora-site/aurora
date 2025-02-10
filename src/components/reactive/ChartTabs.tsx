@@ -7,7 +7,7 @@ import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
 
 const className =
-  "w-40 py-1 rounded-full border-0 transition-colors duration-200 ease-in-out ";
+  "w-40 py-1 rounded-full border-0 transition-colors duration-200 ease-in-out z-10000";
 
 export const ChartTabs = () => {
   const [activeTab, setActiveTab] = React.useState("tab1");
