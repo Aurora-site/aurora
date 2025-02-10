@@ -54,6 +54,7 @@ jobs:
     name: 🏗️ Run Frontend Build
     runs-on: ubuntu-22.04
     environment: test
+    if: github.event_name != 'pull_request'
     permissions:
       contents: read
       packages: write
