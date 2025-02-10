@@ -3,12 +3,15 @@ import React from "react";
 import { KpGraph3 } from "./KpGraph3";
 import { KpGraph27 } from "./KpGraph27";
 import { cn } from "../../utils/cn";
+import { useLocale } from "../../i18n/utils";
+import { localeAtom } from "../../stores/locale";
 
 const className =
   "w-40 py-1 rounded-full border-0 transition-colors duration-200 ease-in-out ";
 
 export const ChartTabs = () => {
   const [activeTab, setActiveTab] = React.useState("tab1");
+  const t = useLocale(localeAtom);
   return (
     <Tabs.Root
       value={activeTab}
@@ -28,7 +31,7 @@ export const ChartTabs = () => {
             )}
             value="tab1"
           >
-            3 суток
+            {t("Charts.3days")}
           </Tabs.Trigger>
           <Tabs.Trigger
             className={cn(
@@ -37,7 +40,7 @@ export const ChartTabs = () => {
             )}
             value="tab2"
           >
-            27 суток
+            {t("Charts.27days")}
           </Tabs.Trigger>
         </div>
       </Tabs.List>

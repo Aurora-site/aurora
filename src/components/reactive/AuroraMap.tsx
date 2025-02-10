@@ -17,6 +17,8 @@ import { ApiService } from "../../api/client";
 import "../../api/config";
 import "ol/ol.css";
 import "/src/styles/AuroraMap.css";
+import { useLocale } from "../../i18n/utils";
+import { localeAtom } from "../../stores/locale";
 
 function getColorFromWeight(weight) {
   const t = Math.min(Math.max(weight, 0), 1);
@@ -52,6 +54,7 @@ export function AuroraMap() {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const client = useStore(queryClient);
+  const t = useLocale(localeAtom);
 
   useEffect(() => {
     if (mapContainerRef.current && !mapRef.current) {
@@ -134,7 +137,7 @@ export function AuroraMap() {
 
       {/* Легенда */}
       <div className="legend">
-        <h4>Вероятность сияния</h4>
+        <h4>{t("MapSection.Tooltip")}</h4>
         {[
           { color: "rgba(226, 255, 227, 1)", label: "0% - 10%" },
           { color: "rgba(138, 245, 111, 1)", label: "10% - 20%" },
