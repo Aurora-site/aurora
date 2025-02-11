@@ -5,9 +5,9 @@ export function colorFormat<T extends object>(value: T, key: keyof T): string {
     throw new Error("Value must be a number");
   }
 
-  if (val > 4) {
+  if (val > 5) {
     return "#E90D0D";
-  } else if (val > 2) {
+  } else if (val > 3) {
     return "#DBDB01";
   } else {
     return "#00972D";

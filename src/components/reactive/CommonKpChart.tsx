@@ -18,6 +18,49 @@ interface CommonKpChart {
   }[];
   xTick?: React.ReactNode;
 }
+const CustomYAxisBackground = ({
+  x,
+  y,
+  payload,
+}: {
+  x: number;
+  y: number;
+  payload: any;
+}) => {
+  const isLastTick = payload.value === 9;
+  const getColor = (value: number) => {
+    if (value >= 5) return "#E90D0D"; // Высокий Kp
+    if (value >= 3) return "#DBDB01"; // Средний Kp
+    return "#00972D"; // Низкий Kp
+  };
+
+  return (
+    <g>
+      {/* Рисуем узкий прямоугольник для каждого диапазона Kp */}
+      <rect
+        x={x - -3}
+        y={isLastTick ? y - 11 : y - 42}
+        width={7}
+        height={40}
+        fill={getColor(payload.value)}
+        rx={5}
+        ry={5}
+        opacity={1}
+      />
+
+      <text
+        x={x - 7}
+        y={isLastTick ? y - 6 : y}
+        dy={4}
+        fill="white"
+        className="text-[12px] font-semibold md:text-sm"
+        textAnchor="middle"
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
+};
 
 export const CommonKpChart: FC<CommonKpChart> = ({
   data: transformedData,
@@ -35,7 +78,13 @@ export const CommonKpChart: FC<CommonKpChart> = ({
             <CartesianGrid strokeDasharray="3 3" />
             {/* @ts-ignore */}
             <XAxis dataKey="date" tick={xTick} interval={0} />
-            <YAxis domain={[0, 9]} className="fixed" />
+            <YAxis
+              domain={[0, 9]}
+              tick={<CustomYAxisBackground x={0} y={0} payload={undefined} />} // Используем кастомный компонент
+              axisLine={false} // Отключаем стандартную ось
+              tickLine={false} // Отключаем линии тиков
+              ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+            />
             <Tooltip
               contentStyle={{
                 borderRadius: "5px",

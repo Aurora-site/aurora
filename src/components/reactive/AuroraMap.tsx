@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
@@ -19,6 +19,7 @@ import "ol/ol.css";
 import "/src/styles/AuroraMap.css";
 import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
+import { CloudLayer } from "./CloudLayer"; // Импортируем слой облачности
 
 function getColorFromWeight(weight) {
   const t = Math.min(Math.max(weight, 0), 1);
@@ -52,9 +53,10 @@ function getColorFromWeight(weight) {
 
 export function AuroraMap() {
   const mapContainerRef = useRef(null);
-  const mapRef = useRef(null);
+  const mapRef = useRef<Map | null>(null);
   const client = useStore(queryClient);
   const t = useLocale(localeAtom);
+  const [isMapReady, setIsMapReady] = useState(false); // Флаг, готова ли карта
 
   useEffect(() => {
     if (mapContainerRef.current && !mapRef.current) {
@@ -72,6 +74,8 @@ export function AuroraMap() {
         layers: [tileLayer],
         view: view,
       });
+
+      setTimeout(() => setIsMapReady(true), 100); // Даем карте немного времени загрузиться
     }
   }, []);
 
@@ -81,7 +85,9 @@ export function AuroraMap() {
       queryFn: async () => {
         const res = await ApiService.apiAuroraMapApiV1AuroraMapGet();
         return res.coordinates
-          .filter((x) => x[2] > 5)
+          .filter((x) => x[2] > 7)
+          .sort((a, b) => b[2] - a[2]) // Сортируем по интенсивности
+          .slice(0, 7000) // Ограничиваем количество точек
           .map((x) => [x[1], x[0] > 180 ? x[0] - 360 : x[0], x[2] / 100]);
       },
     },
@@ -121,8 +127,9 @@ export function AuroraMap() {
             }),
           });
         },
-        renderMode: "image", // Использует Canvas, вместо векторного рендеринга
+        renderMode: "image",
       });
+      vectorLayer.setZIndex(1);
 
       mapRef.current.addLayer(vectorLayer);
       mapRef.current
@@ -135,9 +142,18 @@ export function AuroraMap() {
     <div className="aurora-map-container">
       <div ref={mapContainerRef} className="h-full w-full pt-[25px]"></div>
 
-      {/* Легенда */}
-      <div className="legend">
-        <h4>{t("MapSection.Tooltip")}</h4>
+      {isMapReady && mapRef.current && <CloudLayer map={mapRef.current} />}
+
+      <div
+        className="legend"
+        style={{ display: "block", gap: "5px", alignItems: "center" }}
+      >
+        <h4 style={{ marginRight: "0px" }}>{t("MapSection.Tooltip")}</h4>
+      </div>
+      <div
+        className="legend2"
+        style={{ display: "flex", gap: "0px", alignItems: "center" }}
+      >
         {[
           { color: "rgba(226, 255, 227, 1)", label: "0% - 10%" },
           { color: "rgba(138, 245, 111, 1)", label: "10% - 20%" },
@@ -145,10 +161,19 @@ export function AuroraMap() {
           { color: "rgba(250, 137, 24, 1)", label: "40% - 60%" },
           { color: "rgba(255, 67, 67, 1)", label: "60% - 100%" },
         ].map(({ color, label }) => (
-          <div key={label} className="legend-item">
+          <div
+            key={label}
+            className="legend-item"
+            style={{ display: "flex", alignItems: "center", gap: "0px" }}
+          >
             <div
               className="legend-color"
-              style={{ backgroundColor: color }}
+              style={{
+                backgroundColor: color,
+                width: "15px",
+                height: "15px",
+                borderRadius: "4px",
+              }}
             ></div>
             <span>{label}</span>
           </div>
