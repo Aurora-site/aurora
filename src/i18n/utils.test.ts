@@ -19,7 +19,7 @@ test("getLangFromHref", () => {
 });
 
 test("useTranslations", () => {
-  expect(useTranslations("en")("description.title")).toBe("Aurora");
+  expect(useTranslations("en")("description.title")).toBe("Polar lights");
 });
 
 test("getLocalizedUrl", () => {

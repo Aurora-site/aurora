@@ -9,12 +9,12 @@ export const LanguagePicker = () => {
   }, []); // Выполнится только один раз при монтировании компонента
 
   return (
-    <div className="flex-coloumn items-center space-y-[20px] pt-[4px] lg:space-y-[8px]">
+    <div className="flex content-center space-x-[10px] pt-[33px]">
       {(Object.keys(ui) as (keyof typeof ui)[]).map((lang) => (
         <a
           key={lang}
           href={getLocalizedUrl(lang, window.location.pathname)} // Ссылка для перехода на выбранный язык
-          className="flex items-center justify-center lg:justify-end"
+          className="flex items-center justify-center"
           title={lang}
         >
           <img src={ui[lang].icon} alt={lang} width="30" />

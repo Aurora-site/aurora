@@ -109,109 +109,93 @@ export const ui = {
   },
   en: {
     icon: "https://flagcdn.com/w40/us.png",
-    "layout.title": "Северное сияние",
+    "layout.title": `Polar lights`,
+
     /*Header */
-    "H.app": "Приложение",
-    "H.map": "Прямо сейчас",
-    "H.index": "Индекс",
-    "H.how": "Как увидеть",
-    "H.where": "Где увидеть",
+    "H.app": `App`,
+    "H.map": `Right now`,
+    "H.index": `Index`,
+    "H.how": `How to see`,
+    "H.where": `Where to see`,
 
     /*Description*/
-    "description.title": "Aurora",
-    "description.how": "Карта и реальная вероятность",
-    "description.text1":
-      "Северное сияние, полярное сияние или Аврора Бореалис (Aurora Borealis).",
-    "description.text2": `Хотите увидеть северное сияние в реальном времени? Наш сайт поможет вам спланировать идеальную фотоохоту!
-    На интерактивной карте вы можете отслеживать перемещение северного сияния, узнавать индекс активности (KP-индекс) и вероятность наблюдения в вашем регионе.`,
+    "description.title": `Polar lights`,
+    "description.how": `Map and real probability`,
+    "description.text1": `Northern Lights, Polar Lights or Aurora Borealis`,
+    "description.text2":
+      "Want to see the Northern Lights in real time? Our website will help you plan the perfect photo hunt! On the interactive map you can track the movement of the northern lights, find out the activity index (KI-index) and the probability of observation in your region.",
+
     /*MapSection*/
-    "MapSection.title": "Сияние прямо сейчас",
+    "MapSection.title": `Aurora right now`,
     "MapSection.text":
-      "Здесь вы можете наблюдать за динамическим отображением сияния в реальном времени",
-    "MapSection.Tooltip": "Вероятность сияния",
-    "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
+      "Here you can see a dynamic change of the aurora in real time",
+    "MapSection.Tooltip": "Aurora probability",
+    "aurora.probability":
+      "In the selected geolocation, the probability during the next hour is",
+
     /*Charts*/
-    "Charts.title": `Индекс северного сияния на 3 и 27 суток`,
-    "Charts.text1": `Здесь вы можете наблюдать график индекса северного сияния! Этот график
-    отображает текущий уровень активности северного сияния (KP-индекс) в
-    реальном времени. Индекс варьируется от 0 до 9, где более высокие значения
-    указывают на большую вероятность наблюдения сияния в северных широтах.`,
-    "Charts.text2": `Следите за изменениями индекса, чтобы спланировать свои наблюдения и не
-    пропустить шанс увидеть это потрясающее природное явление. Для более точного
-    прогноза рекомендуем обращаться к краткосрочным прогнозам.`,
-    "Charts.3days": `3 дня`,
-    "Charts.27days": `27 дней`,
+    "Charts.title": `Aurora kp-index for 3 and 27 days`,
+    "Charts.text1": `Here you can see the Northern Lights Index graph! This chart displays the current level of activity of the northern lights (KP-index) in real time.
+                    The index ranges from 0 to 9, with higher values indicate a greater probability of observing auroras in northern latitudes.`,
+    "Charts.text2": `Follow the changes in the odds index to plan your observations and not miss the opportunity to see this amazing natural phenomenon.
+    For a more accurate forecast, it is recommended to refer to short-term forecasts.`,
+    "Charts.3days": `3 days`,
+    "Charts.27days": `27 days`,
+
     /*AppDownload*/
-    "AppDownload.title": `Следить за северным сиянием`,
-    "AppDownload.text": `Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
-    вы сможете не только следить за изменениями, но и получать пуш-уведомления о
-    повышении вероятности, чтобы не упустить высокий шанс.`,
-    "AppDownload.button": `Приложение с уведомлением`,
+    "AppDownload.title": `Follow Aurora`,
+
+    "AppDownload.text": `Track the probability using our mobile app.
+    There you can not only monitor changes, but also receive push notifications about high probability, so as not to miss a high chance.`,
+
+    "AppDownload.button": `Mobile app with notifications`,
+
     /*How to see */
-    "HowToSee.title": `Как увидеть северное сияние?`,
-    "HowToSee.text1": `Наблюдение за северным сиянием — это удивительное зрелище, требующее
-    подготовки и терпения.`,
-    "HowToSee.point1": `Прогноз активности. Следите за солнечной активностью с помощью нашего
-      ресурса. Индекс Kp выше 4-5 указывает на высокую вероятность.`,
-    "HowToSee.point2": `Погода. Ясное небо — обязательное условие. Если прогноз обещает
-      облачность, подумайте о смене места или дня.`,
-    "HowToSee.point3": `Выбор места. Ищите локации вдали от городских огней, чтобы световое
-      загрязнение не мешало.`,
-    "HowToSee.point4": `Терпение. Сияние может появиться неожиданно, поэтому будьте готовы
-      ждать в тепле и с комфортом.`,
-    "HowToSee.point5": `Фотосъёмка. Для более качественных фотографий используйте штатив,
-      длинную выдержку и высокие ISO.`,
-    "HowToSee.text2": `Северное сияние — это не только зрелище, но и глубокий эмоциональный опыт,
-    вдохновляющий на всю жизнь.`,
+    "HowToSee.title": `How to see Aurora Borealis?`,
+    "HowToSee.text1": `Hunting the northern lights is an amazing spectacle that requires preparation and patience.`,
+    "HowToSee.point1": `Activity forecast. Monitor solar activity using our resource. A Kp index above 4-5 indicates a high probability.`,
+    "HowToSee.point2": `Weather. Clear skies are a must. If the forecast calls for cloudy skies, consider changing locations or days.`,
+    "HowToSee.point3": `Choosing a location. Look for locations away from city lights to avoid light pollution.`,
+    "HowToSee.point4": `Patience. The glow may appear unexpectedly, so be prepared to wait warm and comfortable`,
+    "HowToSee.point5": `Photography. For better photos, use a tripod, slow shutter speed and high ISO`,
+    "HowToSee.text2": `Aurora Borealis is not only a sight to behold, but also a deep emotional experience that will inspire you for life.`,
+
     /*WhereToSee*/
-    "Where.title": "Где можно увидеть северное сияние?",
-    "Where.text1": `Для успешного наблюдения за северным сиянием важно правильно выбрать место.
-    Идеально подходят локации вдали от городских огней, где световое загрязнение
-    не помешает насладиться зрелищем. Выбирайте высокие точки или открытые
-    пространства с хорошим обзором.`,
-    "Where.text2": `Не забывайте о безопасности: избегайте остановок на оживлённых трассах и
-    убедитесь, что выбранное место безопасно для парковки и пребывания, особенно
-    в тёмное время суток.`,
+    "Where.title": "Where can you see Aurora Borealis?",
+    "Where.text1": `To successfully observe the Northern Lights, it is important to choose the right location. Locations away from city lights are ideal,
+                    where light pollution will not interfere with enjoying the spectacle. Choose high points or open spaces with good visibility`,
+    "Where.text2": `Don't forget about safety: avoid stopping on busy roads and make sure that the chosen place is safe for parking and staying, especially at night.`,
+
     /*Tours*/
-    "Tours.title": "Фотоохота с профессиональными гидами",
-    "Tours.text": `А если у Вас не получается поймать Северное сияние самостоятельно или Вы
-    приехали с этой целью в северные широты и очень ограничены по времени, то Вы
-    можете обратить за помощью к гидам и туроператорам, которые занимаются этим
-    профессионально.`,
+    "Tours.title": "Photo hunt with professional guides",
+    "Tours.text": `And if you do not have the opportunity to catch the Aurora on your own or you came to the northern latitudes for this purpose and are very limited in time,
+                    then you can turn to guides and tour operators who do this professionally for help.`,
 
     /*Вторая страница для скаичивания приложения */
-    "App.title": "Северное сияние",
-    "App.app": "Приложение с уведомлением",
-    "App.text1": `Планируете наблюдение за северным сиянием? Наше приложение — ваш идеальный
-    спутник! Получайте точные прогнозы, уведомления о высоком Kp-индексе и
-    солнечных вспышках. Не дайте метеоусловиям испортить ваше приключение —
-    будьте всегда на шаг впереди! Скачайте и начните свое путешествие к
-    волшебству прямо сейчас!`,
-    "App.mini-title1": "Установите приложение к себе в телефон",
-
-    "App.point1": "удобно и актуально",
-    "App.point2": "все просто и понятно",
-    "App.point3": "без лишней информации",
-    "App.point4": "с определением геолокации",
-    "App.point5": "с уведомлением о высокой вероятности",
-    "App.mini-title2": "Светите ярче с нашим приложением!",
-    "App.text-final": `Наблюдение за северным сиянием стало проще! С нашим приложением вы получите
-    доступ к точным прогнозам и уведомлениям о солнечных вспышках. Настройте
-    оповещения, чтобы не пропустить ни одной возможности увидеть это
-    незабываемое зрелище. Присоединяйтесь к сообществу любителей северного
-    сияния — скачайте наше приложение уже сегодня!`,
+    "App.title": "Polar lights",
+    "App.app": "Mobile app",
+    "App.text1": `Planning to watch Aurora? Our application is your ideal companion! Receive accurate forecasts, high Kp index and solar flare alerts.
+    Don't let the weather spoil your adventure - always be one step ahead! Download and start your journey to magic right now!`,
+    "App.mini-title1": "Install the application on your phone",
+    "App.point1": "convenient and relevant",
+    "App.point2": "everything is simple and clear",
+    "App.point3": "without unnecessary information",
+    "App.point4": "with geolocation detection",
+    "App.point5": "with notification of high probability",
+    "App.mini-title2": "Shine brighter with our mobile app!",
+    "App.text-final": `Northern Lights viewing just got easier! With our app you will have access to accurate forecasts and notifications about solar flares.
+                      Set up alerts so you don't miss a single opportunity to see this unforgettable spectacle. Join the Aurora community - download our app today!`,
 
     /*Footer */
-    "footer.Contacts": "Контакты",
-    "footer.Aurora": "Северное сияние",
-    "footer.Map": "Карта",
-    "footer.App": "Приложение",
-    "footer.Docs": "Документы",
-    "footer.Policy": "Политика конфиденциальности",
-    "footer.Data": "Согласие на обработку персональных данных",
-    "footer.Rights1": `Все права на сайт и фотографии защищены авторским правом`,
-    "footer.Rights2": `Данные предоставлены Национальным управлением океанических и атмосферных исследований
-      (NOAA)`,
+    "footer.Contacts": "Contacts",
+    "footer.Aurora": "Aurora",
+    "footer.Map": "Map",
+    "footer.App": "App",
+    "footer.Docs": "Documents",
+    "footer.Policy": "Privacy Policy",
+    "footer.Data": "Consent to the processing of personal data",
+    "footer.Rights1": `All rights to the site and photographs are protected by copyright.`,
+    "footer.Rights2": `Data provided by the National Oceanic and Atmospheric Administration (NOAA)`,
   },
   cn: {
     icon: "https://flagcdn.com/w40/cn.png",
@@ -236,7 +220,7 @@ export const ui = {
     "Charts.title": `极光指数（3天和27天预测)`,
     "Charts.text1": `在这里，您可以查看极光指数图表！该图表实时显示当前的极光活动水平（KP指数）。指数范围从0到9，数值越高，意味着在高纬度地区看到极光的可能性越大。`,
     "Charts.text2": `请关注指数变化，以便规划您的观测时间，不要错过欣赏这一壮丽自然现象的机会。
-如需更精确的预测，建议参考短期预报。`,
+                    如需更精确的预测，建议参考短期预报。`,
     "Charts.3days": `3 天`,
     "Charts.27days": `27 天`,
     /*AppDownload*/
