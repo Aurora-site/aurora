@@ -20,6 +20,7 @@ import "/src/styles/AuroraMap.css";
 import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
 import { CloudLayer } from "./CloudLayer"; // Импортируем слой облачности
+import { CitySelectMap } from "./CitySelectMap";
 
 function getColorFromWeight(weight) {
   const t = Math.min(Math.max(weight, 0), 1);
@@ -65,7 +66,7 @@ export function AuroraMap() {
         center: fromLonLat([30, 70]),
         zoom: 3,
         minZoom: 3,
-        maxZoom: 4.5,
+        maxZoom: 5,
         extent: transformExtent([-180, -85, 200, 85], "EPSG:4326", "EPSG:3857"),
       });
 
@@ -142,7 +143,12 @@ export function AuroraMap() {
     <div className="aurora-map-container">
       <div ref={mapContainerRef} className="h-full w-full pt-[25px]"></div>
 
-      {isMapReady && mapRef.current && <CloudLayer map={mapRef.current} />}
+      {isMapReady && mapRef.current && (
+        <>
+          <CloudLayer map={mapRef.current} />
+          <CitySelectMap map={mapRef.current} />
+        </>
+      )}
 
       <div
         className="legend"

@@ -54,7 +54,7 @@ export const AuroraNow = () => {
       <div className="flex items-center gap-2">
         <p>{t("aurora.probability")}</p>
         <div
-          className={`content-center rounded-full px-3 text-[16px] font-bold ${getColor(probability)}`}
+          className={`content-center rounded-full px-3 text-[16px] font-bold text-black ${getColor(probability)}`}
         >
           {probability !== null ? `${probability.toFixed(0)}%` : "😶‍🌫️"}
         </div>

@@ -30,7 +30,9 @@ export const CitySelect = () => {
     client,
   );
   function handleSearch() {
-    if (probabilityCities?.find((v) => v.name == serachQuery)) {
+    const selectedCity = probabilityCities?.find((v) => v.name === serachQuery);
+    if (selectedCity) {
+      cityAtom.set(selectedCity);
       setOpen(false);
     }
   }
