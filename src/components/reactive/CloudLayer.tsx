@@ -44,7 +44,7 @@ export function CloudLayer({ map }: CloudLayerProps) {
 
   const toggleLayer = () => {
     if (cloudLayer) {
-      cloudLayer.setVisible(!isCloudsVisible);
+      cloudLayer.setOpacity(!isCloudsVisible ? 0.9 : 0);
     }
     setIsCloudsVisible(!isCloudsVisible);
   };
