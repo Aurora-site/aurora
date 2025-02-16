@@ -143,7 +143,7 @@ export function AuroraMap() {
     <div className="aurora-map-container">
       <div ref={mapContainerRef} className="h-full w-full pt-[25px]"></div>
 
-      {isMapReady && mapRef.current && (
+      {isMapReady && (
         <>
           <CloudLayer map={mapRef.current} />
           <CitySelectMap map={mapRef.current} />

@@ -8,12 +8,13 @@ import { cityAtom } from "../../stores/citiy";
 import { useEffect } from "react";
 import { localeAtom } from "../../stores/locale";
 import { useLocale } from "../../i18n/utils";
+import { cn } from "../../utils/cn";
 
 export const AuroraNow = () => {
   const t = useLocale(localeAtom);
   const client = useStore(queryClient);
   const city = useStore(cityAtom);
-  const { data: auroraProbabilityData, refetch: refetchProbability } = useQuery(
+  const { data: auroraProbability, refetch: refetchProbability } = useQuery(
     {
       queryKey: ["auroraProbability"],
       queryFn: async () => {
@@ -27,7 +28,7 @@ export const AuroraNow = () => {
               lon: city.long,
             },
           );
-        return res;
+        return res.probability;
       },
     },
     client,
@@ -36,16 +37,15 @@ export const AuroraNow = () => {
     refetchProbability();
   }, [city]);
 
-  const probability = auroraProbabilityData?.probability ?? null;
-
   // Определяем цвет фона в зависимости от вероятности
-  const getColor = (prob: number | null) => {
-    if (prob === null) return "bg-gray-400"; // Серый, если данных нет
+  const getColor = (prob?: number) => {
+    if (prob === undefined) return "bg-gray-400"; // Серый, если данных нет
     if (prob < 10) return "bg-green-100"; // Низкая вероятность
     if (prob < 20) return "bg-green-500"; // Низкая вероятность
     if (prob < 40) return "bg-yellow-500"; // Низкая вероятность
     if (prob < 60) return "bg-orange-500"; // Высокая вероятность
     if (prob < 100) return "bg-red-500"; // Очень высокая вероятность
+    return "bg-gray-400";
   };
 
   return (
@@ -54,9 +54,12 @@ export const AuroraNow = () => {
       <div className="flex items-center gap-2">
         <p>{t("aurora.probability")}</p>
         <div
-          className={`content-center rounded-full px-3 text-[16px] font-bold text-black ${getColor(probability)}`}
+          className={cn(
+            `content-center rounded-full px-3 text-[16px] font-bold text-black`,
+            getColor(auroraProbability),
+          )}
         >
-          {probability !== null ? `${probability.toFixed(0)}%` : "😶‍🌫️"}
+          {auroraProbability ? `${auroraProbability.toFixed(0)}%` : "😶‍🌫️"}
         </div>
       </div>
     </div>

@@ -23,6 +23,8 @@ export const ui = {
     "MapSection.text":
       "Здесь вы можете наблюдать за динамическим отображением сияния в реальном времени",
     "MapSection.Tooltip": "Вероятность сияния",
+    "MapSection.enableClouds": "Включить облачность",
+    "MapSection.disableClouds": "Отключить облачность",
     "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
     /*Charts*/
     "Charts.title": `Индекс северного сияния на 3 и 27 суток`,
@@ -130,6 +132,8 @@ export const ui = {
     "MapSection.text":
       "Here you can see a dynamic change of the aurora in real time",
     "MapSection.Tooltip": "Aurora probability",
+    "MapSection.enableClouds": "Enable clouds",
+    "MapSection.disableClouds": "Disable clouds",
     "aurora.probability":
       "In the selected geolocation, the probability during the next hour is",
 
@@ -215,6 +219,8 @@ export const ui = {
     "MapSection.title": "极光就在此刻",
     "MapSection.text": "在这里，您可以实时观看极光的动态显示。",
     "MapSection.Tooltip": "极光概率",
+    "MapSection.enableClouds": "启用云层",
+    "MapSection.disableClouds": "禁用云层",
     "aurora.probability": "在您的地理位置，下一小时内的极光概率",
     /*Charts*/
     "Charts.title": `极光指数（3天和27天预测)`,
