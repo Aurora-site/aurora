@@ -90,8 +90,9 @@ export const CommonKpChart: FC<CommonKpChart> = ({
                 borderRadius: "5px",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
               }}
+              offset={-150}
               formatter={(value) => [value, "Kp index"]}
-              cursor={{ fill: "var(--color-stone-700)" }}
+              cursor={{ fill: "var(--color-stone-700)", opacity: 0.5 }}
             />
             <Bar dataKey="kp_index" radius={((i = 6) => [i, i, 0, 0])()} />
           </BarChart>
