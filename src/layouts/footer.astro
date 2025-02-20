@@ -2,8 +2,10 @@
 import { Image } from "astro:assets";
 import PDLogo from "../assets/PD_logo.png";
 import PDtg from "../assets/PD_tg.svg";
-import { useAstroTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
+const l = useAstroLocale(Astro);
 ---
 
 <style>
@@ -83,6 +85,41 @@ const t = useAstroTranslations(Astro);
     float: left;
   }
 
+  .cookie {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #18a5bf, #006909);
+    z-index: 1000;
+    font-size: 16px;
+    color: white;
+  }
+
+  .cookie--active {
+    display: flex;
+    align-items: center;
+  }
+
+  .cookie_text {
+    margin-right: 30px;
+  }
+
+  .cookie_apply {
+    background: black;
+    border-radius: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none !important; /* Добавляем этот класс для полного скрытия */
+  }
+
   @media (max-width: 1024px) {
     .footer-contacts {
     }
@@ -109,6 +146,9 @@ const t = useAstroTranslations(Astro);
     .footer {
       height: auto;
     }
+    .cookie_text {
+      margin-right: 10px;
+    }
   }
 </style>
 
@@ -134,9 +174,11 @@ const t = useAstroTranslations(Astro);
         <h3>{t("footer.Aurora")}</h3>
         <ul>
           <li><a href="#map">{t("footer.Map")}</a></li>
-          <li><a href="#app">{t("footer.App")}</a></li>
           <li>
-            <a href="t.me/polar_digital"
+            <a href={getRelativeLocaleUrl(l, "/app")}>{t("footer.App")}</a>
+          </li>
+          <li>
+            <a href="https://t.me/+kmJAsk-XAQowNmNi"
               ><Image class="image_tg" src={PDtg} alt="Telegram" />
             </a>
           </li>
@@ -147,8 +189,8 @@ const t = useAstroTranslations(Astro);
       <div class="footer-docs">
         <div class="text-[20px] font-bold">{t("footer.Docs")}</div>
         <ul>
-          <li><a href="#">{t("footer.Policy")}</a></li>
-          <li><a href="#">{t("footer.Data")}</a></li>
+          <li><a href="/policy">{t("footer.Policy")}</a></li>
+          <li><a href="/agreement">{t("footer.Data")}</a></li>
         </ul>
       </div>
     </div>
@@ -158,4 +200,39 @@ const t = useAstroTranslations(Astro);
       {t("footer.Rights2")}
     </p>
   </div>
+  <div class="cookie hidden">
+    <div class="cookie_text">
+      Мы используем <a href="https://ru.wikipedia.org/wiki/Cookie"
+        ><u>cookie</u></a
+      >. Без них мы не сможем так ярко сиять
+    </div>
+    <button class="cookie_apply" type="button">Да, без проблем</button>
+  </div>
 </footer>
+
+<script>
+  const setConsent = () => {
+    localStorage.setItem("cookieConsent", "accepted");
+  };
+
+  const hasConsent = (): boolean => {
+    return localStorage.getItem("cookieConsent") === "accepted";
+  };
+
+  const initCookieBanner = () => {
+    const cookieBanner = document.querySelector<HTMLElement>(".cookie");
+    const okButton = document.querySelector<HTMLButtonElement>(".cookie_apply");
+
+    if (!cookieBanner || hasConsent()) return;
+
+    cookieBanner.classList.remove("hidden");
+    cookieBanner.classList.add("cookie--active");
+
+    okButton?.addEventListener("click", () => {
+      setConsent();
+      cookieBanner.classList.replace("cookie--active", "hidden");
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", initCookieBanner);
+</script>
