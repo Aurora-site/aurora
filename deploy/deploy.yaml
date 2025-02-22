@@ -1,8 +1,8 @@
-- name: Deploy test aurora-api
+- name: Deploy {{ ENV_NAME }} aurora-api
   hosts: all
   become: false
   vars:
-    project_dir: ~/deploy/test-aurora-web
+    project_dir: ~/deploy/{{ ENV_NAME }}-aurora-web
 
   tasks:
     - name: Create project directory
@@ -13,7 +13,7 @@
 
     - name: Copy files to service directory
       ansible.builtin.copy:
-        src: "{{ item }}"
+        src: "{{ ENV_NAME }}/{{ item }}"
         dest: "{{ project_dir }}/{{ item }}"
         mode: "0755"
       loop:
@@ -23,6 +23,8 @@
       ansible.builtin.command:
         cmd: docker compose pull
         chdir: "{{ project_dir }}"
+      environment:
+        IMAGE_TAG: "{{ IMAGE_TAG }}"
       register: out
       changed_when: out.rc != 0
 
@@ -32,6 +34,6 @@
         chdir: "{{ project_dir }}"
       environment:
         PORT: "{{ PORT }}"
-        API_URL: "{{ API_URL }}"
+        IMAGE_TAG: "{{ IMAGE_TAG }}"
       register: out
       changed_when: out.rc != 0
