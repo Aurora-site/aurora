@@ -4,6 +4,9 @@ export const ui = {
   ru: {
     icon: "https://flagcdn.com/w40/ru.png",
     "layout.title": "Северное сияние",
+    "meta.ogTitle": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
+    "meta.ogDescription":
+      "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
     /*Header */
     "H.app": "Приложение",
     "H.map": "Прямо сейчас",
@@ -112,6 +115,9 @@ export const ui = {
   en: {
     icon: "https://flagcdn.com/w40/us.png",
     "layout.title": `Polar lights`,
+    "meta.ogTitle": "Aurora Forecast. Map, Probability and Forecast",
+    "meta.ogDescription":
+      "Seeing the Northern Lights just got easier! Forecasts, notifications and tips for your luck. With us you won't miss the polar lights! Catch the Aurora",
 
     /*Header */
     "H.app": `App`,
@@ -204,6 +210,9 @@ export const ui = {
   cn: {
     icon: "https://flagcdn.com/w40/cn.png",
     "layout.title": "极光",
+    "meta.ogTitle": "极光预报。地图、概率和预测",
+    "meta.ogDescription":
+      "观赏北极光变得更加容易！运气预测、通知和提示。与我们一起您不会错过北极光！捕捉北极光",
     /*Header */
     "H.app": "手机应用",
     "H.map": "极光就在此刻",
