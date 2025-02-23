@@ -17,7 +17,7 @@ export const LanguagePicker = () => {
           className="flex items-center justify-center"
           title={lang}
         >
-          <img src={ui[lang].icon} alt={lang} width="30" />
+          <img src={ui[lang].icon} alt={lang} width={30} height={30} />
         </a>
       ))}
     </div>

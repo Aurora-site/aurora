@@ -1,6 +1,8 @@
 ---
 import { ChartTabs } from "./reactive/ChartTabs";
 import { useAstroTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
+import auroraback_index from "../assets/auroraback_index.png";
 const t = useAstroTranslations(Astro);
 ---
 
@@ -11,7 +13,7 @@ const t = useAstroTranslations(Astro);
   <div
     class="absolute top-[1690px] left-[-159px] max-w-[500px] sm:top-[1217px] sm:left-[-41px] 2xl:left-[0px]"
   >
-    <img src="/images/auroraback_index.png" alt="" />
+    <Image src={auroraback_index} alt="Abstract background" />
   </div>
   <h2>
     <a href="#index">{t("Charts.title")}</a>
