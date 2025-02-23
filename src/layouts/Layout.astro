@@ -3,10 +3,10 @@ import Footer from "./footer.astro";
 import Header from "./header.astro";
 import "../styles/styles.css";
 import "../styles/tailwind.css";
-import { useAstroTranslations } from "../i18n/utils";
-import { defaultLang } from "../i18n/ui";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
-const lang = Astro.currentLocale || defaultLang;
+const lang = useAstroLocale(Astro);
+import { DEPLOY_URL } from "astro:env/client";
 ---
 
 <html lang={lang} class="scroll-smooth">
@@ -15,18 +15,12 @@ const lang = Astro.currentLocale || defaultLang;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{t("layout.title")}</title>
     <link rel="icon" type="image/ico" href="/favicon.ico" />
-    <meta
-      property="og:url"
-      content="https://test-polar-lights.akorz.duckdns.org"
-    />
+    <meta property="og:url" content={DEPLOY_URL} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={t("meta.ogTitle")} />
     <meta property="og:description" content={t("meta.ogDescription")} />
     <meta property="og:locale" content={lang} />
-    <meta
-      property="og:image"
-      content="https://test-polar-lights.akorz.duckdns.org/openGraph.jpg"
-    />
+    <meta property="og:image" content={DEPLOY_URL + "/openGraph.jpg"} />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"

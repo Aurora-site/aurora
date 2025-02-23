@@ -18,13 +18,15 @@ export default defineConfig({
         access: "public",
         optional: false,
       }),
+      DEPLOY_URL: envField.string({
+        context: "client",
+        access: "public",
+        default: "http://localhost:4321",
+      }),
     },
   },
   i18n: {
     defaultLocale: "ru",
     locales: ["en", "ru", "cn"],
-    // routing: {
-    //   prefixDefaultLocale: true,
-    // },
   },
 });

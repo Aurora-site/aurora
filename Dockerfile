@@ -10,6 +10,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm install --frozen-lockfile
 COPY . .
 ARG API_URL
+ARG DEPLOY_URL
 RUN pnpm build
 
 FROM caddy:2-alpine AS frontend-final
