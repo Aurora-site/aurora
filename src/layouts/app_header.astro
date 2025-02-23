@@ -195,7 +195,6 @@ const t = useAstroTranslations(Astro);
     if (window.innerWidth <= 1024) {
       if (!navigation.contains(lang)) {
         navigation.appendChild(lang);
-        console.log("Moved lang to navigation");
       }
     } else {
       if (navigation.contains(lang)) {
@@ -203,7 +202,6 @@ const t = useAstroTranslations(Astro);
       }
       if (!lala.contains(lang)) {
         lala.appendChild(lang);
-        console.log("Moved lang to lala");
       }
     }
   }
