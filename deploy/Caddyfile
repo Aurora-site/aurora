@@ -2,4 +2,12 @@
 	root * /srv/dist
 	encode zstd gzip
 	file_server
+	log aurora {
+		format filter {
+			fields {
+				resp_headers delete
+				request>headers delete
+			}
+		}
+	}
 }
