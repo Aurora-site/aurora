@@ -8,7 +8,7 @@ export function colorFormat<T extends object>(value: T, key: keyof T): string {
   if (val > 6) {
     return "#E90D0D";
   } else if (val > 4) {
-    return "#FA8917";
+    return "#FF4A13";
   } else if (val > 2) {
     return "#DBDB01";
   } else {

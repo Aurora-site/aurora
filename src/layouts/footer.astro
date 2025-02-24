@@ -163,6 +163,9 @@ const l = useAstroLocale(Astro);
             <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
           </div>
         </div>
+        <div class="pt-[15px] text-[12px]">
+          {t("footer.AddCity")}
+        </div>
       </div>
 
       <!-- Серединная часть: Ссылки -->
@@ -171,7 +174,7 @@ const l = useAstroLocale(Astro);
         <ul>
           <li><a href="#map">{t("footer.Map")}</a></li>
           <li>
-            <a href={getRelativeLocaleUrl(l, "/app")}>{t("footer.App")}</a>
+            <a href="#app">{t("footer.App")}</a>
           </li>
           <li>
             <a href="https://t.me/+kmJAsk-XAQowNmNi"
@@ -194,7 +197,9 @@ const l = useAstroLocale(Astro);
       {t("footer.Rights1")}
       <br /><br />
       {t("footer.Rights2")}
+      <br /><br />
     </p>
+    <p class="pt-[40px] text-[12px]">ИП Горбатенко Надежда Андреевна</p>
   </div>
   <div class="cookie hidden">
     <div class="cookie_text">

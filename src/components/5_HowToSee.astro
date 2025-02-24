@@ -11,7 +11,6 @@ const t = useAstroTranslations(Astro);
   .how-to-see img {
     max-width: 100%;
     height: auto;
-    margin: 20px 0;
     border-radius: 20px;
   }
 
@@ -28,22 +27,38 @@ const t = useAstroTranslations(Astro);
   .images {
     display: flex;
     gap: 30px;
-    overflow-x: auto; /* Горизонтальная прокрутка */
+    /* overflow-x: auto; Горизонтальная прокрутка */
     scroll-behavior: smooth; /* Плавная прокрутка */
     margin: 40px 0 0 0;
     white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
     justify-content: space-between;
+    padding-bottom: 24px;
   }
 
   .image-slider-container {
     position: relative;
     margin: 0 auto;
+    overflow: visible;
   }
 
   .imag {
     flex: 0 0 auto; /* Фиксирует размер карточки */
     width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
   }
+  /* .imag:after {
+    filter: drop-shadow(15px 15px 15px #00000040);
+    content: ' ';
+    width: 360px;
+    height: 360px;
+    border-radius: 20px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  } */
 
   .slider-button {
     position: absolute;
@@ -66,6 +81,12 @@ const t = useAstroTranslations(Astro);
     right: -50px;
   }
 
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
   @media (max-width: 952px) {
     .slider-button {
       display: none !important;
@@ -79,7 +100,7 @@ const t = useAstroTranslations(Astro);
 </style>
 
 <section
-  class="how-to-see bg-[url('/images/auroraback_how.png')] bg-contain bg-[0px_50px] bg-no-repeat py-12 sm:bg-[0px_20px]"
+  class="how-to-see bg-[url('/images/auroraback_how.png')] bg-contain bg-[0px_50px] bg-no-repeat pt-12 pb-6 sm:bg-[0px_20px]"
   id="how-to-see"
 >
   <h2><a href="#how-to-see">{t("HowToSee.title")}</a></h2>

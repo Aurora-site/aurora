@@ -30,7 +30,7 @@ const CustomYAxisBackground = ({
   const isLastTick = payload.value === 9;
   const getColor = (value: number) => {
     if (value >= 6) return "#E90D0D"; // Высокий Kp
-    if (value >= 4) return "#FA8917"; // Высокий Kp
+    if (value >= 4) return "#FF4A13"; // Высокий Kp
     if (value >= 2) return "#DBDB01"; // Средний Kp
     return "#00972D"; // Низкий Kp
   };
