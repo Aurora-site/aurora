@@ -3,7 +3,8 @@ export const defaultLang = "ru";
 export const ui = {
   ru: {
     icon: "https://flagcdn.com/w40/ru.png",
-    "layout.title": "Северное сияние",
+    "layout.title": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
+
     "meta.ogTitle": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
     "meta.ogDescription":
       "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
@@ -48,7 +49,8 @@ export const ui = {
     "AppDownload.text": `Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
     вы сможете не только следить за изменениями, но и получать пуш-уведомления о
     повышении вероятности, чтобы не упустить высокий шанс.`,
-    "AppDownload.button": `Приложение с уведомлением`,
+    "AppDownload.button1": `Приложение в разработке и почти готово!`,
+    "AppDownload.button2": `Скоро вы сможете получать уведомления о северном сиянии прямо в своем смартфоне!`,
     /*How to see */
     "HowToSee.title": `Как увидеть северное сияние?`,
     "HowToSee.text1": `Наблюдение за северным сиянием — это удивительное зрелище, требующее
@@ -164,7 +166,8 @@ export const ui = {
     "AppDownload.text": `Track the probability using our mobile app.
     There you can not only monitor changes, but also receive push notifications about high probability, so as not to miss a high chance.`,
 
-    "AppDownload.button": `Mobile app with notifications`,
+    "AppDownload.button1": `The app is in development and is almost ready!`,
+    "AppDownload.button2": `Soon you will be able to receive notifications about the polar lights directly on your smartphone!`,
 
     /*How to see */
     "HowToSee.title": `How to see Aurora Borealis?`,
@@ -250,7 +253,8 @@ export const ui = {
     /*AppDownload*/
     "AppDownload.title": `关注极光指数`,
     "AppDownload.text": `您可以通过我们的手机应用方便地关注极光指数，不仅可以实时查看，还能接收指数升高的推送通知，确保不错过最佳观测机会。`,
-    "AppDownload.button": `带通知的应用`,
+    "AppDownload.button1": `应用程序正在开发中，即将完成`,
+    "AppDownload.button2": `很快，您就能在手机上收到北极光提醒!`,
     /*How to see */
     "HowToSee.title": `如何立即看到`,
     "HowToSee.text1": `观赏极光是一个令人惊叹的景象，需要一定的准备和耐心。`,
