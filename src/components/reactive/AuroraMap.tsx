@@ -154,7 +154,7 @@ export function AuroraMap() {
         className="legend"
         style={{ display: "block", gap: "5px", alignItems: "center" }}
       >
-        <h4 style={{ marginRight: "0px" }}>{t("MapSection.Tooltip")}</h4>
+        <h4>{t("MapSection.Tooltip")}</h4>
       </div>
       <div
         className="legend2"

@@ -38,7 +38,7 @@ const DialogContent = React.forwardRef<
       )}
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/aurora-full.png')",
+          "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url('/images/aurora-full.png')",
       }}
       {...props}
     >

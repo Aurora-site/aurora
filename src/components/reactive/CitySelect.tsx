@@ -13,8 +13,11 @@ import { useStore } from "@nanostores/react";
 import { useQuery } from "@tanstack/react-query";
 import { ApiService } from "../../api/client";
 import { cityAtom } from "../../stores/citiy";
+import { useLocale } from "../../i18n/utils";
+import { localeAtom } from "../../stores/locale";
 
 export const CitySelect = () => {
+  const t = useLocale(localeAtom);
   const [open, setOpen] = useState(false);
   const city = useStore(cityAtom);
   const [serachQuery, setSerachQuery] = useState(city.name || "");
@@ -46,18 +49,21 @@ export const CitySelect = () => {
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger onClick={() => setSerachQuery("")} asChild>
-          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[20px] underline">
-            {city.name || "Мурманск"}
+          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[20px]">
+            <p className="font-[Montserrat] text-[16px] no-underline">
+              {t("CitySelect.CityChoice")}
+            </p>{" "}
+            <p className="underline">{city.name || "Мурманск"}</p>
             <ChevronDown className="h-4 w-4" />
           </div>
         </DialogTrigger>
         <DialogContent className="flex flex-col">
           <DialogHeader>
             <DialogTitle className="giga-text text-center text-white">
-              Геолокация
+              {t("CitySelect.Geo")}
             </DialogTitle>
             <DialogDescription className="text-lg">
-              На широте какого города Вы находитесь?
+              {t("CitySelect.Choice")}
             </DialogDescription>
           </DialogHeader>
           <div className="py-5">

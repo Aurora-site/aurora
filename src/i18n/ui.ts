@@ -22,6 +22,9 @@ export const ui = {
     "description.text2": `Хотите увидеть северное сияние в реальном времени? Наш сайт поможет вам спланировать идеальную фотоохоту!
     На интерактивной карте вы можете отслеживать перемещение северного сияния, узнавать индекс активности (KP-индекс) и вероятность наблюдения в вашем регионе.`,
     /*MapSection*/
+    "CitySelect.Geo": "Геолокация",
+    "CitySelect.Choice": "На широте какого города Вы находитесь?",
+    "CitySelect.CityChoice": "Выберите город",
     "MapSection.title": "Сияние прямо сейчас",
     "MapSection.text":
       "Здесь вы можете наблюдать за динамическим отображением сияния в реальном времени",
@@ -134,6 +137,9 @@ export const ui = {
       "Want to see the Northern Lights in real time? Our website will help you plan the perfect photo hunt! On the interactive map you can track the movement of the northern lights, find out the activity index (KI-index) and the probability of observation in your region.",
 
     /*MapSection*/
+    "CitySelect.Geo": "Geolocation",
+    "CitySelect.Choice": "What city's latitude are you at?",
+    "CitySelect.CityChoice": "Select city",
     "MapSection.title": `Aurora right now`,
     "MapSection.text":
       "Here you can see a dynamic change of the aurora in real time",
@@ -225,6 +231,9 @@ export const ui = {
     "description.text1": "北极光（或称极光）是最令人着迷的自然现象之一",
     "description.text2": `通常出现在靠近地球两极的高纬度地区。它是由太阳风与地球磁场相互作用产生的。当太阳释放的带电粒子与地球大气层中80至300公里高的氧原子和氮原子碰撞时，会使它们激发并发光，从而形成天空中绚丽的光带和光影`,
     /*MapSection*/
+    "CitySelect.Geo": "地理定位",
+    "CitySelect.Choice": "你在哪个城市的纬度?",
+    "CitySelect.CityChoice": "选择一个城市",
     "MapSection.title": "极光就在此刻",
     "MapSection.text": "在这里，您可以实时观看极光的动态显示。",
     "MapSection.Tooltip": "极光概率",
