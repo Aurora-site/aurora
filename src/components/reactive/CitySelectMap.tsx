@@ -5,9 +5,10 @@ import VectorLayer from "ol/layer/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
 import { fromLonLat } from "ol/proj";
-import { Style, Circle as CircleStyle, Fill, Text, Stroke } from "ol/style";
+import { Style, Circle as CircleStyle, Fill, Text } from "ol/style";
 import { useStore } from "@nanostores/react";
 import { cityAtom } from "../../stores/citiy";
+import { useGeolocation } from "../../utils/geo_utils";
 
 export function CitySelectMap({ map }) {
   const city = useStore(cityAtom); // Получаем выбранный город
@@ -16,11 +17,10 @@ export function CitySelectMap({ map }) {
     Feature<Point>
   > | null>(null);
   const userLayerRef = useRef(null);
-  const [userLocation, setUserLocation] = useState(null);
+  const location = useGeolocation({ enableHighAccuracy: true });
 
   useEffect(() => {
     if (map) {
-      // Проверяем, существует ли слой города
       let cityLayer = cityLayerRef.current;
 
       // Если слоя еще нет, создаем его
@@ -74,7 +74,12 @@ export function CitySelectMap({ map }) {
   }, [map, city]); // Обновляем слой, когда меняется выбранный город
 
   useEffect(() => {
-    if (map) {
+    if (
+      map &&
+      !location.loading &&
+      location.latitude !== null &&
+      location.longitude !== null
+    ) {
       let userLayer = userLayerRef.current;
 
       if (!userLayer) {
@@ -92,31 +97,21 @@ export function CitySelectMap({ map }) {
         userLayer.setZIndex(4);
         userLayer.set("name", "userLayer");
         map.addLayer(userLayer);
-
         userLayerRef.current = userLayer;
       }
 
-      // Получаем координаты пользователя
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation([longitude, latitude]);
+      const userSource = userLayer.getSource();
+      userSource.clear();
 
-          const userSource = userLayer.getSource();
-          userSource.clear(); // Убираем старую точку
+      const userFeature = new Feature({
+        geometry: new Point(
+          fromLonLat([location.longitude, location.latitude]),
+        ),
+      });
 
-          const userFeature = new Feature({
-            geometry: new Point(fromLonLat([longitude, latitude])),
-          });
-
-          userSource.addFeature(userFeature);
-        },
-        (error) => {
-          console.error("Ошибка получения геолокации:", error);
-        },
-      );
+      userSource.addFeature(userFeature);
     }
-  }, [map]);
+  }, [map, location.latitude, location.longitude, location.loading]);
 
   return null;
 }

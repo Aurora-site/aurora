@@ -15,6 +15,7 @@ import { ApiService } from "../../api/client";
 import { cityAtom } from "../../stores/citiy";
 import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
+import { useGeolocation } from "../../utils/geo_utils.ts";
 
 export const CitySelect = () => {
   const t = useLocale(localeAtom);
@@ -46,36 +47,34 @@ export const CitySelect = () => {
     }
   }, [serachQuery]);
 
+  const location = useGeolocation();
+
   function handleUseMyLocation() {
     setOpen(false);
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
+    if (location.error) {
+      // Обработка ошибок
+      if (location.error.code === location.error.PERMISSION_DENIED) {
+        alert(
+          "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
+        );
+      } else {
+        alert("Ошибка получения местоположения!");
+      }
+      return;
+    }
 
-          cityAtom.set({ name: t("user.Geo"), lat: latitude, long: longitude });
-        },
-        (error) => {
-          // Обработка ошибок при получении геопозиции
-          if (error.code === error.PERMISSION_DENIED) {
-            // Если доступ к геопозиции был отклонен, выводим сообщение
-            alert(
-              "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
-            );
-          } else {
-            // Если произошла другая ошибка, показываем общую ошибку
-            console.error("Ошибка при получении местоположения:", error);
-            alert("Ошибка получения местоположения!");
-          }
-
-          setOpen(false);
-        },
-      );
+    if (location.latitude !== null && location.longitude !== null) {
+      // Передаем координаты
+      cityAtom.set({
+        name: t("user.Geo"),
+        lat: location.latitude,
+        long: location.longitude,
+      });
     } else {
-      // Если геолокация не поддерживается браузером
-      alert("Геолокация не поддерживается в вашем браузере");
-      setOpen(false); // Закрываем диалоговое окно, если геолокация не поддерживается
+      alert(
+        "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
+      );
     }
   }
 
@@ -83,7 +82,7 @@ export const CitySelect = () => {
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger onClick={() => setSerachQuery("")} asChild>
-          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[20px]">
+          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[16px] sm:text-[20px]">
             <p className="font-[Montserrat] text-[16px] no-underline">
               {t("CitySelect.CityChoice")}
             </p>{" "}
