@@ -1,4 +1,4 @@
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Search, X, MapPin } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -45,6 +45,40 @@ export const CitySelect = () => {
       cityAtom.set(c);
     }
   }, [serachQuery]);
+
+  function handleUseMyLocation() {
+    setOpen(false);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+
+          cityAtom.set({ name: t("user.Geo"), lat: latitude, long: longitude });
+        },
+        (error) => {
+          // Обработка ошибок при получении геопозиции
+          if (error.code === error.PERMISSION_DENIED) {
+            // Если доступ к геопозиции был отклонен, выводим сообщение
+            alert(
+              "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
+            );
+          } else {
+            // Если произошла другая ошибка, показываем общую ошибку
+            console.error("Ошибка при получении местоположения:", error);
+            alert("Ошибка получения местоположения!");
+          }
+
+          setOpen(false);
+        },
+      );
+    } else {
+      // Если геолокация не поддерживается браузером
+      alert("Геолокация не поддерживается в вашем браузере");
+      setOpen(false); // Закрываем диалоговое окно, если геолокация не поддерживается
+    }
+  }
+
   return (
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
@@ -81,24 +115,30 @@ export const CitySelect = () => {
                 className="h-4 w-4 cursor-pointer"
               />
             </div>
-            <div className="grid grid-cols-2 gap-y-2 xl:w-[50%]">
-              {probabilityCities
-                ?.filter((v) =>
-                  v.name.toLowerCase().includes(serachQuery.toLowerCase()),
-                )
-                .map((c, i) => (
-                  <div
-                    key={i.toString()}
-                    onClick={() => {
-                      setSerachQuery(c.name);
-                      setOpen(false);
-                    }}
-                    className="cursor-pointer"
-                  >
-                    {c.name}
-                  </div>
-                ))}
-            </div>
+            <button
+              onClick={handleUseMyLocation}
+              className="mt-[20px] mb-0 flex cursor-pointer items-center justify-between gap-2 text-white"
+            >
+              <MapPin className="h-5 w-5" /> {t("user.Geo")}
+            </button>
+          </div>
+          <div className="grid grid-cols-2 gap-y-2 xl:w-[50%]">
+            {probabilityCities
+              ?.filter((v) =>
+                v.name.toLowerCase().includes(serachQuery.toLowerCase()),
+              )
+              .map((c, i) => (
+                <div
+                  key={i.toString()}
+                  onClick={() => {
+                    setSerachQuery(c.name);
+                    setOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  {c.name}
+                </div>
+              ))}
           </div>
           {/* <button
             onClick={handleSearch}

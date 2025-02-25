@@ -47,7 +47,7 @@ export function CitySelectMap({ map }) {
                 text: feature.get("name"),
                 font: "12px 'Montserrat', sans-serif",
                 fill: new Fill({ color: "black" }),
-                offsetY: -10,
+                offsetY: -12,
               }),
             }),
         });

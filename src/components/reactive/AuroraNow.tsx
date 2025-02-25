@@ -59,7 +59,7 @@ export const AuroraNow = () => {
             getColor(auroraProbability),
           )}
         >
-          {auroraProbability ? `${auroraProbability.toFixed(0)}%` : "😶‍🌫️"}
+          {auroraProbability ? `${auroraProbability.toFixed(0)}%` : `0%`}
         </div>
       </div>
     </div>

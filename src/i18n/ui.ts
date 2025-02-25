@@ -33,6 +33,7 @@ export const ui = {
     "MapSection.enableClouds": "Включить облачность",
     "MapSection.disableClouds": "Отключить облачность",
     "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
+    "user.Geo": "Моё местоположение",
     /*Charts*/
     "Charts.title": `Индекс северного сияния на 3 и 27 суток`,
     "Charts.text1": `Здесь вы можете наблюдать график индекса северного сияния! Этот график
@@ -152,6 +153,7 @@ export const ui = {
     "MapSection.disableClouds": "Disable clouds",
     "aurora.probability":
       "In the selected geolocation, the probability during the next hour is",
+    "user.Geo": "My geoposition",
 
     /*Charts*/
     "Charts.title": `Aurora kp-index for 3 and 27 days`,
@@ -246,6 +248,7 @@ export const ui = {
     "MapSection.enableClouds": "启用云层",
     "MapSection.disableClouds": "禁用云层",
     "aurora.probability": "在您的地理位置，下一小时内的极光概率",
+    "user.Geo": "我的位置",
     /*Charts*/
     "Charts.title": `极光指数（3天和27天预测)`,
     "Charts.text1": `在这里，您可以查看极光指数图表！该图表实时显示当前的极光活动水平（KP指数）。指数范围从0到9，数值越高，意味着在高纬度地区看到极光的可能性越大。`,
