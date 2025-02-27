@@ -23,6 +23,12 @@ export default defineConfig({
         access: "public",
         default: "http://localhost:4321",
       }),
+      ENV_NAME: envField.enum({
+        context: "client",
+        access: "public",
+        default: "dev",
+        values: ["dev", "main", "test"],
+      }),
     },
   },
   i18n: {

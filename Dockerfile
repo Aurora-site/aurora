@@ -11,6 +11,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 COPY . .
 ARG API_URL
 ARG DEPLOY_URL
+ARG ENV_NAME
 RUN pnpm build
 
 FROM caddy:2-alpine AS frontend-final

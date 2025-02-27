@@ -92,6 +92,7 @@ jobs:
           build-args: |
             API_URL=${{ vars.API_URL }}
             DEPLOY_URL=${{ vars.DEPLOY_URL }}
+            ENV_NAME=${{ github.ref_name }}
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
