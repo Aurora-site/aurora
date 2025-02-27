@@ -33,7 +33,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed top-[50%] left-[50%] z-1001 h-auto w-full translate-[-50%] rounded-[20px] bg-(--color-pepe) bg-[url('/images/aurora-full.png')] bg-cover bg-center px-20 py-10 font-[Montserrat] text-white sm:w-xl md:w-2xl lg:w-3xl xl:w-5xl",
+        "fixed top-[50%] left-[50%] z-1001 h-auto w-full translate-[-50%] rounded-[20px] bg-(--color-pepe) bg-[url('/images/aurora-full.png')] bg-cover bg-center px-7 py-10 font-[Montserrat] text-white sm:w-xl md:w-2xl md:px-20 lg:w-3xl xl:w-5xl",
         className,
       )}
       style={{

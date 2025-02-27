@@ -82,7 +82,7 @@ export const CitySelect = () => {
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger onClick={() => setSerachQuery("")} asChild>
-          <div className="flex cursor-pointer items-center gap-4 py-5 font-[SongerGrotesqueBold] text-[16px] sm:text-[20px]">
+          <div className="flex cursor-pointer items-center gap-3 py-5 font-[SongerGrotesqueBold] text-[16px] sm:text-[20px]">
             <p className="font-[Montserrat] text-[16px] no-underline">
               {t("CitySelect.CityChoice")}
             </p>{" "}
@@ -116,7 +116,7 @@ export const CitySelect = () => {
             </div>
             <button
               onClick={handleUseMyLocation}
-              className="mt-[20px] mb-0 flex cursor-pointer items-center justify-between gap-2 text-white"
+              className="mt-[20px] mb-0 flex cursor-pointer items-center justify-between gap-1 text-white"
             >
               <MapPin className="h-5 w-5" /> {t("user.Geo")}
             </button>
