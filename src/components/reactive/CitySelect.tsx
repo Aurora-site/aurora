@@ -55,11 +55,9 @@ export const CitySelect = () => {
     if (location.error) {
       // Обработка ошибок
       if (location.error.code === location.error.PERMISSION_DENIED) {
-        alert(
-          "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
-        );
+        alert(t("user.Alert"));
       } else {
-        alert("Ошибка получения местоположения!");
+        t("user.Error");
       }
       return;
     }
@@ -72,9 +70,7 @@ export const CitySelect = () => {
         long: location.longitude,
       });
     } else {
-      alert(
-        "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
-      );
+      alert(t("user.Geo"));
     }
   }
 
@@ -82,7 +78,7 @@ export const CitySelect = () => {
     <div className="">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger onClick={() => setSerachQuery("")} asChild>
-          <div className="flex cursor-pointer items-center gap-3 py-5 font-[SongerGrotesqueBold] text-[16px] sm:text-[20px]">
+          <div className="flex cursor-pointer items-center gap-2 py-5 font-[SongerGrotesqueBold] text-[16px] sm:text-[20px]">
             <p className="font-[Montserrat] text-[16px] no-underline">
               {t("CitySelect.CityChoice")}
             </p>{" "}

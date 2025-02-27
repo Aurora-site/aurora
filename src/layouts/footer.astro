@@ -203,11 +203,12 @@ const l = useAstroLocale(Astro);
   </div>
   <div class="cookie hidden">
     <div class="cookie_text">
-      Мы используем <a href="https://ru.wikipedia.org/wiki/Cookie"
-        ><u>cookie</u></a
-      >. Без них мы не сможем так ярко сиять
+      {t("footer.Cookie1")}
+      <a href="https://ru.wikipedia.org/wiki/Cookie"><u>cookie</u></a>. {
+        t("footer.Cookie2")
+      }
     </div>
-    <button class="cookie_apply" type="button">Да, без проблем</button>
+    <button class="cookie_apply" type="button">{t("footer.Cookie3")}</button>
   </div>
 </footer>
 

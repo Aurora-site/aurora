@@ -34,6 +34,10 @@ export const ui = {
     "MapSection.disableClouds": "Отключить облачность",
     "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
     "user.Geo": "Моё местоположение",
+    "user.Alert":
+      "К сожалению, настройки браузера не разрешают нам показать вероятность сияния по вашей геопозиции",
+    "user.Error": "Ошибка получения геопозиции!",
+
     /*Charts*/
     "Charts.title": `Индекс северного сияния на 3 и 27 суток`,
     "Charts.text1": `Здесь вы можете наблюдать график индекса северного сияния! Этот график
@@ -119,6 +123,9 @@ export const ui = {
       (NOAA)`,
     "footer.AddCity":
       "Если вы хотите добавить свой город - просто напишите нам",
+    "footer.Cookie1": "Мы используем",
+    "footer.Cookie2": "Без них мы не сможем так ярко сиять",
+    "footer.Cookie3": "Да, без проблем",
   },
   en: {
     icon: "/images/us.png",
@@ -154,6 +161,9 @@ export const ui = {
     "aurora.probability":
       "In the selected geolocation, the probability during the next hour is",
     "user.Geo": "My geoposition",
+    "user.Alert":
+      "Unfortunately, your browser settings do not allow us to show the probability of the aurora based on your geolocation.",
+    "user.Error": "Error getting location!",
 
     /*Charts*/
     "Charts.title": `Aurora kp-index for 3 and 27 days`,
@@ -220,6 +230,9 @@ export const ui = {
     "footer.Rights1": `All rights to the site and photographs are protected by copyright.`,
     "footer.Rights2": `Data provided by the National Oceanic and Atmospheric Administration (NOAA)`,
     "footer.AddCity": "If you want to add your city - just write to us",
+    "footer.Cookie1": "We use",
+    "footer.Cookie2": "We cannot shine so brightly without them",
+    "footer.Cookie3": "No problem",
   },
   cn: {
     icon: "/images/cn.png",
@@ -249,6 +262,9 @@ export const ui = {
     "MapSection.disableClouds": "禁用云层",
     "aurora.probability": "在您的地理位置，下一小时内的极光概率",
     "user.Geo": "我的位置",
+    "user.Alert":
+      "不幸的是，浏览器设置不允许我们根据您的位置显示发光的概率。 我们只会显示列表。 或更改浏览器设置",
+
     /*Charts*/
     "Charts.title": `极光指数（3天和27天预测)`,
     "Charts.text1": `在这里，您可以查看极光指数图表！该图表实时显示当前的极光活动水平（KP指数）。指数范围从0到9，数值越高，意味着在高纬度地区看到极光的可能性越大。`,
@@ -304,5 +320,9 @@ export const ui = {
     "footer.Rights1": `网站和照片的所有权利均受到版权保护`,
     "footer.Rights2": `数据由美国国家海洋和大气管理局（NOAA）提供`,
     "footer.AddCity": "如果您想添加您的城市 - 请写信给我们",
+    "footer.Cookie1": "我们使用",
+    "footer.Cookie2": "如果没有它们，我们就不会看到明亮的极光。",
+    "footer.Cookie3": "没有问题",
+    "user.Error": "获取地理位置错误",
   },
 } as const;
