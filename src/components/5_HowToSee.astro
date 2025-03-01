@@ -108,21 +108,11 @@ const t = useAstroTranslations(Astro);
     {t("HowToSee.text1")}
   </p>
   <ul>
-    <li>
-      1. {t("HowToSee.point1")}
-    </li>
-    <li>
-      2. {t("HowToSee.point2")}
-    </li>
-    <li>
-      3. {t("HowToSee.point3")}
-    </li>
-    <li>
-      4. {t("HowToSee.point4")}
-    </li>
-    <li>
-      5. {t("HowToSee.point5")}
-    </li>
+    <li set:html={t("HowToSee.point1")} />
+    <li set:html={t("HowToSee.point2")} />
+    <li set:html={t("HowToSee.point3")} />
+    <li set:html={t("HowToSee.point4")} />
+    <li set:html={t("HowToSee.point5")} />
   </ul>
   <p></p>
   <p>

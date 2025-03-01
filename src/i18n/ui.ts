@@ -39,14 +39,20 @@ export const ui = {
     "user.Error": "Ошибка получения геопозиции!",
 
     /*Charts*/
-    "Charts.title": `Индекс северного сияния на 3 и 27 суток`,
-    "Charts.text1": `Здесь вы можете наблюдать график индекса северного сияния! Этот график
-    отображает текущий уровень активности северного сияния (KP-индекс) в
-    реальном времени. Индекс варьируется от 0 до 9, где более высокие значения
-    указывают на большую вероятность наблюдения сияния в северных широтах.`,
-    "Charts.text2": `Следите за изменениями индекса, чтобы спланировать свои наблюдения и не
-    пропустить шанс увидеть это потрясающее природное явление. Для более точного
-    прогноза рекомендуем обращаться к краткосрочным прогнозам.`,
+    "Charts.title": `Планетарный индекс северного сияния на 3 и 27 суток`,
+    "Charts.text1": `Здесь представлен график **планетарного индекса** северного сияния (KP-индекс),
+    который отражает уровень геомагнитной активности и **является общим для всей планеты**. Индекс варьируется от 0 до 9: чем выше значение, тем больше вероятность увидеть сияние.`,
+    "Charts.text2": `Обычно северное сияние наблюдается в высоких широтах, но при сильных бурях оно может быть видно и южнее привычных регионов. Следите за изменениями индекса,
+    чтобы спланировать наблюдения и не упустить шанс увидеть это захватывающее природное явление. Для точного прогноза рекомендуем обращаться к краткосрочным прогнозам.`,
+    "Charts.After1":
+      "**Обычные условия (KP 1-3):** Северное сияние видно только в полярных широтах — например, в Мурманске (68° с.ш.), Норильске (69° с.ш.) или Рейкьявике (64° с.ш.).",
+    "Charts.After2":
+      "**Средняя активность (KP 4-5):** Сияние можно заметить в более южных регионах, таких как Санкт-Петербург (60° с.ш.), Стокгольм (59° с.ш.) и даже на севере США (Миннесота, 45-48° с.ш.).",
+    "Charts.After3":
+      "**Сильная геомагнитная буря (KP 6-7):** Северное сияние может достигать Москвы (55° с.ш.), Берлина (52° с.ш.) и северных штатов США (Вашингтон, Айова).",
+    "Charts.After4":
+      "**Экстремальная буря (KP 8-9):** Сияние видно очень далеко на юге – до Парижа (48° с.ш.), Киева (50° с.ш.) и даже на юге США (Техас, 30° с.ш.)",
+
     "Charts.3days": `3 суток`,
     "Charts.27days": `27 суток`,
     /*AppDownload*/
@@ -60,15 +66,15 @@ export const ui = {
     "HowToSee.title": `Как увидеть северное сияние?`,
     "HowToSee.text1": `Наблюдение за северным сиянием — это удивительное зрелище, требующее
     подготовки и терпения.`,
-    "HowToSee.point1": `Прогноз активности. Следите за солнечной активностью с помощью нашего
+    "HowToSee.point1": `**1. Прогноз активности.** Следите за солнечной активностью с помощью нашего
       ресурса. Индекс Kp выше 4-5 указывает на высокую вероятность.`,
-    "HowToSee.point2": `Погода. Ясное небо — обязательное условие. Если прогноз обещает
+    "HowToSee.point2": `**2. Погода.** Ясное небо — обязательное условие. Если прогноз обещает
       облачность, подумайте о смене места или дня.`,
-    "HowToSee.point3": `Выбор места. Ищите локации вдали от городских огней, чтобы световое
+    "HowToSee.point3": `**3. Выбор места.** Ищите локации вдали от городских огней, чтобы световое
       загрязнение не мешало.`,
-    "HowToSee.point4": `Терпение. Сияние может появиться неожиданно, поэтому будьте готовы
+    "HowToSee.point4": `**4. Терпение.** Сияние может появиться неожиданно, поэтому будьте готовы
       ждать в тепле и с комфортом.`,
-    "HowToSee.point5": `Фотосъёмка. Для более качественных фотографий используйте штатив,
+    "HowToSee.point5": `**5. Фотосъёмка.** Для более качественных фотографий используйте штатив,
       длинную выдержку и высокие ISO.`,
     "HowToSee.text2": `Северное сияние — это не только зрелище, но и глубокий эмоциональный опыт,
     вдохновляющий на всю жизнь.`,
@@ -167,10 +173,18 @@ export const ui = {
 
     /*Charts*/
     "Charts.title": `Aurora kp-index for 3 and 27 days`,
-    "Charts.text1": `Here you can see the Northern Lights Index graph! This chart displays the current level of activity of the northern lights (KP-index) in real time.
-                    The index ranges from 0 to 9, with higher values indicate a greater probability of observing auroras in northern latitudes.`,
-    "Charts.text2": `Follow the changes in the odds index to plan your observations and not miss the opportunity to see this amazing natural phenomenon.
-    For a more accurate forecast, it is recommended to refer to short-term forecasts.`,
+    "Charts.text1": `Here is a graph of the Aurora Index, which measures **the level of geomagnetic activity** and is **common to the entire planet**.
+    The index ranges from 0 to 9, with the higher the value, the more likely you are to see the lights.`,
+    "Charts.text2": `The northern lights are usually seen in high latitudes, but during strong storms they can be seen further south than usual. Follow the index changes to plan your observations and not miss your chance to see this spectacular natural phenomenon.
+    For an accurate forecast, we recommend referring to short-term forecasts.`,
+    "Charts.After1":
+      "**Normal conditions (KP 1-3):** The Northern Lights are only visible in polar latitudes - for example, in Murmansk (68° N), Norilsk (69° N) or Reykjavik (64° N).",
+    "Charts.After2":
+      "**Medium activity (KP 4-5):** The aurora can be seen in more southern regions such as St. Petersburg (60° N), Stockholm (59° N) and even in the northern United States (Minnesota, 45-48° N).",
+    "Charts.After3":
+      "**Strong geomagnetic storm (KP 6-7):** Northern Lights may reach Moscow (55° N), Berlin (52° N) and the northern US states (Washington, Iowa).",
+    "Charts.After4":
+      "**Extreme storm (KP 8-9):** The aurora is visible very far to the south – to Paris (48° N), Kyiv (50° N) and even to the southern United States (Texas, 30° N)",
     "Charts.3days": `3 days`,
     "Charts.27days": `27 days`,
 
@@ -186,11 +200,11 @@ export const ui = {
     /*How to see */
     "HowToSee.title": `How to see Aurora Borealis?`,
     "HowToSee.text1": `Hunting the northern lights is an amazing spectacle that requires preparation and patience.`,
-    "HowToSee.point1": `Activity forecast. Monitor solar activity using our resource. A Kp index above 4-5 indicates a high probability.`,
-    "HowToSee.point2": `Weather. Clear skies are a must. If the forecast calls for cloudy skies, consider changing locations or days.`,
-    "HowToSee.point3": `Choosing a location. Look for locations away from city lights to avoid light pollution.`,
-    "HowToSee.point4": `Patience. The glow may appear unexpectedly, so be prepared to wait warm and comfortable`,
-    "HowToSee.point5": `Photography. For better photos, use a tripod, slow shutter speed and high ISO`,
+    "HowToSee.point1": `**1. Activity forecast.** Monitor solar activity using our resource. A Kp index above 4-5 indicates a high probability.`,
+    "HowToSee.point2": `**2. Weather.** Clear skies are a must. If the forecast calls for cloudy skies, consider changing locations or days.`,
+    "HowToSee.point3": `**3. Choosing a location.** Look for locations away from city lights to avoid light pollution.`,
+    "HowToSee.point4": `**4. Patience.** The glow may appear unexpectedly, so be prepared to wait warm and comfortable`,
+    "HowToSee.point5": `**5. Photography.** For better photos, use a tripod, slow shutter speed and high ISO`,
     "HowToSee.text2": `Aurora Borealis is not only a sight to behold, but also a deep emotional experience that will inspire you for life.`,
 
     /*WhereToSee*/
@@ -267,9 +281,16 @@ export const ui = {
 
     /*Charts*/
     "Charts.title": `极光指数（3天和27天预测)`,
-    "Charts.text1": `在这里，您可以查看极光指数图表！该图表实时显示当前的极光活动水平（KP指数）。指数范围从0到9，数值越高，意味着在高纬度地区看到极光的可能性越大。`,
-    "Charts.text2": `请关注指数变化，以便规划您的观测时间，不要错过欣赏这一壮丽自然现象的机会。
-                    如需更精确的预测，建议参考短期预报。`,
+    "Charts.text1": `这里展示的是**行星级北极光指数 (KP指数) **的图表，它反映了全球范围内的地磁活动水平。指数范围从 0 到 9，数值越高，看到极光的可能性越大。`,
+    "Charts.text2": `通常情况下，北极光只能在高纬度地区观测到，但在强烈的地磁暴期间，它可能会出现在比平常更南的地区。请关注指数变化，以便规划您的观测，并不要错过欣赏这一震撼自然奇观的机会。为了获得更精确的预测，建议参考短期预报。`,
+    "Charts.After1":
+      "正常情况下 (KP 1-3): 北极光仅在极地纬度可见，例如摩尔曼斯克 (北纬 68°)、诺里尔斯克 (北纬 69°) 或雷克雅未克 (北纬 64°)。",
+    "Charts.After2":
+      "中等活动 (KP 4-5): 极光可能出现在较南的地区，例如圣彼得堡 (北纬 60°)、斯德哥尔摩 (北纬 59°)，甚至美国北部（明尼苏达州，北纬 45-48°)。",
+    "Charts.After3":
+      "强烈地磁暴 (KP 6-7): 北极光可能扩展到莫斯科 (北纬 55°)、柏林 (北纬 52°) 以及美国北部各州（华盛顿州、爱荷华州)。",
+    "Charts.After4":
+      "极端地磁暴 (KP 8-9): 极光可能出现在非常南部的地区，例如巴黎 (北纬 48°)、基辅 (北纬 50°)，甚至美国南部（得克萨斯州，北纬 30°)。",
     "Charts.3days": `3 天`,
     "Charts.27days": `27 天`,
     /*AppDownload*/
@@ -280,11 +301,11 @@ export const ui = {
     /*How to see */
     "HowToSee.title": `如何立即看到`,
     "HowToSee.text1": `观赏极光是一个令人惊叹的景象，需要一定的准备和耐心。`,
-    "HowToSee.point1": `活动预测。通过我们的资源关注太阳活动	Kp指数高于4-5表示较高的观测概率。`,
-    "HowToSee.point2": `天气。晴朗的天空是必不可少的条件。如果天气预报有云层，考虑更换地点或日期。`,
-    "HowToSee.point3": `选择地点。寻找远离城市灯光的地方，以免光污染干扰`,
-    "HowToSee.point4": `耐心。极光可能会突然出现，因此要准备在温暖舒适的环境中等待。`,
-    "HowToSee.point5": `拍摄技巧。为了拍摄更高质量的照片，使用三脚架、长时间曝光和高ISO设置。`,
+    "HowToSee.point1": `1. 活动预测。通过我们的资源关注太阳活动	Kp指数高于4-5表示较高的观测概率。`,
+    "HowToSee.point2": `2. 天气。晴朗的天空是必不可少的条件。如果天气预报有云层，考虑更换地点或日期。`,
+    "HowToSee.point3": `3. 选择地点。寻找远离城市灯光的地方，以免光污染干扰`,
+    "HowToSee.point4": `4. 耐心。极光可能会突然出现，因此要准备在温暖舒适的环境中等待。`,
+    "HowToSee.point5": `5. 拍摄技巧。为了拍摄更高质量的照片，使用三脚架、长时间曝光和高ISO设置。`,
     "HowToSee.text2": `极光不仅是一场视觉盛宴，更是一次深刻的情感体验，能够激励人一生。`,
     /*WhereToSee*/
     "Where.title": "哪里可以看到极光？",

@@ -52,3 +52,7 @@ h1 {
   font-size: 34px;
   margin: 20px 0;
 }
+
+strong {
+  font-weight: 600;
+}

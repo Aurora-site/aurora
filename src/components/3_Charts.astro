@@ -19,12 +19,14 @@ const t = useAstroTranslations(Astro);
     <a href="#index">{t("Charts.title")}</a>
   </h2>
   <div class="">
-    <p>
-      {t("Charts.text1")}
-    </p>
-    <p>
+    <p set:html={t("Charts.text1")} />
+    <p class="pt-4">
       {t("Charts.text2")}
     </p>
   </div>
   <ChartTabs client:only="react" />
+  <p class="pt-4" set:html={t("Charts.After1")} />
+  <p class="pt-4" set:html={t("Charts.After2")} />
+  <p class="pt-4" set:html={t("Charts.After3")} />
+  <p class="pt-4" set:html={t("Charts.After4")} />
 </section>

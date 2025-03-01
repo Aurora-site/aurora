@@ -20,7 +20,8 @@ export function getLangFromHref(href: string) {
 
 export function useTranslations(lang: Lang) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
-    return ui[lang][key] || ui[defaultLang][key];
+    const text = ui[lang][key] || ui[defaultLang][key];
+    return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   };
 }
 
