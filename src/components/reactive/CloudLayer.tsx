@@ -7,7 +7,7 @@ import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
 
 interface CloudLayerProps {
-  map: Map;
+  map: Map | null;
 }
 
 export function CloudLayer({ map }: CloudLayerProps) {
