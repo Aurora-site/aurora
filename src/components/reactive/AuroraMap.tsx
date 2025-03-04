@@ -21,8 +21,9 @@ import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
 import { CloudLayer } from "./CloudLayer"; // Импортируем слой облачности
 import { CitySelectMap } from "./CitySelectMap";
+import { API_URL } from "astro:env/client";
 
-function getColorFromWeight(weight) {
+function getColorFromWeight(weight: number) {
   const t = Math.min(Math.max(weight, 0), 1);
   const gradient = [
     { stop: 0.1, color: [226, 255, 227, 1] },
@@ -61,7 +62,11 @@ export function AuroraMap() {
 
   useEffect(() => {
     if (mapContainerRef.current && !mapRef.current) {
-      const tileLayer = new TileLayer({ source: new OSM() });
+      const tileLayer = new TileLayer({
+        source: new OSM({
+          url: `${API_URL}/api/v1/proxy/osm-tile-map/{z}/{x}/{y}.png`,
+        }),
+      });
       const view = new View({
         center: fromLonLat([30, 70]),
         zoom: 3,
@@ -102,7 +107,7 @@ export function AuroraMap() {
         const feature = new Feature({
           geometry: new Point(fromLonLat([point[1], point[0]])),
         });
-        feature.setStyle(null);
+        feature.setStyle();
         feature.set("weight", point[2]);
         vectorSource.addFeature(feature);
       });
