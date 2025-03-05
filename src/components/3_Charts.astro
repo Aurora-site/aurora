@@ -7,14 +7,17 @@ const t = useAstroTranslations(Astro);
 ---
 
 <section
-  class="bg-[url('/images/starsback_index.png')] bg-[80px_0px] bg-no-repeat py-5 md:bg-[620px_0px] lg:bg-[820px_0px] xl:bg-[950px_0px]"
+  class="relative bg-[url('/images/starsback_index.png')] bg-[80px_0px] bg-no-repeat py-5 md:bg-[620px_0px] lg:bg-[820px_0px] xl:bg-[950px_0px]"
   id="index"
 >
-  <div
-    class="absolute top-[1690px] left-[-159px] max-w-[500px] sm:top-[1217px] sm:left-[-41px] 2xl:left-[0px]"
-  >
-    <Image src={auroraback_index} alt="Abstract background" />
-  </div>
+  <Image
+    class="absolute -top-10 -left-40 max-w-[500px] sm:-left-28"
+    src={auroraback_index}
+    alt="Abstract background"
+  />
+  <a href="#index">
+    <div class="absolute h-14 w-[500px]"></div>
+  </a>
   <h2>
     <a href="#index">{t("Charts.title")}</a>
   </h2>
