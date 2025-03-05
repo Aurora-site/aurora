@@ -22,7 +22,7 @@ import { CloudLayer } from "./CloudLayer"; // Импортируем слой о
 import { CitySelectMap } from "./CitySelectMap";
 import { API_URL } from "astro:env/client";
 
-const colorMap = [
+export const colorMap = [
   {
     stop: 0.1,
     color: [226, 255, 227, 1],
@@ -57,7 +57,7 @@ const colorMap = [
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
-function getColorFromWeight(weight: number, alpha?: number) {
+export function getColorFromWeight(weight: number, alpha?: number) {
   const t = Math.min(Math.max(weight, 0), 1);
 
   let lower = colorMap[0];
