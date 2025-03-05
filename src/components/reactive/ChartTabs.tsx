@@ -1,17 +1,35 @@
 import * as Tabs from "@radix-ui/react-tabs";
-import React from "react";
-import { KpGraph3 } from "./KpGraph3";
-import { KpGraph27 } from "./KpGraph27";
+import { useState } from "react";
+import { getKp3Data, KpGraph3 } from "./KpGraph3";
+import { getKp27Data, KpGraph27 } from "./KpGraph27";
 import { cn } from "../../utils/cn";
 import { useLocale } from "../../i18n/utils";
 import { localeAtom } from "../../stores/locale";
+import { useStore } from "@nanostores/react";
+import { useQuery } from "@tanstack/react-query";
+import { queryClient } from "../../stores/query";
 
 const className =
-  "w-40 py-1 rounded-full border-0 transition-colors duration-200 ease-in-out z-10000";
+  "cursor-pointer w-40 py-1 rounded-full border-0 transition-colors duration-200 ease-in-out z-10000";
 
 export const ChartTabs = () => {
-  const [activeTab, setActiveTab] = React.useState("tab1");
+  const [activeTab, setActiveTab] = useState("tab1");
   const t = useLocale(localeAtom);
+  const client = useStore(queryClient);
+  const { data: kp3Data } = useQuery(
+    {
+      queryKey: ["kp-graph-3"],
+      queryFn: getKp3Data,
+    },
+    client,
+  );
+  const { data: kp27Data } = useQuery(
+    {
+      queryKey: ["kp-graph-27"],
+      queryFn: getKp27Data,
+    },
+    client,
+  );
   return (
     <Tabs.Root
       value={activeTab}
@@ -27,7 +45,7 @@ export const ChartTabs = () => {
           <Tabs.Trigger
             className={cn(
               className,
-              activeTab === "tab1" && "bg-(--color-tab-active) text-white",
+              activeTab === "tab1" && "bg-tab-active text-white",
             )}
             value="tab1"
           >
@@ -36,7 +54,7 @@ export const ChartTabs = () => {
           <Tabs.Trigger
             className={cn(
               className,
-              activeTab === "tab2" && "bg-(--color-tab-active) text-white",
+              activeTab === "tab2" && "bg-tab-active text-white",
             )}
             value="tab2"
           >
@@ -45,10 +63,10 @@ export const ChartTabs = () => {
         </div>
       </Tabs.List>
       <Tabs.Content value="tab1">
-        <KpGraph3 />
+        <KpGraph3 data={kp3Data} />
       </Tabs.Content>
       <Tabs.Content value="tab2">
-        <KpGraph27 />
+        <KpGraph27 data={kp27Data} />
       </Tabs.Content>
     </Tabs.Root>
   );

@@ -68,7 +68,7 @@ export const CommonKpChart: FC<CommonKpChart> = ({
   xTick,
 }) => {
   return (
-    <div className="relative overflow-x-scroll lg:overflow-x-hidden">
+    <div className="relative overflow-x-scroll xl:overflow-x-hidden">
       <div
         className={
           "ml-[-40px] w-[300%] text-black sm:w-[200%] lg:w-[150%] xl:w-full"
