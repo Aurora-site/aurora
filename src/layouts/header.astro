@@ -5,6 +5,8 @@ import "../styles/tailwind.css";
 import { LanguagePicker } from "../components/reactive/LanguagePicker";
 import { useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
+
+const { variant = "default" } = Astro.props;
 ---
 
 <!-- Шапка -->
@@ -23,13 +25,17 @@ const t = useAstroTranslations(Astro);
       </div>
       <div class="navigation" id="navigation">
         <button class="close" id="close">&times;</button>
-        <nav class="nav">
-          <a href="#app">{t("H.app")}</a>
-          <a href="#map">{t("H.map")}</a>
-          <a href="#index">{t("H.index")}</a>
-          <a href="#how-to-see">{t("H.how")}</a>
-          <a href="#where-to-see">{t("H.where")}</a>
-        </nav>
+        {
+          variant !== "app" && (
+            <nav class="nav">
+              <a href="#app">{t("H.app")}</a>
+              <a href="#map">{t("H.map")}</a>
+              <a href="#index">{t("H.index")}</a>
+              <a href="#how-to-see">{t("H.how")}</a>
+              <a href="#where-to-see">{t("H.where")}</a>
+            </nav>
+          )
+        }
       </div>
       <div class="lang">
         <LanguagePicker client:only="react" />

@@ -8,6 +8,8 @@ const t = useAstroTranslations(Astro);
 const lang = useAstroLocale(Astro);
 import { DEPLOY_URL, ENV_NAME } from "astro:env/client";
 import YaMetrica from "../components/utils/YaMetrica.astro";
+
+const { variant = "default" } = Astro.props;
 ---
 
 <html lang={lang} class="scroll-smooth">
@@ -36,7 +38,7 @@ import YaMetrica from "../components/utils/YaMetrica.astro";
     {ENV_NAME === "main" ? <YaMetrica /> : <meta content="YaMetrica off" />}
   </head>
   <body>
-    <Header />
+    <Header variant={variant} />
     <div class="bg-[radial-gradient(circle,black,#202731_80%,#5E666E_100%)]">
       <div class="container">
         <slot />
