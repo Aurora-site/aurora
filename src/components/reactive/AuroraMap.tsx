@@ -149,7 +149,7 @@ export function AuroraMap() {
             flatCoordinates: number[];
           };
           const coordinate = point.flatCoordinates;
-          const [lon, lat] = toLonLat(coordinate);
+          const [_, lat] = toLonLat(coordinate);
           const radius =
             zoom ** 1.1 * 1 * (1 + (3 * Math.abs(lat) ** 1.3) / 90);
           const alpha = 0.02 + (zoom - 2) * 0.002;
