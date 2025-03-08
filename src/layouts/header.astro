@@ -198,6 +198,22 @@ const { variant = "default" } = Astro.props;
   const lala = document.querySelector(".lala");
   const nav = document.querySelector(".nav"); // Получаем сам <nav>
 
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this,
+        args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+  const DEBOUNSE_DELAY = 200;
   // Функция перемещения lang
   function moveLangToNav() {
     if (window.innerWidth <= 1024) {
@@ -219,31 +235,28 @@ const { variant = "default" } = Astro.props;
 
   // Перемещение lang при изменении размера экрана
   window.addEventListener("resize", moveLangToNav);
-
-  // burger.addEventListener("click", () => {
-  //   navigation.classList.add("open");
-  //   navigation.classList.add("mobile-nav");
-  // });
-
-  // close.addEventListener("click", () => {
-  //   navigation.classList.remove("open");
-  //   navigation.classList.remove("mobile-nav");
-  // });
-
   // Открытие меню
-  burger.addEventListener("click", () => {
-    navigation.classList.add("open");
-    navigation.classList.add("mobile-nav");
-  });
+  burger.addEventListener(
+    "click",
+    debounce(() => {
+      if (!navigation.classList.contains("open"))
+        navigation.classList.add("open");
+      if (!navigation.classList.contains("mobile-nav"))
+        navigation.classList.add("mobile-nav");
+    }),
+    DEBOUNSE_DELAY,
+  );
 
   // Функция для закрытия меню
   const closeMenu = () => {
-    navigation.classList.remove("open");
-    navigation.classList.remove("mobile-nav");
+    if (navigation.classList.contains("open"))
+      navigation.classList.remove("open");
+    if (navigation.classList.contains("mobile-nav"))
+      navigation.classList.remove("mobile-nav");
   };
 
   // Закрытие по кнопке "крестик"
-  close.addEventListener("click", closeMenu);
+  close.addEventListener("click", debounce(closeMenu, DEBOUNSE_DELAY));
 
   // Закрытие при клике вне меню
   document.addEventListener("click", (event) => {
