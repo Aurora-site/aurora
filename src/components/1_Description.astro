@@ -1,14 +1,22 @@
 ---
 import { useAstroTranslations } from "../i18n/utils";
+import { getImage } from "astro:assets";
+import auroraback_mb from "../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 const t = useAstroTranslations(Astro);
 ---
 
-<style>
-  /* .description {
-    text-align: center;
-    padding: 150px 20px 50px 20px;
-  } */
-
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
   .description h1 {
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
@@ -29,7 +37,7 @@ const t = useAstroTranslations(Astro);
 </style>
 
 <section
-  class="description bg-[url('/images/auroraback_mb.png')] bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[url('/images/auroraback.png')] md:bg-[0px_20px]"
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
   <h1>{t("description.title")}</h1>

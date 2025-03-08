@@ -1,11 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import store from "/src/assets/store.png";
 import { useAstroTranslations } from "../../i18n/utils";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback_app from "../../assets/auroraback_app.png";
+const auroraBackAppImageUrl = `url(${(await getImage({ src: auroraback_app })).src})`;
 const t = useAstroTranslations(Astro);
 ---
 
-<style>
+<style define:vars={{ auroraBackImageUrl, auroraBackAppImageUrl }}>
   .description h1 {
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
@@ -112,7 +116,14 @@ const t = useAstroTranslations(Astro);
   .slider-button.right {
     right: -50px;
   }
-
+  #description {
+    background-image: var(--auroraBackImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackAppImageUrl);
+    }
+  }
   @media (max-width: 952px) {
     .slider-button {
       display: none !important;
@@ -142,7 +153,7 @@ const t = useAstroTranslations(Astro);
 </style>
 
 <section
-  class="description bg-[url('/images/auroraback_mb.png')] bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[url('/images/auroraback_app.png')] md:bg-[0px_20px]"
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
   <h1>{t("App.title")}</h1>

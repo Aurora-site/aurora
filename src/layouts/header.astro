@@ -15,7 +15,7 @@ const { variant = "default" } = Astro.props;
     <div class="lala">
       <div class="logo">
         <a href="/">
-          <Image src={Logo} alt="Лого" />
+          <Image src={Logo} alt="Лого" loading={"eager"} />
         </a>
       </div>
       <div class="burger" id="burger">
