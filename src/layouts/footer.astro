@@ -43,6 +43,7 @@ const t = useAstroTranslations(Astro);
   .footer-container h3 {
     font-size: 20px;
     font-weight: 600;
+    font-family: "SongerGrotesqueBold", sans-serif;
   }
   .footer-container a:hover {
     text-decoration: underline;
@@ -184,7 +185,9 @@ const t = useAstroTranslations(Astro);
 
       <!-- Правая часть: Документация -->
       <div class="footer-docs">
-        <div class="text-[20px] font-bold">{t("footer.Docs")}</div>
+        <div class="font-[SongerGrotesqueBold] text-[20px] font-bold">
+          {t("footer.Docs")}
+        </div>
         <ul>
           <li><a href="/policy">{t("footer.Policy")}</a></li>
           <li><a href="/agreement">{t("footer.Data")}</a></li>

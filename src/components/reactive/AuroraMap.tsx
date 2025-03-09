@@ -190,7 +190,7 @@ export function AuroraMap() {
           {t("MapSection.Tooltip")}
         </h4>
       </div>
-      <div className="absolute right-0 bottom-[16px] flex w-[316px] items-center bg-white pt-1 pl-1 text-[10px] opacity-80">
+      <div className="absolute right-0 bottom-[18px] flex w-[316px] items-center bg-white pt-1 pl-1 text-[10px] opacity-80">
         {colorMap.map(({ rgbaColor, label }) => (
           <div key={label} className="mb-[5px] flex items-center">
             <div

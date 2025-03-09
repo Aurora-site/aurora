@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import Feature from "ol/Feature";
@@ -9,13 +9,27 @@ import { useStore } from "@nanostores/react";
 import { cityAtom } from "../../stores/citiy";
 import { useGeolocation } from "../../utils/geo_utils";
 import Map from "ol/Map";
+import { localeAtom } from "../../stores/locale";
 
 export function CitySelectMap({ map }: { map: Map | null }) {
   const city = useStore(cityAtom); // Получаем выбранный город
+  const t = useStore(localeAtom); // Получаем текущую локаль
   type CityLayer = VectorLayer<VectorSource<Feature<Point>>, Feature<Point>>;
   const cityLayerRef = useRef<CityLayer>(null);
   const userLayerRef = useRef<VectorLayer>(null);
   const location = useGeolocation({ enableHighAccuracy: true });
+
+  // const getCityName = (city: any, locale: string) => {
+
+  //   if (locale === "en" && city.name_en) return city.name_en;
+  //   if (locale === "cn" && city.name_cn) return city.name_cn;
+  //   return city.name;
+  // };
+  const cityName = useMemo(() => {
+    if (t === "en" && city.name_en) return city.name_en;
+    if (t === "cn" && city.name_cn) return city.name_cn;
+    return city.name; // по умолчанию возвращаем название на основном языке
+  }, [city, t]);
 
   useEffect(() => {
     if (!map) return;
@@ -24,11 +38,12 @@ export function CitySelectMap({ map }: { map: Map | null }) {
     // Если слоя еще нет, создаем его
     if (!cityLayer) {
       const citySource = new VectorSource<Feature<Point>>();
+      // const cityName = getCityName(city, t);
 
       // Создаем начальную feature для города
       const feature = new Feature({
         geometry: new Point(fromLonLat([city.long, city.lat])),
-        name: city.name,
+        name: cityName,
       });
       citySource.addFeature(feature);
 
@@ -66,10 +81,11 @@ export function CitySelectMap({ map }: { map: Map | null }) {
       if (features.length > 0) {
         const feature = features[0];
         feature.setGeometry(new Point(fromLonLat([city.long, city.lat])));
-        feature.set("name", city.name);
+        // const cityName = getCityName(city, t);
+        feature.set("name", cityName);
       }
     }
-  }, [map, city]); // Обновляем слой, когда меняется выбранный город
+  }, [map, city, t]); // Обновляем слой, когда меняется выбранный город
 
   useEffect(() => {
     if (

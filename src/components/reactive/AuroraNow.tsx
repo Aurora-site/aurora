@@ -44,7 +44,7 @@ export const AuroraNow = () => {
     if (prob < 20) return "bg-green-500"; // Низкая вероятность
     if (prob < 40) return "bg-yellow-500"; // Низкая вероятность
     if (prob < 60) return "bg-orange-500"; // Высокая вероятность
-    if (prob < 100) return "bg-red-500"; // Очень высокая вероятность
+    if (prob <= 100) return "bg-red-500"; // Очень высокая вероятность
     return "bg-gray-400";
   };
 

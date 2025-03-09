@@ -19,13 +19,14 @@ import { useGeolocation } from "../../utils/geo_utils.ts";
 
 export const CitySelect = () => {
   const t = useLocale(localeAtom);
+  const locale = useStore(localeAtom);
   const [open, setOpen] = useState(false);
   const city = useStore(cityAtom);
   const [serachQuery, setSerachQuery] = useState(city.name || "");
   const client = useStore(queryClient);
   const { data: probabilityCities } = useQuery(
     {
-      queryKey: ["probability-cities"],
+      queryKey: ["probability-cities", locale],
       queryFn: async () => {
         const res = await ApiService.apiAllCitiesApiV1AllCitiesGet();
         return res;
@@ -33,19 +34,29 @@ export const CitySelect = () => {
     },
     client,
   );
+
+  function getCityName(cityObj: { [x: string]: any; name: any }) {
+    return cityObj[`name_${locale}`] || cityObj.name;
+  }
+
   function handleSearch() {
-    const selectedCity = probabilityCities?.find((v) => v.name === serachQuery);
+    const selectedCity = probabilityCities?.find(
+      (v) => getCityName(v).toLowerCase() === serachQuery.toLowerCase(),
+    );
     if (selectedCity) {
       cityAtom.set(selectedCity);
       setOpen(false);
     }
   }
+
   useEffect(() => {
-    const c = probabilityCities?.find((v) => v.name == serachQuery);
+    const c = probabilityCities?.find(
+      (v) => getCityName(v).toLowerCase() === serachQuery.toLowerCase(),
+    );
     if (c) {
       cityAtom.set(c);
     }
-  }, [serachQuery]);
+  }, [serachQuery, probabilityCities, locale]);
 
   const location = useGeolocation();
 
@@ -82,7 +93,7 @@ export const CitySelect = () => {
             <p className="font-[Montserrat] text-[16px] no-underline">
               {t("CitySelect.CityChoice")}
             </p>{" "}
-            <p className="underline">{city.name || "Мурманск"}</p>
+            <p className="underline">{getCityName(city) || "Мурманск"}</p>
             <ChevronDown className="h-4 w-4" />
           </div>
         </DialogTrigger>
@@ -117,21 +128,23 @@ export const CitySelect = () => {
               <MapPin className="h-5 w-5" /> {t("user.Geo")}
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-y-2 xl:w-[50%]">
+          <div className="grid max-h-[400px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
             {probabilityCities
               ?.filter((v) =>
-                v.name.toLowerCase().includes(serachQuery.toLowerCase()),
+                getCityName(v)
+                  .toLowerCase()
+                  .includes(serachQuery.toLowerCase()),
               )
               .map((c, i) => (
                 <div
                   key={i.toString()}
                   onClick={() => {
-                    setSerachQuery(c.name);
+                    setSerachQuery(getCityName(c));
                     setOpen(false);
                   }}
                   className="cursor-pointer"
                 >
-                  {c.name}
+                  {getCityName(c)}
                 </div>
               ))}
           </div>

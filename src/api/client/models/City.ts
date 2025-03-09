@@ -7,4 +7,6 @@ export type City = {
   name: string;
   lat: number;
   long: number;
+  name_en?: string;
+  name_cn?: string;
 };
