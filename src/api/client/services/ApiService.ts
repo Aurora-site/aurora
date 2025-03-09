@@ -121,4 +121,31 @@ export class ApiService {
       url: "/api/v1/all-tours",
     });
   }
+  /**
+   * Api Cloud Map
+   * Получение тайлов облачнсти от OpenWeatherMap
+   * @param z
+   * @param x
+   * @param y
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  public static apiCloudMapApiV1CloudMapZXYGet(
+    z: number,
+    x: number,
+    y: number,
+  ): CancelablePromise<any> {
+    return __request(OpenAPI, {
+      method: "GET",
+      url: "/api/v1/cloud-map/{z}/{x}/{y}",
+      path: {
+        z: z,
+        x: x,
+        y: y,
+      },
+      errors: {
+        422: `Validation Error`,
+      },
+    });
+  }
 }

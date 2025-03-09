@@ -8,6 +8,7 @@ export type Tour = {
   text_mini: string;
   text: string;
   text_head: string;
+  text_erid?: (string | null) | null;
   price: number;
   url: string;
   image: string;

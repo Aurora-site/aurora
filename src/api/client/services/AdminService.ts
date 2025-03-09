@@ -2,8 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { Body_create_object_api_v1_create_object_post } from "../models/Body_create_object_api_v1_create_object_post";
 import type { City } from "../models/City";
 import type { CityIn } from "../models/CityIn";
+import type { CityUpdate } from "../models/CityUpdate";
 import type { Cust } from "../models/Cust";
 import type { Message } from "../models/Message";
 import type { Tour } from "../models/Tour";
@@ -39,6 +41,72 @@ export class AdminService {
     return __request(OpenAPI, {
       method: "POST",
       url: "/api/v1/set-cities",
+      body: requestBody,
+      mediaType: "application/json",
+      errors: {
+        422: `Validation Error`,
+      },
+    });
+  }
+  /**
+   * New City
+   * Добавление города
+   * @param requestBody
+   * @returns City Successful Response
+   * @throws ApiError
+   */
+  public static newCityApiV1NewCityPost(
+    requestBody: CityIn,
+  ): CancelablePromise<City> {
+    return __request(OpenAPI, {
+      method: "POST",
+      url: "/api/v1/new-city",
+      body: requestBody,
+      mediaType: "application/json",
+      errors: {
+        422: `Validation Error`,
+      },
+    });
+  }
+  /**
+   * Drop City
+   * Удаление города
+   * @param cityId
+   * @returns Message Successful Response
+   * @throws ApiError
+   */
+  public static dropCityApiV1CityCityIdDelete(
+    cityId: number,
+  ): CancelablePromise<Message> {
+    return __request(OpenAPI, {
+      method: "DELETE",
+      url: "/api/v1/city/{city_id}",
+      path: {
+        city_id: cityId,
+      },
+      errors: {
+        422: `Validation Error`,
+      },
+    });
+  }
+  /**
+   * Update City
+   * Обновление города
+   * @param cityId
+   * @param requestBody
+   * @returns City Successful Response
+   * @throws ApiError
+   */
+  public static updateCityApiV1CityCityIdPut(
+    cityId: number,
+    requestBody: CityUpdate,
+  ): CancelablePromise<City> {
+    return __request(OpenAPI, {
+      method: "PUT",
+      url: "/api/v1/city/{city_id}",
+      path: {
+        city_id: cityId,
+      },
       body: requestBody,
       mediaType: "application/json",
       errors: {
@@ -96,6 +164,32 @@ export class AdminService {
       },
       errors: {
         404: `Not Found`,
+        422: `Validation Error`,
+      },
+    });
+  }
+  /**
+   * Create Object
+   * Сохранение медиафайла в папку media
+   * @param formData
+   * @param name
+   * @returns string Successful Response
+   * @throws ApiError
+   */
+  public static createObjectApiV1CreateObjectPost(
+    formData: Body_create_object_api_v1_create_object_post,
+    name?: string | null,
+  ): CancelablePromise<string> {
+    return __request(OpenAPI, {
+      method: "POST",
+      url: "/api/v1/create-object",
+      query: {
+        name: name,
+      },
+      formData: formData,
+      mediaType: "multipart/form-data",
+      errors: {
+        409: `Conflict`,
         422: `Validation Error`,
       },
     });

@@ -6,9 +6,12 @@ export type Cust = {
   id: number;
   current_geo_lat?: (number | null) | null;
   current_geo_long?: (number | null) | null;
-  selected_geo_lat: number;
-  selected_geo_long: number;
+  selected_geo_lat?: (number | null) | null;
+  selected_geo_long?: (number | null) | null;
   locale?: string | null;
+  token: string;
+  hobo?: boolean | null;
+  hobo_at?: (string | null) | null;
   readonly created_at: string;
   readonly updated_at: string;
 };

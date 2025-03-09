@@ -3,9 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 export type CustIn = {
-  current_geo_lat?: number;
-  current_geo_long?: number;
-  selected_geo_lat: number;
-  selected_geo_long: number;
+  current_geo_lat?: number | null;
+  current_geo_long?: number | null;
+  selected_geo_lat?: number | null;
+  selected_geo_long?: number | null;
   locale?: string;
+  token: string;
+  hobo?: boolean | null;
+  hobo_at?: (string | null) | null;
+  city_id: number;
 };

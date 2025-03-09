@@ -11,8 +11,10 @@ export type { AuroraNooaProbabilityResponse } from "./models/AuroraNooaProbabili
 export type { AuroraProbabilityBody } from "./models/AuroraProbabilityBody";
 export type { AuroraProbabilityCalculation } from "./models/AuroraProbabilityCalculation";
 export type { AuroraProbabilityResponse } from "./models/AuroraProbabilityResponse";
+export type { Body_create_object_api_v1_create_object_post } from "./models/Body_create_object_api_v1_create_object_post";
 export type { City } from "./models/City";
 export type { CityIn } from "./models/CityIn";
+export type { CityUpdate } from "./models/CityUpdate";
 export type { Cust } from "./models/Cust";
 export type { CustIn } from "./models/CustIn";
 export type { CustSubResponse } from "./models/CustSubResponse";
@@ -36,4 +38,5 @@ export type { ValidationError } from "./models/ValidationError";
 
 export { AdminService } from "./services/AdminService";
 export { ApiService } from "./services/ApiService";
+export { ProxyService } from "./services/ProxyService";
 export { UserService } from "./services/UserService";

@@ -5,8 +5,10 @@
 export type City = {
   id: number;
   name: string;
+  name_ru?: (string | null) | null;
+  name_en?: (string | null) | null;
+  name_cn?: (string | null) | null;
   lat: number;
   long: number;
-  name_en?: string;
-  name_cn?: string;
+  time?: (string | null) | null;
 };
