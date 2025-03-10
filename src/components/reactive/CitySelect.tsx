@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../shadcn/ui/dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { queryClient } from "../../stores/query";
 import { useStore } from "@nanostores/react";
 import { useQuery } from "@tanstack/react-query";
@@ -39,6 +39,8 @@ export const CitySelect = () => {
     return cityObj[`name_${locale}`] || cityObj.name;
   }
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   function handleSearch() {
     const selectedCity = probabilityCities?.find(
       (v) => getCityName(v).toLowerCase() === serachQuery.toLowerCase(),
@@ -46,6 +48,10 @@ export const CitySelect = () => {
     if (selectedCity) {
       cityAtom.set(selectedCity);
       setOpen(false);
+    } else {
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
     }
   }
 
@@ -109,12 +115,19 @@ export const CitySelect = () => {
           <div className="py-5">
             <div className="mb-5 flex items-center gap-3 rounded-2xl bg-slate-300 px-5 py-2 text-black">
               <Search />
+
               <input
+                ref={inputRef}
                 placeholder="Мурманск"
                 className="w-full focus:outline-none"
                 value={serachQuery}
                 onChange={(e) => setSerachQuery(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault(); // Предотвращаем стандартное поведение
+                    handleSearch(); // Вызываем поиск
+                  }
+                }}
               />
               <X
                 onClick={() => setSerachQuery("")}
@@ -128,7 +141,7 @@ export const CitySelect = () => {
               <MapPin className="h-5 w-5" /> {t("user.Geo")}
             </button>
           </div>
-          <div className="grid max-h-[400px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
+          <div className="grid max-h-[500px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
             {probabilityCities
               ?.filter((v) =>
                 getCityName(v)
