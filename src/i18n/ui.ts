@@ -132,6 +132,55 @@ export const ui = {
     "footer.Cookie1": "Мы используем",
     "footer.Cookie2": "Без них мы не сможем так ярко сиять",
     "footer.Cookie3": "Да, без проблем",
+    /*FAQ */
+    "FAQ.Title": "Часто задаваемые вопросы",
+    "FAQ.Q1": "ОТКУДА ДАННЫЕ? ЭТО СТАТИСТИКА?",
+    "FAQ.Q1Ans":
+      "Все данные, которые Вы видите на сайте, являются научными. Они поступают с научного института и преобразовываются для Вашего наглядного понимания.",
+
+    "FAQ.Q2": "ПОЧЕМУ ПРИ СМЕНЕ ГЕОЛОКАЦИИ ИНДЕКС НЕ МЕНЯЕТСЯ?",
+    "FAQ.Q2Ans": `Планетарный индекс северного сияния (Kp-индекс) является общим для всей планеты, потому что он отражает суммарное
+    воздействие солнечной активности на магнитное поле Земли в целом, а не только на одном конкретном месте. Он учитывает изменения в магнитном поле,
+    вызванные солнечным ветром и солнечными бурями, которые распространяются по Земле.`,
+
+    "FAQ.Q3": "ЧТО ОБОЗНАЧАЕТ ЦВЕТ СЕВЕРНОГО СИЯНИЯ НА КАРТЕ?",
+    "FAQ.Q3Ans":
+      "На карту добавлено окошко с цветовыми квадратами и с процентами для лучшего ориентира на карте. Обозначения цветов на ней:",
+    "FAQ.Q3AnsP1": "Бледно-зелёный – вероятность от 0 до 10 процентов.",
+    "FAQ.Q3AnsP2": "Зелёный – вероятность от 10 до 20 процентов.",
+    "FAQ.Q3AnsP3": "Жёлтый – от 20 до 40 процентов.",
+    "FAQ.Q3AnsP4": "Оранжевый – от 40 до 60 процентов.",
+    "FAQ.Q3AnsP5": "Красный – от 60 до 100 процентов.",
+
+    "FAQ.Q4": "КОМУ ПРИХОДЯТ УВЕДОМЛЕНИЯ?",
+    "FAQ.Q4Ans1":
+      "Уведомления получают все пользователи, у которых установлено приложение и на странице «Уведомления» выбран город, который находится за Полярным кругом. Они отправляются раз в две недели при высокой вероятности и являются бесплатными.",
+    "FAQ.Q4Ans2":
+      "Дополнительно пользователи, оформившие платные уведомления, получают их в соответствии с выбранным городом, вероятностью и тарифом.",
+
+    "FAQ.Q5": "ПОЧЕМУ МНЕ НЕ ПРИХОДЯТ УВЕДОМЛЕНИЯ?",
+    "FAQ.Q5Ans":
+      "Уведомления не приходят тем пользователям приложения, у которых:",
+    "FAQ.Q5AnsP1": "Не разрешены пуш-уведомления в Настройках смартфона.",
+    "FAQ.Q5AnsP2": "Не выбран город на странице «Уведомления» в приложении.",
+    "FAQ.Q5AnsP3":
+      "Город, который выбран, находится не за Полярным кругом (для бесплатных уведомлений раз в две недели).",
+    "FAQ.Q5Ans2":
+      "Не приходят уведомления на дополнительном платном тарифе? Значит, в Вашей выбранной локации Сияние не достигло порога вероятности, который Вы выбрали.",
+
+    "FAQ.Q6": "ЕСЛИ В СПИСКЕ НЕТ МОЕГО ГОРОДА, НО ТАМ БЫВАЕТ СИЯНИЕ?",
+    "FAQ.Q6Ans1.1": "Напишите нам на почту",
+    "FAQ.Q6Ans1.2":
+      ", и мы добавим Ваш город, если он подойдёт по вероятности для уведомлений и отслеживания.",
+    "FAQ.Q6Ans2": "Мы постоянно работаем над списком и увеличиваем его.",
+    "FAQ.Q7": "ПОЧЕМУ НЕ РАБОТАЕТ «МОЕ МЕСТОПОЛОЖЕНИЕ» НА КАРТЕ?",
+    "FAQ.Q7Ans":
+      "Проверьте настройки браузера или своего смартфона/компьютера. У вас стоит запрет на передачу геопозиции.",
+    "FAQ.Q8": "ПОЧЕМУ ПРИ ВЫСОКОЙ ВЕРОЯТНОСТИ Я НЕ ВИЖУ СЕВЕРНОЕ СИЯНИЕ?",
+    "FAQ.Q8Ans1": `Если в вашем местоположении высокая вероятность увидеть северное сияние, то помешать этому может высокая облачность
+      и/или снегопад. Поэтому на нашей карте есть дополнительный слой облачности, который позволяет оценить ее уровень в данный момент.`,
+    "FAQ.Q8Ans2":
+      "И не забывайте: северное сияние вознаграждает тех, кто умеет ждать!",
   },
   en: {
     icon: "/images/us.png",
@@ -247,6 +296,55 @@ export const ui = {
     "footer.Cookie1": "We use",
     "footer.Cookie2": "We cannot shine so brightly without them",
     "footer.Cookie3": "No problem",
+    /*FAQ */
+    "FAQ.Title": "Frequently Asked Questions",
+    "FAQ.Q1": "Where does the data come from? Is it statistical data?",
+    "FAQ.Q1Ans":
+      "All the data you see on the website is scientific. It comes from a research institute and is processed to make it easier for you to understand.",
+
+    "FAQ.Q2": "Why doesn’t the index change when I change my location?",
+    "FAQ.Q2Ans": `The planetary aurora index (Kp index) applies to the entire Earth because it reflects the overall impact of solar activity on the Earth's magnetic field, not just a specific location.
+    It takes into account changes in the magnetic field caused by solar wind and solar storms, which affect the entire planet.`,
+
+    "FAQ.Q3": "What do the aurora colors on the map mean?",
+    "FAQ.Q3Ans":
+      "The map includes a legend with color-coded squares and percentage values to help you better interpret the data. The color meanings are as follows:",
+    "FAQ.Q3AnsP1": "Pale green – 0% to 10% probability",
+    "FAQ.Q3AnsP2": "Green – 10% to 20% probability",
+    "FAQ.Q3AnsP3": "Yellow – 20% to 40% probability",
+    "FAQ.Q3AnsP4": "Orange – 40% to 60% probability",
+    "FAQ.Q3AnsP5": "Red – 60% to 100% probability",
+
+    "FAQ.Q4": "Who receives notifications?",
+    "FAQ.Q4Ans1": `All users who have installed the app and selected a city within the Arctic Circle on the "Notifications" page will receive alerts. These notifications are sent every two weeks when the probability is high and are free of charge.`,
+    "FAQ.Q4Ans2":
+      "Additionally, users who have subscribed to paid notifications receive alerts based on their chosen city, probability threshold, and subscription plan.",
+
+    "FAQ.Q5": "Why am I not receiving notifications?",
+    "FAQ.Q5Ans":
+      "If you are not receiving notifications, it could be due to the following reasons:",
+    "FAQ.Q5AnsP1": "Push notifications are not enabled in your phone settings.",
+    "FAQ.Q5AnsP2": `You haven’t selected a city on the "Notifications" page in the app.`,
+    "FAQ.Q5AnsP3":
+      "Your selected city is not within the Arctic Circle (applies to free biweekly notifications).",
+    "FAQ.Q5Ans2":
+      "If you subscribed to a paid notification plan but didn’t receive alerts, the aurora probability in your chosen location may not have reached your selected threshold.",
+
+    "FAQ.Q6":
+      "What if my city is not on the list, but aurora can be seen there?",
+    "FAQ.Q6Ans1.1": "Please email us at",
+    "FAQ.Q6Ans1.2":
+      " with your city name. If it meets the probability criteria for notifications and tracking, we will add it.",
+    "FAQ.Q6Ans2":
+      "We are constantly working on updating and expanding the city list.",
+    "FAQ.Q7": `Why isn’t "My Geoposition" working on the map?`,
+    "FAQ.Q7Ans":
+      "Check your browser or device settings. You may have disabled location access.",
+    "FAQ.Q8": "Why can’t I see the aurora even when the probability is high?",
+    "FAQ.Q8Ans1": `Even if the aurora probability is high in your location, heavy cloud cover or snowfall can obstruct visibility.
+    That’s why our map includes an additional cloud cover layer, allowing you to check the current cloud conditions in real time.`,
+    "FAQ.Q8Ans2":
+      "And remember, the aurora rewards those who have the patience to wait!",
   },
   cn: {
     icon: "/images/cn.png",
@@ -345,5 +443,50 @@ export const ui = {
     "footer.Cookie2": "如果没有它们，我们就不会看到明亮的极光。",
     "footer.Cookie3": "没有问题",
     "user.Error": "获取地理位置错误",
+    /*FAQ */
+    "FAQ.Title": "常见问题解答",
+    "FAQ.Q1": "数据来源？这些是统计数据吗？",
+    "FAQ.Q1Ans":
+      "网站上的所有数据均为科学数据，来源于科研机构，并经过处理，以便您更直观地理解。",
+
+    "FAQ.Q2": "为什么更改地理位置后指数没有变化？",
+    "FAQ.Q2Ans": `北极光的行星指数（Kp指数）适用于整个地球，因为它反映的是太阳活动对地球磁场的整体影响，而不仅仅是某个特定地点。该指数考虑了太阳风和太阳风暴对地球磁场造成的变化，这些影响会传播到全球。`,
+
+    "FAQ.Q3": "地图上的北极光颜色代表什么？",
+    "FAQ.Q3Ans":
+      "地图上添加了颜色标识和百分比，以帮助更好地理解概率。颜色表示如下：",
+    "FAQ.Q3AnsP1": "浅绿色 – 0% 至 10% 的概率",
+    "FAQ.Q3AnsP2": "绿色 – 10% 至 20% 的概率",
+    "FAQ.Q3AnsP3": "黄色 – 20% 至 40% 的概率",
+    "FAQ.Q3AnsP4": "橙色 – 40% 至 60% 的概率",
+    "FAQ.Q3AnsP5": "红色 – 60% 至 100% 的概率",
+
+    "FAQ.Q4": "谁会收到通知？",
+    "FAQ.Q4Ans1":
+      "所有安装了应用程序的用户，如果在“通知”页面选择了北极圈内的城市，都可以收到通知。通知每两周发送一次，在高概率情况下免费提供。",
+    "FAQ.Q4Ans2":
+      "此外，订阅付费通知的用户将根据所选城市、概率和套餐类型接收通知。",
+
+    "FAQ.Q5": "为什么我没有收到通知？",
+    "FAQ.Q5Ans": "如果您未收到通知，可能是以下原因导致的：",
+    "FAQ.Q5AnsP1": "您未在手机的设置中启用推送通知。",
+    "FAQ.Q5AnsP2": "您未在应用的“通知”页面选择城市。",
+    "FAQ.Q5AnsP3": "您选择的城市不在北极圈内（适用于每两周一次的免费通知）。",
+    "FAQ.Q5Ans2":
+      "如果您订阅了付费通知但仍未收到，可能是您的位置未达到您设定的概率阈值。",
+
+    "FAQ.Q6": "如果列表中没有我的城市，但那里能看到北极光怎么办？",
+    "FAQ.Q6Ans1.1": "请发送电子邮件至",
+    "FAQ.Q6Ans1.2":
+      " 告诉我们您的城市。如果符合通知和追踪条件，我们会将其添加到列表中。",
+    "FAQ.Q6Ans2": "我们不断更新和扩展城市列表。",
+
+    "FAQ.Q7": "我们不断更新和扩展城市列表。",
+    "FAQ.Q7Ans":
+      "请检查您的浏览器或手机/电脑的设置，可能是您的设备禁用了地理位置访问权限。",
+
+    "FAQ.Q8": "为什么在高概率情况下我仍然看不到北极光？",
+    "FAQ.Q8Ans1": `即使您的位置北极光概率较高，厚云层或降雪也可能影响观测。因此，我们的地图提供了额外的云层信息，您可以随时查看当前的云量情况。`,
+    "FAQ.Q8Ans2": "别忘了，北极光会奖励那些懂得耐心等待的人！",
   },
 } as const;

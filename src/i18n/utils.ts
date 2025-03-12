@@ -44,8 +44,26 @@ export function useAstroTranslations(a: Astro) {
 }
 
 // Функция, которая добавляет текущий язык в путь URL
+// export function getLocalizedUrl(lang: Lang, path: string) {
+//   const p = path.split("/").filter(Boolean); // Убираем пустые элементы
+//   const lPath = p.length >= 2 ? p.slice(-1)[0] : undefined;
+//   return getRelativeLocaleUrl(lang, lPath);
+// }
+
 export function getLocalizedUrl(lang: Lang, path: string) {
-  const p = path.split("/").filter(Boolean); // Убираем пустые элементы
-  const lPath = p.length >= 2 ? p.slice(-1)[0] : undefined;
-  return getRelativeLocaleUrl(lang, lPath);
+  const p = path.split("/").filter(Boolean);
+
+  // Если первая часть — это язык, заменяем его
+  if (Object.keys(ui).includes(p[0])) {
+    p[0] = lang;
+  } else {
+    if (lang !== defaultLang) {
+      p.unshift(lang);
+    }
+  }
+
+  const newPath = lang === defaultLang ? p.slice(1).join("/") : p.join("/");
+
+  // Возвращаем новый путь, или "/" если путь пустой
+  return newPath ? `/${newPath}/` : "/";
 }

@@ -2,7 +2,9 @@
 import { Image } from "astro:assets";
 import PDLogo from "../assets/PD_logo.png";
 import PDtg from "../assets/PD_tg.svg";
-import { useAstroTranslations } from "../i18n/utils";
+import { useAstroTranslations, useAstroLocale } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+const l = useAstroLocale(Astro);
 const t = useAstroTranslations(Astro);
 ---
 
@@ -171,6 +173,9 @@ const t = useAstroTranslations(Astro);
       <div class="footer-mid">
         <h3>{t("footer.Aurora")}</h3>
         <ul>
+          <li>
+            <a href={getRelativeLocaleUrl(l, "/faq")}>{t("FAQ.Title")}</a>
+          </li>
           <li><a href="#map">{t("footer.Map")}</a></li>
           <li>
             <a href="#app">{t("footer.App")}</a>

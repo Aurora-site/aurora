@@ -3,7 +3,9 @@ import { Image } from "astro:assets";
 import Logo from "../assets/logo.png";
 import "../styles/tailwind.css";
 import { LanguagePicker } from "../components/reactive/LanguagePicker";
-import { useAstroTranslations } from "../i18n/utils";
+import { useAstroTranslations, useAstroLocale } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+const l = useAstroLocale(Astro);
 const t = useAstroTranslations(Astro);
 
 const { variant = "default" } = Astro.props;
@@ -14,7 +16,7 @@ const { variant = "default" } = Astro.props;
   <div class="container">
     <div class="lala">
       <div class="logo">
-        <a href="/">
+        <a href={getRelativeLocaleUrl(l, "/")}>
           <Image src={Logo} alt="Лого" loading={"eager"} />
         </a>
       </div>

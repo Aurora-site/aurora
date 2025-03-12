@@ -1,0 +1,96 @@
+---
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+---
+
+<style>
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  p {
+    text-align: justify;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 34px;
+  }
+</style>
+
+<div class="pt-[50px] pb-[50px]">
+  <h1 class="flex justify-center">
+    {t("FAQ.Title")}
+  </h1>
+
+  <h2>{t("FAQ.Q1")}</h2>
+  <p>
+    {t("FAQ.Q1Ans")}
+  </p>
+
+  <h2>{t("FAQ.Q2")}</h2>
+  <p>
+    {t("FAQ.Q2Ans")}
+  </p>
+
+  <h2>{t("FAQ.Q3")}</h2>
+  <p>
+    {t("FAQ.Q3Ans")}
+  </p>
+  <ul>
+    <li>{t("FAQ.Q3AnsP1")}</li>
+    <li>{t("FAQ.Q3AnsP2")}</li>
+    <li>{t("FAQ.Q3AnsP3")}</li>
+    <li>{t("FAQ.Q3AnsP4")}</li>
+    <li>{t("FAQ.Q3AnsP5")}</li>
+  </ul>
+
+  <h2>{t("FAQ.Q4")}</h2>
+  <p>
+    {t("FAQ.Q4Ans1")}
+  </p>
+  <p>
+    {t("FAQ.Q4Ans2")}
+  </p>
+
+  <h2>{t("FAQ.Q5")}</h2>
+  <p>
+    {t("FAQ.Q5Ans")}
+  </p>
+  <ul>
+    <li>{t("FAQ.Q5AnsP1")}</li>
+    <li>{t("FAQ.Q5AnsP2")}</li>
+    <li>{t("FAQ.Q5AnsP3")}</li>
+  </ul>
+  <p>
+    {t("FAQ.Q5Ans2")}
+  </p>
+
+  <h2>{t("FAQ.Q6")}</h2>
+  <p>
+    {t("FAQ.Q6Ans1.1")}
+    <a href="mailto:polar.digital@ya.ru"><u>polar.digital@ya.ru</u></a>{
+      t("FAQ.Q6Ans1.2")
+    }
+  </p>
+  <p>
+    {t("FAQ.Q6Ans2")}
+  </p>
+
+  <h2>{t("FAQ.Q7")}</h2>
+  <p>
+    {t("FAQ.Q7Ans")}
+  </p>
+
+  <h2>{t("FAQ.Q8")}</h2>
+  <p>
+    {t("FAQ.Q8Ans1")}
+  </p>
+  <p>
+    {t("FAQ.Q8Ans2")}
+  </p>
+</div>
