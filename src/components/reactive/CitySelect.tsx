@@ -148,6 +148,7 @@ export const CitySelect = () => {
                   .toLowerCase()
                   .includes(serachQuery.toLowerCase()),
               )
+              .sort((a, b) => getCityName(a).localeCompare(getCityName(b)))
               .map((c, i) => (
                 <div
                   key={i.toString()}
