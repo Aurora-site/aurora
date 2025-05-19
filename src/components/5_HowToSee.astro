@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import aurora1 from "../assets/1.png";
-import aurora2 from "../assets/2.png";
-import aurora3 from "../assets/3.png";
+import aurora1 from "../assets/aurora_photo_1.png";
+import aurora2 from "../assets/aurora_photo_2.png";
+import aurora3 from "../assets/aurora_photo_3.png";
+import aurora4 from "../assets/aurora_photo_4.png";
+import aurora5 from "../assets/aurora_photo_5.png";
 import { useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
 ---
@@ -18,19 +20,13 @@ const t = useAstroTranslations(Astro);
     margin-bottom: 20px;
     line-height: 1.6;
   }
-
-  /*.how-to-see h2 {
-      font-size: 36px;
-
-    }*/
-
   .images {
     display: flex;
     gap: 30px;
-    /* overflow-x: auto; Горизонтальная прокрутка */
-    scroll-behavior: smooth; /* Плавная прокрутка */
+    overflow-x: auto;
+    scroll-behavior: smooth;
     margin: 40px 0 0 0;
-    white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
+    white-space: nowrap;
     justify-content: space-between;
     padding-bottom: 24px;
   }
@@ -42,7 +38,7 @@ const t = useAstroTranslations(Astro);
   }
 
   .imag {
-    flex: 0 0 auto; /* Фиксирует размер карточки */
+    flex: 0 0 auto;
     width: 360px;
     position: relative;
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
@@ -62,23 +58,25 @@ const t = useAstroTranslations(Astro);
 
   .slider-button {
     position: absolute;
-    top: 50%; /* Вертикальное центрирование */
-    transform: translateY(-50%); /* Корректное центрирование */
+    top: 50%;
+    transform: translateY(-50%);
     /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
     color: black;
     border: none;
     cursor: pointer;
     padding: 5px 15px;
-    z-index: 1000; /* Поверх карточек */
+    z-index: 1000;
     font-size: 30px;
   }
 
   .slider-button.left {
     left: -50px;
+    color: white;
   }
 
   .slider-button.right {
     right: -50px;
+    color: white;
   }
 
   @media (max-width: 1300px) {
@@ -130,6 +128,12 @@ const t = useAstroTranslations(Astro);
       <div class="imag">
         <Image src={aurora3} alt="Северное Сияние" />
       </div>
+      <div class="imag">
+        <Image src={aurora4} alt="Северное Сияние" />
+      </div>
+      <div class="imag">
+        <Image src={aurora5} alt="Северное Сияние" />
+      </div>
     </div>
     <button class="slider-button right" id="slideRight">&#8250;</button>
   </div>
@@ -144,7 +148,6 @@ const t = useAstroTranslations(Astro);
 
       if (!slider) return;
 
-      // Проверяем, нужен ли скролл
       const totalWidth = Array.from(slider.children).reduce(
         (sum, item) => sum + item.offsetWidth,
         0,
@@ -152,7 +155,6 @@ const t = useAstroTranslations(Astro);
       const visibleWidth = slider.offsetWidth;
 
       if (totalWidth > visibleWidth) {
-        // Показываем кнопки и активируем прокрутку
         slideLeft.style.display = "block";
         slideRight.style.display = "block";
 
@@ -164,7 +166,6 @@ const t = useAstroTranslations(Astro);
           slider.scrollBy({ left: 380, behavior: "smooth" });
         });
       } else {
-        // Скрываем кнопки, если скролл не нужен
         slideLeft.style.display = "none";
         slideRight.style.display = "none";
       }
