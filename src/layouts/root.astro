@@ -6,6 +6,7 @@ import AppDownload from "../components/4_AppDownload.astro";
 import HowToSee from "../components/5_HowToSee.astro";
 import WhereToSee from "../components/6_WhereToSee.astro";
 import Tours from "../components/7_Tours.astro";
+import Popup from "../components/reactive/Popup";
 ---
 
 <Description />
@@ -15,3 +16,4 @@ import Tours from "../components/7_Tours.astro";
 <HowToSee />
 <WhereToSee />
 <Tours />
+<Popup client:only />

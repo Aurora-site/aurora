@@ -181,6 +181,14 @@ export const ui = {
       и/или снегопад. Поэтому на нашей карте есть дополнительный слой облачности, который позволяет оценить ее уровень в данный момент.`,
     "FAQ.Q8Ans2":
       "И не забывайте: северное сияние вознаграждает тех, кто умеет ждать!",
+
+    /*Popup */
+    "Popup.HeaderWhen": "Когда начинается сезон северного сияния?",
+    "Popup.HeaderWhy": "Почему не летом?",
+    "Popup.TextWhen":
+      "Сезон наблюдения северного сияния начинается с конца августа и продолжается до конца апреля.",
+    "Popup.TextWhy": `Летом на севере полярный день - ночное небо слишком светлое, чтобы увидеть сияние. Даже если сияние появляется, его не видно.
+            С конца августа ночи становятся темнее, и можно наблюдать первые вспышки сияния за полярным кругом`,
   },
   en: {
     icon: "/images/us.png",
@@ -345,6 +353,13 @@ export const ui = {
     That’s why our map includes an additional cloud cover layer, allowing you to check the current cloud conditions in real time.`,
     "FAQ.Q8Ans2":
       "And remember, the aurora rewards those who have the patience to wait!",
+    /*Popup */
+    "Popup.HeaderWhen": "When does the aurora season start?",
+    "Popup.HeaderWhy": "Why not summer?",
+    "Popup.TextWhen":
+      "The aurora season starts on the last days of August and ends on the last days of April.",
+    "Popup.TextWhy": `In the summer, there is a polar day in the north - the night sky is too bright to see the aurora. Even if the aurora appears, it is not visible.
+      From the end of August, the nights become darker, and the first flashes of the aurora can be seen beyond the Arctic Circle.`,
   },
   cn: {
     icon: "/images/cn.png",
@@ -488,5 +503,11 @@ export const ui = {
     "FAQ.Q8": "为什么在高概率情况下我仍然看不到北极光？",
     "FAQ.Q8Ans1": `即使您的位置北极光概率较高，厚云层或降雪也可能影响观测。因此，我们的地图提供了额外的云层信息，您可以随时查看当前的云量情况。`,
     "FAQ.Q8Ans2": "别忘了，北极光会奖励那些懂得耐心等待的人！",
+
+    /*Popup */
+    "Popup.HeaderWhen": "北极光季节何时开始？",
+    "Popup.HeaderWhy": "为什么我们夏季看不到北极光？",
+    "Popup.TextWhen": "观赏北极光的季节从八月底开始，持续到四月初。",
+    "Popup.TextWhy": ` 夏季北极地区处于极昼状态——夜空过于明亮，无法看到极光。即使极光出现，也难以察觉。自八月底起，夜晚逐渐变暗，极圈地区即可观测到首批极光。`,
   },
 } as const;
