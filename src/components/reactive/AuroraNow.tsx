@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { localeAtom } from "../../stores/locale";
 import { useLocale } from "../../i18n/utils";
 import { cn } from "../../utils/cn";
+import { InfoPopover } from "./InfoPopover";
 
 export const AuroraNow = () => {
   const t = useLocale(localeAtom);
@@ -53,6 +54,7 @@ export const AuroraNow = () => {
       <CitySelect />
       <div className="flex items-center gap-2">
         <p>{t("aurora.probability")}</p>
+        <InfoPopover message={t("aurora.probability.info")} />
         <div
           className={cn(
             `content-center rounded-full px-3 text-[16px] font-bold text-black`,

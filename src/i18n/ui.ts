@@ -189,6 +189,8 @@ export const ui = {
       "Сезон наблюдения северного сияния начинается с конца августа и продолжается до конца апреля.",
     "Popup.TextWhy": `Летом на севере полярный день - ночное небо слишком светлое, чтобы увидеть сияние. Даже если сияние появляется, его не видно.
             С конца августа ночи становятся темнее, и можно наблюдать первые вспышки сияния за полярным кругом`,
+    "aurora.probability.info":
+      "Сияние не видно на светлом небе и сквозь облака — проверяйте не только прогноз, но и облачность",
   },
   en: {
     icon: "/images/us.png",
@@ -360,6 +362,9 @@ export const ui = {
       "The aurora season starts on the last days of August and ends on the last days of April.",
     "Popup.TextWhy": `In the summer, there is a polar day in the north - the night sky is too bright to see the aurora. Even if the aurora appears, it is not visible.
       From the end of August, the nights become darker, and the first flashes of the aurora can be seen beyond the Arctic Circle.`,
+
+    "aurora.probability.info":
+      "The aurora is not visible in a light sky and through clouds - check not only the forecast, but also the cloud cover!",
   },
   cn: {
     icon: "/images/cn.png",
@@ -509,5 +514,8 @@ export const ui = {
     "Popup.HeaderWhy": "为什么我们夏季看不到北极光？",
     "Popup.TextWhen": "观赏北极光的季节从八月底开始，持续到四月初。",
     "Popup.TextWhy": ` 夏季北极地区处于极昼状态——夜空过于明亮，无法看到极光。即使极光出现，也难以察觉。自八月底起，夜晚逐渐变暗，极圈地区即可观测到首批极光。`,
+
+    "aurora.probability.info":
+      "在晴朗的天空和云层中都看不到光辉——不仅要查看天气预报，还要关注云量。",
   },
 } as const;
