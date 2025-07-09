@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import PDtg from "../assets/PD_tg.svg";
 import Logo from "../assets/logo.png";
 import "../styles/tailwind.css";
 import { LanguagePicker } from "../components/reactive/LanguagePicker";
@@ -35,6 +36,10 @@ const { variant = "default" } = Astro.props;
               <a href="#index">{t("H.index")}</a>
               <a href="#how-to-see">{t("H.how")}</a>
               <a href="#where-to-see">{t("H.where")}</a>
+              <a href="/faq">Вопросы</a>
+              <a href="https://t.me/polarlightspro">
+                <Image class="w-auto" src={PDtg} alt="Telegram" />
+              </a>
             </nav>
           )
         }
@@ -71,6 +76,12 @@ const { variant = "default" } = Astro.props;
   }
 
   .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +167,7 @@ const { variant = "default" } = Astro.props;
     width: 85px;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     .navigation {
       display: none;
     }
@@ -218,7 +229,7 @@ const { variant = "default" } = Astro.props;
   const DEBOUNSE_DELAY = 200;
   // Функция перемещения lang
   function moveLangToNav() {
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 1124) {
       if (!navigation.contains(lang)) {
         navigation.appendChild(lang);
       }

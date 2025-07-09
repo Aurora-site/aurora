@@ -9,7 +9,7 @@ export const LanguagePicker = () => {
   }, []); // Выполнится только один раз при монтировании компонента
 
   return (
-    <div className="flex content-center space-x-[10px] pt-[33px]">
+    <div className="flex content-center space-x-[10px] pt-[36px]">
       {(Object.keys(ui) as (keyof typeof ui)[]).map((lang) => (
         <a
           key={lang}
