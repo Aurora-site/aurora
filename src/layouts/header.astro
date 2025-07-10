@@ -201,6 +201,19 @@ const { variant = "default" } = Astro.props;
       padding: 0 20px;
     }
   }
+
+  @media (max-width: 510px) {
+    .header {
+      height: 80px;
+    }
+
+    .logo {
+      width: 70px;
+    }
+    .burger {
+      margin-top: 26px;
+    }
+  }
 </style>
 
 <script is:inline>

@@ -25,7 +25,7 @@ const t = useAstroTranslations(Astro);
   .description h2 {
     font-family: "SongerGrotesqueBold";
     font-size: 24px;
-    margin: 60px 0;
+    margin: 60px 0 85px 0;
   }
 
   .description p {
@@ -33,6 +33,16 @@ const t = useAstroTranslations(Astro);
     font-size: 16px;
     /* line-height: 1.5; */
     text-align: left;
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 74px;
+    }
+
+    .description h2 {
+      margin: 50px 0 55px 0;
+    }
   }
 </style>
 

@@ -134,14 +134,15 @@ export const CitySelect = () => {
                 className="h-4 w-4 cursor-pointer"
               />
             </div>
+          </div>
+
+          <div className="grid max-h-[500px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
             <button
               onClick={handleUseMyLocation}
-              className="mt-[20px] mb-0 flex cursor-pointer items-center justify-between gap-1 text-white"
+              className="mb-0 flex cursor-pointer items-center gap-1 text-white"
             >
               <MapPin className="h-5 w-5" /> {t("user.Geo")}
             </button>
-          </div>
-          <div className="grid max-h-[500px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
             {probabilityCities
               ?.filter((v) =>
                 getCityName(v)
