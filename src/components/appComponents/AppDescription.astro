@@ -1,6 +1,7 @@
 ---
 import { Image, getImage } from "astro:assets";
-import store from "/src/assets/store.png";
+import ruStore from "/src/assets/ruStore.png";
+import store from "/src/assets/AppStore.png";
 import { useAstroTranslations } from "../../i18n/utils";
 import auroraback_mb from "../../assets/auroraback_mb.png";
 const auroraBackImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
@@ -52,7 +53,7 @@ const t = useAstroTranslations(Astro);
     scroll-behavior: smooth;
     gap: 30px;
     white-space: nowrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   .app-slider-container {
@@ -67,12 +68,14 @@ const t = useAstroTranslations(Astro);
     background-color: #386e784d;
     border-radius: 20px;
     position: relative;
+    padding: 10px 0;
   }
 
   .store_img {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+    width: 80px;
   }
 
   .just-button {
@@ -80,11 +83,16 @@ const t = useAstroTranslations(Astro);
     padding: 10px 50px;
     border-radius: 20px;
     position: absolute;
-    bottom: 20px; /* Закрепляем кнопку внизу */
+    bottom: 40px; /* Закрепляем кнопку внизу */
     left: 50%;
     transform: translateX(-50%); /* Центрируем по горизонтали */
     color: white;
     font-weight: 600;
+    font-size: 20px;
+  }
+
+  .just-button:hover {
+    background-color: #148fa5;
   }
 
   p {
@@ -94,7 +102,7 @@ const t = useAstroTranslations(Astro);
 
   .Name {
     font-size: 20px;
-    padding: 0 10px;
+    padding: 10px 10px;
     text-align: center;
   }
   .slider-button {
@@ -132,17 +140,27 @@ const t = useAstroTranslations(Astro);
 
   @media (max-width: 640px) {
     .description ul li {
-      font-size: 24px;
+      font-size: 20px;
     }
     .description h2 {
-      font-size: 24px;
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 74px;
+    }
+
+    .app {
+      margin-top: 40px;
     }
   }
 
   @media (max-width: 482px) {
     .imag,
     .stores_cards {
-      width: 90%;
+      width: 80%;
     }
   }
   @media (max-width: 440px) {
@@ -176,30 +194,49 @@ const t = useAstroTranslations(Astro);
     <button class="slider-button left" id="appSlideLeft">&#8249;</button>
     <div class="app_screens" id="appSlider">
       <div class="stores_cards">
-        <div class="store_img">
-          <Image src={store} alt="Скрин приложения" />
+        <div class="pt-[20px]">
+          <div class="flex justify-center">
+            <div class="store_img">
+              <Image src={ruStore} alt="Скрин приложения" />
+            </div>
+          </div>
+          <p class="Name pt-1.5 text-center font-bold">RuStore</p>
+          <div class="pt-2.5 text-center text-[18px] whitespace-normal">
+            Для мобильных устройств на Android
+          </div>
         </div>
-        <p class="Name pt-1.5 text-center font-bold">App Store</p>
-        <div class="pt-1.5">Для мобильных устройств на iOS</div>
-        <button class="just-button">Скачать</button>
+        <a
+          class="just-button"
+          href="https://www.rustore.ru/catalog/app/com.polarlights"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Скачать
+        </a>
       </div>
 
       <div class="stores_cards">
-        <div class="store_img">
-          <Image src={store} alt="Скрин приложения" />
+        <div class="pt-[20px]">
+          <div class="flex justify-center">
+            <div class="store_img">
+              <Image src={store} alt="Скрин приложения" />
+            </div>
+          </div>
+          <p class="Name pt-1.5 text-center font-bold">App Store</p>
+          <div
+            class="pt-2.5 pr-6 pl-6 text-center text-[18px] whitespace-normal"
+          >
+            Для мобильных устройств на iOS
+          </div>
         </div>
-        <p class="Name pt-1.5 text-center font-bold">App Store</p>
-        <div class="pt-1.5">Для мобильных устройств на iOS</div>
-        <button class="just-button">Скачать</button>
-      </div>
-
-      <div class="stores_cards">
-        <div class="store_img">
-          <Image src={store} alt="Скрин приложения" />
-        </div>
-        <p class="Name pt-1.5 text-center font-bold">App Store</p>
-        <div class="pt-1.5">Для мобильных устройств на iOS</div>
-        <button class="just-button">Скачать</button>
+        <a
+          class="just-button"
+          href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Скачать
+        </a>
       </div>
     </div>
     <button class="slider-button right" id="appSlideRight">&#8250;</button>
