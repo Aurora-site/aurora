@@ -60,8 +60,7 @@ export const ui = {
     "AppDownload.text": `Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
     вы сможете не только следить за изменениями, но и получать пуш-уведомления о
     повышении вероятности, чтобы не упустить высокий шанс.`,
-    "AppDownload.button1": `Приложение в разработке и почти готово!`,
-    "AppDownload.button2": `Скоро вы сможете получать уведомления о северном сиянии прямо в своем смартфоне!`,
+    "AppDownload.button": `Приложение с уведомлением`,
     /*How to see */
     "HowToSee.title": `Как увидеть северное сияние?`,
     "HowToSee.text1": `Наблюдение за северным сиянием — это удивительное зрелище, требующее
@@ -191,6 +190,8 @@ export const ui = {
             С конца августа ночи становятся темнее, и можно наблюдать первые вспышки сияния за полярным кругом`,
     "aurora.probability.info":
       "Сияние не видно на светлом небе и сквозь облака — проверяйте не только прогноз, но и облачность",
+
+    FAQ: "Вопросы",
   },
   en: {
     icon: "/images/us.png",
@@ -253,8 +254,7 @@ export const ui = {
     "AppDownload.text": `Track the probability using our mobile app.
     There you can not only monitor changes, but also receive push notifications about high probability, so as not to miss a high chance.`,
 
-    "AppDownload.button1": `The app is in development and is almost ready!`,
-    "AppDownload.button2": `Soon you will be able to receive notifications about the polar lights directly on your smartphone!`,
+    "AppDownload.button": `The app with notifications`,
 
     /*How to see */
     "HowToSee.title": `How to see Aurora Borealis?`,
@@ -365,6 +365,8 @@ export const ui = {
 
     "aurora.probability.info":
       "The aurora is not visible in a light sky and through clouds - check not only the forecast, but also the cloud cover!",
+
+    FAQ: "FAQ",
   },
   cn: {
     icon: "/images/cn.png",
@@ -414,8 +416,7 @@ export const ui = {
     /*AppDownload*/
     "AppDownload.title": `关注极光指数`,
     "AppDownload.text": `您可以通过我们的手机应用方便地关注极光指数，不仅可以实时查看，还能接收指数升高的推送通知，确保不错过最佳观测机会。`,
-    "AppDownload.button1": `应用程序正在开发中，即将完成`,
-    "AppDownload.button2": `很快，您就能在手机上收到北极光提醒!`,
+    "AppDownload.button": `带通知的应用`,
     /*How to see */
     "HowToSee.title": `如何立即看到`,
     "HowToSee.text1": `观赏极光是一个令人惊叹的景象，需要一定的准备和耐心。`,
@@ -517,5 +518,7 @@ export const ui = {
 
     "aurora.probability.info":
       "在晴朗的天空和云层中都看不到光辉——不仅要查看天气预报，还要关注云量。",
+
+    FAQ: "常见问题",
   },
 } as const;

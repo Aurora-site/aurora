@@ -1,5 +1,7 @@
 ---
-import { useAstroTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+const l = useAstroLocale(Astro);
 const t = useAstroTranslations(Astro);
 ---
 
@@ -10,26 +12,26 @@ const t = useAstroTranslations(Astro);
     }*/
 
   .app-download p {
-    margin: 0 0 40px 0;
+    margin: 30px 0 40px 0;
   }
 
-  .button {
+  .app-download button {
     padding: 20px 20px;
-    font-size: 24px;
+    font-size: 20px;
     background: linear-gradient(to right, #006909, #18a5bf);
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 45px;
     cursor: pointer;
     position: relative;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     display: block;
-    text-align: center;
+    font-weight: 600;
   }
 
-  .button:hover {
+  .app-download button:hover {
     background: #218838;
   }
 
@@ -46,11 +48,9 @@ const t = useAstroTranslations(Astro);
     {t("AppDownload.text")}
   </p>
 
-  <div class="button">
-    <div class="mt-0 text-[16px]">{t("AppDownload.button1")}</div>
-    <div class="mt-0 text-[16px]">{t("AppDownload.button2")}</div>
-  </div>
-
+  <a href={getRelativeLocaleUrl(l, "/app")}
+    ><button>{t("AppDownload.button")}</button></a
+  >
   <!-- <a href={`/${currentLang}/app`}><button>{t("AppDownload.button")}</button></a> -->
   <!-- <a href="/app"><button>{t("AppDownload.button")}</button></a> -->
 </section>
