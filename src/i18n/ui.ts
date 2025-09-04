@@ -212,7 +212,7 @@ export const ui = {
     "description.how": `Map and real probability`,
     "description.text1": `Northern Lights, Polar Lights or Aurora Borealis`,
     "description.text2":
-      "Want to see the Northern Lights in real time? Our website will help you plan the perfect photo hunt! On the interactive map you can track the movement of the northern lights, find out the activity index (KI-index) and the probability of observation in your region.",
+      "Want to see the Northern Lights in real time? Our website will help you plan the perfect photo hunt! With the help of the interactive map you can track the movement of the northern lights, find out the activity index (KI-index) and the probability of observation in your region.",
 
     /*MapSection*/
     "CitySelect.Geo": "Geolocation",
@@ -235,8 +235,8 @@ export const ui = {
     "Charts.title": `Aurora kp-index for 3 and 27 days`,
     "Charts.text1": `Here is a graph of the Aurora Index, which measures **the level of geomagnetic activity** and is **common to the entire planet**.
     The index ranges from 0 to 9, with the higher the value, the more likely you are to see the lights.`,
-    "Charts.text2": `The northern lights are usually seen in high latitudes, but during strong storms they can be seen further south than usual. Follow the index changes to plan your observations and not miss your chance to see this spectacular natural phenomenon.
-    For an accurate forecast, we recommend referring to short-term forecasts.`,
+    "Charts.text2": `The aurora is usually seen at high latitudes, but strong storms can extend its visibility to more southern regions. Follow the index changes to plan your observations and do not miss your chance to see this spectacular natural phenomenon.
+    For an accurate forecast, we recommend you referring to short-term forecasts.`,
     "Charts.After1":
       "**Normal conditions (KP 1-3):** The Northern Lights are only visible in polar latitudes - for example, in Murmansk (68° N), Norilsk (69° N) or Reykjavik (64° N).",
     "Charts.After2":
@@ -252,29 +252,29 @@ export const ui = {
     "AppDownload.title": `Follow Aurora`,
 
     "AppDownload.text": `Track the probability using our mobile app.
-    There you can not only monitor changes, but also receive push notifications about high probability, so as not to miss a high chance.`,
+    There you can not only monitor changes, but also receive push notifications about high probability, so you do not miss out a high chance.`,
 
     "AppDownload.button": `The app with notifications`,
 
     /*How to see */
     "HowToSee.title": `How to see Aurora Borealis?`,
-    "HowToSee.text1": `Hunting the northern lights is an amazing spectacle that requires preparation and patience.`,
+    "HowToSee.text1": `Hunting the northern lights is an amazing view that requires preparation and patience.`,
     "HowToSee.point1": `**1. Activity forecast.** Monitor solar activity using our resource. A Kp index above 4-5 indicates a high probability.`,
     "HowToSee.point2": `**2. Weather.** Clear skies are a must. If the forecast calls for cloudy skies, consider changing locations or days.`,
-    "HowToSee.point3": `**3. Choosing a location.** Look for locations away from city lights to avoid light pollution.`,
-    "HowToSee.point4": `**4. Patience.** The glow may appear unexpectedly, so be prepared to wait warm and comfortable`,
-    "HowToSee.point5": `**5. Photography.** For better photos, use a tripod, slow shutter speed and high ISO`,
+    "HowToSee.point3": `**3. Choosing a location.** Look for locations that are away from city lights to avoid light pollution.`,
+    "HowToSee.point4": `**4. Patience.** The glow may appear unexpectedly, so be prepared to wait in warmth and comfort.`,
+    "HowToSee.point5": `**5. Photography.** For better photos, use a tripod, slow shutter speed and high ISO.`,
     "HowToSee.text2": `Aurora Borealis is not only a sight to behold, but also a deep emotional experience that will inspire you for life.`,
 
     /*WhereToSee*/
     "Where.title": "Where can you see Aurora Borealis?",
-    "Where.text1": `To successfully observe the Northern Lights, it is important to choose the right location. Locations away from city lights are ideal,
-                    where light pollution will not interfere with enjoying the spectacle. Choose high points or open spaces with good visibility`,
+    "Where.text1": `To observe the Northern Lights successfully, it is important to choose the right location. Locations away from the city lights are perfect,
+                    where light pollution will not interfere with enjoying the view. Choose high points or open spaces with the good visibility`,
     "Where.text2": `Don't forget about safety: avoid stopping on busy roads and make sure that the chosen place is safe for parking and staying, especially at night.`,
 
     /*Tours*/
     "Tours.title": "Photo hunt with professional guides",
-    "Tours.text": `And if you do not have the opportunity to catch the Aurora on your own or you came to the northern latitudes for this purpose and are very limited in time,
+    "Tours.text": `And if you do not have the opportunity to catch the Aurora on your own or you come to the northern latitudes for this purpose and are very limited in time,
                     then you can turn to guides and tour operators who do this professionally for help.`,
 
     /*Вторая страница для скаичивания приложения */
