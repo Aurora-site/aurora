@@ -4,6 +4,12 @@ export const ui = {
   ru: {
     icon: "/images/ru.png",
     "layout.title": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
+    "layout.description":
+      "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
+    "app.title":
+      "Приложение с Северным Сиянием. Карта и прогноз в вашем телефоне",
+    "app.description":
+      "Увидеть Северное в своем телефоне! Прогнозы, уведомления и советы для успешного наблюдения. С нами вы не пропустите полярное сияние! Поймай Аврору",
 
     "meta.ogTitle": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
     "meta.ogDescription":
@@ -60,7 +66,7 @@ export const ui = {
     "AppDownload.text": `Удобно отслеживать вероятность с помощью нашего мобильного приложения. В нем
     вы сможете не только следить за изменениями, но и получать пуш-уведомления о
     повышении вероятности, чтобы не упустить высокий шанс.`,
-    "AppDownload.button": `Приложение с уведомлением`,
+    "AppDownload.button": `Скачать приложение с уведомлением`,
     /*How to see */
     "HowToSee.title": `Как увидеть северное сияние?`,
     "HowToSee.text1": `Наблюдение за северным сиянием — это удивительное зрелище, требующее
@@ -195,7 +201,12 @@ export const ui = {
   },
   en: {
     icon: "/images/us.png",
-    "layout.title": `Polar lights`,
+    "layout.title": `Northern Lights Forecast. Map, Probability and Forecast`,
+    "layout.description":
+      "Seeing the Northern Lights just got easier! Forecasts, notifications and tips for your luck. With us you won't miss the polar lights! Catch the Aurora",
+    "app.title": "Northern Lights App. Map and Forecast on Your Phone",
+    "app.description":
+      "See the Northern Lights on your phone! Forecasts, alerts, and tips for successful viewing. With us, you won’t miss the aurora! Catch the Aurora.",
     "meta.ogTitle": "Aurora Forecast. Map, Probability and Forecast",
     "meta.ogDescription":
       "Seeing the Northern Lights just got easier! Forecasts, notifications and tips for your luck. With us you won't miss the polar lights! Catch the Aurora",
@@ -254,7 +265,7 @@ export const ui = {
     "AppDownload.text": `Track the probability using our mobile app.
     There you can not only monitor changes, but also receive push notifications about high probability, so you do not miss out a high chance.`,
 
-    "AppDownload.button": `The app with notifications`,
+    "AppDownload.button": `Download the app with notifications`,
 
     /*How to see */
     "HowToSee.title": `How to see Aurora Borealis?`,
@@ -370,7 +381,12 @@ export const ui = {
   },
   cn: {
     icon: "/images/cn.png",
-    "layout.title": "极光",
+    "layout.title": "如何看到北极光：地图、概率和预报",
+    "layout.description":
+      "观赏北极光变得更简单！预测、提醒和贴士助您好运。 有了我们，您一定能看到极光！",
+    "app.title": "北极光应用：手机里的地图与预测",
+    "app.description":
+      "在手机上看北极光！预测、提醒和贴士助您成功观赏。 有了我们，您不会错过极光！抓住极光吧！",
     "meta.ogTitle": "极光预报。地图、概率和预测",
     "meta.ogDescription":
       "观赏北极光变得更加容易！运气预测、通知和提示。与我们一起您不会错过北极光！捕捉北极光",

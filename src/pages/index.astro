@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Root from "../layouts/root.astro";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
 ---
 
-<Layout>
+<Layout title={t("layout.title")} description={t("layout.description")}>
   <Root />
 </Layout>

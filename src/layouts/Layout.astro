@@ -10,17 +10,16 @@ import { DEPLOY_URL, ENV_NAME } from "astro:env/client";
 import YaMetrica from "../components/utils/YaMetrica.astro";
 
 const { variant = "default" } = Astro.props;
+const { title = "Прогноз Северного сияния", description = "Поймай Аврору!" } =
+  Astro.props;
 ---
 
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{t("layout.title")}</title>
-    <meta
-      name="description"
-      content="Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору"
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="icon" type="image/ico" href="/favicon.ico" />
     <meta property="og:url" content={DEPLOY_URL} />
     <meta property="og:type" content="website" />
