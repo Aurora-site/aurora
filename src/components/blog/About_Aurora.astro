@@ -20,15 +20,10 @@ import quota from "../../assets/quota.png";
     }
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-  }
-
   h2 {
     margin-top: 40px;
     margin-bottom: 10px;
+    font-size: 24px;
   }
   p {
     text-align: justify;
@@ -65,10 +60,10 @@ import quota from "../../assets/quota.png";
     gap: 30px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    margin: 40px 0 0 0;
+    margin: 10px 0 0 0;
     white-space: nowrap;
     justify-content: space-between;
-    padding-bottom: 24px;
+    padding-bottom: 100px;
   }
 
   .image-slider-container {
@@ -83,6 +78,7 @@ import quota from "../../assets/quota.png";
     position: relative;
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
     border-radius: 20px;
+    overflow: hidden;
   }
 
   .slider-button {
@@ -124,6 +120,17 @@ import quota from "../../assets/quota.png";
       width: 90%;
     }
   }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 68px;
+      font-size: 52px;
+    }
+
+    .description h2 {
+      margin: 50px 0 55px 0;
+    }
+  }
 </style>
 
 <section
@@ -138,9 +145,9 @@ import quota from "../../assets/quota.png";
   </p>
 
   <div
-    class="mt-[100px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
+    class="mt-[85px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
   >
-    <div class="flex items-center justify-center">
+    <div class="flex w-[20px] items-center justify-center sm:w-[50px]">
       <Image src={quota} alt="Цитата" />
     </div>
     <div class="mt-2 w-[100%] text-left sm:w-[80%]">
@@ -154,7 +161,7 @@ import quota from "../../assets/quota.png";
   </div>
 </section>
 
-<div class="pt-[50px] pb-[50px]">
+<div class="pt-[25px] pb-[50px]">
   <h2>Что такое северное сияние?</h2>
   <p>
     Северное сияние, полярное сияние или Aurora Borealis — одно из самых
@@ -203,8 +210,9 @@ import quota from "../../assets/quota.png";
   </ol>
 
   <p class="underline">
-    На сайте <a href="/">Polarlights</a> доступна карта сияния и прогноз по городам
-    России.
+    <a href="/">
+      На сайте Polarlights доступна карта сияния и прогноз по городам России.</a
+    >
   </p>
   <p>
     Вы можете скачать приложение, включить уведомления — и сервис сообщит о
@@ -231,13 +239,13 @@ import quota from "../../assets/quota.png";
   </p>
 </div>
 
-<div class="mb-5 text-left">
+<div class="mb-[50px] text-left">
   <a
     class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
     href="/blog">В блог о северном сиянии</a
   >
 </div>
-<div class="pb-[60px] text-left">
+<div class="pb-[50px] text-left">
   <a
     class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
     href="/">Перейти на главную страницу с картой и вероятностью</a

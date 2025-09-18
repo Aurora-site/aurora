@@ -169,7 +169,8 @@ const l = useAstroLocale(Astro);
 
   @media (max-width: 510px) {
     .description h1 {
-      line-height: 74px;
+      line-height: 68px;
+      font-size: 52px;
     }
 
     .description h2 {
@@ -179,7 +180,7 @@ const l = useAstroLocale(Astro);
 </style>
 
 <section
-  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-[40px] text-center md:bg-[0px_20px]"
   id="description"
 >
   <h1>Блог о северном сиянии</h1>
@@ -190,9 +191,9 @@ const l = useAstroLocale(Astro);
   </p>
 
   <div
-    class="mt-[100px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
+    class="mt-[80px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
   >
-    <div class="flex items-center justify-center">
+    <div class="flex w-[20px] items-center justify-center sm:w-[50px]">
       <Image src={quota} alt="Цитата" />
     </div>
     <div class="mt-2 w-[100%] text-left sm:w-[80%]">
@@ -206,7 +207,7 @@ const l = useAstroLocale(Astro);
   </div>
 </section>
 
-<section class="tours py-12">
+<section class="tours pt-[20px] pb-[100px]">
   <div class="tour-slider-container">
     <button class="tours_slider-button left" id="slideLeft1">&#8249;</button>
 

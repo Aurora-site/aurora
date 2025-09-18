@@ -28,6 +28,7 @@ import moscow3 from "../../assets/moscow3.png";
   h2 {
     margin-top: 40px;
     margin-bottom: 10px;
+    font-size: 24px;
   }
   p {
     text-align: justify;
@@ -64,10 +65,10 @@ import moscow3 from "../../assets/moscow3.png";
     gap: 30px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    margin: 40px 0 0 0;
+    margin: 10px 0 0 0;
     white-space: nowrap;
     justify-content: space-between;
-    padding-bottom: 24px;
+    padding-bottom: 100px;
   }
 
   .image-slider-container {
@@ -107,6 +108,13 @@ import moscow3 from "../../assets/moscow3.png";
     color: white;
   }
 
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 68px;
+      font-size: 52px;
+    }
+  }
+
   @media (max-width: 1300px) {
     .images {
       overflow-x: auto;
@@ -139,7 +147,7 @@ import moscow3 from "../../assets/moscow3.png";
   </p>
 </section>
 
-<div class="pt-[50px] pb-[50px]">
+<div class="pt-[25px] pb-[50px]">
   <h2>Бывает ли северное сияние в Москве?</h2>
   <p>
     Да, северное сияние в Москве бывает, но крайне редко. Чтобы оно появилось
@@ -191,13 +199,13 @@ import moscow3 from "../../assets/moscow3.png";
   </p>
 </div>
 
-<div class="mb-5 text-left">
+<div class="mb-[50px] text-left">
   <a
     class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
     href="/blog">В блог о северном сиянии</a
   >
 </div>
-<div class="pb-[60px] text-left">
+<div class="pb-[50px] text-left">
   <a
     class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
     href="/">Перейти на главную страницу с картой и вероятностью</a
