@@ -1,0 +1,258 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import moscow1 from "../../assets/moscow1.png";
+import moscow2 from "../../assets/moscow2.png";
+import moscow3 from "../../assets/moscow3.png";
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  p {
+    text-align: justify;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 40px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>Северное сияние в Москве</h1>
+  <h2>Блог о северном сиянии</h2>
+  <p>
+    Северное сияние — символ Крайнего Севера и одно из самых прекрасных
+    природных явлений. Но можно ли увидеть северное сияние в Москве? Этот вопрос
+    часто задают жители столицы, вдохновляясь яркими фотографиями из Мурманской
+    области, Норвегии или Исландии.
+  </p>
+</section>
+
+<div class="pt-[50px] pb-[50px]">
+  <h2>Бывает ли северное сияние в Москве?</h2>
+  <p>
+    Да, северное сияние в Москве бывает, но крайне редко. Чтобы оно появилось
+    над столицей, должна произойти сильнейшая геомагнитная буря. В такие моменты
+    сияние становится видно не только за Полярным кругом, но и значительно южнее
+    — например, в Санкт-Петербурге, Твери и даже в Подмосковье. Последние
+    заметные вспышки приходились на периоды высокой солнечной активности.
+    Например, весной 2024 года сияние удалось сфотографировать в Ленинградской,
+    Ярославской и даже Московской областях.
+  </p>
+
+  <h2>Почему сияние почти не видно в Москве?</h2>
+  <ol>
+    <li>
+      География. Москва находится слишком далеко от Полярного круга. Для
+      наблюдений нужен KP-индекс не ниже 7–8, а это очень редкое явление.
+    </li>
+    <li>
+      Световое загрязнение. Огромный мегаполис буквально «подсвечивает» небо.
+      Даже если сияние есть, рассмотреть его в центре столицы невозможно и надо
+      выезжать далеко за город.
+    </li>
+  </ol>
+
+  <h2>Где реально увидеть северное сияние в Москве и области</h2>
+  <p>
+    Если случится сильная геомагнитная буря, шансы заметить сияние выше всего:
+  </p>
+  <ul>
+    <li>за городом, в тёмных местах без подсветки;</li>
+    <li>
+      на возвышенностях, где горизонт максимально открыт и видно больше неба.
+    </li>
+  </ul>
+
+  <h2>Как следить за прогнозом</h2>
+  <p>
+    На сайте и в приложении Polarlights доступна карта сияния и прогноз по всем
+    регионам России. В приложении вы можете включить уведомления и получить
+    сообщение, если северное сияние в выбранном городе станет возможным.
+  </p>
+
+  <h2>Итоги</h2>
+  <p>
+    Северное сияние в Москве — редкая удача, связанная с сильнейшими вспышками
+    на Солнце. Чаще всего за Авророй всё же отправляются на север. Но даже
+    жителям столицы стоит следить за прогнозами — вдруг именно сегодня небо над
+    Москвой засияет разноцветными сполохами Авроры.
+  </p>
+</div>
+
+<div class="mb-5 text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/blog">В блог о северном сиянии</a
+  >
+</div>
+<div class="pb-[60px] text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/">Перейти на главную страницу с картой и вероятностью</a
+  >
+</div>
+
+<div class="image-slider-container">
+  <button class="slider-button left" id="slideLeft">&#8249;</button>
+  <div class="images" id="slider">
+    <div class="imag">
+      <Image src={moscow1} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={moscow2} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={moscow3} alt="Северное Сияние" />
+    </div>
+  </div>
+  <button class="slider-button right" id="slideRight">&#8250;</button>
+</div>
+
+<script is:inline>
+  {
+    function initSlider() {
+      const slider = document.getElementById("slider");
+      const slideLeft = document.getElementById("slideLeft");
+      const slideRight = document.getElementById("slideRight");
+
+      if (!slider) return;
+
+      const totalWidth = Array.from(slider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = slider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        slideLeft.style.display = "block";
+        slideRight.style.display = "block";
+
+        slideLeft.addEventListener("click", () => {
+          slider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        slideRight.addEventListener("click", () => {
+          slider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        slideLeft.style.display = "none";
+        slideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
+  }
+</script>

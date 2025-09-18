@@ -29,7 +29,7 @@ const { variant = "default" } = Astro.props;
       <div class="navigation" id="navigation">
         <button class="close" id="close">&times;</button>
         {
-          variant !== "app" && (
+          variant === "default" && (
             <nav class="nav">
               <a href="#app">{t("H.app")}</a>
               <a href="#map">{t("H.map")}</a>
@@ -37,6 +37,19 @@ const { variant = "default" } = Astro.props;
               <a href="#how-to-see">{t("H.how")}</a>
               <a href="#where-to-see">{t("H.where")}</a>
               <a href="/faq">{t("FAQ")}</a>
+              <a href="https://t.me/polarlightspro">
+                <Image class="w-auto" src={PDtg} alt="Telegram" />
+              </a>
+            </nav>
+          )
+        }
+        {
+          variant === "blog" && (
+            <nav class="nav">
+              <a href="/">Главная</a>
+              <a href="/app">Приложение</a>
+              <a href="/faq">Вопросы</a>
+              <a href="/blog">Блог</a>
               <a href="https://t.me/polarlightspro">
                 <Image class="w-auto" src={PDtg} alt="Telegram" />
               </a>

@@ -9,9 +9,28 @@ const lang = useAstroLocale(Astro);
 import { DEPLOY_URL, ENV_NAME } from "astro:env/client";
 import YaMetrica from "../components/utils/YaMetrica.astro";
 
-const { variant = "default" } = Astro.props;
 const { title = "Прогноз Северного сияния", description = "Поймай Аврору!" } =
   Astro.props;
+
+const path = Astro.url.pathname;
+
+const segments = path.split("/").filter(Boolean);
+let langPrefix = null;
+
+if (["en", "cn"].includes(segments[0])) {
+  langPrefix = segments[0];
+  segments.shift();
+}
+
+const cleanPath = "/" + segments.join("/");
+
+let variant: "default" | "app" | "blog" = "default";
+
+if (cleanPath.startsWith("/app")) {
+  variant = "app";
+} else if (cleanPath.startsWith("/blog")) {
+  variant = "blog";
+}
 ---
 
 <html lang={lang} class="scroll-smooth">
