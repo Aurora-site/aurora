@@ -1,0 +1,298 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import about1 from "../../assets/about1.png";
+import about2 from "../../assets/about2.png";
+import about3 from "../../assets/about3.png";
+import quota from "../../assets/quota.png";
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  p {
+    text-align: justify;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 40px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>Северное сияние</h1>
+  <h2>Поговорим о сиянии</h2>
+  <p>
+    Кто может рассказать о северном сиянии лучше, чем те, кто вырос за Полярным
+    кругом и с детства видел, как оно зажигается в небе?
+  </p>
+
+  <div
+    class="mt-[100px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
+  >
+    <div class="flex items-center justify-center">
+      <Image src={quota} alt="Цитата" />
+    </div>
+    <div class="mt-2 w-[100%] text-left sm:w-[80%]">
+      Я отчетливо помню, как впервые увидела яркое сияние. Это было в Мурманской
+      области, в моём родном городе. Я гуляла во дворе, и вдруг небо вспыхнуло
+      переливающимися огнями. Я просто легла на сугроб и смотрела в небо,
+      потеряв счёт времени. Это было так удивительно: яркие полосы на небе
+      сливались в единую картину и всё время перемещались и меняли свои цвета.
+      (с) Надежда, Polarlights
+    </div>
+  </div>
+</section>
+
+<div class="pt-[50px] pb-[50px]">
+  <h2>Что такое северное сияние?</h2>
+  <p>
+    Северное сияние, полярное сияние или Aurora Borealis — одно из самых
+    красивых природных явлений на Земле. Оно возникает, когда потоки солнечного
+    ветра сталкиваются с магнитным полем планеты. В этот момент небо
+    окрашивается в невероятные оттенки зелёного, розового, фиолетового и даже
+    красного.
+  </p>
+  <p>
+    Сияние чаще всего видно за Полярным кругом, но во время высокой солнечной
+    активности его можно наблюдать и южнее линии Заполярья, а иногда даже в
+    средней полосе России.
+  </p>
+
+  <h2>Когда можно увидеть северное сияние?</h2>
+  <p>
+    Лучшее время для наблюдений в России — с сентября по апрель. Именно в этот
+    период ночи длинные и тёмные, и вероятность яркого сияния особенно высока.
+  </p>
+
+  <h2>Где увидеть северное сияние в России?</h2>
+  <p>
+    Увидеть северное сияние можно во всех регионах, расположенных за Полярным
+    кругом или рядом с ним. Самым популярным местом для наблюдений у туристов
+    остаётся Мурманская область. Она практически полностью находится за Полярным
+    кругом, здесь развита инфраструктура и расположены два аэропорта — в городах
+    Мурманск и Апатиты. Кстати, разработчики Polarlights родом именно из этих
+    мест.
+  </p>
+
+  <h2>Прогноз северного сияния</h2>
+  <p>Для наблюдений важны два фактора:</p>
+  <ol>
+    <li>
+      <strong>KP-индекс</strong> — показывает силу солнечной активности. Чем выше
+      значение (от 0 до 9), тем ярче сияние и тем дальше его видно. Для Мурманской
+      области достаточно индекса KP=3, чтобы сияние было заметно. Но важно помнить:
+      KP-индекс является планетарным, то есть общим для всей Земли. Например, в Мурманске
+      и в Сочи он будет одинаковым, но реальные условия для наблюдения в этих городах
+      абсолютно разные.
+    </li>
+    <li>
+      <strong>Облачность</strong> — даже при высоком индексе облака могут полностью
+      закрыть небо.
+    </li>
+  </ol>
+
+  <p class="underline">
+    На сайте <a href="/">Polarlights</a> доступна карта сияния и прогноз по городам
+    России.
+  </p>
+  <p>
+    Вы можете скачать приложение, включить уведомления — и сервис сообщит о
+    высокой вероятности сияния в вашей локации.
+  </p>
+
+  <h2>Советы для охоты за сиянием</h2>
+  <ul>
+    <li>
+      Уезжайте подальше от городских огней — свет мешает увидеть сияние. Небо
+      должно быть максимально тёмным.
+    </li>
+    <li>Лучшее время для наблюдений — с 20:00 до 03:00.</li>
+    <li>Обязательно возьмите тёплую одежду: ночи на севере холодные.</li>
+    <li>Для фотографий используйте штатив и длинную выдержку.</li>
+    <li>Помните: сияние любит тех, кто умеет его ждать и не торопит.</li>
+  </ul>
+  <p>&nbsp;</p>
+  <p>
+    <strong>
+      С Polarlights вы сможете не только узнать вероятность сияния, но и
+      спланировать поездку так, чтобы увидеть это чудо природы своими глазами.
+    </strong>
+  </p>
+</div>
+
+<div class="mb-5 text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/blog">В блог о северном сиянии</a
+  >
+</div>
+<div class="pb-[60px] text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/">Перейти на главную страницу с картой и вероятностью</a
+  >
+</div>
+
+<div class="image-slider-container">
+  <button class="slider-button left" id="slideLeft">&#8249;</button>
+  <div class="images" id="slider">
+    <div class="imag">
+      <Image src={about1} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={about2} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={about3} alt="Северное Сияние" />
+    </div>
+  </div>
+  <button class="slider-button right" id="slideRight">&#8250;</button>
+</div>
+
+<script is:inline>
+  {
+    function initSlider() {
+      const slider = document.getElementById("slider");
+      const slideLeft = document.getElementById("slideLeft");
+      const slideRight = document.getElementById("slideRight");
+
+      if (!slider) return;
+
+      const totalWidth = Array.from(slider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = slider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        slideLeft.style.display = "block";
+        slideRight.style.display = "block";
+
+        slideLeft.addEventListener("click", () => {
+          slider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        slideRight.addEventListener("click", () => {
+          slider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        slideLeft.style.display = "none";
+        slideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
+  }
+</script>

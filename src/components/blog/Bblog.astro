@@ -1,0 +1,287 @@
+---
+import { useAstroTranslations } from "../../i18n/utils";
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+import article1 from "../../assets/moscow1.png";
+import article2 from "../../assets/article2.png";
+import quota from "../../assets/quota.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+const t = useAstroTranslations(Astro);
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+  .description h1 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 64px;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .description p {
+    margin: 0 auto;
+    font-size: 16px;
+    /* line-height: 1.5; */
+    text-align: left;
+  }
+
+  .description a {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .tour-slider-container {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .cards {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    margin: 40px 0 40px 0;
+    white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
+    padding-bottom: 30px;
+  }
+
+  .tour-card {
+    flex: 0 0 auto; /* Фиксирует размер карточки */
+    width: 360px;
+    box-shadow: 10px 10px 10px #00000040;
+    background-image: linear-gradient(#ffffff99, #ffffff00);
+    border-radius: 20px;
+    margin: 0 0 10px 0;
+  }
+
+  .tour-card img {
+    width: 100%; /* Убедитесь, что изображение адаптируется к ширине карточки */
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .tour-card h3 {
+    font-family: "SongerGrotesqueBold";
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 25px;
+  }
+
+  .tour-card p {
+    line-height: 1.4;
+    font-size: 18px;
+  }
+
+  .tour-card a {
+    padding: 10px 15px;
+    background: white;
+    color: black;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 18px;
+    width: 190px;
+    margin: 20px 0;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .tour-card a:hover {
+    background: #18a5bf;
+    color: white;
+  }
+
+  .tour-card_description {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    margin: 0;
+  }
+
+  .tours_slider-button {
+    position: absolute;
+    top: 30%; /* Вертикальное центрирование */
+    transform: translateY(-50%); /* Корректное центрирование */
+    /*background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 2000; /* Поверх карточек */
+    font-size: 30px;
+  }
+
+  .tours_slider-button.left {
+    left: -50px;
+  }
+
+  .tours_slider-button.right {
+    right: -50px;
+  }
+
+  .title {
+    margin: 20px 0 10px 0;
+    padding-left: 10px;
+  }
+  .tour_price {
+    margin-bottom: 16px;
+    padding-left: 10px;
+  }
+  .text {
+    margin: 35px 0 20px;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+
+  @media (max-width: 952px) {
+    .tour-card {
+      /* padding: 20px 0; */
+    }
+
+    .tours_slider-button {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 482px) {
+    .tour-card {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 74px;
+    }
+
+    .description h2 {
+      margin: 50px 0 55px 0;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>Блог о северном сиянии</h1>
+  <h2>Рассказываем, показываем, общаемся</h2>
+  <p>
+    Кто может рассказать о северном сиянии лучше, чем те, кто вырос за Полярным
+    кругом и с детства видел, как оно зажигается в небе?
+  </p>
+
+  <div
+    class="mt-[100px] flex flex-col justify-evenly rounded-[30px] bg-[#E9E9E9] p-[20px] text-black sm:flex-row"
+  >
+    <div class="flex items-center justify-center">
+      <Image src={quota} alt="Цитата" />
+    </div>
+    <div class="mt-2 w-[100%] text-left sm:w-[80%]">
+      Я отчетливо помню, как впервые увидела яркое сияние. Это было в Мурманской
+      области, в моём родном городе. Я гуляла во дворе, и вдруг небо вспыхнуло
+      переливающимися огнями. Я просто легла на сугроб и смотрела в небо,
+      потеряв счёт времени. Это было так удивительно: яркие полосы на небе
+      сливались в единую картину и всё время перемещались и меняли свои цвета.
+      (с) Надежда, Polarlights
+    </div>
+  </div>
+</section>
+
+<section class="tours py-12">
+  <div class="tour-slider-container">
+    <button class="tours_slider-button left" id="slideLeft1">&#8249;</button>
+
+    <div class="cards" id="slider1">
+      <div class="tour-card">
+        <Image src={article1} alt="Тур" />
+        <div class="tour-card_description">
+          <div class="title"><h3>Северное сияние в Москве</h3></div>
+          <div class="text">
+            Можно ли увидеть северное сияние и что надо делать Москвичам для
+            удачного поиска Авроры...
+          </div>
+          <div class="m-[20px 0] pl-[10px]">
+            <a href="blog/aurora-moscow">Читать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <Image src={article2} alt="Тур" />
+        <div class="tour-card_description">
+          <div class="title"><h3>О северном сиянии</h3></div>
+          <div class="text">
+            Северное сияние: что это такое, где искать и как наблюдать. Советы
+            от опытных охотников.
+          </div>
+          <div class="pl-[10px]"><a href="blog/about-aurora">Читать</a></div>
+        </div>
+      </div>
+    </div>
+    <button class="tours_slider-button right" id="slideRight1">&#8250;</button>
+  </div>
+
+  <div class="text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/">Перейти на главную страницу с картой и вероятностью</a
+    >
+  </div>
+</section>
+
+<script is:inline>
+  {
+    function initSlider() {
+      const slider = document.getElementById("slider1");
+      const slideLeft = document.getElementById("slideLeft1");
+      const slideRight = document.getElementById("slideRight1");
+
+      if (!slider) return;
+
+      // Проверяем, нужен ли скролл
+      const totalWidth = Array.from(slider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = slider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        // Показываем кнопки и активируем прокрутку
+        slideLeft.style.display = "block";
+        slideRight.style.display = "block";
+
+        slideLeft.addEventListener("click", () => {
+          slider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        slideRight.addEventListener("click", () => {
+          slider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        // Скрываем кнопки, если скролл не нужен
+        slideLeft.style.display = "none";
+        slideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
+  }
+</script>
