@@ -9,8 +9,11 @@ const lang = useAstroLocale(Astro);
 import { DEPLOY_URL, ENV_NAME } from "astro:env/client";
 import YaMetrica from "../components/utils/YaMetrica.astro";
 
-const { title = "Прогноз Северного сияния", description = "Поймай Аврору!" } =
-  Astro.props;
+const {
+  title = "Прогноз Северного сияния",
+  description = "Поймай Аврору!",
+  variant: propVariant,
+} = Astro.props;
 
 const path = Astro.url.pathname;
 
@@ -24,13 +27,14 @@ if (["en", "cn"].includes(segments[0])) {
 
 const cleanPath = "/" + segments.join("/");
 
-let variant: "default" | "app" | "blog" = "default";
+let autoVariant: "default" | "app" | "blog" = "default";
 
 if (cleanPath.startsWith("/app")) {
-  variant = "app";
+  autoVariant = "app";
 } else if (cleanPath.startsWith("/blog")) {
-  variant = "blog";
+  autoVariant = "blog";
 }
+const variant = propVariant ?? autoVariant;
 ---
 
 <html lang={lang} class="scroll-smooth">
