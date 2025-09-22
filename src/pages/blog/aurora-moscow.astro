@@ -1,11 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import AURORA_MOSCOW from "../../components/blog/Aurora_Moscow.astro";
+import { useAstroLocale, useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
 ---
 
 <Layout
-  title="Северное сияние в Москве — бывает ли и как увидеть."
-  description="Можно ли увидеть северное сияние в Москве? Рассказываем, при каких условиях оно появляется, где лучше наблюдать и как следить за прогнозом в столице."
+  title={t("aurora-moscow.title")}
+  description={t("aurora-moscow.description")}
+  variant="blog"
 >
   <AURORA_MOSCOW />
 </Layout>

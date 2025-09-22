@@ -1,11 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ABOUT_AURORA from "../../components/blog/About_Aurora.astro";
+import { useAstroLocale, useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
 ---
 
 <Layout
-  title="Северное сияние в России — прогноз, карта, где увидеть | Polarlights"
-  description="Узнайте, где и когда увидеть северное сияние. Прогноз KP-индекса, карта сияния и советы для охоты за Авророй. Polarlights поможет не пропустить чудо!"
+  title={t("about-aurora.title")}
+  description={t("about-aurora.description")}
+  variant="blog"
 >
   <ABOUT_AURORA />
 </Layout>

@@ -1,8 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Agreemnt from "../components/Aagreement.astro";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
 ---
 
-<Layout variant="app">
+<Layout
+  variant="app"
+  title={t("agreement.title")}
+  description={t("agreement.description")}
+>
   <Agreemnt />
 </Layout>

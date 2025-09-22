@@ -1,12 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Bblog from "../../components/blog/Bblog.astro";
+import { useAstroLocale, useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
 ---
 
 <Layout
+  title={t("blog.title")}
+  description={t("blog.description")}
   variant="blog"
-  title="Блог о северном сиянии — факты, прогнозы и истории."
-  description="Блог о северном сиянии от первых лиц. Рассказываем, как и где увидеть сияние, делимся прогнозами, советами и личными историями охотников."
 >
   <Bblog />
 </Layout>

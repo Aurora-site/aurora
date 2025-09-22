@@ -198,6 +198,27 @@ export const ui = {
       "Сияние не видно на светлом небе и сквозь облака — проверяйте не только прогноз, но и облачность",
 
     FAQ: "Вопросы",
+    "faq.title": "Вопросы о северном сиянии",
+    "faq.description":
+      "Следите за северным сиянием легко! Вопросы и советы, прогнозы и уведомления помогут вам оказаться в нужное время в нужном месте.",
+    "policy.title": "Политика персональных данных",
+    "policy.description": "Политика персональных данных сервиса Поларлайтс",
+    "agreement.title": "Согласие на обработку персональных данных",
+    "agreement.description":
+      "Согласие на обработку персональных данных сервиса Поларлайтс",
+
+    /*Blog */
+    "blog.title": "Блог о северном сиянии — факты, прогнозы и истории.",
+    "blog.description":
+      "Блог о северном сиянии от первых лиц. Рассказываем, как и где увидеть сияние, делимся прогнозами, советами и личными историями охотников.",
+    "about-aurora.title":
+      "Северное сияние в России — прогноз, карта, где увидеть | Polarlights",
+    "about-aurora.description":
+      "Узнайте, где и когда увидеть северное сияние. Прогноз KP-индекса, карта сияния и советы для охоты за Авророй. Polarlights поможет не пропустить чудо!",
+    "aurora-moscow.title":
+      "Северное сияние в Москве — бывает ли и как увидеть.",
+    "aurora-moscow.description":
+      "Можно ли увидеть северное сияние в Москве? Рассказываем, при каких условиях оно появляется, где лучше наблюдать и как следить за прогнозом в столице",
   },
   en: {
     icon: "/images/us.png",
@@ -378,6 +399,28 @@ export const ui = {
       "The aurora is not visible in a light sky and through clouds - check not only the forecast, but also the cloud cover!",
 
     FAQ: "FAQ",
+
+    "faq.title": "Questions about the Northern Lights",
+    "faq.description":
+      "Tracking the Northern Lights is easy! Questions and tips, forecasts and alerts will help you be in the right place at the right time.",
+    "policy.title": "Personal Data Policy",
+    "policy.description": "Personal Data Policy of the Polarlights Service",
+    "agreement.title": "Consent to the Processing of Personal Data",
+    "agreement.description":
+      "Consent to the Processing of Personal Data of the Polarlights Service",
+
+    /*Blog */
+    "blog.title":
+      "Blog about the Northern Lights — Facts, Forecasts, and Stories.",
+    "blog.description":
+      "A Northern Lights blog from firsthand experiences. We share how and where to see the aurora, along with forecasts, tips, and personal stories from aurora hunters.",
+    "about-aurora.title":
+      "Northern Lights in Russia — Forecast, Map, Where to See | Polarlights",
+    "about-aurora.description": `Find out where and when to see the Northern Lights. KP index forecast, aurora map, and tips for aurora hunting. Polarlights will help you not miss the magic!`,
+    "aurora-moscow.title":
+      "Northern Lights in Moscow — Does it Happen and How to See It",
+    "aurora-moscow.description":
+      "Can you see the Northern Lights in Moscow? We explain under what conditions it appears, the best places to watch, and how to follow the forecast in the capital.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -536,5 +579,24 @@ export const ui = {
       "在晴朗的天空和云层中都看不到光辉——不仅要查看天气预报，还要关注云量。",
 
     FAQ: "常见问题",
+
+    "faq.title": "极光相关问题",
+    "faq.description":
+      "轻松追踪极光！问题与建议、预测和通知将帮助您在正确的时间出现在正确的地点。",
+    "policy.title": "个人数据政策",
+    "policy.description": "Polarlights 服务隐私政策",
+    "agreement.title": "个人数据处理同意书",
+    "agreement.description": "Polarlights 服务个人信息处理同意书",
+
+    /*Blog */
+    "blog.title": "北极光博客 —— 事实、预报与故事",
+    "blog.description":
+      "北极光博客。我们讲述如何以及在哪里可以看到极光，分享预报、建议和追光者的亲身故事。",
+    "about-aurora.title":
+      "俄罗斯的北极光 —— 预报、地图、观赏地点 | Polarlights",
+    "about-aurora.description": `了解在哪里、什么时候能看到北极光。KP指数预报、极光地图和追光小贴士。Polarlights 帮助您不错过这场奇迹！`,
+    "aurora-moscow.title": "莫斯科的北极光 —— 会出现吗？如何观赏",
+    "aurora-moscow.description":
+      "在莫斯科能看到北极光吗？我们来介绍它在什么条件下会出现、在哪里最佳观赏，以及如何在首都关注预报。",
   },
 } as const;
