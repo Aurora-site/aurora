@@ -162,6 +162,10 @@ const t = useAstroTranslations(Astro);
     .stores_cards {
       width: 80%;
     }
+
+    .just-button {
+      bottom: 20px;
+    }
   }
   @media (max-width: 440px) {
     .app {
@@ -201,8 +205,10 @@ const t = useAstroTranslations(Astro);
             </div>
           </div>
           <p class="Name pt-1.5 text-center font-bold">RuStore</p>
-          <div class="pt-2.5 text-center text-[18px] whitespace-normal">
-            Для мобильных устройств на Android
+          <div
+            class="pt-2.5 pr-3 pl-3 text-center text-[18px] whitespace-normal"
+          >
+            {t("app.for_android")}
           </div>
         </div>
         <a
@@ -211,7 +217,7 @@ const t = useAstroTranslations(Astro);
           target="_blank"
           rel="noopener noreferrer"
         >
-          Скачать
+          {t("app.download")}
         </a>
       </div>
 
@@ -226,7 +232,7 @@ const t = useAstroTranslations(Astro);
           <div
             class="pt-2.5 pr-6 pl-6 text-center text-[18px] whitespace-normal"
           >
-            Для мобильных устройств на iOS
+            {t("app.for_ios")}
           </div>
         </div>
         <a
@@ -235,7 +241,7 @@ const t = useAstroTranslations(Astro);
           target="_blank"
           rel="noopener noreferrer"
         >
-          Скачать
+          {t("app.download")}
         </a>
       </div>
     </div>

@@ -122,6 +122,10 @@ export const ui = {
     незабываемое зрелище. Присоединяйтесь к сообществу любителей северного
     сияния — скачайте наше приложение уже сегодня!`,
 
+    "app.for_ios": "Для мобильных устройств на iOS",
+    "app.for_android": "Для мобильных устройств на Android",
+    "app.download": "Скачать",
+
     /*Footer */
     "footer.Contacts": "Контакты",
     "footer.Aurora": "Северное сияние",
@@ -329,6 +333,10 @@ export const ui = {
     "App.text-final": `Northern Lights viewing just got easier! With our app you will have access to accurate forecasts and notifications about solar flares.
                       Set up alerts so you don't miss a single opportunity to see this unforgettable spectacle. Join the Aurora community - download our app today!`,
 
+    "app.for_ios": "For iOS users, download the app on the App Store",
+    "app.for_android": "For Android users, download the app on RuStore",
+    "app.download": "Download",
+
     /*Footer */
     "footer.Contacts": "Contacts",
     "footer.Aurora": "Aurora",
@@ -516,6 +524,12 @@ export const ui = {
     "App.mini-title2": "与我们的应用一起闪耀更亮！",
     "App.text-final": `观赏极光变得更加简单！通过我们的应用，您可以获得准确的预测和太阳爆发通知。
     设置提醒，确保不错过任何一次观看这壮观景象的机会。加入极光爱好者社区 — 今天就下载我们的应用吧！`,
+
+    "app.for_ios":
+      "对于使用 iOS 设备的用户，请在 App Store 下载我们的极光追踪应用。",
+    "app.for_android":
+      "针对 Android 用户，请先下载 RuStore，我们的应用已在该平台上线。",
+    "app.download": "下载应用",
 
     /*Footer */
     "footer.Contacts": "联系方式",
