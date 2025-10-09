@@ -3,7 +3,8 @@ export const defaultLang = "ru";
 export const ui = {
   ru: {
     icon: "/images/ru.png",
-    "layout.title": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
+    "layout.title":
+      "Северное сияние. Прогноз, карта и реальная вероятность | Поларлайтс",
     "layout.description":
       "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
     "app.title":
@@ -219,6 +220,10 @@ export const ui = {
       "Северное сияние в Москве — бывает ли и как увидеть.",
     "aurora-moscow.description":
       "Можно ли увидеть северное сияние в Москве? Рассказываем, при каких условиях оно появляется, где лучше наблюдать и как следить за прогнозом в столице",
+    "aurora-spb.title":
+      "Северное сияние в Санкт-Петербурге — прогноз и советы | Поларлайтс",
+    "aurora-spb.description":
+      "Можно ли увидеть северное сияние в Спб? Да! Узнайте, при каком индексе оно появляется, как следить за прогнозом и где искать сияние с Polarlights.",
   },
   en: {
     icon: "/images/us.png",
@@ -421,6 +426,10 @@ export const ui = {
       "Northern Lights in Moscow — Does it Happen and How to See It",
     "aurora-moscow.description":
       "Can you see the Northern Lights in Moscow? We explain under what conditions it appears, the best places to watch, and how to follow the forecast in the capital.",
+    "aurora-spb.title":
+      "Northern Lights in Saint Petersburg — Forecast and Tips | Polarlights",
+    "aurora-spb.description":
+      "Can you see the Northern Lights in St. Petersburg? Yes! Find out at which index they appear, how to track the forecast, and where to spot the aurora with Polarlights.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -598,5 +607,8 @@ export const ui = {
     "aurora-moscow.title": "莫斯科的北极光 —— 会出现吗？如何观赏",
     "aurora-moscow.description":
       "在莫斯科能看到北极光吗？我们来介绍它在什么条件下会出现、在哪里最佳观赏，以及如何在首都关注预报。",
+    "aurora-spb.title": "圣彼得堡极光——观测建议与预报 | Polarlights",
+    "aurora-spb.description":
+      "在圣彼得堡能看到极光吗？当然可以！了解极光通常出现的时间和强度、如何查看预报，以及通过 Polarlights 在哪里观赏极光。",
   },
 } as const;

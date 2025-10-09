@@ -5,6 +5,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import auroraback_mb from "../../assets/auroraback_mb.png";
 import article1 from "../../assets/moscow1.png";
 import article2 from "../../assets/article2.png";
+import article3 from "../../assets/aurora-spb_1.png";
 import quota from "../../assets/quota.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
@@ -58,6 +59,7 @@ const l = useAstroLocale(Astro);
     margin: 40px 0 40px 0;
     white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
     padding-bottom: 30px;
+    justify-content: space-between;
   }
 
   .tour-card {
@@ -236,6 +238,22 @@ const l = useAstroLocale(Astro);
           </div>
           <div class="pl-[10px]">
             <a href={getRelativeLocaleUrl(l, "/blog/about-aurora")}>Читать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <Image src={article3} alt="Тур" />
+        <div class="tour-card_description">
+          <div class="title"><h3>Северное сияние в СПб</h3></div>
+          <div class="text">
+            Можно ли увидеть северное сияние в СПб? Узнайте, при каком индексе
+            оно появляется и где его искать.
+          </div>
+          <div class="pl-[10px]">
+            <a href={getRelativeLocaleUrl(l, "/blog/aurora-saint-petersburg")}
+              >Читать</a
+            >
           </div>
         </div>
       </div>
