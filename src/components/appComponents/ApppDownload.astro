@@ -5,6 +5,11 @@ import { Image } from "astro:assets";
 import screen1 from "/src/assets/screenshot1.png";
 import screen2 from "/src/assets/screenshot2.png";
 import screen3 from "/src/assets/screenshot3.png";
+import screen1_cn from "/src/assets/screenshot-cn1.png";
+import screen2_cn from "/src/assets/screenshot-cn2.png";
+import screen3_cn from "/src/assets/screenshot-cn3.png";
+import { getLangFromUrl } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <style>
@@ -100,13 +105,25 @@ import screen3 from "/src/assets/screenshot3.png";
     <button class="screen-button left" id="screenSlideLeft">&#8249;</button>
     <div class="app_screens pt-24" id="screenSlider">
       <div class="screenshot">
-        <Image class="img" src={screen1} alt="Скрин приложения" />
+        <Image
+          class="img"
+          src={lang === "cn" ? screen1_cn : screen1}
+          alt="Скрин приложения"
+        />
       </div>
       <div class="screenshot">
-        <Image class="img" src={screen2} alt="Скрин приложения" />
+        <Image
+          class="img"
+          src={lang === "cn" ? screen2_cn : screen2}
+          alt="Скрин приложения"
+        />
       </div>
       <div class="screenshot">
-        <Image class="img" src={screen3} alt="Скрин приложения" />
+        <Image
+          class="img"
+          src={lang === "cn" ? screen3_cn : screen3}
+          alt="Скрин приложения"
+        />
       </div>
     </div>
     <button class="screen-button right" id="screenSlideRight">&#8250;</button>

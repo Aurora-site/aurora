@@ -139,7 +139,7 @@ export const CitySelect = () => {
           <div className="grid max-h-[500px] grid-cols-1 gap-y-2 overflow-y-auto sm:grid-cols-2 xl:w-full">
             <button
               onClick={handleUseMyLocation}
-              className="mb-0 flex cursor-pointer items-center gap-1 text-white"
+              className="mb-0 flex cursor-pointer items-center gap-1 text-white underline underline-offset-3"
             >
               <MapPin className="h-5 w-5" /> {t("user.Geo")}
             </button>
