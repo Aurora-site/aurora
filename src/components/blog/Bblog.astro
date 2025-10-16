@@ -6,6 +6,7 @@ import auroraback_mb from "../../assets/auroraback_mb.png";
 import article1 from "../../assets/moscow1.png";
 import article2 from "../../assets/article2.png";
 import article3 from "../../assets/aurora-spb_1.png";
+import article4 from "../../assets/aurora-Murmansk-1.png";
 import quota from "../../assets/quota.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
@@ -46,24 +47,21 @@ const l = useAstroLocale(Astro);
     text-align: left;
   }
 
-  .tour-slider-container {
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .cards {
-    display: flex;
+  .cards_blog {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(360px, 1fr)
+    ); /* 3 карточки по 300px, адаптивно */
     gap: 30px;
-    overflow-x: auto; /* Горизонтальная прокрутка */
-    scroll-behavior: smooth; /* Плавная прокрутка */
-    margin: 40px 0 40px 0;
-    white-space: nowrap; /* Предотвращает перенос карточек на новую строку */
+    justify-content: center;
+    margin: 40px auto;
     padding-bottom: 30px;
-    justify-content: space-between;
+    justify-items: center;
   }
 
-  .tour-card {
-    flex: 0 0 auto; /* Фиксирует размер карточки */
+  .tour-card_blog {
+    flex: 0 0 auto;
     width: 360px;
     box-shadow: 10px 10px 10px #00000040;
     background-image: linear-gradient(#ffffff99, #ffffff00);
@@ -71,25 +69,25 @@ const l = useAstroLocale(Astro);
     margin: 0 0 10px 0;
   }
 
-  .tour-card img {
-    width: 100%; /* Убедитесь, что изображение адаптируется к ширине карточки */
+  .tour-card_blog img {
+    width: 100%;
     border-radius: 20px;
     margin-bottom: 10px;
   }
 
-  .tour-card h3 {
+  .tour-card_blog h3 {
     font-family: "SongerGrotesqueBold";
     font-weight: 400;
     font-size: 20px;
     margin-top: 25px;
   }
 
-  .tour-card p {
+  .tour-card_blog p {
     line-height: 1.4;
     font-size: 18px;
   }
 
-  .tour-card a {
+  .tour-card_blog a {
     padding: 10px 15px;
     background: white;
     color: black;
@@ -106,39 +104,17 @@ const l = useAstroLocale(Astro);
     text-decoration: none;
   }
 
-  .tour-card a:hover {
+  .tour-card_blog a:hover {
     background: #18a5bf;
     color: white;
   }
 
-  .tour-card_description {
+  .tour-card_description_blog {
     word-wrap: break-word;
     word-break: break-word;
     white-space: normal;
     margin: 0;
   }
-
-  .tours_slider-button {
-    position: absolute;
-    top: 30%; /* Вертикальное центрирование */
-    transform: translateY(-50%); /* Корректное центрирование */
-    /*background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-    color: black;
-    border: none;
-    cursor: pointer;
-    padding: 5px 15px;
-    z-index: 2000; /* Поверх карточек */
-    font-size: 30px;
-  }
-
-  .tours_slider-button.left {
-    left: -50px;
-  }
-
-  .tours_slider-button.right {
-    right: -50px;
-  }
-
   .title {
     margin: 20px 0 10px 0;
     padding-left: 10px;
@@ -154,18 +130,13 @@ const l = useAstroLocale(Astro);
   }
 
   @media (max-width: 952px) {
-    .tour-card {
+    .tour-card_blog {
       /* padding: 20px 0; */
     }
-
-    .tours_slider-button {
-      display: none !important;
-    }
   }
-
   @media (max-width: 482px) {
-    .tour-card {
-      width: 90%;
+    .tour-card_blog {
+      width: 100%;
     }
   }
 
@@ -210,55 +181,62 @@ const l = useAstroLocale(Astro);
 </section>
 
 <section class="tours pt-[20px] pb-[100px]">
-  <div class="tour-slider-container">
-    <button class="tours_slider-button left" id="slideLeft1">&#8249;</button>
-
-    <div class="cards" id="slider1">
-      <div class="tour-card">
-        <Image src={article1} alt="Тур" />
-        <div class="tour-card_description">
-          <div class="title"><h3>Северное сияние в Москве</h3></div>
-          <div class="text">
-            Можно ли увидеть северное сияние и что надо делать Москвичам для
-            удачного поиска Авроры...
-          </div>
-          <div class="m-[20px 0] pl-[10px]">
-            <a href={getRelativeLocaleUrl(l, "/blog/aurora-moscow")}>Читать</a>
-          </div>
+  <div class="cards_blog">
+    <div class="tour-card_blog">
+      <Image src={article4} alt="Тур" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>Северное сияние в Мурманске</h3></div>
+        <div class="text">
+          Северное сияние в Мурманске — лучшее место для наблюдения в России
         </div>
-      </div>
-
-      <div class="tour-card">
-        <Image src={article2} alt="Тур" />
-        <div class="tour-card_description">
-          <div class="title"><h3>О северном сиянии</h3></div>
-          <div class="text">
-            Северное сияние: что это такое, где искать и как наблюдать. Советы
-            от опытных охотников.
-          </div>
-          <div class="pl-[10px]">
-            <a href={getRelativeLocaleUrl(l, "/blog/about-aurora")}>Читать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tour-card">
-        <Image src={article3} alt="Тур" />
-        <div class="tour-card_description">
-          <div class="title"><h3>Северное сияние в СПб</h3></div>
-          <div class="text">
-            Можно ли увидеть северное сияние в СПб? Узнайте, при каком индексе
-            оно появляется и где его искать.
-          </div>
-          <div class="pl-[10px]">
-            <a href={getRelativeLocaleUrl(l, "/blog/aurora-saint-petersburg")}
-              >Читать</a
-            >
-          </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/aurora-murmansk")}>Читать</a>
         </div>
       </div>
     </div>
-    <button class="tours_slider-button right" id="slideRight1">&#8250;</button>
+    <div class="tour-card_blog">
+      <Image src={article3} alt="Тур" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>Северное сияние в СПб</h3></div>
+        <div class="text">
+          Можно ли увидеть северное сияние в СПб? Узнайте, при каком индексе оно
+          появляется и где его искать.
+        </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/aurora-saint-petersburg")}
+            >Читать</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card_blog">
+      <Image src={article1} alt="Тур" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>Северное сияние в Москве</h3></div>
+        <div class="text">
+          Можно ли увидеть северное сияние и что надо делать Москвичам для
+          удачного поиска Авроры...
+        </div>
+        <div class="m-[20px 0] pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/aurora-moscow")}>Читать</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card_blog">
+      <Image src={article2} alt="Тур" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>О северном сиянии</h3></div>
+        <div class="text">
+          Северное сияние: что это такое, где искать и как наблюдать. Советы от
+          опытных охотников.
+        </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/about-aurora")}>Читать</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="text-left">
@@ -268,43 +246,3 @@ const l = useAstroLocale(Astro);
     >
   </div>
 </section>
-
-<script is:inline>
-  {
-    function initSlider() {
-      const slider = document.getElementById("slider1");
-      const slideLeft = document.getElementById("slideLeft1");
-      const slideRight = document.getElementById("slideRight1");
-
-      if (!slider) return;
-
-      // Проверяем, нужен ли скролл
-      const totalWidth = Array.from(slider.children).reduce(
-        (sum, item) => sum + item.offsetWidth,
-        0,
-      );
-      const visibleWidth = slider.offsetWidth;
-
-      if (totalWidth > visibleWidth) {
-        // Показываем кнопки и активируем прокрутку
-        slideLeft.style.display = "block";
-        slideRight.style.display = "block";
-
-        slideLeft.addEventListener("click", () => {
-          slider.scrollBy({ left: -380, behavior: "smooth" });
-        });
-
-        slideRight.addEventListener("click", () => {
-          slider.scrollBy({ left: 380, behavior: "smooth" });
-        });
-      } else {
-        // Скрываем кнопки, если скролл не нужен
-        slideLeft.style.display = "none";
-        slideRight.style.display = "none";
-      }
-    }
-
-    window.addEventListener("load", initSlider);
-    window.addEventListener("resize", initSlider);
-  }
-</script>

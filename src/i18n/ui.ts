@@ -228,6 +228,10 @@ export const ui = {
       "Северное сияние в Санкт-Петербурге — прогноз и советы | Поларлайтс",
     "aurora-spb.description":
       "Можно ли увидеть северное сияние в Спб? Да! Узнайте, при каком индексе оно появляется, как следить за прогнозом и где искать сияние с Polarlights.",
+    "aurora-murmansk.title":
+      "Северное сияние в Мурманске — советы и прогноз | Поларлайтс",
+    "aurora-murmansk.description":
+      "Северное сияние в Мурманске — лучшее место для наблюдения в России! Прогноз, карта, индекс и советы для охотников за сиянием от сервиса Polarlights.",
   },
   en: {
     icon: "/images/us.png",
@@ -438,6 +442,9 @@ export const ui = {
       "Northern Lights in Saint Petersburg — Forecast and Tips | Polarlights",
     "aurora-spb.description":
       "Can you see the Northern Lights in St. Petersburg? Yes! Find out at which index they appear, how to track the forecast, and where to spot the aurora with Polarlights.",
+    "aurora-murmansk.title":
+      "Northern Lights in Murmansk — Tips and Forecast | Polarlights",
+    "aurora-murmansk.description": `The Northern Lights in Murmansk — the best place to watch them in Russia! Forecast, map, index, and tips for aurora hunters from the Polarlights service.`,
   },
   cn: {
     icon: "/images/cn.png",
@@ -624,5 +631,7 @@ export const ui = {
     "aurora-spb.title": "圣彼得堡极光——观测建议与预报 | Polarlights",
     "aurora-spb.description":
       "在圣彼得堡能看到极光吗？当然可以！了解极光通常出现的时间和强度、如何查看预报，以及通过 Polarlights 在哪里观赏极光。",
+    "aurora-murmansk.title": "摩尔曼斯克的极光——观赏指南与预报 | Polarlights",
+    "aurora-murmansk.description": `摩尔曼斯克是俄罗斯观赏极光的最佳地点！查看极光预报、地图、指数及观赏建议——尽在 Polarlights 服务。`,
   },
 } as const;

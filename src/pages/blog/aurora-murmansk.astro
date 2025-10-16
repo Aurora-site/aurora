@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AURORA_MURMANSK from "../../components/blog/Aurora_Murmansk.astro";
+import { useAstroLocale, useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
+---
+
+<Layout
+  title={t("aurora-murmansk.title")}
+  description={t("aurora-murmansk.description")}
+  variant="blog"
+>
+  <AURORA_MURMANSK />
+</Layout>
