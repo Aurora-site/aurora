@@ -67,5 +67,40 @@ const variant = propVariant ?? autoVariant;
       </div>
     </div>
     <Footer />
+
+    <script is:inline>
+      const scrollToHash = () => {
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        const el = document.querySelector(hash);
+        if (!el) return;
+
+        const header = document.querySelector(".header");
+        const headerOffset = header?.offsetHeight || 0;
+
+        let lastY = -1;
+        let attempts = 0;
+        const maxAttempts = 30;
+
+        const fixScroll = () => {
+          const y =
+            el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          if (y !== lastY) {
+            window.scrollTo({ top: y });
+            lastY = y;
+          }
+
+          if (attempts++ < maxAttempts) {
+            requestAnimationFrame(fixScroll);
+          }
+        };
+
+        requestAnimationFrame(fixScroll);
+      };
+
+      window.addEventListener("load", scrollToHash);
+      window.addEventListener("hashchange", scrollToHash);
+    </script>
   </body>
 </html>
