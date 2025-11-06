@@ -232,6 +232,11 @@ export const ui = {
       "Северное сияние в Мурманске — советы и прогноз | Поларлайтс",
     "aurora-murmansk.description":
       "Северное сияние в Мурманске — лучшее место для наблюдения в России! Прогноз, карта, индекс и советы для охотников за сиянием от сервиса Polarlights.",
+
+    "forecast-aurora.title":
+      "Большой прогноз северного сияния 2025-2026: пик солнечной активности пройден, но шансы увидеть сияние всё ещё высоки | Поларлайтс",
+    "forecast-aurora.description":
+      "В 2024–2025 годах северное сияние стало видно на необычно южных широтах — всё из-за пика солнечного цикла. По данным NOAA, пик уже позади, и активность Солнца начнёт снижаться. Узнайте, где и когда лучше наблюдать сияние и почему сейчас — лучший момент для поездки на север.",
   },
   en: {
     icon: "/images/us.png",
@@ -445,6 +450,10 @@ export const ui = {
     "aurora-murmansk.title":
       "Northern Lights in Murmansk — Tips and Forecast | Polarlights",
     "aurora-murmansk.description": `The Northern Lights in Murmansk — the best place to watch them in Russia! Forecast, map, index, and tips for aurora hunters from the Polarlights service.`,
+    "forecast-aurora.title":
+      "Aurora Forecast 2025–2026: The Solar Peak Has Passed, but Your Chances to See the Northern Lights Remain High | Polarlights",
+    "forecast-aurora.description":
+      "In 2024–2025, the Northern Lights were seen unusually far south due to the solar cycle peak. According to NOAA, the Sun’s activity has already passed its maximum and will gradually decline. Discover where and when to watch the aurora — and why now is the best time to travel north.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -633,5 +642,9 @@ export const ui = {
       "在圣彼得堡能看到极光吗？当然可以！了解极光通常出现的时间和强度、如何查看预报，以及通过 Polarlights 在哪里观赏极光。",
     "aurora-murmansk.title": "摩尔曼斯克的极光——观赏指南与预报 | Polarlights",
     "aurora-murmansk.description": `摩尔曼斯克是俄罗斯观赏极光的最佳地点！查看极光预报、地图、指数及观赏建议——尽在 Polarlights 服务。`,
+    "forecast-aurora.title":
+      "2025–2026极光预测：太阳活动高峰已过，但观赏极光的机会依然很高 | Polarlights",
+    "forecast-aurora.description":
+      "在2024–2025年期间，极光出现在了以往罕见的南方地区，这是因为太阳活动达到了高峰。根据美国国家海洋和大气管理局（NOAA）的预测，太阳活动高峰已过去，并将在未来几年逐渐减弱。了解在哪些地方、什么时候最容易看到极光——现在正是前往北方追光的最佳时机。",
   },
 } as const;

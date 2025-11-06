@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AURORAForecast from "../../components/blog/Aurora_Forecast.astro";
+import { useAstroLocale, useAstroTranslations } from "../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
+---
+
+<Layout
+  title={t("forecast-aurora.title")}
+  description={t("forecast-aurora.description")}
+  variant="blog"
+>
+  <AURORAForecast />
+</Layout>

@@ -1,0 +1,300 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import forecast1 from "../../assets/Aurora-forecast_1.png";
+import forecast2 from "../../assets/Aurora-forecast_2.png";
+import forecast3 from "../../assets/Aurora-forecast_3.png";
+import Forecast from "../../assets/Forecast_Aurora.png";
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  p {
+    text-align: justify;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 10px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 100px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 68px;
+      font-size: 52px;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>Большой прогноз сияния</h1>
+  <h2>Блог о северном сиянии</h2>
+  <p>
+    За последний год северное сияние стало появляться там, где его раньше почти
+    не видели.
+  </p>
+</section>
+
+<div class="pt-[25px] pb-[50px]">
+  <h2>Почему сияние стало таким частым и заметным?</h2>
+  <p>Причина проста — пик солнечного цикла.</p>
+  <p>
+    Это период, когда активность Солнца достигает максимума, а количество
+    солнечных пятен, вспышек и корональных выбросов резко возрастает.
+  </p>
+  <p>
+    Каждая такая вспышка отправляет в сторону Земли мощный поток заряженных
+    частиц, и когда они взаимодействуют с магнитным полем нашей планеты — мы
+    видим северное сияние.
+  </p>
+  <p>
+    Национальное управление океанических и атмосферных исследований США (NOAA)
+    подтверждает: сейчас мы переживаем одну из самых сильных фаз солнечного
+    цикла за последние десятилетия.
+  </p>
+
+  <h2>Но пик уже позади</h2>
+  <p>
+    По свежим данным NOAA, максимум солнечной активности пройден, и в ближайшие
+    годы она будет постепенно снижаться.
+  </p>
+  <p>
+    Это значит, что такие масштабные и «южные» сияния, как в 2024–2025 годах,
+    станут случаться всё реже.
+  </p>
+  <p>Мы по-прежнему живём в «золотом периоде» сияний — но он плавно уходит.</p>
+  <p>
+    В следующие годы северное сияние вновь сосредоточится в своих привычных
+    широтах:
+  </p>
+  <p>
+    Кольский полуостров, север Карелии, Финляндия, Норвегия, Исландия и другие
+    арктические регионы.
+  </p>
+
+  <div class="mt-[40px]">
+    <Image src={Forecast} alt="Другой рисунок" />
+  </div>
+
+  <h2>Когда лучше ехать за сиянием?</h2>
+  <p>Совет от команды Polarlights:</p>
+  <p>
+    если вы давно мечтали увидеть северное сияние своими глазами — не
+    откладывайте.
+  </p>
+  <ul>
+    <li>Самые лучшие сезоны — сейчас и в ближайшие 1–2 года.</li>
+    <li>
+      Потом Солнце войдёт в более спокойную фазу, и вероятность мощных вспышек
+      снизится.
+    </li>
+    <li>
+      Чем ближе вы к северу — тем выше шансы, но главное правило остаётся
+      прежним: ясное небо, минимум света и немного терпения.
+    </li>
+  </ul>
+
+  <h2>Где следить за прогнозом сияния</h2>
+  <p>
+    Всё самое важное о солнечной активности, прогнозах и вспышках доступно в
+    нашем приложении Polarlights.
+  </p>
+  <p>Там можно:</p>
+  <ul>
+    <li>смотреть онлайн-карту сияний,</li>
+    <li>отслеживать KP-индекс и облачность,</li>
+    <li>
+      включить уведомления о вспышках, чтобы не пропустить подходящую ночь.
+    </li>
+  </ul>
+  <p>
+    <a
+      href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
+      >Скачать в App Store</a
+    >
+  </p>
+  <p>
+    <a href="https://www.rustore.ru/catalog/app/com.polarlights"
+      >Скачать в RuStore (для Android)</a
+    >
+  </p>
+
+  <h2>Поларлайтс желает вам ярких сияний и чистого неба!</h2>
+</div>
+
+<div class="mb-[50px] text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/blog">В блог о северном сиянии</a
+  >
+</div>
+<div class="pb-[50px] text-left">
+  <a
+    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+    href="/">Перейти на главную страницу с картой и вероятностью</a
+  >
+</div>
+
+<div class="image-slider-container">
+  <button class="slider-button left" id="slideLeft">&#8249;</button>
+  <div class="images" id="slider">
+    <div class="imag">
+      <Image src={forecast1} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={forecast2} alt="Северное Сияние" />
+    </div>
+    <div class="imag">
+      <Image src={forecast3} alt="Северное Сияние" />
+    </div>
+  </div>
+  <button class="slider-button right" id="slideRight">&#8250;</button>
+</div>
+
+<script is:inline>
+  {
+    function initSlider() {
+      const slider = document.getElementById("slider");
+      const slideLeft = document.getElementById("slideLeft");
+      const slideRight = document.getElementById("slideRight");
+
+      if (!slider) return;
+
+      const totalWidth = Array.from(slider.children).reduce(
+        (sum, item) => sum + item.offsetWidth,
+        0,
+      );
+      const visibleWidth = slider.offsetWidth;
+
+      if (totalWidth > visibleWidth) {
+        slideLeft.style.display = "block";
+        slideRight.style.display = "block";
+
+        slideLeft.addEventListener("click", () => {
+          slider.scrollBy({ left: -380, behavior: "smooth" });
+        });
+
+        slideRight.addEventListener("click", () => {
+          slider.scrollBy({ left: 380, behavior: "smooth" });
+        });
+      } else {
+        slideLeft.style.display = "none";
+        slideRight.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", initSlider);
+    window.addEventListener("resize", initSlider);
+  }
+</script>

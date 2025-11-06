@@ -7,6 +7,7 @@ import article1 from "../../assets/moscow1.png";
 import article2 from "../../assets/article2.png";
 import article3 from "../../assets/aurora-spb_1.png";
 import article4 from "../../assets/aurora-Murmansk-1.png";
+import article5 from "../../assets/Aurora-forecast_1.png";
 import quota from "../../assets/quota.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
@@ -183,7 +184,20 @@ const l = useAstroLocale(Astro);
 <section class="tours pt-[20px] pb-[100px]">
   <div class="cards_blog">
     <div class="tour-card_blog">
-      <Image src={article4} alt="Тур" />
+      <Image src={article5} alt="Статья" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>Большой прогноз сияния</h3></div>
+        <div class="text">
+          Узнайте, где и когда лучше наблюдать сияние и почему сейчас — лучший
+          момент
+        </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/aurora-murmansk")}>Читать</a>
+        </div>
+      </div>
+    </div>
+    <div class="tour-card_blog">
+      <Image src={article4} alt="Статья" />
       <div class="tour-card_description_blog">
         <div class="title"><h3>Северное сияние в Мурманске</h3></div>
         <div class="text">
@@ -195,7 +209,7 @@ const l = useAstroLocale(Astro);
       </div>
     </div>
     <div class="tour-card_blog">
-      <Image src={article3} alt="Тур" />
+      <Image src={article3} alt="Статья" />
       <div class="tour-card_description_blog">
         <div class="title"><h3>Северное сияние в СПб</h3></div>
         <div class="text">
@@ -211,7 +225,7 @@ const l = useAstroLocale(Astro);
     </div>
 
     <div class="tour-card_blog">
-      <Image src={article1} alt="Тур" />
+      <Image src={article1} alt="Статья" />
       <div class="tour-card_description_blog">
         <div class="title"><h3>Северное сияние в Москве</h3></div>
         <div class="text">
@@ -225,7 +239,7 @@ const l = useAstroLocale(Astro);
     </div>
 
     <div class="tour-card_blog">
-      <Image src={article2} alt="Тур" />
+      <Image src={article2} alt="Статья" />
       <div class="tour-card_description_blog">
         <div class="title"><h3>О северном сиянии</h3></div>
         <div class="text">
