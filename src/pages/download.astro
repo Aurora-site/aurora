@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import LOGO from "../assets/logo.png";
+import "../styles/styles.css";
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Перенаправление в магазин</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        color: white;
+        overflow: hidden;
+        transition: opacity 0.5s ease;
+      }
+
+      .container {
+        text-align: center;
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+        /* margin-bottom: 1rem; */
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.9;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      let target = "https://polarlights.pro/app";
+
+      if (/android/i.test(ua)) {
+        target = "https://www.rustore.ru/catalog/app/com.polarlights";
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        target =
+          "https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523";
+      }
+
+      setTimeout(() => {
+        document.body.style.opacity = "0";
+        setTimeout(() => (window.location.href = target), 500);
+      }, 1500);
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <Image src={LOGO} alt="Логотип" class="logo" />
+      <h1>Переходим к приложению</h1>
+      <p>Перенаправляем вас на нужную страницу</p>
+    </div>
+  </body>
+</html>
