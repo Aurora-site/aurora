@@ -10,6 +10,45 @@ import "../styles/styles.css";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Перенаправление в магазин</title>
 
+    <!-- ✅ Яндекс.Метрика -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        // prettier-ignore
+        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]);
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js",
+        "ym",
+      );
+
+      ym(105295871, "init", {
+        clickmap: true,
+        trackLinks: true,
+        webvisor: true,
+        accurateTrackBounce: true,
+      });
+    </script>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/105295871"
+          style="position:absolute; left:-9999px;"
+          alt=""
+        />
+      </div>
+    </noscript>
+
     <style>
       body {
         margin: 0;
@@ -31,7 +70,6 @@ import "../styles/styles.css";
       .logo {
         width: 80px;
         height: 80px;
-        /* margin-bottom: 1rem; */
         animation: pulse 2s infinite ease-in-out;
       }
 
@@ -70,10 +108,36 @@ import "../styles/styles.css";
           "https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523";
       }
 
-      setTimeout(() => {
-        document.body.style.opacity = "0";
-        setTimeout(() => (window.location.href = target), 500);
-      }, 1500);
+      window.addEventListener("DOMContentLoaded", () => {
+        const redirectDelay = 1500; // задержка перед редиректом
+
+        if (typeof ym === "function") {
+          // Отправляем цель
+          ym(105295871, "reachGoal", "redirect_started");
+
+          // Сообщаем Метрике, что визит не отказ
+          ym(105295871, "notBounce", {
+            callback: () => {
+              setTimeout(() => {
+                document.body.style.opacity = "0";
+                setTimeout(() => (window.location.href = target), 500);
+              }, redirectDelay - 500);
+            },
+          });
+
+          // Фолбэк на случай блокировки Метрики
+          setTimeout(() => {
+            document.body.style.opacity = "0";
+            setTimeout(() => (window.location.href = target), 500);
+          }, redirectDelay);
+        } else {
+          // Если Метрика не загрузилась
+          setTimeout(() => {
+            document.body.style.opacity = "0";
+            setTimeout(() => (window.location.href = target), 500);
+          }, redirectDelay);
+        }
+      });
     </script>
   </head>
 
