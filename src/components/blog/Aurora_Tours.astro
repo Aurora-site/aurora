@@ -1,0 +1,284 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import tours1 from "../../assets/blog_tours_1.png";
+import tours2 from "../../assets/blog_tours_2.png";
+import tours3 from "../../assets/blog_tours_3.png";
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  p {
+    text-align: justify;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 10px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 100px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 68px;
+      font-size: 52px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>Туры на северное сияние</h1>
+  <h2>Блог о северном сиянии</h2>
+  <p>
+    Почему туры на Северное сияние не должны обещать чудо — а должны помогать
+    его поймать
+  </p>
+</section>
+
+<div class="pt-[25px] pb-[50px]">
+  <h2>Северное сияние — мечта многих</h2>
+  <p>
+    Каждый сезон тысячи людей покупают туры на Северное сияние. Кто-то
+    действительно видит небо, вспыхивающее зелёными лентами, а кто-то
+    возвращается с вопросом: «Почему нам не повезло?»
+  </p>
+  <p>
+    И здесь дело вовсе не в туроператорах. Северное сияние нельзя «заказать».
+    Это природное явление, зависящее от геомагнитной активности, облачности и
+    множества факторов, которые невозможно предсказать на 100%.
+  </p>
+
+  <h2>Тур — это не обещание, а возможность</h2>
+  <p>
+    Лучшие туры на Северное сияние — это не те, где вам обещают гарантированный
+    результат, а те, где вас готовят к настоящей охоте за сиянием:
+  </p>
+  <ul>
+    <li>объясняют, как читать прогноз и что такое KP-индекс,</li>
+    <li>выбирают локации по текущей погоде,</li>
+    <li>выезжают ночью, если есть шанс.</li>
+  </ul>
+  <p>
+    Это честный и экологичный подход — и именно он формирует доверие к северному
+    туризму.
+  </p>
+
+  <h2>Поларлайтс, который помогает</h2>
+  <p>Сегодня туроператорам не нужно полагаться только на “удачу”.</p>
+  <p>
+    Сервис Polarlights — это инструмент, который помогает гиду и туристу
+    оказаться в нужное время в нужном месте:
+  </p>
+  <ul>
+    <li>прогноз сияния по регионам России,</li>
+    <li>карта облачности,</li>
+    <li>пуш - уведомления о высокой вероятности,</li>
+    <li>интеграция с турами и локальными событиями.</li>
+  </ul>
+  <p>
+    Многие северные компании уже используют Polarlights, чтобы повышать ценность
+    своих туров и честно объяснять клиентам, когда стоит ехать за сиянием.
+  </p>
+
+  <h2>Честность — это лучший маркетинг</h2>
+  <p>Сегодня туристы ценят прозрачность и реальность.</p>
+  <p>Если туроператор говорит честно:</p>
+  <p>
+    “Северное сияние — природное явление, но мы сделаем всё, чтобы вы его
+    поймали”,  — он вызывает доверие.
+  </p>
+  <p>
+    Polarlights помогает поддерживать этот уровень честности и вовлечённости —
+    через прогнозы и уведомления.
+  </p>
+
+  <h2>Итог</h2>
+  <p>
+    Северное сияние нельзя пообещать, но можно предсказать с помощью расчётов от
+    университетов и геофизических обсерваторий, которые получают данные из
+    спутников, фиксирующих солнечные вспышки и потоки заряженных частиц. На
+    основе этих данных формируется прогноз, который в реальном времени
+    анализируется и отображается в сервисе Polarlights, помогая путешественникам
+    оказаться в нужном месте в нужный момент.
+  </p>
+
+  <div class="mt-[60px] mb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/blog">В блог о северном сиянии</a
+    >
+  </div>
+  <div class="pb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/">Перейти на главную страницу с картой и вероятностью</a
+    >
+  </div>
+
+  <div class="image-slider-container">
+    <button class="slider-button left" id="slideLeft">&#8249;</button>
+    <div class="images" id="slider">
+      <div class="imag">
+        <Image src={tours3} alt="Северное Сияние" />
+      </div>
+      <div class="imag">
+        <Image src={tours2} alt="Северное Сияние" />
+      </div>
+      <div class="imag">
+        <Image src={tours1} alt="Северное Сияние" />
+      </div>
+    </div>
+    <button class="slider-button right" id="slideRight">&#8250;</button>
+  </div>
+
+  <script is:inline>
+    {
+      function initSlider() {
+        const slider = document.getElementById("slider");
+        const slideLeft = document.getElementById("slideLeft");
+        const slideRight = document.getElementById("slideRight");
+
+        if (!slider) return;
+
+        const totalWidth = Array.from(slider.children).reduce(
+          (sum, item) => sum + item.offsetWidth,
+          0,
+        );
+        const visibleWidth = slider.offsetWidth;
+
+        if (totalWidth > visibleWidth) {
+          slideLeft.style.display = "block";
+          slideRight.style.display = "block";
+
+          slideLeft.addEventListener("click", () => {
+            slider.scrollBy({ left: -380, behavior: "smooth" });
+          });
+
+          slideRight.addEventListener("click", () => {
+            slider.scrollBy({ left: 380, behavior: "smooth" });
+          });
+        } else {
+          slideLeft.style.display = "none";
+          slideRight.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", initSlider);
+      window.addEventListener("resize", initSlider);
+    }
+  </script>
+</div>

@@ -237,6 +237,11 @@ export const ui = {
       "Большой прогноз северного сияния 2025-2026: пик солнечной активности пройден, но шансы увидеть сияние всё ещё высоки | Поларлайтс",
     "forecast-aurora.description":
       "В 2024–2025 годах северное сияние стало видно на необычно южных широтах — всё из-за пика солнечного цикла. По данным NOAA, пик уже позади, и активность Солнца начнёт снижаться. Узнайте, где и когда лучше наблюдать сияние и почему сейчас — лучший момент для поездки на север.",
+
+    "aurora-tours.title":
+      "Туры на Северное сияние — где увидеть, когда ехать и как предсказать | Polarlights | Поларлайтс",
+    "aurora-tours.description":
+      "Северное сияние нельзя пообещать, но можно предсказать. Узнайте, где и когда лучше всего наблюдать сияние, какие туры выбрать и как прогнозировать его появление с помощью сервиса Polarlights.",
   },
   en: {
     icon: "/images/us.png",
@@ -454,6 +459,11 @@ export const ui = {
       "Aurora Forecast 2025–2026: The Solar Peak Has Passed, but Your Chances to See the Northern Lights Remain High | Polarlights",
     "forecast-aurora.description":
       "In 2024–2025, the Northern Lights were seen unusually far south due to the solar cycle peak. According to NOAA, the Sun’s activity has already passed its maximum and will gradually decline. Discover where and when to watch the aurora — and why now is the best time to travel north.",
+
+    "aurora-tours.title":
+      "Northern Lights Tours — Where to See, When to Go, and How to Predict | Polarlights",
+    "aurora-tours.description":
+      "You can’t promise the Northern Lights, but you can predict them. Discover the best places and times to witness the aurora, choose the right tours, and track real forecasts with the Polarlights service.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -646,5 +656,10 @@ export const ui = {
       "2025–2026极光预测：太阳活动高峰已过，但观赏极光的机会依然很高 | Polarlights",
     "forecast-aurora.description":
       "在2024–2025年期间，极光出现在了以往罕见的南方地区，这是因为太阳活动达到了高峰。根据美国国家海洋和大气管理局（NOAA）的预测，太阳活动高峰已过去，并将在未来几年逐渐减弱。了解在哪些地方、什么时候最容易看到极光——现在正是前往北方追光的最佳时机。",
+
+    "aurora-tours.title":
+      "北极光之旅 — 去哪里看、什么时候去、如何预测 | 极光指南",
+    "aurora-tours.description":
+      "北极光无法被承诺，但可以被预测。了解如何选择合适的北极光之旅，并通过 Polarlights 服务预测它的出现。",
   },
 } as const;
