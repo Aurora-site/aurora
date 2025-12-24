@@ -2,11 +2,12 @@
 import "../styles/styles.css";
 import "../styles/tailwind.css";
 import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+
 const t = useAstroTranslations(Astro);
 const lang = useAstroLocale(Astro);
 ---
 
-<html>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,18 +22,55 @@ const lang = useAstroLocale(Astro);
       body {
         overscroll-behavior: auto !important;
         touch-action: pan-x pan-y !important;
-        -ms-touch-action: pan-x pan-y !important;
         background-color: black;
-        margin: 0 20px;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
       }
 
       * {
         touch-action: pan-x pan-y !important;
       }
+
+      .widget-wrapper {
+        padding: 0 20px;
+      }
+
+      .widget-footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 0;
+        font-size: 12px;
+        color: #aaa;
+        font-weight: 600;
+      }
+
+      .widget-footer img {
+        height: 18px;
+        width: auto;
+      }
+
+      .widget-footer a {
+        color: #aaa;
+        text-decoration: underline 1px;
+        text-underline-offset: 2px;
+      }
+
+      .widget-footer a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
 
   <body>
-    <slot />
+    <div class="widget-wrapper">
+      <slot />
+      <div class="widget-footer">
+        <img src="/images/logo.png" alt="Polarlights" />
+        <a href="https://polarlights.pro" target="_blank" rel="noopener">
+          Polarlights.pro
+        </a> - поиск северного сияния
+      </div>
+    </div>
   </body>
 </html>
