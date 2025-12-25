@@ -228,8 +228,8 @@ const t = useAstroTranslations(Astro);
   };
 
   const initCookieBanner = () => {
-    const cookieBanner = document.querySelector<HTMLElement>(".cookie");
-    const okButton = document.querySelector<HTMLButtonElement>(".cookie_apply");
+    const cookieBanner = document.querySelector(".cookie");
+    const okButton = document.querySelector(".cookie_apply");
 
     if (!cookieBanner || hasConsent()) return;
 
