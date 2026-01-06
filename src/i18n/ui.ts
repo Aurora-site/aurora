@@ -39,6 +39,8 @@ export const ui = {
     "MapSection.Tooltip": "Вероятность сияния",
     "MapSection.enableClouds": "Включить облачность",
     "MapSection.disableClouds": "Отключить облачность",
+    "MapSection.DownloadPlease1": "Установи приложение",
+    "MapSection.DownloadPlease2": " и получай уведомления",
     "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
     "user.Geo": "Моё местоположение",
     "user.Alert":
@@ -279,6 +281,9 @@ export const ui = {
     "MapSection.Tooltip": "Aurora probability",
     "MapSection.enableClouds": "Enable clouds",
     "MapSection.disableClouds": "Disable clouds",
+    "MapSection.DownloadPlease1": "Install the app",
+    "MapSection.DownloadPlease2": " and receive notifications",
+
     "aurora.probability":
       "In the selected geolocation, the probability during the next hour is",
     "user.Geo": "My geoposition",
@@ -496,6 +501,9 @@ export const ui = {
     "MapSection.Tooltip": "极光概率",
     "MapSection.enableClouds": "启用云层",
     "MapSection.disableClouds": "禁用云层",
+    "MapSection.DownloadPlease1": "下载可发送极光通知的应用",
+    "MapSection.DownloadPlease2": "ㅤ",
+
     "aurora.probability": "在您的地理位置，下一小时内的极光概率",
     "user.Geo": "我的位置",
     "user.Alert":

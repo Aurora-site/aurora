@@ -1,8 +1,10 @@
 ---
 import { AuroraMap } from "./reactive/AuroraMap";
 import { AuroraNow } from "./reactive/AuroraNow";
-import { useAstroTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useAstroTranslations, useAstroLocale } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
+const l = useAstroLocale(Astro);
 ---
 
 <section class="py-12" id="map">
@@ -11,5 +13,19 @@ const t = useAstroTranslations(Astro);
     {t("MapSection.text")}
   </p>
   <AuroraNow client:only="react" />
+  <div class="mt-[20px]">
+    <a href={getRelativeLocaleUrl(l, "/app")}
+      >{t("MapSection.DownloadPlease1")}</a
+    >
+    {t("MapSection.DownloadPlease2")}
+  </div>
   <AuroraMap client:only="react" />
 </section>
+
+<style>
+  a {
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    color: white;
+  }
+</style>
