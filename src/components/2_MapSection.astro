@@ -14,9 +14,7 @@ const l = useAstroLocale(Astro);
   </p>
   <AuroraNow client:only="react" />
   <div class="mt-[20px]">
-    <a href={getRelativeLocaleUrl(l, "/app")}
-      >{t("MapSection.DownloadPlease1")}</a
-    >
+    <a href="/download">{t("MapSection.DownloadPlease1")}</a>
     {t("MapSection.DownloadPlease2")}
   </div>
   <AuroraMap client:only="react" />

@@ -39,8 +39,8 @@ export const ui = {
     "MapSection.Tooltip": "Вероятность сияния",
     "MapSection.enableClouds": "Включить облачность",
     "MapSection.disableClouds": "Отключить облачность",
-    "MapSection.DownloadPlease1": "Установи приложение",
-    "MapSection.DownloadPlease2": " и получай уведомления",
+    "MapSection.DownloadPlease1": "Установите приложение",
+    "MapSection.DownloadPlease2": " и получайте уведомления",
     "aurora.probability": "В выбранной геолокации вероятность в ближайший час",
     "user.Geo": "Моё местоположение",
     "user.Alert":

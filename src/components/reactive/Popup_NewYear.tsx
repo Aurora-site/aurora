@@ -50,40 +50,21 @@ export default function Popup() {
         >
           &times;
         </button>
-        <h2>Скоро Новый год, а это время подарков</h2>
+        <h2>Чек-лист для поездки за Северным сиянием!</h2>
         <p className="text-base text-black">
-          К 31 декабря мы разыграем среди подписчиков телеграма 10 годовых
-          подписок на любые платные тарифы приложения.
+          Посмотрите чек-лист, чтобы быть готовым к фотоохоте за северным
+          сиянием
         </p>
-        <div className="mt-[30px]">
-          <h2>Следи за новостями поларлайтс в телеграм!</h2>
-          <p className="text-base text-black">
-            В телеграм-канале Поларлайтс размещаются прогнозы, яркие фотографии
-            и полезная информация, а также ведётся обратная связь с
-            пользователями сервиса и охотниками за сиянием.
-          </p>
-        </div>
-        <div className="mt-[30px]">
+
+        <div className="mt-[25px]">
           <h2>
-            Следите за прогнозом на сайте или прямо в приложении – и не
-            пропустите яркое сияние!
-          </h2>
-        </div>
-        <div className="mt-[30px]">
-          <h2>
-            <a href="https://t.me/polarlightspro" target="_blank">
-              Поларлайтс в телеграм
+            <a href="https://t.me/polarlightspro/56" target="_blank">
+              Смотреть чек-лист
             </a>
           </h2>
         </div>
-        <div className="mt-[30px]">
-          <h2>
-            <a href="https://polarlights.pro/download" target="_blank">
-              Приложение с уведомлением
-            </a>
-          </h2>
-        </div>
-        <div className="mt-[30px] flex justify-center">
+
+        <div className="mt-[37px] flex justify-center">
           <img
             className="max-h-[500px] object-contain"
             src="/images/popup_newyear.png"
