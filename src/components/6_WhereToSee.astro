@@ -2,6 +2,7 @@
 import { useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
 import { Image } from "astro:assets";
+import PDtg from "../assets/PD_tg.svg";
 import MurmanskIcefloating from "../assets/IceFloating2.png";
 import MurmanskIcefloatingMobile from "../assets/IceFloating2-mob.png";
 ---
@@ -10,6 +11,32 @@ import MurmanskIcefloatingMobile from "../assets/IceFloating2-mob.png";
   .where-to-see {
     line-height: 1.6;
     font-size: 16px;
+  }
+  .PD-back {
+    position: relative;
+    z-index: 0;
+  }
+
+  .PD-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/src/assets/PD_back.png") no-repeat right -114px top 12px;
+    background-size: 714px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .PD-new {
+    margin-bottom: 13px;
+  }
+
+  @media (max-width: 525px) {
+    .PD-back::before {
+      background-size: 543px;
+      background-position: center top 124%;
+    }
   }
 </style>
 
@@ -21,19 +48,36 @@ import MurmanskIcefloatingMobile from "../assets/IceFloating2-mob.png";
   <div class="where-to-see">
     {t("Where.text2")}
   </div>
-  <!-- <div class="mt-[40px] overflow-hidden rounded-[20px]">
-    <a
-      href="https://arctic-sup.ru/?erid=2VtzqwLT1uE"
-      target="_blank"
-      rel="noopener noreferrer"
+  <div class="mt-[100px] overflow-hidden rounded-[20px] bg-[#F2F2F2]">
+    <div
+      class="PD-back rounded-[20px] pt-[5px] pr-[12px] pb-[55px] pl-[12px] md:pt-[25px] md:pr-[32px] md:pb-[56px] md:pl-[32px]"
     >
-      <picture>
-        <source
-          srcset={MurmanskIcefloatingMobile.src}
-          media="(max-width: 425px)"
-        />
-        <Image src={MurmanskIcefloating} alt="Айсфлоатинг" />
-      </picture></a
-    >
-  </div> -->
+      <h2 class="PD-new mt-0 text-[#000000]">
+        POLAR DIGITAL - Команда, стоящая за POLARLIGHTS
+      </h2>
+
+      <p class="font-semibold text-black">
+        Сайты · реклама в интернете · интернет маркетинг
+      </p>
+      <p class="mt-2.5 text-black italic">для проектов, которые должны расти</p>
+      <div class="mt-[25px] flex w-full flex-nowrap gap-2.5">
+        <a
+          class="block h-[50px] flex-1 rounded-[30px] bg-[#3459EB] p-[12px] text-center sm:h-[58px] sm:w-[340px] sm:flex-none sm:p-[16px]"
+          href="https://polar-digital.ru/?utm_source=pl"
+        >
+          на сайт
+        </a>
+
+        <a
+          class="flex h-[50px] w-[50px] items-center justify-center rounded-[30px] bg-[#3459EB] sm:h-[58px] sm:w-[58px] sm:flex-none"
+          href="https://t.me/polar_digital"
+        >
+          <Image class="w-[36px]" src={PDtg} alt="Telegram" />
+        </a>
+      </div>
+      <p class="absolute right-5 bottom-[20px] text-[8px] text-black">
+        Реклама ERID: 2VtzqxGvK4F
+      </p>
+    </div>
+  </div>
 </section>
