@@ -9,10 +9,12 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 export function formatDate(time: string, date: string) {
   dayjs.extend(utc);
   dayjs.extend(customParseFormat);
-  const h = dayjs()
-    .utc()
-    .set("hour", parseInt(time.slice(0, 2)));
-  return `${dayjs(date, "MMM DD").format("DD.MM")} ${h.local().format("HH")}:00`;
+
+  const hour = parseInt(time.slice(0, 2), 10);
+  const utcDateTime = dayjs.utc(`${date} ${hour}`, "MMM DD HH");
+  const local = utcDateTime.local();
+
+  return `${local.format("DD.MM")} ${local.format("HH")}:00`;
 }
 
 const transformData = (inputData: NooaAuroraKp3Col[]) => {
