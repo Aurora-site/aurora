@@ -244,6 +244,11 @@ export const ui = {
       "Туры на Северное сияние — где увидеть, когда ехать и как предсказать | Polarlights | Поларлайтс",
     "aurora-tours.description":
       "Северное сияние нельзя пообещать, но можно предсказать. Узнайте, где и когда лучше всего наблюдать сияние, какие туры выбрать и как прогнозировать его появление с помощью сервиса Polarlights.",
+
+    "kp-blog.title":
+      "KP-индекс: что это такое и как по нему понять вероятность северного сияния | Polarlights | Поларлайтс",
+    "kp-blog.description":
+      "Разбираем KP-индекс простыми словами: какие значения считаются хорошими, почему прогноз меняется и что важнее для сияния – KP, облачность или место наблюдения. Советы для новичков.",
   },
   en: {
     icon: "/images/us.png",
@@ -469,6 +474,11 @@ export const ui = {
       "Northern Lights Tours — Where to See, When to Go, and How to Predict | Polarlights",
     "aurora-tours.description":
       "You can’t promise the Northern Lights, but you can predict them. Discover the best places and times to witness the aurora, choose the right tours, and track real forecasts with the Polarlights service.",
+
+    "kp-blog.title":
+      "KP Index: What It Is and How to Use It to Predict the Northern Lights | Polarlights",
+    "kp-blog.description":
+      "Learn what the KP Index means in simple terms: which values are considered good, why aurora forecasts change, and what matters most—KP, cloud cover, or your location. Practical tips for beginners.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -669,5 +679,9 @@ export const ui = {
       "北极光之旅 — 去哪里看、什么时候去、如何预测 | 极光指南",
     "aurora-tours.description":
       "北极光无法被承诺，但可以被预测。了解如何选择合适的北极光之旅，并通过 Polarlights 服务预测它的出现。",
+
+    "kp-blog.title": "KP 指数：它是什么，以及如何用它预测北极光｜Polarlights",
+    "kp-blog.description":
+      "用简单易懂的方式解释 KP 指数：哪些数值更适合观测北极光、为什么极光预报会变化，以及影响观测的关键因素——KP、云量还是所在位置。适合新手的实用建议。",
   },
 } as const;

@@ -1,0 +1,362 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import kp1 from "../../assets/blog_kp_1.png";
+import kp2 from "../../assets/blog_kp_2.png";
+import kp3 from "../../assets/blog_kp_3.png";
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  p {
+    text-align: justify;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 10px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 100px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 68px;
+      font-size: 52px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  id="description"
+>
+  <h1>KP-индекс: что это такое</h1>
+  <h2>Блог о северном сиянии</h2>
+  <p>
+    Если вы когда-то открывали прогноз северного сияния, вы наверняка видели
+    показатель KP-индекс (или просто «KP»).
+  </p>
+  <p>
+    Это один из главных индикаторов космической погоды, который помогает понять:
+    есть ли шанс увидеть северное сияние сегодня и насколько оно может быть
+    ярким.
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    Но важно понимать: KP-индекс – это не гарантия, а ориентир. На видимость
+    сияния влияет ещё много факторов: облачность, местоположение, засветка от
+    города и даже то, насколько темно на улице.
+  </p>
+  <p>&nbsp;</p>
+  <p>В этой статье разберём простыми и понятными словами:</p>
+  <ul>
+    <li>что такое KP-индекс</li>
+    <li>какие значения считаются “хорошими”</li>
+    <li>почему иногда KP высокий, а сияния не видно</li>
+    <li>как правильно читать прогноз и не разочароваться</li>
+  </ul>
+</section>
+
+<div class="pt-[25px] pb-[50px]">
+  <h2>Что такое KP-индекс простыми словами</h2>
+  <p>
+    KP-индекс – это показатель, который отражает уровень геомагнитной активности
+    Земли.<br />
+    Когда на Солнце происходят вспышки и выбросы солнечной плазмы, поток частиц достигает
+    Земли и может «раскачивать» магнитное поле. В такие моменты и появляются условия
+    для северного сияния.
+  </p>
+  <p>KP измеряется по шкале от 0 до 9:</p>
+  <ul>
+    <li>1 - 3 – обычные условия, спокойная геомагнитная обстановка</li>
+    <li>4 - 5 – сильная активность</li>
+    <li>6 - 7 – сильная геомагнитная буря</li>
+    <li>8 - 9 – экстремальная буря</li>
+  </ul>
+
+  <h2>Какой KP-индекс нужен для северного сияния</h2>
+  <p>Ответ зависит от того, где вы находитесь.</p>
+  <p>Если говорить очень грубо, то:</p>
+
+  <ul>
+    <li>
+      При KP 1- 3 северное сияние видно только в полярных широтах — например, в
+      Мурманске (68° с.ш.), Норильске (69° с.ш.) или Рейкьявике (64° с.ш.).
+    </li>
+    <li>
+      При KP 4 - 5 Сияние можно заметить в более южных регионах, таких как
+      Санкт-Петербург (60° с.ш.), Стокгольм (59° с.ш.) и даже на севере США
+      (Миннесота, 45-48° с.ш.).
+    </li>
+    <li>
+      При KP 6 – 7 Северное сияние может достигать Москвы (55° с.ш.), Берлина
+      (52° с.ш.) и северных штатов США (Вашингтон, Айова).
+    </li>
+    <li>
+      При KP 8 – 9 Сияние видно очень далеко на юге – до Парижа (48° с.ш.),
+      Белгорода (50° с.ш.) и даже на юге США (Техас, 30° с.ш.)
+    </li>
+  </ul>
+
+  <h2>KP-индекс и вероятность сияния: почему это не одно и то же</h2>
+  <p>
+    Многие думают: “KP 5 ­– значит точно будет сияние”. Но это не так.<br />
+    KP – это общий показатель геомагнитной активности, который одинаковый для всего
+    земного шара, а видимость сияния для конкретного человека зависит от условий на
+    месте.<br />
+    Вероятность рассчитывается для конкретной геолокации (вероятность можно смотреть
+    тут).
+  </p>
+
+  <h2>
+    Почему при высоком KP сияние может быть не видно (даже если находитесь в
+    нужном месте)
+  </h2>
+  <p>Вот самые частые причины:</p>
+  <ol>
+    <li>
+      Облачность<br />Даже если сияние есть, плотные облака полностью закрывают
+      небо.
+    </li>
+    <li>
+      Засветка от города<br />Фонари и яркие города мешают увидеть слабое
+      сияние. Иногда достаточно отъехать совсем немного от города.
+    </li>
+    <li>
+      Слишком светло, например полярный день<br />Яркое небо снижает контраст.
+      Именно поэтому летом на Крайнем севере мы не видим северное сияние.
+    </li>
+    <li>
+      Сияние есть, но слабое<br />На фото оно может выглядеть ярче, чем глазами.
+    </li>
+    <li>
+      Сияние было, но “ушло”<br />Северное сияние может появляться волнами: 5–10
+      минут ярко, потом затухает, а может и светить часами.
+    </li>
+  </ol>
+
+  <h2>Почему KP-индекс меняется и прогноз «скачет»</h2>
+  <p>
+    Это нормальная ситуация: прогноз северного сияния может меняться даже
+    несколько раз за вечер. Поэтому лучше ориентируйтесь на нашу вероятность., а
+    не только на индекс.
+  </p>
+  <p>&nbsp;</p>
+  <p>Причины изменений:</p>
+  <ul>
+    <li>данные космической погоды обновляются постоянно</li>
+    <li>солнечный ветер может ускоряться или ослабевать</li>
+    <li>направление потока частиц меняется</li>
+    <li>новые вспышки на Солнце могут скорректировать картину</li>
+  </ul>
+
+  <p>Поэтому любые прогнозы северного сияния – это вероятность.</p>
+
+  <h2>Как правильно понимать прогноз KP-индекса</h2>
+  <p>
+    Чтобы использовать KP с пользой, смотрите на короткий прогноз и на
+    обновления вероятности в нужной геолокации.
+  </p>
+  <ol>
+    <li>Смотрите прогноз на ближайшие часы</li>
+    <li>
+      Обращайте внимание на облачность и погодные условия. Через облака не видно
+      сияние.
+    </li>
+  </ol>
+  <p>KP без ясного неба почти бесполезен.</p>
+  <p>&nbsp;</p>
+  <p>
+    Лучший сценарий для поездки это когда растет вероятность и при этом чистое
+    небо.
+  </p>
+  <p>
+    Иногда сияние появляется не сразу. Советуем быть на точке с ясным небом как
+    минимум 30 минут, а еще лучше более долгое время.
+  </p>
+
+  <h2>Итог</h2>
+  <p>
+    Лучше ориентироваться на вероятность для конкретной геолокации и обновления
+    в течение вечера. А для этого мы все уже подготовили.
+  </p>
+
+  <h2>Поларлайтс желает вам ярких сияний и чистого неба!</h2>
+
+  <div class="mt-[60px] mb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/blog">в блог о северном сиянии</a
+    >
+  </div>
+  <div class="pb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/">Перейти на главную страницу с картой и вероятностью</a
+    >
+  </div>
+
+  <div class="image-slider-container">
+    <button class="slider-button left" id="slideLeft">&#8249;</button>
+    <div class="images" id="slider">
+      <div class="imag">
+        <Image src={kp1} alt="Северное Сияние" />
+      </div>
+      <div class="imag">
+        <Image src={kp2} alt="Северное Сияние" />
+      </div>
+      <div class="imag">
+        <Image src={kp3} alt="Северное Сияние" />
+      </div>
+    </div>
+    <button class="slider-button right" id="slideRight">&#8250;</button>
+  </div>
+
+  <script is:inline>
+    {
+      function initSlider() {
+        const slider = document.getElementById("slider");
+        const slideLeft = document.getElementById("slideLeft");
+        const slideRight = document.getElementById("slideRight");
+
+        if (!slider) return;
+
+        const totalWidth = Array.from(slider.children).reduce(
+          (sum, item) => sum + item.offsetWidth,
+          0,
+        );
+        const visibleWidth = slider.offsetWidth;
+
+        if (totalWidth > visibleWidth) {
+          slideLeft.style.display = "block";
+          slideRight.style.display = "block";
+
+          slideLeft.addEventListener("click", () => {
+            slider.scrollBy({ left: -380, behavior: "smooth" });
+          });
+
+          slideRight.addEventListener("click", () => {
+            slider.scrollBy({ left: 380, behavior: "smooth" });
+          });
+        } else {
+          slideLeft.style.display = "none";
+          slideRight.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", initSlider);
+      window.addEventListener("resize", initSlider);
+    }
+  </script>
+</div>

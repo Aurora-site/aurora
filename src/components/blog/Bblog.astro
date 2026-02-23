@@ -9,6 +9,7 @@ import article3 from "../../assets/aurora-spb_1.png";
 import article4 from "../../assets/aurora-Murmansk-1.png";
 import article5 from "../../assets/Aurora-forecast_1.png";
 import article6 from "../../assets/blog_tours_3.png";
+import article7 from "../../assets/blog_kp_2.png";
 import quota from "../../assets/quota.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
@@ -184,6 +185,19 @@ const l = useAstroLocale(Astro);
 
 <section class="tours pt-[20px] pb-[100px]">
   <div class="cards_blog">
+    <div class="tour-card_blog">
+      <Image src={article7} alt="Статья" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>KP-индекс: что это такое</h3></div>
+        <div class="text">
+          KP-индекс: что это такое и как по нему понять вероятность северного
+          сияния
+        </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/blog/kp-index")}>Читать</a>
+        </div>
+      </div>
+    </div>
     <div class="tour-card_blog">
       <Image src={article6} alt="Статья" />
       <div class="tour-card_description_blog">

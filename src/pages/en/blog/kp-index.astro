@@ -1,0 +1,15 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import KP from "../../../components/blog/KP-index.astro";
+import { useAstroLocale, useAstroTranslations } from "../../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
+---
+
+<Layout
+  title={t("kp-blog.title")}
+  description={t("kp-blog.description")}
+  variant="blog"
+>
+  <KP />
+</Layout>
