@@ -31,11 +31,10 @@ const { variant = "default" } = Astro.props;
         {
           variant === "default" && (
             <nav class="nav">
-              <a href="#app">{t("H.app")}</a>
-              <a href="#map">{t("H.map")}</a>
-              <a href="#index">{t("H.index")}</a>
-              <a href="#how-to-see">{t("H.how")}</a>
-              <a href="#where-to-see">{t("H.where")}</a>
+              <a href="/#map">{t("H.map")}</a>
+              <a href="/#index">{t("H.index")}</a>
+              <a href="/app">{t("H.app")}</a>
+              <a href="/blog">{t("H.blog")}</a>
               <a href="/faq">{t("FAQ")}</a>
               <a href="https://t.me/polarlightspro">
                 <Image class="w-auto" src={PDtg} alt="Telegram" />
@@ -46,10 +45,25 @@ const { variant = "default" } = Astro.props;
         {
           variant === "blog" && (
             <nav class="nav">
-              <a href="/">Главная</a>
-              <a href="/app">Приложение</a>
-              <a href="/faq">Вопросы</a>
-              <a href="/blog">Блог</a>
+              <a href="/#map">{t("H.map")}</a>
+              <a href="/#index">{t("H.index")}</a>
+              <a href="/app">{t("H.app")}</a>
+              <a href="/blog">{t("H.blog")}</a>
+              <a href="/faq">{t("FAQ")}</a>
+              <a href="https://t.me/polarlightspro">
+                <Image class="w-auto" src={PDtg} alt="Telegram" />
+              </a>
+            </nav>
+          )
+        }
+        {
+          variant === "app" && (
+            <nav class="nav">
+              <a href="/#map">{t("H.map")}</a>
+              <a href="/#index">{t("H.index")}</a>
+              <a href="/app">{t("H.app")}</a>
+              <a href="/blog">{t("H.blog")}</a>
+              <a href="/faq">{t("FAQ")}</a>
               <a href="https://t.me/polarlightspro">
                 <Image class="w-auto" src={PDtg} alt="Telegram" />
               </a>
