@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Logo from "../../public/images/logo.png";
 import PDLogo from "../assets/PD_logo.png";
 import PDtg from "../assets/PD_tg.svg";
 import { useAstroTranslations, useAstroLocale } from "../i18n/utils";
@@ -9,15 +10,13 @@ const t = useAstroTranslations(Astro);
 ---
 
 <style>
-  /* Подвал */
-  /* Основной стиль для футера */
   .footer {
     background: url("/src/assets/aurora-footer.png") no-repeat center center /
       cover;
     background-color: #001b24;
     color: white;
     padding: 60px 20px;
-    height: 481px;
+    /* height: 481px; */
   }
 
   .footer-container {
@@ -52,19 +51,13 @@ const t = useAstroTranslations(Astro);
   }
 
   .footer-left {
-    max-width: 50%;
     display: inline;
     padding: 0 10px 0 0;
   }
 
   .footer-left-up {
     display: flex;
-    flex-wrap: wrap;
     width: fit-content;
-  }
-
-  .footer-logo {
-    margin: 6px 60px 0 0;
   }
 
   .footer-contacts a {
@@ -124,18 +117,21 @@ const t = useAstroTranslations(Astro);
 
   @media (max-width: 812px) {
     .footer-contacts {
-      padding: 20px 0 0 0;
+      /* padding: 40px 0 0 0; */
     }
     .footer-left {
-      margin: 0 50px 0 0;
+      /* margin: 0 50px 0 0; */
     }
     .footer-docs {
-      padding: 20px 0 0 0;
+      padding: 40px 0 0 0;
     }
   }
-  @media (max-width: 558px) {
+  @media (max-width: 730px) {
+    .footer-left {
+      margin-right: 10px;
+    }
     .footer-mid {
-      padding: 20px 0 0 0;
+      padding: 40px 10px 0 0;
     }
   }
 
@@ -156,16 +152,36 @@ const t = useAstroTranslations(Astro);
       <!-- Левая часть: Лого и контакты -->
       <div class="footer-left">
         <div class="footer-left-up">
-          <a class="footer-logo" href="https://polar-digital.ru">
-            <Image src={PDLogo} alt="Polar Digital" />
+          <a
+            class="mt-[-4px] mr-[60px] w-[71px]"
+            href="https://polar-digital.ru"
+          >
+            <Image src={Logo} alt="Polarlights" />
           </a>
           <div class="footer-contacts">
             <h3>{t("footer.Contacts")}</h3>
-            <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
+            <a href="mailto:pr@polarlights.pro">pr@polarlights.pro</a>
           </div>
         </div>
-        <div class="pt-[15px] text-[12px]">
+        <div class="pt-[3px] text-[12px]">
           {t("footer.AddCity")}
+        </div>
+        <div class="footer-left-up mt-12">
+          <a
+            class="mt-[6px] mr-[60px] w-[71px]"
+            href="https://polar-digital.ru"
+          >
+            <Image src={PDLogo} alt="Polar Digital" />
+          </a>
+          <div class="footer-contacts">
+            <h3>{t("footer.PR")}</h3>
+            <a href="mailto:polar.digital@yandex.ru">polar.digital@yandex.ru</a>
+            <div>
+              <a href="https://polar-digital.ru" target="_blank"
+                >https://polar-digital.ru</a
+              >
+            </div>
+          </div>
         </div>
       </div>
 
@@ -174,12 +190,19 @@ const t = useAstroTranslations(Astro);
         <h3>{t("footer.Aurora")}</h3>
         <ul>
           <li>
-            <a href={getRelativeLocaleUrl(l, "/faq")}>{t("FAQ.Title")}</a>
+            <a href={getRelativeLocaleUrl(l, "/#map")}>{t("H.map")}</a>
           </li>
-          <li><a href="/blog">{t("footer.Blog")}</a></li>
+          <li>
+            <a href="/#index">{t("H.index")}</a>
+          </li>
           <li>
             <a href="/app">{t("footer.App")}</a>
           </li>
+          <li><a href={getRelativeLocaleUrl(l, "/blog")}>{t("H.blog")}</a></li>
+          <li>
+            <a href={getRelativeLocaleUrl(l, "/faq")}>{t("footer.FAQ")}</a>
+          </li>
+
           <li>
             <a href="https://t.me/polarlightspro"
               ><Image class="image_tg" src={PDtg} alt="Telegram" />
@@ -199,13 +222,13 @@ const t = useAstroTranslations(Astro);
         </ul>
       </div>
     </div>
+    <p class="pt-[40px] text-[12px]">ИП Горбатенко Надежда Андреевна</p>
+
     <p class="footer-rights">
       {t("footer.Rights1")}
       <br /><br />
       {t("footer.Rights2")}
-      <br /><br />
     </p>
-    <p class="pt-[40px] text-[12px]">ИП Горбатенко Надежда Андреевна</p>
   </div>
   <div class="cookie hidden">
     <div class="cookie_text">

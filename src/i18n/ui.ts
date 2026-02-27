@@ -131,9 +131,10 @@ export const ui = {
 
     /*Footer */
     "footer.Contacts": "Контакты",
+    "footer.PR": "Разработка и реклама",
     "footer.Aurora": "Северное сияние",
-    "footer.Blog": "Блог",
     "footer.App": "Приложение",
+    "footer.FAQ": "Вопросы",
     "footer.Docs": "Документы",
     "footer.Policy": "Политика конфиденциальности",
     "footer.Data": "Согласие на обработку персональных данных",
@@ -365,9 +366,10 @@ export const ui = {
 
     /*Footer */
     "footer.Contacts": "Contacts",
+    "footer.PR": "Dev and ads",
     "footer.Aurora": "Aurora",
-    "footer.Blog": "Blog",
     "footer.App": "App",
+    "footer.FAQ": "FAQ",
     "footer.Docs": "Documents",
     "footer.Policy": "Privacy Policy",
     "footer.Data": "Consent to the processing of personal data",
@@ -580,9 +582,10 @@ export const ui = {
 
     /*Footer */
     "footer.Contacts": "联系方式",
+    "footer.PR": "开发与广告",
     "footer.Aurora": "极光",
-    "footer.Blog": "博客",
     "footer.App": "手机应用",
+    "footer.FAQ": "常见问题",
     "footer.Docs": "文件",
     "footer.Policy": "私隐政策",
     "footer.Data": "同意处理个人资料",
