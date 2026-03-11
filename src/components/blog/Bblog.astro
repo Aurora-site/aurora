@@ -16,6 +16,7 @@ import auroraback from "../../assets/auroraback.png";
 const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 const t = useAstroTranslations(Astro);
 const l = useAstroLocale(Astro);
+import BlogCard from "./BlogCard.astro";
 ---
 
 <style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
@@ -82,7 +83,6 @@ const l = useAstroLocale(Astro);
     font-family: "SongerGrotesqueBold";
     font-weight: 400;
     font-size: 20px;
-    margin-top: 25px;
   }
 
   .tour-card_blog p {
@@ -92,16 +92,15 @@ const l = useAstroLocale(Astro);
 
   .tour-card_blog a {
     padding: 10px 15px;
-    background: white;
-    color: black;
+    background: #6c747d;
+    color: white;
     border-width: 1px;
-    border-color: black;
+    border-color: white;
     border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s;
     font-size: 18px;
     width: 190px;
-    margin: 20px 0;
     display: inline-block;
     text-align: center;
     text-decoration: none;
@@ -117,6 +116,7 @@ const l = useAstroLocale(Astro);
     word-break: break-word;
     white-space: normal;
     margin: 0;
+    text-align: center;
   }
   .title {
     margin: 20px 0 10px 0;
@@ -185,102 +185,61 @@ const l = useAstroLocale(Astro);
 
 <section class="tours pt-[20px] pb-[100px]">
   <div class="cards_blog">
-    <div class="tour-card_blog">
-      <Image src={article7} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>KP-индекс: что это такое</h3></div>
-        <div class="text">
-          KP-индекс: что это такое и как по нему понять вероятность северного
-          сияния
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/kp-index")}>Читать</a>
-        </div>
-      </div>
-    </div>
-    <div class="tour-card_blog">
-      <Image src={article6} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>Туры на северное сияние</h3></div>
-        <div class="text">
-          Почему туры на Северное сияние не должны обещать чудо — а должны
-          помогать его поймать
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/aurora-tours")}>Читать</a>
-        </div>
-      </div>
-    </div>
-    <div class="tour-card_blog">
-      <Image src={article5} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>Большой прогноз сияния</h3></div>
-        <div class="text">
-          Узнайте, где и когда лучше наблюдать сияние и почему сейчас — лучший
-          момент
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/big-aurora-forecast")}
-            >Читать</a
-          >
-        </div>
-      </div>
-    </div>
-    <div class="tour-card_blog">
-      <Image src={article4} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>Северное сияние в Мурманске</h3></div>
-        <div class="text">
-          Северное сияние в Мурманске — лучшее место для наблюдения в России
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/aurora-murmansk")}>Читать</a>
-        </div>
-      </div>
-    </div>
-    <div class="tour-card_blog">
-      <Image src={article3} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>Северное сияние в СПб</h3></div>
-        <div class="text">
-          Можно ли увидеть северное сияние в СПб? Узнайте, при каком индексе оно
-          появляется и где его искать.
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/aurora-saint-petersburg")}
-            >Читать</a
-          >
-        </div>
-      </div>
-    </div>
+    <BlogCard
+      image={article7}
+      title="KP-индекс: что это такое"
+      text="KP-индекс: что это такое и как по нему понять вероятность северного сияния"
+      link="/blog/kp-index"
+      l={l}
+    />
 
-    <div class="tour-card_blog">
-      <Image src={article1} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>Северное сияние в Москве</h3></div>
-        <div class="text">
-          Можно ли увидеть северное сияние и что надо делать Москвичам для
-          удачного поиска Авроры...
-        </div>
-        <div class="m-[20px 0] pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/aurora-moscow")}>Читать</a>
-        </div>
-      </div>
-    </div>
+    <BlogCard
+      image={article6}
+      title="Туры на северное сияние"
+      text="Почему туры на Северное сияние не должны обещать чудо — а должны помогать его поймать"
+      link="/blog/aurora-tours"
+      l={l}
+    />
 
-    <div class="tour-card_blog">
-      <Image src={article2} alt="Статья" />
-      <div class="tour-card_description_blog">
-        <div class="title"><h3>О северном сиянии</h3></div>
-        <div class="text">
-          Северное сияние: что это такое, где искать и как наблюдать. Советы от
-          опытных охотников.
-        </div>
-        <div class="pl-[10px]">
-          <a href={getRelativeLocaleUrl(l, "/blog/about-aurora")}>Читать</a>
-        </div>
-      </div>
-    </div>
+    <BlogCard
+      image={article5}
+      title="Большой прогноз сияния"
+      text="Узнайте, где и когда лучше наблюдать сияние и почему сейчас — лучший момент"
+      link="/blog/big-aurora-forecast"
+      l={l}
+    />
+
+    <BlogCard
+      image={article4}
+      title="Северное сияние в Мурманске"
+      text="Северное сияние в Мурманске — лучшее место для наблюдения в России"
+      link="/blog/aurora-murmansk"
+      l={l}
+    />
+
+    <BlogCard
+      image={article3}
+      title="Северное сияние в СПб"
+      text="Можно ли увидеть северное сияние в СПб? Узнайте, при каком индексе оно появляется"
+      link="/blog/aurora-saint-petersburg"
+      l={l}
+    />
+
+    <BlogCard
+      image={article1}
+      title="Северное сияние в Москве"
+      text="Можно ли увидеть северное сияние и что надо делать москвичам для удачного поиска Авроры"
+      link="/blog/aurora-moscow"
+      l={l}
+    />
+
+    <BlogCard
+      image={article2}
+      title="О северном сиянии"
+      text="Северное сияние: что это такое, где искать и как наблюдать. Советы от опытных охотников."
+      link="/blog/about-aurora"
+      l={l}
+    />
   </div>
 
   <div class="text-left">

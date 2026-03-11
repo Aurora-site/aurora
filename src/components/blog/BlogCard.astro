@@ -1,0 +1,99 @@
+---
+const { image, title, text, link, l } = Astro.props;
+import { getRelativeLocaleUrl } from "astro:i18n";
+import "../../styles/styles.css";
+---
+
+<div
+  class="tour-card_blog relative aspect-square w-[360px] overflow-hidden rounded-[20px] bg-cover bg-center"
+  style={`background-image: url(${image.src ?? image});`}
+>
+  <div
+    class="tour-card_description_blog flex h-full w-full flex-col bg-[rgba(39,39,39,0.6)] p-4 pb-9 text-white"
+  >
+    <h3 class="mt-[36px] text-[20px] font-bold">
+      {title}
+    </h3>
+
+    <p class="mt-[36px] text-left text-[16px]">
+      {text}
+    </p>
+
+    <a
+      class="mt-auto self-center rounded-[20px] bg-white px-4 py-2 text-black"
+      href={getRelativeLocaleUrl(l, link)}
+    >
+      Читать
+    </a>
+  </div>
+</div>
+
+<style>
+  .tour-card_blog {
+    flex: 0 0 auto;
+    width: 360px;
+    box-shadow: 10px 10px 10px #00000040;
+    background-image: linear-gradient(#ffffff99, #ffffff00);
+    border-radius: 20px;
+    margin: 0 0 10px 0;
+  }
+
+  .tour-card_blog img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .tour-card_blog h3 {
+    font-family: "SongerGrotesqueBold";
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .tour-card_blog p {
+    line-height: 1.4;
+    font-size: 18px;
+  }
+
+  .tour-card_blog a {
+    padding: 10px 15px;
+    background: #6c747d;
+    color: white;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 18px;
+    width: 190px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .tour-card_blog a:hover {
+    background: #18a5bf;
+    color: white;
+  }
+
+  .tour-card_description_blog {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    margin: 0;
+    text-align: center;
+  }
+  .title {
+    margin: 20px 0 10px 0;
+    padding-left: 10px;
+  }
+  .tour_price {
+    margin-bottom: 16px;
+    padding-left: 10px;
+  }
+  .text {
+    margin: 35px 0 20px;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+</style>
