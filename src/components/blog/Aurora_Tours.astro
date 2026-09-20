@@ -68,6 +68,31 @@ const faqLd = {
     },
   })),
 };
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Главная",
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Блог о северном сиянии",
+      item: "https://polarlights.pro/blog/",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Туры на северное сияние",
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
 <style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
@@ -141,13 +166,26 @@ const faqLd = {
     font-weight: normal;
   }
 
-  .blog-label {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.7;
+  .breadcrumbs {
+    display: block;
     text-align: center;
     margin-bottom: 14px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .breadcrumbs-current {
+    opacity: 0.95;
   }
 
   .lead-answer {
@@ -241,7 +279,13 @@ const faqLd = {
   class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
-  <p class="blog-label"><a href="/blog">Блог о северном сиянии</a></p>
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a><span class="breadcrumbs-sep">/</span><a href="/blog"
+      >Блог о северном сиянии</a
+    ><span class="breadcrumbs-sep">/</span><span class="breadcrumbs-current"
+      >Туры на северное сияние</span
+    >
+  </nav>
   <h1>
     Туры на северное сияние
     <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
@@ -411,3 +455,4 @@ const faqLd = {
 
 <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
