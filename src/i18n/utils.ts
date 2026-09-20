@@ -53,16 +53,17 @@ export function useAstroTranslations(a: Astro) {
 export function getLocalizedUrl(lang: Lang, path: string) {
   const p = path.split("/").filter(Boolean);
 
-  // Если первая часть — это язык, заменяем его
+  // Если первый сегмент — это код языка, убираем его (неважно, какой это язык)
   if (Object.keys(ui).includes(p[0])) {
-    p[0] = lang;
-  } else {
-    if (lang !== defaultLang) {
-      p.unshift(lang);
-    }
+    p.shift();
   }
 
-  const newPath = lang === defaultLang ? p.slice(1).join("/") : p.join("/");
+  // Добавляем префикс только для нестандартного языка
+  if (lang !== defaultLang) {
+    p.unshift(lang);
+  }
+
+  const newPath = p.join("/");
 
   // Возвращаем новый путь, или "/" если путь пустой
   return newPath ? `/${newPath}/` : "/";
