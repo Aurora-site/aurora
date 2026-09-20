@@ -1,6 +1,27 @@
 ---
 import { useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
+
+const pageUrl = "https://polarlights.pro/faq/";
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: t("breadcrumbs.home"),
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: t("FAQ"),
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
 <style>
@@ -20,9 +41,35 @@ const t = useAstroTranslations(Astro);
   h1 {
     font-size: 34px;
   }
+
+  .breadcrumbs {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .breadcrumbs-current {
+    opacity: 0.95;
+  }
 </style>
 
-<div class="pt-[50px] pb-[50px]">
+<div class="pt-[25px] pb-[50px] md:pt-[50px]">
+  <nav class="breadcrumbs" aria-label={t("breadcrumbs.ariaLabel")}>
+    <a href="/">{t("breadcrumbs.home")}</a><span class="breadcrumbs-sep">/</span
+    ><span class="breadcrumbs-current">{t("FAQ")}</span>
+  </nav>
   <h1 class="flex justify-center">
     {t("FAQ.Title")}
   </h1>
@@ -94,3 +141,5 @@ const t = useAstroTranslations(Astro);
     {t("FAQ.Q8Ans2")}
   </p>
 </div>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
