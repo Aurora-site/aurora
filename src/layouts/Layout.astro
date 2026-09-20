@@ -3,7 +3,9 @@ import Footer from "./footer.astro";
 import Header from "./header.astro";
 import "../styles/styles.css";
 import "../styles/tailwind.css";
-import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+import { useAstroLocale, useAstroTranslations, getLocalizedUrl } from "../i18n/utils";
+import type { Lang } from "../i18n/utils";
+import { ui, defaultLang } from "../i18n/ui";
 const t = useAstroTranslations(Astro);
 const lang = useAstroLocale(Astro);
 import { DEPLOY_URL, ENV_NAME } from "astro:env/client";
@@ -35,6 +37,31 @@ if (cleanPath.startsWith("/app")) {
   autoVariant = "blog";
 }
 const variant = propVariant ?? autoVariant;
+
+// canonical + hreflang
+const canonicalPath = getLocalizedUrl(lang, Astro.url.pathname);
+const canonicalURL = new URL(canonicalPath, DEPLOY_URL).toString();
+
+// hreflang требует ISO-код языка, а не внутренний ключ локали
+// (для китайского это "zh", а не "cn")
+const hreflangCodes: Record<Lang, string> = {
+  ru: "ru",
+  en: "en",
+  cn: "zh",
+};
+
+const alternateLinks = (Object.keys(ui) as Lang[]).map((locale) => ({
+  hreflang: hreflangCodes[locale],
+  href: new URL(
+    getLocalizedUrl(locale, Astro.url.pathname),
+    DEPLOY_URL,
+  ).toString(),
+}));
+
+const xDefaultURL = new URL(
+  getLocalizedUrl(defaultLang, Astro.url.pathname),
+  DEPLOY_URL,
+).toString();
 ---
 
 <html lang={lang} class="scroll-smooth">
@@ -44,6 +71,11 @@ const variant = propVariant ?? autoVariant;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
+    {alternateLinks.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultURL} />
     <meta property="og:url" content={DEPLOY_URL} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={t("meta.ogTitle")} />
