@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /widgets/
+
+Sitemap: https://polarlights.pro/sitemap-index.xml
