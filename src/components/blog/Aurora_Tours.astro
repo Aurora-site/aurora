@@ -9,8 +9,8 @@ import tours2 from "../../assets/blog_tours_2.png";
 import tours3 from "../../assets/blog_tours_3.png";
 
 const pageUrl = "https://polarlights.pro/blog/aurora-tours/";
-const dateModifiedISO = "2026-09-20";
-const dateModifiedDisplay = "20.09.2026";
+const dateModifiedISO = "2026-09-15";
+const dateModifiedDisplay = "15.09.2026";
 // datePublishedISO: точная дата первой публикации статьи неизвестна,
 // поэтому в articleLd она намеренно не указывается (см. ниже).
 
@@ -141,12 +141,11 @@ const faqLd = {
     font-weight: normal;
   }
 
-  .author-line {
-    max-width: 720px;
-    margin: 20px auto 0;
-    font-size: 15px;
-    opacity: 0.85;
-    text-align: left;
+  .blog-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
   }
 
   .lead-answer {
@@ -240,14 +239,11 @@ const faqLd = {
   class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
+  <p class="blog-label"><a href="/blog">Блог о северном сиянии</a></p>
   <h1>
     Туры на северное сияние
     <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
   </h1>
-  <p class="author-line">
-    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
-    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
-  </p>
   <p class="lead-answer">
     Коротко: ни один тур не может гарантировать северное сияние — это природное
     явление. Но хороший тур готовит к настоящей охоте за сиянием: объясняет
