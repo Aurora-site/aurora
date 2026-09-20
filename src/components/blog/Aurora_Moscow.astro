@@ -7,6 +7,66 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import moscow1 from "../../assets/moscow1.png";
 import moscow2 from "../../assets/moscow2.png";
 import moscow3 from "../../assets/moscow3.png";
+
+const pageUrl = "https://polarlights.pro/blog/aurora-moscow/";
+const dateModifiedISO = "2026-09-20";
+const dateModifiedDisplay = "20.09.2026";
+// datePublishedISO: точная дата первой публикации статьи неизвестна,
+// поэтому в articleLd она намеренно не указывается (см. ниже).
+
+const faq = [
+  {
+    q: "Бывает ли северное сияние в Москве?",
+    a: "Да, но крайне редко — только во время сильнейших геомагнитных бурь. Например, весной 2024 года сияние удалось сфотографировать в Ленинградской, Ярославской и даже Московской областях.",
+  },
+  {
+    q: "При каком Kp-индексе видно сияние в Москве?",
+    a: "Нужен очень высокий Kp-индекс — не ниже 7–8. Это редкое явление, которое случается лишь при сильнейших вспышках на Солнце.",
+  },
+  {
+    q: "Почему сияние почти не видно даже во время бури?",
+    a: "Москва — огромный мегаполис с сильным световым загрязнением: городская подсветка буквально перекрывает слабое свечение в небе. Чтобы увидеть сияние, нужно выехать за город, в тёмное место без засветки, а лучше — на возвышенность с открытым горизонтом.",
+  },
+  {
+    q: "Как узнать, что над Москвой ожидается сияние?",
+    a: "Следите за картой и прогнозом на сайте и в приложении Polarlights — включите уведомления, и вы получите сообщение, если сияние в вашем городе станет возможным.",
+  },
+];
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Северное сияние в Москве: бывает ли и как увидеть",
+  description:
+    "Можно ли увидеть северное сияние в Москве? Рассказываем, при каких условиях оно появляется, где лучше наблюдать и как следить за прогнозом в столице.",
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: dateModifiedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
 ---
 
 <style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
@@ -30,8 +90,17 @@ import moscow3 from "../../assets/moscow3.png";
     margin-bottom: 10px;
     font-size: 24px;
   }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
   p {
     text-align: justify;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   ul {
     display: block;
@@ -58,6 +127,38 @@ import moscow3 from "../../assets/moscow3.png";
     font-family: "SongerGrotesqueBold";
     font-size: 24px;
     margin: 60px 0 85px 0;
+  }
+
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .images {
@@ -138,13 +239,20 @@ import moscow3 from "../../assets/moscow3.png";
   class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
-  <h1>Северное сияние в Москве</h1>
-  <h2>Блог о северном сиянии</h2>
-  <p>
-    Северное сияние — символ Крайнего Севера и одно из самых прекрасных
-    природных явлений. Но можно ли увидеть северное сияние в Москве? Этот вопрос
-    часто задают жители столицы, вдохновляясь яркими фотографиями из Мурманской
-    области, Норвегии или Исландии.
+  <h1>
+    Северное сияние в Москве: бывает ли и как увидеть
+    <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
+  </h1>
+  <p class="author-line">
+    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
+  </p>
+  <p class="lead-answer">
+    Коротко: северное сияние в Москве — очень редкое явление. Оно появляется
+    только во время сильнейших геомагнитных бурь, когда Kp-индекс поднимается до
+    7–8 и выше — тогда сияние видно не только за Полярным кругом, но и
+    значительно южнее. Так, весной 2024 года его сфотографировали в
+    Ленинградской, Ярославской и даже Московской областях.
   </p>
 </section>
 
@@ -185,11 +293,24 @@ import moscow3 from "../../assets/moscow3.png";
   </ul>
 
   <h2>Как следить за прогнозом</h2>
-  <p>
-    На сайте и в приложении Polarlights доступна карта сияния и прогноз по всем
-    регионам России. В приложении вы можете включить уведомления и получить
-    сообщение, если северное сияние в выбранном городе станет возможным.
-  </p>
+  <div class="cta-block">
+    <p>
+      На сайте и в приложении <a href="/app">Polarlights</a> доступна <a
+        href="/#map">карта сияния</a
+      > и прогноз по всем регионам России. В приложении вы можете включить уведомления
+      и получить сообщение, если северное сияние в выбранном городе станет возможным.
+    </p>
+  </div>
+
+  <h2>Частые вопросы</h2>
+  {
+    faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p>{item.a}</p>
+      </>
+    ))
+  }
 
   <h2>Итоги</h2>
   <p>
@@ -198,70 +319,84 @@ import moscow3 from "../../assets/moscow3.png";
     жителям столицы стоит следить за прогнозами — вдруг именно сегодня небо над
     Москвой засияет разноцветными сполохами Авроры.
   </p>
-</div>
 
-<div class="mb-[50px] text-left">
-  <a
-    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
-    href="/blog">В блог о северном сиянии</a
-  >
-</div>
-<div class="pb-[50px] text-left">
-  <a
-    class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
-    href="/">Перейти на главную страницу с картой и вероятностью</a
-  >
-</div>
+  <h2>Polarlights поможет не пропустить сияние в Москве!</h2>
 
-<div class="image-slider-container">
-  <button class="slider-button left" id="slideLeft">&#8249;</button>
-  <div class="images" id="slider">
-    <div class="imag">
-      <Image src={moscow1} alt="Северное Сияние" />
-    </div>
-    <div class="imag">
-      <Image src={moscow2} alt="Северное Сияние" />
-    </div>
-    <div class="imag">
-      <Image src={moscow3} alt="Северное Сияние" />
-    </div>
+  <div class="mt-[60px] mb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/blog">В блог о северном сиянии</a
+    >
   </div>
-  <button class="slider-button right" id="slideRight">&#8250;</button>
+  <div class="pb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/">Перейти на главную страницу с картой и вероятностью</a
+    >
+  </div>
+
+  <div class="image-slider-container">
+    <button class="slider-button left" id="slideLeft">&#8249;</button>
+    <div class="images" id="slider">
+      <div class="imag">
+        <Image
+          src={moscow1}
+          alt="Наблюдатель фотографирует северное сияние среди заснеженных деревьев"
+        />
+      </div>
+      <div class="imag">
+        <Image
+          src={moscow2}
+          alt="Зелёное северное сияние над заснеженной равниной"
+        />
+      </div>
+      <div class="imag">
+        <Image
+          src={moscow3}
+          alt="Разноцветное северное сияние над зимним хвойным лесом"
+        />
+      </div>
+    </div>
+    <button class="slider-button right" id="slideRight">&#8250;</button>
+  </div>
+
+  <script is:inline>
+    {
+      function initSlider() {
+        const slider = document.getElementById("slider");
+        const slideLeft = document.getElementById("slideLeft");
+        const slideRight = document.getElementById("slideRight");
+
+        if (!slider) return;
+
+        const totalWidth = Array.from(slider.children).reduce(
+          (sum, item) => sum + item.offsetWidth,
+          0,
+        );
+        const visibleWidth = slider.offsetWidth;
+
+        if (totalWidth > visibleWidth) {
+          slideLeft.style.display = "block";
+          slideRight.style.display = "block";
+
+          slideLeft.addEventListener("click", () => {
+            slider.scrollBy({ left: -380, behavior: "smooth" });
+          });
+
+          slideRight.addEventListener("click", () => {
+            slider.scrollBy({ left: 380, behavior: "smooth" });
+          });
+        } else {
+          slideLeft.style.display = "none";
+          slideRight.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", initSlider);
+      window.addEventListener("resize", initSlider);
+    }
+  </script>
 </div>
 
-<script is:inline>
-  {
-    function initSlider() {
-      const slider = document.getElementById("slider");
-      const slideLeft = document.getElementById("slideLeft");
-      const slideRight = document.getElementById("slideRight");
-
-      if (!slider) return;
-
-      const totalWidth = Array.from(slider.children).reduce(
-        (sum, item) => sum + item.offsetWidth,
-        0,
-      );
-      const visibleWidth = slider.offsetWidth;
-
-      if (totalWidth > visibleWidth) {
-        slideLeft.style.display = "block";
-        slideRight.style.display = "block";
-
-        slideLeft.addEventListener("click", () => {
-          slider.scrollBy({ left: -380, behavior: "smooth" });
-        });
-
-        slideRight.addEventListener("click", () => {
-          slider.scrollBy({ left: 380, behavior: "smooth" });
-        });
-      } else {
-        slideLeft.style.display = "none";
-        slideRight.style.display = "none";
-      }
-    }
-
-    window.addEventListener("load", initSlider);
-    window.addEventListener("resize", initSlider);
-  }
-</script>
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
