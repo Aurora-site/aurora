@@ -3,7 +3,11 @@ import Footer from "./footer.astro";
 import Header from "./header.astro";
 import "../styles/styles.css";
 import "../styles/tailwind.css";
-import { useAstroLocale, useAstroTranslations, getLocalizedUrl } from "../i18n/utils";
+import {
+  useAstroLocale,
+  useAstroTranslations,
+  getLocalizedUrl,
+} from "../i18n/utils";
 import type { Lang } from "../i18n/utils";
 import { ui, defaultLang } from "../i18n/ui";
 const t = useAstroTranslations(Astro);
@@ -72,9 +76,11 @@ const xDefaultURL = new URL(
     <meta name="description" content={description} />
     <link rel="icon" type="image/ico" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
-    {alternateLinks.map((alt) => (
-      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
-    ))}
+    {
+      alternateLinks.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
     <link rel="alternate" hreflang="x-default" href={xDefaultURL} />
     <meta property="og:url" content={DEPLOY_URL} />
     <meta property="og:type" content="website" />
