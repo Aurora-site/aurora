@@ -8,6 +8,27 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})
 import auroraback_app from "../../assets/auroraback_app.png";
 const auroraBackAppImageUrl = `url(${(await getImage({ src: auroraback_app })).src})`;
 const t = useAstroTranslations(Astro);
+
+const pageUrl = "https://polarlights.pro/app/";
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: t("breadcrumbs.home"),
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: t("H.app"),
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
 <style define:vars={{ auroraBackImageUrl, auroraBackAppImageUrl }}>
@@ -15,6 +36,29 @@ const t = useAstroTranslations(Astro);
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
   }
+
+  .breadcrumbs {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .breadcrumbs-current {
+    opacity: 0.95;
+  }
+
   .app {
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
@@ -175,9 +219,13 @@ const t = useAstroTranslations(Astro);
 </style>
 
 <section
-  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[20px] pb-5 text-center md:bg-[0px_20px] md:pt-[40px]"
   id="description"
 >
+  <nav class="breadcrumbs" aria-label={t("breadcrumbs.ariaLabel")}>
+    <a href="/">{t("breadcrumbs.home")}</a><span class="breadcrumbs-sep">/</span
+    ><span class="breadcrumbs-current">{t("H.app")}</span>
+  </nav>
   <h1>{t("App.title")}</h1>
   <div class="app">{t("App.app")}</div>
   <p class="pt-16 text-left">
@@ -288,3 +336,5 @@ const t = useAstroTranslations(Astro);
     window.addEventListener("resize", initSlider);
   }
 </script>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />

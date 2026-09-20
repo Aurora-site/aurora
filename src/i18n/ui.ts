@@ -17,6 +17,8 @@ export const ui = {
       "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
     /*Header */
     "H.app": "Приложение",
+    "breadcrumbs.home": "Главная",
+    "breadcrumbs.ariaLabel": "Хлебные крошки",
     "H.map": "Карта",
     "H.index": "Индекс",
     "H.how": "Как увидеть",
@@ -266,6 +268,8 @@ export const ui = {
 
     /*Header */
     "H.app": `App`,
+    "breadcrumbs.home": `Home`,
+    "breadcrumbs.ariaLabel": `Breadcrumb`,
     "H.map": `Map`,
     "H.index": `Index`,
     "H.how": `How to see`,
@@ -497,6 +501,8 @@ export const ui = {
       "观赏北极光变得更加容易！运气预测、通知和提示。与我们一起您不会错过北极光！捕捉北极光",
     /*Header */
     "H.app": "手机应用",
+    "breadcrumbs.home": "首页",
+    "breadcrumbs.ariaLabel": "面包屑导航",
     "H.map": "地图",
     "H.index": "极光指数",
     "H.how": "如何立即看到",
