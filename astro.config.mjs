@@ -2,12 +2,29 @@
 import { defineConfig, envField } from "astro/config";
 
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  site: "https://polarlights.pro",
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: "ru",
+        locales: {
+          ru: "ru-RU",
+          en: "en-US",
+          cn: "zh-CN",
+        },
+      },
+      filter: (page) =>
+        !page.includes("/widgets/") &&
+        !/^https:\/\/polarlights\.pro\/ru\//.test(page),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
