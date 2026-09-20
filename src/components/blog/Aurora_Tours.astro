@@ -7,6 +7,67 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import tours1 from "../../assets/blog_tours_1.png";
 import tours2 from "../../assets/blog_tours_2.png";
 import tours3 from "../../assets/blog_tours_3.png";
+
+const pageUrl = "https://polarlights.pro/blog/aurora-tours/";
+const dateModifiedISO = "2026-09-20";
+const dateModifiedDisplay = "20.09.2026";
+// datePublishedISO: точная дата первой публикации статьи неизвестна,
+// поэтому в articleLd она намеренно не указывается (см. ниже).
+
+const faq = [
+  {
+    q: "Можно ли гарантировать, что в туре получится увидеть северное сияние?",
+    a: "Нет — сияние нельзя «заказать». Это природное явление, зависящее от геомагнитной активности, облачности и множества факторов, которые невозможно предсказать на 100%.",
+  },
+  {
+    q: "Чем отличаются лучшие туры на северное сияние?",
+    a: "Лучшие туры — это не те, где обещают гарантированный результат, а те, где готовят к настоящей охоте за сиянием: объясняют, как читать прогноз и что такое KP-индекс, выбирают локации по текущей погоде и выезжают ночью, если есть шанс.",
+  },
+  {
+    q: "Как сервис Polarlights помогает туроператорам и туристам?",
+    a: "Polarlights даёт прогноз сияния по регионам России, карту облачности, пуш-уведомления о высокой вероятности и интеграцию с турами и локальными событиями — это помогает оказаться в нужное время в нужном месте.",
+  },
+  {
+    q: "На основе чего строится прогноз северного сияния?",
+    a: "На основе расчётов университетов и геофизических обсерваторий, которые получают данные со спутников, фиксирующих солнечные вспышки и потоки заряженных частиц. Эти данные анализируются в реальном времени и отображаются в сервисе Polarlights.",
+  },
+];
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:
+    "Туры на северное сияние — где увидеть, когда ехать и как предсказать",
+  description:
+    "Северное сияние нельзя пообещать, но можно предсказать. Узнайте, где и когда лучше всего наблюдать сияние, какие туры выбрать и как прогнозировать его появление с помощью сервиса Polarlights.",
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: dateModifiedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+};
 ---
 
 <style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
@@ -29,6 +90,11 @@ import tours3 from "../../assets/blog_tours_3.png";
     margin-top: 40px;
     margin-bottom: 10px;
     font-size: 24px;
+  }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
   }
   p {
     text-align: justify;
@@ -62,6 +128,38 @@ import tours3 from "../../assets/blog_tours_3.png";
     font-family: "SongerGrotesqueBold";
     font-size: 24px;
     margin: 60px 0 85px 0;
+  }
+
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .images {
@@ -142,11 +240,19 @@ import tours3 from "../../assets/blog_tours_3.png";
   class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
-  <h1>Туры на северное сияние</h1>
-  <h2>Блог о северном сиянии</h2>
-  <p>
-    Почему туры на Северное сияние не должны обещать чудо — а должны помогать
-    его поймать
+  <h1>
+    Туры на северное сияние
+    <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
+  </h1>
+  <p class="author-line">
+    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
+  </p>
+  <p class="lead-answer">
+    Коротко: ни один тур не может гарантировать северное сияние — это природное
+    явление. Но хороший тур готовит к настоящей охоте за сиянием: объясняет
+    прогноз и KP-индекс, следит за погодой и облачностью и использует такие
+    инструменты, как Polarlights, чтобы оказаться в нужном месте в нужное время.
   </p>
 </section>
 
@@ -179,17 +285,19 @@ import tours3 from "../../assets/blog_tours_3.png";
   </p>
 
   <h2>Поларлайтс, который помогает</h2>
-  <p>Сегодня туроператорам не нужно полагаться только на “удачу”.</p>
-  <p>
-    Сервис Polarlights — это инструмент, который помогает гиду и туристу
-    оказаться в нужное время в нужном месте:
-  </p>
-  <ul>
-    <li>прогноз сияния по регионам России,</li>
-    <li>карта облачности,</li>
-    <li>пуш - уведомления о высокой вероятности,</li>
-    <li>интеграция с турами и локальными событиями.</li>
-  </ul>
+  <p>Сегодня туроператорам не нужно полагаться только на «удачу».</p>
+  <div class="cta-block">
+    <p>
+      Сервис <a href="/">Polarlights</a> — это инструмент, который помогает гиду и
+      туристу оказаться в нужное время в нужном месте:
+    </p>
+    <ul>
+      <li>прогноз сияния по регионам России,</li>
+      <li>карта облачности,</li>
+      <li>пуш-уведомления о высокой вероятности,</li>
+      <li>интеграция с турами и локальными событиями.</li>
+    </ul>
+  </div>
   <p>
     Многие северные компании уже используют Polarlights, чтобы повышать ценность
     своих туров и честно объяснять клиентам, когда стоит ехать за сиянием.
@@ -199,13 +307,23 @@ import tours3 from "../../assets/blog_tours_3.png";
   <p>Сегодня туристы ценят прозрачность и реальность.</p>
   <p>Если туроператор говорит честно:</p>
   <p>
-    “Северное сияние — природное явление, но мы сделаем всё, чтобы вы его
-    поймали”,  — он вызывает доверие.
+    «Северное сияние — природное явление, но мы сделаем всё, чтобы вы его
+    поймали», — он вызывает доверие.
   </p>
   <p>
     Polarlights помогает поддерживать этот уровень честности и вовлечённости —
     через прогнозы и уведомления.
   </p>
+
+  <h2>Частые вопросы</h2>
+  {
+    faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))
+  }
 
   <h2>Итог</h2>
   <p>
@@ -234,13 +352,22 @@ import tours3 from "../../assets/blog_tours_3.png";
     <button class="slider-button left" id="slideLeft">&#8249;</button>
     <div class="images" id="slider">
       <div class="imag">
-        <Image src={tours3} alt="Северное Сияние" />
+        <Image
+          src={tours3}
+          alt="Каюр с ездовой собакой наблюдают северное сияние на заснеженной дороге"
+        />
       </div>
       <div class="imag">
-        <Image src={tours2} alt="Северное Сияние" />
+        <Image
+          src={tours2}
+          alt="Северное сияние, видное из иллюминатора самолёта во время перелёта"
+        />
       </div>
       <div class="imag">
-        <Image src={tours1} alt="Северное Сияние" />
+        <Image
+          src={tours1}
+          alt="Яркое зелёное северное сияние над зимним лесом"
+        />
       </div>
     </div>
     <button class="slider-button right" id="slideRight">&#8250;</button>
@@ -283,3 +410,6 @@ import tours3 from "../../assets/blog_tours_3.png";
     }
   </script>
 </div>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
