@@ -7,6 +7,66 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import spb1 from "../../assets/aurora-spb_1.png";
 import spb2 from "../../assets/aurora-spb_2.png";
 import spb3 from "../../assets/aurora-spb_3.png";
+
+const pageUrl = "https://polarlights.pro/blog/aurora-spb/";
+const dateModifiedISO = "2026-09-20";
+const dateModifiedDisplay = "20.09.2026";
+// datePublishedISO: точная дата первой публикации статьи неизвестна,
+// поэтому в articleLd она намеренно не указывается (см. ниже).
+
+const faq = [
+  {
+    q: "Можно ли увидеть северное сияние в Санкт-Петербурге?",
+    a: 'Да, можно. Санкт-Петербург находится на широте 59.93° с.ш. — значительно южнее Полярного круга, поэтому для наблюдений нужна высокая геомагнитная активность, с индексом Kp около 6 и выше. Следите за <a href="/#index" style="text-decoration: underline; text-underline-offset: 2px;">индексом</a>, чтобы не пропустить момент.',
+  },
+  {
+    q: "При каком Kp-индексе видно сияние в Санкт-Петербурге?",
+    a: "Нужен индекс Kp около 6 и выше. Чем выше индекс, тем ярче сияние и тем выше шанс заметить его даже при небольшой засветке.",
+  },
+  {
+    q: "Почему в последние годы сияние в СПб видно чаще?",
+    a: "В 2024 и 2025 годах, а по прогнозам и в 2026 году, Солнце особенно активно и радует охотников за сиянием сильными вспышками — поэтому мы всё чаще наблюдаем сияние в широтах значительно южнее Заполярья, в том числе в Санкт-Петербурге.",
+  },
+  {
+    q: "Как часто обновляется прогноз для Санкт-Петербурга?",
+    a: "Прогноз на 27 дней обновляется раз в неделю, обычно по понедельникам, а прогноз на 3 дня — ежедневно. Индекс, как и погода, очень изменчив, поэтому лучше ориентироваться на краткосрочный прогноз.",
+  },
+];
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Северное сияние в Санкт-Петербурге — прогноз и советы",
+  description:
+    "Можно ли увидеть северное сияние в Спб? Да! Узнайте, при каком индексе оно появляется, как следить за прогнозом и где искать сияние с Polarlights.",
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: dateModifiedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+};
 ---
 
 <style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
@@ -30,8 +90,17 @@ import spb3 from "../../assets/aurora-spb_3.png";
     margin-bottom: 10px;
     font-size: 24px;
   }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
   p {
     text-align: justify;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   ul {
     display: block;
@@ -58,6 +127,38 @@ import spb3 from "../../assets/aurora-spb_3.png";
     font-family: "SongerGrotesqueBold";
     font-size: 24px;
     margin: 60px 0 85px 0;
+  }
+
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .images {
@@ -138,62 +239,78 @@ import spb3 from "../../assets/aurora-spb_3.png";
   class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
   id="description"
 >
-  <h1>Северное сияние в Санкт-Петербурге</h1>
-  <h2>Блог о северном сиянии</h2>
-  <p>
-    Можно ли увидеть северное сияние в Санкт-Петербурге и что для этого нужно?
+  <h1>
+    Северное сияние в Санкт-Петербурге
+    <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
+  </h1>
+  <p class="author-line">
+    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
   </p>
-  <p>Короткий ответ: да, можно. Но давайте разбираться.</p>
+  <p class="lead-answer">
+    Коротко: да, можно. Санкт-Петербург находится значительно южнее Полярного
+    круга, поэтому сияние здесь видно не всегда, а только при высокой
+    геомагнитной активности — с индексом Kp около 6 и выше.
+  </p>
 </section>
 
 <div class="pt-[25px] pb-[50px]">
   <h2>Северное сияние в СПб</h2>
   <p>
-    Санкт-Петербург находится на широте 59.93° N, 30.31° E. Обычно северное
-    сияние (в нашем случае — полярное сияние) видно на широтах около и выше
-    Полярного круга.
+    Санкт-Петербург находится на широте 59.93° с.ш., 30.31° в.д. Обычно северное
+    (в нашем случае — полярное) сияние видно на широтах около и выше Полярного
+    круга.
   </p>
-  <p>&nbsp;</p>
   <p>
     Для того чтобы сияние было заметно в Санкт-Петербурге и около него,
     геомагнитная активность должна быть высокой — с индексом Kp около 6 и выше.
+    За индексом можно следить <a href="/#index">здесь</a>.
   </p>
-  <p>
-    За индексом можно следить <a href="https://polarlights.pro/#index"
-      ><u>здесь</u></a
-    >
-  </p>
-  <p>&nbsp;</p>
-  <p>Прогноз на 27 дней обновляется раз в неделю — обычно по понедельникам.</p>
-  <p>Прогноз на 3 дня обычно обновляется ежедневно.</p>
-  <p>
-    Конечно, лучше ориентироваться на краткосрочный прогноз и помнить, что
-    индекс, как и погода, очень изменчив.
-  </p>
-  <p>&nbsp;</p>
   <p>
     В 2024 и 2025 годах, а по прогнозам и в 2026 году, Солнце радует охотников
     за сиянием сильными вспышками, и мы всё чаще наблюдаем сияние в широтах,
     значительно южнее Заполярья — в том числе и в Санкт-Петербурге.
   </p>
 
+  <h2>Как следить за прогнозом</h2>
+  <div class="cta-block">
+    <p>
+      Прогноз на <a href="/#index">27 дней</a> обновляется раз в неделю — обычно по
+      понедельникам, а <a href="/#index">прогноз на 3 дня</a> — обычно ежедневно.
+      Конечно, лучше ориентироваться на краткосрочный прогноз и помнить, что индекс,
+      как и погода, очень изменчив.
+    </p>
+  </div>
+
   <h2>Советы по наблюдению от Поларлайтс</h2>
   <ol>
+    <li><a href="/#index">Следите за индексом</a>;</li>
     <li>
-      <a href="https://polarlights.pro/#index"><u>Следите за индексом</u></a>;
+      <a href="/#map">Проверяйте вероятность</a> в вашей геолокации и на карте в целом;
     </li>
     <li>
-      <a href="https://polarlights.pro/#map"><u>Проверяйте вероятность</u></a> в вашей
-      геолокации и на карте в целом;
+      <a href="/#map">Учитывайте облачность</a> — через плотные облака сияние не видно;
     </li>
-    <li>
-      <a href="https://polarlights.pro/#map"><u>Учитывайте облачность</u></a> — через
-      плотные облака сияние не видно;
-    </li>
-    <li>
-      <a href="https://polarlights.pro/"><u>Используйте Поларлайтс</u></a>.
-    </li>
+    <li><a href="/">Используйте Поларлайтс</a>.</li>
   </ol>
+
+  <h2>Частые вопросы</h2>
+  {
+    faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))
+  }
+
+  <h2>Итог</h2>
+  <p>
+    Северное сияние в Санкт-Петербурге — не миф, а реальность при достаточно
+    высокой геомагнитной активности. Следите за индексом и вероятностью,
+    учитывайте облачность — и однажды небо над городом подарит вам настоящее
+    полярное сияние.
+  </p>
 
   <h2>И будет вам сияние!</h2>
 
@@ -214,13 +331,19 @@ import spb3 from "../../assets/aurora-spb_3.png";
     <button class="slider-button left" id="slideLeft">&#8249;</button>
     <div class="images" id="slider">
       <div class="imag">
-        <Image src={spb1} alt="Северное Сияние" />
+        <Image
+          src={spb1}
+          alt="Зелёное северное сияние над многоэтажными жилыми домами"
+        />
       </div>
       <div class="imag">
-        <Image src={spb2} alt="Северное Сияние" />
+        <Image src={spb2} alt="Северное сияние над тёмным ночным пейзажем" />
       </div>
       <div class="imag">
-        <Image src={spb3} alt="Северное Сияние" />
+        <Image
+          src={spb3}
+          alt="Зелёное северное сияние с лёгкой городской засветкой у горизонта"
+        />
       </div>
     </div>
     <button class="slider-button right" id="slideRight">&#8250;</button>
@@ -263,3 +386,6 @@ import spb3 from "../../assets/aurora-spb_3.png";
     }
   </script>
 </div>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
