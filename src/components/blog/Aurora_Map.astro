@@ -4,9 +4,9 @@ import auroraback_mb from "../../assets/auroraback_mb.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
 const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
-import map1 from "../../assets/screenshot2.png";
-import map2 from "../../assets/screenshot3.png";
-import map3 from "../../assets/screenshot1.png";
+import map1 from "../../assets/blog_map_2.png";
+import map2 from "../../assets/blog_map_3.png";
+import map3 from "../../assets/blog_map_1.png";
 
 const pageUrl = "https://polarlights.pro/blog/aurora-map/";
 const dateModifiedISO = "2026-09-21";
@@ -433,19 +433,16 @@ const breadcrumbLd = {
       <div class="imag">
         <Image
           src={map1}
-          alt="Карта северного сияния в приложении Polarlights — вероятность и облачность"
+          alt="Северное сияние — наблюдатель на фоне яркого полярного сияния"
         />
       </div>
       <div class="imag">
-        <Image
-          src={map2}
-          alt="График KP-индекса на 3 и 27 дней в приложении Polarlights"
-        />
+        <Image src={map2} alt="Северное сияние над заливом ночью" />
       </div>
       <div class="imag">
         <Image
           src={map3}
-          alt="Уведомления о высокой вероятности северного сияния в приложении Polarlights"
+          alt="Карта северного сияния в приложении Polarlights — вероятность и облачность"
         />
       </div>
     </div>
