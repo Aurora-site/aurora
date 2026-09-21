@@ -1,0 +1,504 @@
+---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import map1 from "../../assets/screenshot2.png";
+import map2 from "../../assets/screenshot3.png";
+import map3 from "../../assets/screenshot1.png";
+
+const pageUrl = "https://polarlights.pro/blog/aurora-map/";
+const dateModifiedISO = "2026-09-21";
+const dateModifiedDisplay = "21.09.2026";
+// datePublishedISO: статья публикуется впервые 21.09.2026, но для единообразия
+// с остальными статьями блога отдельное поле datePublished в articleLd не указывается.
+
+const faq = [
+  {
+    q: "Что показывает карта северного сияния на Polarlights?",
+    a: "Карта показывает вероятность увидеть северное сияние в ближайший час для выбранного города — в процентах и цветом на карте. Можно включить или отключить слой облачности, чтобы сразу понять, не помешают ли тучи.",
+  },
+  {
+    q: "Как рассчитывается вероятность в процентах?",
+    a: "Вероятность рассчитывается на основе текущего KP-индекса и погодных условий, в том числе облачности, для выбранной геолокации, и обновляется в реальном времени.",
+  },
+  {
+    q: "Что означают цвета на карте?",
+    a: "Это шкала вероятности: от 0–10% до 60–100%. Чем теплее и ярче цвет — тем выше шанс увидеть сияние в этой точке прямо сейчас.",
+  },
+  {
+    q: "В чём разница между графиком на 3 дня и на 27 дней?",
+    a: "График на 3 дня точнее и обновляется дважды в сутки — по нему удобно смотреть, стоит ли выходить на улицу сегодня-завтра. График на 27 дней обновляется раз в неделю и больше подходит для долгосрочного планирования поездки.",
+  },
+  {
+    q: "Можно ли получать уведомления о высокой вероятности?",
+    a: "Да, в приложении Polarlights можно подключить уведомления — сервис может предупредить примерно за час до того, как в вашей локации появится высокая вероятность увидеть северное сияние.",
+  },
+];
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Карта северного сияния онлайн: как читать вероятность и прогноз",
+  description:
+    "Как пользоваться онлайн-картой северного сияния Polarlights: вероятность по городам, облачность, цветовая шкала и график KP-индекса на 3 и 27 дней.",
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: dateModifiedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Главная",
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Блог о северном сиянии",
+      item: "https://polarlights.pro/blog/",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Карта северного сияния онлайн: как читать вероятность и прогноз",
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
+  p {
+    text-align: justify;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  ol {
+    display: block;
+    text-align: left;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .breadcrumbs {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .breadcrumbs-current {
+    opacity: 0.95;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .images {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: 10px 0 0 0;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding-bottom: 100px;
+  }
+
+  .image-slider-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .imag {
+    flex: 0 0 auto;
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    z-index: 1000;
+    font-size: 30px;
+  }
+
+  .slider-button.left {
+    left: -50px;
+    color: white;
+  }
+
+  .slider-button.right {
+    right: -50px;
+    color: white;
+  }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      font-size: 32px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .images {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 952px) {
+    .slider-button {
+      display: none !important;
+    }
+  }
+  @media (max-width: 482px) {
+    .imag {
+      width: 90%;
+    }
+  }
+</style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[20px] pb-5 text-center md:bg-[0px_20px] md:pt-[40px]"
+  id="description"
+>
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a><span class="breadcrumbs-sep">/</span><a href="/blog"
+      >Блог о северном сиянии</a
+    ><span class="breadcrumbs-sep">/</span><span class="breadcrumbs-current"
+      >Карта северного сияния онлайн: как читать вероятность и прогноз</span
+    >
+  </nav>
+  <h1>
+    Карта северного сияния онлайн: как читать вероятность и прогноз
+    <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
+  </h1>
+  <p class="author-line">
+    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
+  </p>
+  <p class="lead-answer">
+    Коротко: на карте Polarlights можно выбрать город и увидеть вероятность
+    северного сияния в ближайший час, включить или отключить облачность и
+    посмотреть график KP-индекса на 3 и 27 суток — этого достаточно, чтобы
+    решить, стоит ли сегодня выходить смотреть на небо.
+  </p>
+</section>
+
+<div class="pt-[25px] pb-[50px]">
+  <h2>Зачем нужна карта северного сияния</h2>
+  <p>
+    Северное сияние — редкий гость: оно не появляется по расписанию и не
+    гарантировано даже в самых «сиятельных» местах. Карта Polarlights существует
+    именно для того, чтобы не гадать и не сидеть на морозе наугад — а видеть на
+    одном экране, где и когда шанс увидеть сияние реально высок.
+  </p>
+  <p>
+    На главной странице сайта карта отображает сияние в реальном времени: вы
+    выбираете город, и сервис показывает вероятность наблюдения в ближайший час
+    именно для этой геолокации.
+  </p>
+
+  <h2>Как читать вероятность на карте</h2>
+  <p>
+    Для выбранного города карта показывает вероятность в процентах — например,
+    «Вероятность в ближайший час = 15%». Сама карта при этом закрашена по
+    цветовой шкале: 0–10%, 10–20%, 20–40%, 40–60% и 60–100%. Чем теплее и ярче
+    цвет в вашем регионе — тем выше шанс увидеть сияние прямо сейчас.
+  </p>
+  <p>
+    Вероятность рассчитывается не только по KP-индексу, но и с учётом погодных
+    условий и вашей геолокации — поэтому у соседних городов на карте цифры могут
+    заметно отличаться.
+  </p>
+
+  <h2>Причём тут облачность</h2>
+  <p>
+    На карте есть отдельный переключатель «Облачность». Даже при высокой
+    геомагнитной активности плотные тучи полностью закрывают небо — и сияние
+    просто не будет видно, сколько бы вы ни ждали. Включив слой облачности,
+    можно сразу понять, стоит ли ехать в эту точку сегодня, или лучше поискать
+    место с более чистым небом.
+  </p>
+
+  <h2>График KP-индекса: 3 дня и 27 дней</h2>
+  <p>
+    Ниже карты на главной странице есть график планетарного KP-индекса — он
+    отражает уровень геомагнитной активности Земли по шкале от 0 до 9. Доступны
+    два режима:
+  </p>
+  <ul>
+    <li>
+      <strong>3 дня</strong> — более точный график, обновляется дважды в сутки. Удобен,
+      чтобы решить, стоит ли выходить смотреть сияние сегодня-завтра.
+    </li>
+    <li>
+      <strong>27 дней</strong> — обновляется раз в неделю и больше подходит для долгосрочного
+      планирования, например поездки за сиянием в другой регион.
+    </li>
+  </ul>
+  <p>
+    Данные по геомагнитной активности предоставлены Национальным управлением
+    океанических и атмосферных исследований (NOAA).
+  </p>
+
+  <h2>Как использовать карту при планировании поездки</h2>
+  <p>
+    Если вы планируете поездку за северным сиянием, карта и график полезны
+    по-разному: график на 27 дней помогает выбрать примерный период поездки,
+    3-дневный график — уточнить конкретные дни ближе к дате, а карта с
+    вероятностью и облачностью — принять решение уже на месте, стоит ли выходить
+    именно сегодня и именно в эту точку.
+  </p>
+  <p>
+    Подробнее о том, где именно лучше наблюдать сияние в конкретных городах,
+    можно прочитать в статьях про
+    <a href="/blog/aurora-murmansk">Мурманск</a>
+    и в
+    <a href="/blog/big-aurora-forecast">большом прогнозе сияния</a>, а про сам
+    KP-индекс — в
+    <a href="/blog/kp-index">отдельной статье</a>.
+  </p>
+
+  <h2>Смотрите карту и вероятность прямо сейчас</h2>
+  <div class="cta-block">
+    <p>
+      Откройте <a href="/#map">карту и вероятность</a> и
+      <a href="/#index">график KP-индекса</a> на главной странице Polarlights, или
+      поставьте
+      <a href="/app">приложение Polarlights</a>, чтобы получать уведомления,
+      когда вероятность увидеть сияние в вашей локации станет высокой.
+    </p>
+  </div>
+
+  <h2>Частые вопросы</h2>
+  {
+    faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p>{item.a}</p>
+      </>
+    ))
+  }
+
+  <h2>Итог</h2>
+  <p>
+    Карта северного сияния — это не просто картинка, а рабочий инструмент:
+    выбирайте город, смотрите вероятность и облачность в реальном времени,
+    сверяйтесь с графиком KP-индекса на 3 и 27 суток — и решение, стоит ли
+    сегодня выходить на улицу, будет опираться на данные, а не на удачу.
+  </p>
+
+  <h2>Читайте также</h2>
+  <ul>
+    <li><a href="/blog/aurora-murmansk">Северное сияние в Мурманске</a></li>
+    <li><a href="/blog/big-aurora-forecast">Большой прогноз сияния</a></li>
+    <li><a href="/blog/kp-index">KP-индекс: что это такое</a></li>
+  </ul>
+
+  <div class="mt-[60px] mb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/blog">В блог о северном сиянии</a
+    >
+  </div>
+  <div class="pb-[50px] text-left">
+    <a
+      class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+      href="/">Перейти на главную страницу с картой и вероятностью</a
+    >
+  </div>
+
+  <div class="image-slider-container">
+    <button class="slider-button left" id="slideLeft">&#8249;</button>
+    <div class="images" id="slider">
+      <div class="imag">
+        <Image
+          src={map1}
+          alt="Карта северного сияния в приложении Polarlights — вероятность и облачность"
+        />
+      </div>
+      <div class="imag">
+        <Image
+          src={map2}
+          alt="График KP-индекса на 3 и 27 дней в приложении Polarlights"
+        />
+      </div>
+      <div class="imag">
+        <Image
+          src={map3}
+          alt="Уведомления о высокой вероятности северного сияния в приложении Polarlights"
+        />
+      </div>
+    </div>
+    <button class="slider-button right" id="slideRight">&#8250;</button>
+  </div>
+
+  <script is:inline>
+    {
+      function initSlider() {
+        const slider = document.getElementById("slider");
+        const slideLeft = document.getElementById("slideLeft");
+        const slideRight = document.getElementById("slideRight");
+
+        if (!slider) return;
+
+        const totalWidth = Array.from(slider.children).reduce(
+          (sum, item) => sum + item.offsetWidth,
+          0,
+        );
+        const visibleWidth = slider.offsetWidth;
+
+        if (totalWidth > visibleWidth) {
+          slideLeft.style.display = "block";
+          slideRight.style.display = "block";
+
+          slideLeft.addEventListener("click", () => {
+            slider.scrollBy({ left: -380, behavior: "smooth" });
+          });
+
+          slideRight.addEventListener("click", () => {
+            slider.scrollBy({ left: 380, behavior: "smooth" });
+          });
+        } else {
+          slideLeft.style.display = "none";
+          slideRight.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", initSlider);
+      window.addEventListener("resize", initSlider);
+    }
+  </script>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
