@@ -1,0 +1,15 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Map from "../../../components/blog/Aurora_Map.astro";
+import { useAstroLocale, useAstroTranslations } from "../../../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
+---
+
+<Layout
+  title={t("map-blog.title")}
+  description={t("map-blog.description")}
+  variant="blog"
+>
+  <Map />
+</Layout>

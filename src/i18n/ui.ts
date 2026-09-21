@@ -253,6 +253,11 @@ export const ui = {
       "KP-индекс: что это такое и как по нему понять вероятность северного сияния | Polarlights | Поларлайтс",
     "kp-blog.description":
       "Разбираем KP-индекс простыми словами: какие значения считаются хорошими, почему прогноз меняется и что важнее для сияния – KP, облачность или место наблюдения. Советы для новичков.",
+
+    "map-blog.title":
+      "Карта северного сияния онлайн: вероятность, облачность и график KP-индекса в реальном времени | Polarlights | Поларлайтс",
+    "map-blog.description":
+      "Как читать онлайн-карту северного сияния Polarlights: вероятность по городам, облачность, цветовая шкала и график KP-индекса на 3 и 27 дней — чтобы точнее спланировать наблюдение.",
   },
   en: {
     icon: "/images/us.png",
@@ -487,6 +492,11 @@ export const ui = {
       "KP Index: What It Is and How to Use It to Predict the Northern Lights | Polarlights",
     "kp-blog.description":
       "Learn what the KP Index means in simple terms: which values are considered good, why aurora forecasts change, and what matters most—KP, cloud cover, or your location. Practical tips for beginners.",
+
+    "map-blog.title":
+      "Northern Lights Map Online: Probability, Cloud Cover and Real-Time KP Index Chart | Polarlights",
+    "map-blog.description":
+      "How to read the Polarlights online aurora map: probability by city, cloud cover, the color scale, and the 3-day and 27-day KP index charts — to plan your viewing more precisely.",
   },
   cn: {
     icon: "/images/cn.png",
@@ -695,5 +705,10 @@ export const ui = {
     "kp-blog.title": "KP 指数：它是什么，以及如何用它预测北极光｜Polarlights",
     "kp-blog.description":
       "用简单易懂的方式解释 KP 指数：哪些数值更适合观测北极光、为什么极光预报会变化，以及影响观测的关键因素——KP、云量还是所在位置。适合新手的实用建议。",
+
+    "map-blog.title":
+      "北极光地图：如何查看实时概率、云量和 KP 指数图表 | Polarlights",
+    "map-blog.description":
+      "如何使用 Polarlights 的北极光在线地图：按城市查看概率、云量、颜色分级，以及 3 天和 27 天的 KP 指数图表，帮助您更精准地规划观测。",
   },
 } as const;
