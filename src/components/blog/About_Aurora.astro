@@ -10,6 +10,68 @@ import about3 from "../../assets/about3.png";
 import quota from "../../assets/quota.png";
 
 const pageUrl = "https://polarlights.pro/blog/about-aurora/";
+const dateModifiedISO = "2026-09-21";
+const dateModifiedDisplay = "21.09.2026";
+// datePublishedISO: точная дата первой публикации статьи неизвестна,
+// поэтому в articleLd она намеренно не указывается (см. ниже).
+
+const faq = [
+  {
+    q: "Что такое северное сияние?",
+    a: "Северное сияние, полярное сияние или Aurora Borealis — одно из самых красивых природных явлений на Земле. Оно возникает, когда потоки солнечного ветра сталкиваются с магнитным полем планеты, и небо окрашивается в оттенки зелёного, розового, фиолетового и даже красного.",
+  },
+  {
+    q: "Когда лучше всего наблюдать северное сияние?",
+    a: "Лучшее время для наблюдений в России — с сентября по апрель. В этот период ночи длинные и тёмные, и вероятность яркого сияния особенно высока.",
+  },
+  {
+    q: "Где в России лучше всего видно северное сияние?",
+    a: "Увидеть его можно во всех регионах за Полярным кругом или рядом с ним. Самое популярное место у туристов — Мурманская область: она почти полностью находится за Полярным кругом, здесь развита инфраструктура и есть два аэропорта — в Мурманске и Апатитах.",
+  },
+  {
+    q: "Какой KP-индекс нужен, чтобы увидеть сияние?",
+    a: "Для Мурманской области обычно достаточно KP-индекса 3. Но помните: KP-индекс планетарный, то есть общий для всей Земли — в Мурманске и в Сочи он будет одинаковым, а вот реальные условия для наблюдения в этих городах совершенно разные.",
+  },
+  {
+    q: "Как узнать, что сияние ожидается именно в моём городе?",
+    a: 'На сайте <a href="/" style="text-decoration: underline; text-underline-offset: 2px;">Polarlights</a> доступна карта сияния и прогноз по городам России. В <a href="/download/" style="text-decoration: underline; text-underline-offset: 2px;">приложении</a> можно включить уведомления — и сервис сообщит о высокой вероятности сияния в вашей локации.',
+  },
+];
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Северное сияние: что это такое, когда и где его смотреть",
+  description:
+    "Что такое северное сияние, когда и где его лучше наблюдать в России, какой KP-индекс нужен и как следить за прогнозом — простыми словами.",
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: dateModifiedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a.replace(/<[^>]+>/g, ""),
+    },
+  })),
+};
 
 const breadcrumbLd = {
   "@context": "https://schema.org",
@@ -52,6 +114,11 @@ const breadcrumbLd = {
     margin-bottom: 10px;
     font-size: 24px;
   }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
   p {
     text-align: justify;
   }
@@ -82,6 +149,17 @@ const breadcrumbLd = {
     margin: 60px 0 85px 0;
   }
 
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
   .breadcrumbs {
     display: block;
     text-align: left;
@@ -102,6 +180,20 @@ const breadcrumbLd = {
 
   .breadcrumbs-current {
     opacity: 0.95;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
   }
 
   .images {
@@ -194,7 +286,20 @@ const breadcrumbLd = {
       >Северное сияние</span
     >
   </nav>
-  <h1>Северное сияние</h1>
+  <h1>
+    Северное сияние
+    <span class="updated-badge">Обновлено: {dateModifiedDisplay}</span>
+  </h1>
+  <p class="author-line">
+    Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+    северного сияния. Выросла в Мурманской области и наблюдает сияние с детства.
+  </p>
+  <p class="lead-answer">
+    Коротко: северное сияние — одно из самых красивых природных явлений, которое
+    возникает при столкновении солнечного ветра с магнитным полем Земли. В
+    России лучше всего его видно с сентября по апрель, а самый популярный регион
+    для наблюдений — Мурманская область.
+  </p>
   <h2>Поговорим о сиянии</h2>
   <p>
     Кто может рассказать о северном сиянии лучше, чем те, кто вырос за Полярным
@@ -287,6 +392,17 @@ const breadcrumbLd = {
     <li>Для фотографий используйте штатив и длинную выдержку.</li>
     <li>Помните: сияние любит тех, кто умеет его ждать и не торопит.</li>
   </ul>
+
+  <h2>Частые вопросы</h2>
+  {
+    faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))
+  }
+
   <p>&nbsp;</p>
   <p>
     <strong>
@@ -362,4 +478,6 @@ const breadcrumbLd = {
   }
 </script>
 
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
