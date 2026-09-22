@@ -7,6 +7,8 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import map1 from "../../assets/blog_map_2.png";
 import map2 from "../../assets/blog_map_3.png";
 import map3 from "../../assets/blog_map_1.png";
+import mapVideo from "../../assets/blog_map_video.mp4";
+import mapVideoPoster from "../../assets/blog_map_video_poster.jpg";
 
 const pageUrl = "https://polarlights.pro/blog/aurora-map/";
 const dateModifiedISO = "2026-09-21";
@@ -118,6 +120,7 @@ const breadcrumbLd = {
     margin-top: 40px;
     margin-bottom: 10px;
     font-size: 24px;
+    clear: both;
   }
   h3 {
     margin-top: 25px;
@@ -259,6 +262,68 @@ const breadcrumbLd = {
     color: white;
   }
 
+  .video-block {
+    float: left;
+    width: 130px;
+    margin: 4px 22px 14px 0;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    filter: drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.7));
+    transition:
+      width 0.3s ease,
+      filter 0.3s ease;
+    z-index: 2;
+  }
+
+  .video-block.expanded {
+    width: 240px;
+    z-index: 50;
+    filter: drop-shadow(12px 12px 20px rgba(0, 0, 0, 0.85));
+  }
+
+  .map-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .video-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .video-block.expanded .video-close {
+    display: flex;
+  }
+
+  @media (max-width: 480px) {
+    .video-block {
+      float: none;
+      width: 160px;
+      margin: 10px auto 20px;
+    }
+
+    .video-block.expanded {
+      width: 220px;
+    }
+  }
+
   @media (max-width: 510px) {
     .description h1 {
       font-size: 32px;
@@ -327,6 +392,23 @@ const breadcrumbLd = {
   </p>
 
   <h2>Как читать вероятность на карте</h2>
+  <div class="video-block" id="mapVideoBlock">
+    <video
+      id="mapVideo"
+      class="map-video"
+      src={mapVideo}
+      poster={mapVideoPoster.src}
+      muted
+      loop
+      playsinline
+      preload="metadata"></video>
+    <button
+      type="button"
+      class="video-close"
+      id="mapVideoClose"
+      aria-label="Закрыть видео">×</button
+    >
+  </div>
   <p>
     Для выбранного города карта показывает вероятность в процентах — например,
     «Вероятность в ближайший час = 15%». Сама карта при этом закрашена по
@@ -483,6 +565,52 @@ const breadcrumbLd = {
 
       window.addEventListener("load", initSlider);
       window.addEventListener("resize", initSlider);
+    }
+  </script>
+
+  <script is:inline>
+    {
+      function initMapVideo() {
+        const block = document.getElementById("mapVideoBlock");
+        const video = document.getElementById("mapVideo");
+        const closeBtn = document.getElementById("mapVideoClose");
+
+        if (!block || !video || !closeBtn) return;
+
+        const tryPlay = () => {
+          video.play().catch(() => {});
+        };
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                tryPlay();
+              } else if (!block.classList.contains("expanded")) {
+                video.pause();
+              }
+            });
+          },
+          { threshold: 0.4 },
+        );
+        observer.observe(block);
+
+        video.addEventListener("click", () => {
+          if (!block.classList.contains("expanded")) {
+            block.classList.add("expanded");
+            video.muted = false;
+            tryPlay();
+          }
+        });
+
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          block.classList.remove("expanded");
+          video.muted = true;
+        });
+      }
+
+      window.addEventListener("load", initMapVideo);
     }
   </script>
 </div>
