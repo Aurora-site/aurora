@@ -398,7 +398,6 @@ const breadcrumbLd = {
   </p>
 
   <h2>Как читать вероятность на карте</h2>
-  <span id="mapVideoAnchor" aria-hidden="true"></span>
   <div class="video-block" id="mapVideoBlock">
     <video
       id="mapVideo"
@@ -578,33 +577,14 @@ const breadcrumbLd = {
   <script is:inline>
     {
       function initMapVideo() {
-        const anchor = document.getElementById("mapVideoAnchor");
         const block = document.getElementById("mapVideoBlock");
         const video = document.getElementById("mapVideo");
         const closeBtn = document.getElementById("mapVideoClose");
 
-        if (!anchor || !block || !video || !closeBtn) return;
+        if (!block || !video || !closeBtn) return;
 
-        let closed = false;
-
-        const reveal = () => {
-          if (closed) return;
-          block.classList.add("visible");
-          video.play().catch(() => {});
-        };
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                reveal();
-                observer.disconnect();
-              }
-            });
-          },
-          { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-        );
-        observer.observe(anchor);
+        block.classList.add("visible");
+        video.play().catch(() => {});
 
         video.addEventListener("click", () => {
           if (!block.classList.contains("expanded")) {
@@ -616,7 +596,6 @@ const breadcrumbLd = {
 
         closeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
-          closed = true;
           block.classList.remove("visible", "expanded");
           video.pause();
           video.muted = true;
