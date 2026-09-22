@@ -120,7 +120,6 @@ const breadcrumbLd = {
     margin-top: 40px;
     margin-bottom: 10px;
     font-size: 24px;
-    clear: both;
   }
   h3 {
     margin-top: 25px;
@@ -263,23 +262,33 @@ const breadcrumbLd = {
   }
 
   .video-block {
-    float: left;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
     width: 130px;
-    margin: 4px 22px 14px 0;
-    position: relative;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     filter: drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
     transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
       width 0.3s ease,
       filter 0.3s ease;
-    z-index: 2;
+    z-index: 200;
+  }
+
+  .video-block.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .video-block.expanded {
     width: 240px;
-    z-index: 50;
     filter: drop-shadow(12px 12px 20px rgba(0, 0, 0, 0.85));
   }
 
@@ -291,7 +300,7 @@ const breadcrumbLd = {
   }
 
   .video-close {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -306,21 +315,18 @@ const breadcrumbLd = {
     font-size: 18px;
     line-height: 1;
     cursor: pointer;
-  }
-
-  .video-block.expanded .video-close {
-    display: flex;
+    z-index: 2;
   }
 
   @media (max-width: 480px) {
     .video-block {
-      float: none;
-      width: 160px;
-      margin: 10px auto 20px;
+      left: 12px;
+      bottom: 12px;
+      width: 110px;
     }
 
     .video-block.expanded {
-      width: 220px;
+      width: 180px;
     }
   }
 
@@ -392,6 +398,7 @@ const breadcrumbLd = {
   </p>
 
   <h2>Как читать вероятность на карте</h2>
+  <span id="mapVideoAnchor" aria-hidden="true"></span>
   <div class="video-block" id="mapVideoBlock">
     <video
       id="mapVideo"
@@ -571,13 +578,18 @@ const breadcrumbLd = {
   <script is:inline>
     {
       function initMapVideo() {
+        const anchor = document.getElementById("mapVideoAnchor");
         const block = document.getElementById("mapVideoBlock");
         const video = document.getElementById("mapVideo");
         const closeBtn = document.getElementById("mapVideoClose");
 
-        if (!block || !video || !closeBtn) return;
+        if (!anchor || !block || !video || !closeBtn) return;
 
-        const tryPlay = () => {
+        let closed = false;
+
+        const reveal = () => {
+          if (closed) return;
+          block.classList.add("visible");
           video.play().catch(() => {});
         };
 
@@ -585,27 +597,28 @@ const breadcrumbLd = {
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                tryPlay();
-              } else if (!block.classList.contains("expanded")) {
-                video.pause();
+                reveal();
+                observer.disconnect();
               }
             });
           },
-          { threshold: 0.4 },
+          { threshold: 0, rootMargin: "0px 0px -20% 0px" },
         );
-        observer.observe(block);
+        observer.observe(anchor);
 
         video.addEventListener("click", () => {
           if (!block.classList.contains("expanded")) {
             block.classList.add("expanded");
             video.muted = false;
-            tryPlay();
+            video.play().catch(() => {});
           }
         });
 
         closeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
-          block.classList.remove("expanded");
+          closed = true;
+          block.classList.remove("visible", "expanded");
+          video.pause();
           video.muted = true;
         });
       }
