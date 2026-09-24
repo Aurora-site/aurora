@@ -85,12 +85,6 @@ const breadcrumbLd = {
     background: rgba(255, 255, 255, 0.06);
   }
 
-  .cta-block.source {
-    margin: 40px 0 20px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
   .pro-content :global(a) {
     color: #4fd1c5;
   }
@@ -127,10 +121,6 @@ const breadcrumbLd = {
   <h2>{t("pro.kp.title")}</h2>
   <p>{t("pro.kp.text")}</p>
   <ChartTabs client:only="react" />
-
-  <div class="cta-block source">
-    <p>{t("pro.source")}</p>
-  </div>
 </div>
 
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
