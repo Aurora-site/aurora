@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProData from "../components/ProData.astro";
+import { useAstroLocale, useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+const lang = useAstroLocale(Astro);
+---
+
+<Layout variant="app" title={t("pro.title")} description={t("pro.description")}>
+  <ProData />
+</Layout>

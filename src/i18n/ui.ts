@@ -12,6 +12,11 @@ export const ui = {
     "app.description":
       "Увидеть Северное в своем телефоне! Прогнозы, уведомления и советы для успешного наблюдения. С нами вы не пропустите полярное сияние! Поймай Аврору",
 
+    "pro.title":
+      "Данные космической погоды для профессионалов: Kp, Dst, Bz/Bt, солнечный ветер | Polarlights",
+    "pro.description":
+      "Живые показатели космической погоды NOAA: Kp-индекс, Dst, Bz/Bt межпланетного магнитного поля, скорость и плотность солнечного ветра, шкалы G/S/R. Обновляется автоматически.",
+
     "meta.ogTitle": "Прогноз Северного Сияния. Карта, вероятность и прогноз",
     "meta.ogDescription":
       "Увидеть Северное сияние стало проще! Прогнозы, уведомления и советы для вашей удачи. С нами вы не пропустите полярное сияние! Поймай Аврору",
@@ -21,9 +26,51 @@ export const ui = {
     "breadcrumbs.ariaLabel": "Хлебные крошки",
     "H.map": "Карта",
     "H.index": "Индекс",
+    "H.pro": "Для профи",
     "H.how": "Как увидеть",
     "H.where": "Где увидеть",
     "H.blog": "Блог",
+
+    /*Pro page */
+    "pro.heading": "Данные для профессионалов",
+    "pro.intro":
+      "Здесь собраны показатели космической погоды из открытых данных NOAA SWPC в первозданном виде — без интерпретации в «вероятность увидеть сияние». Страница подойдёт тем, кто хочет самостоятельно анализировать геомагнитную обстановку: фотографам, исследователям, сообществам охотников за сиянием.",
+    "pro.disclaimer":
+      'Если вам нужен простой прогноз «увижу ли я сияние сегодня» — используйте <a href="/#map">карту вероятности</a> или <a href="/app">приложение Polarlights</a>. Здесь — только сырые данные.',
+    "pro.kp.title": "Kp-индекс",
+    "pro.kp.text":
+      "Планетарный индекс геомагнитной активности за последние 3 и 27 дней.",
+    "pro.live.title": "Показатели солнечного ветра и магнитного поля",
+    "pro.live.text":
+      "Данные обновляются каждые несколько минут напрямую из NOAA Space Weather Prediction Center.",
+    "pro.dst.label": "Dst-индекс",
+    "pro.dst.info":
+      "Dst (Disturbance storm time index) показывает интенсивность кольцевого тока в магнитосфере Земли. Чем отрицательнее значение, тем сильнее геомагнитная буря.",
+    "pro.bz.label": "Bz (GSM)",
+    "pro.bz.info":
+      "Bz — вертикальная составляющая межпланетного магнитного поля. Устойчиво отрицательные значения способствуют пересоединению с магнитосферой Земли и увеличивают вероятность сияния.",
+    "pro.bt.label": "Bt",
+    "pro.bt.info":
+      "Bt — полная величина межпланетного магнитного поля. Чем выше Bt при отрицательном Bz, тем сильнее потенциальное воздействие на магнитосферу.",
+    "pro.speed.label": "Скорость ветра",
+    "pro.speed.info":
+      "Скорость солнечного ветра в км/с. Высокая скорость (от 500 км/с) увеличивает шанс геомагнитных возмущений.",
+    "pro.density.label": "Плотность ветра",
+    "pro.density.info":
+      "Плотность протонов солнечного ветра. Резкие скачки плотности часто сопровождают приход корональных выбросов массы.",
+    "pro.scales.title": "Шкалы NOAA",
+    "pro.scales.g": "G — геомагнитные бури",
+    "pro.scales.g.info":
+      "Шкала геомагнитных бурь NOAA от G0 (нет бури) до G5 (экстремальная буря). Чем выше значение, тем сильнее и южнее может быть видно сияние.",
+    "pro.scales.s": "S — радиационные бури",
+    "pro.scales.s.info":
+      "Шкала солнечных радиационных бурь NOAA от S0 до S5. Влияет на радиосвязь и авиаперелёты через полюса.",
+    "pro.scales.r": "R — радиопомехи",
+    "pro.scales.r.info":
+      "Шкала радиопомех NOAA от R0 до R5, вызванных вспышками на Солнце. Влияет на КВ-радиосвязь на освещённой стороне Земли.",
+    "pro.scales.updated": "Данные на",
+    "pro.source":
+      "Источник данных: NOAA Space Weather Prediction Center (services.swpc.noaa.gov). Обновление на странице — каждые 5 минут.",
 
     /*Description*/
     "description.title": "Северное сияние",
@@ -267,6 +314,10 @@ export const ui = {
     "app.title": "Northern Lights App. Map and Forecast on Your Phone",
     "app.description":
       "See the Northern Lights on your phone! Forecasts, alerts, and tips for successful viewing. With us, you won’t miss the aurora! Catch the Aurora.",
+    "pro.title":
+      "Space Weather Data for Professionals: Kp, Dst, Bz/Bt, Solar Wind | Polarlights",
+    "pro.description":
+      "Live NOAA space weather indices: Kp index, Dst, interplanetary magnetic field Bz/Bt, solar wind speed and density, G/S/R scales. Auto-refreshing.",
     "meta.ogTitle": "Aurora Forecast. Map, Probability and Forecast",
     "meta.ogDescription":
       "Seeing the Northern Lights just got easier! Forecasts, notifications and tips for your luck. With us you won't miss the polar lights! Catch the Aurora",
@@ -277,9 +328,38 @@ export const ui = {
     "breadcrumbs.ariaLabel": `Breadcrumb`,
     "H.map": `Map`,
     "H.index": `Index`,
+    "H.pro": `Pro Data`,
     "H.how": `How to see`,
     "H.where": `Where to see`,
     "H.blog": `Blog`,
+
+    /*Pro page */
+    "pro.heading": `Data for Professionals`,
+    "pro.intro": `Raw space weather data from NOAA SWPC's open data, without interpretation into an "aurora probability". This page is for those who want to analyze the geomagnetic situation themselves: photographers, researchers, and aurora-chasing communities.`,
+    "pro.disclaimer": `If you just want a simple "will I see the aurora tonight" forecast, use the <a href="/en/#map">probability map</a> or the <a href="/en/app">Polarlights app</a>. This page is raw data only.`,
+    "pro.kp.title": `Kp index`,
+    "pro.kp.text": `Planetary geomagnetic activity index for the last 3 and 27 days.`,
+    "pro.live.title": `Solar wind and magnetic field indices`,
+    "pro.live.text": `Data refreshes every few minutes, fetched directly from the NOAA Space Weather Prediction Center.`,
+    "pro.dst.label": `Dst index`,
+    "pro.dst.info": `Dst (Disturbance storm time index) reflects the strength of Earth's ring current. The more negative the value, the stronger the geomagnetic storm.`,
+    "pro.bz.label": `Bz (GSM)`,
+    "pro.bz.info": `Bz is the north-south component of the interplanetary magnetic field. Sustained negative values favor reconnection with Earth's magnetosphere and increase aurora chances.`,
+    "pro.bt.label": `Bt`,
+    "pro.bt.info": `Bt is the total strength of the interplanetary magnetic field. Higher Bt combined with negative Bz means a stronger potential effect on the magnetosphere.`,
+    "pro.speed.label": `Wind speed`,
+    "pro.speed.info": `Solar wind speed in km/s. High speed (500+ km/s) increases the chance of geomagnetic disturbances.`,
+    "pro.density.label": `Wind density`,
+    "pro.density.info": `Solar wind proton density. Sharp jumps often accompany the arrival of a coronal mass ejection.`,
+    "pro.scales.title": `NOAA scales`,
+    "pro.scales.g": `G — geomagnetic storms`,
+    "pro.scales.g.info": `NOAA geomagnetic storm scale from G0 (none) to G5 (extreme). The higher the value, the stronger and further south the aurora may be visible.`,
+    "pro.scales.s": `S — radiation storms`,
+    "pro.scales.s.info": `NOAA solar radiation storm scale from S0 to S5. Affects radio communication and polar flight routes.`,
+    "pro.scales.r": `R — radio blackouts`,
+    "pro.scales.r.info": `NOAA radio blackout scale from R0 to R5, caused by solar flares. Affects HF radio on the sunlit side of Earth.`,
+    "pro.scales.updated": `Data as of`,
+    "pro.source": `Data source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov). Page refreshes every 5 minutes.`,
 
     /*Description*/
     "description.title": `Polar lights`,
@@ -506,6 +586,9 @@ export const ui = {
     "app.title": "北极光应用：手机里的地图与预测",
     "app.description":
       "在手机上看北极光！预测、提醒和贴士助您成功观赏。 有了我们，您不会错过极光！抓住极光吧！",
+    "pro.title": "专业空间天气数据：Kp、Dst、Bz/Bt、太阳风 | Polarlights",
+    "pro.description":
+      "NOAA实时空间天气指数：Kp指数、Dst、行星际磁场Bz/Bt、太阳风速度与密度、G/S/R等级。自动刷新。",
     "meta.ogTitle": "极光预报。地图、概率和预测",
     "meta.ogDescription":
       "观赏北极光变得更加容易！运气预测、通知和提示。与我们一起您不会错过北极光！捕捉北极光",
@@ -515,9 +598,46 @@ export const ui = {
     "breadcrumbs.ariaLabel": "面包屑导航",
     "H.map": "地图",
     "H.index": "极光指数",
+    "H.pro": "专业数据",
     "H.how": "如何立即看到",
     "H.where": "哪里可以看到极光？",
     "H.blog": "博客",
+    /*Pro page */
+    "pro.heading": "专业数据",
+    "pro.intro":
+      "本页展示来自NOAA SWPC的原始空间天气数据，未经过“观测概率”的解读处理。适合希望自行分析地磁状况的用户：摄影师、研究者和极光爱好者社区。",
+    "pro.disclaimer":
+      '如果您只想知道“今晚能否看到极光”，请使用<a href="/cn/#map">概率地图</a>或<a href="/cn/app">Polarlights应用</a>。本页仅提供原始数据。',
+    "pro.kp.title": "Kp指数",
+    "pro.kp.text": "过去3天和27天的全球地磁活动指数。",
+    "pro.live.title": "太阳风与磁场指标",
+    "pro.live.text": "数据每隔几分钟从NOAA空间天气预报中心直接获取并更新。",
+    "pro.dst.label": "Dst指数",
+    "pro.dst.info": "Dst指数反映地球磁层环电流的强度。数值越负，地磁暴越强。",
+    "pro.bz.label": "Bz（GSM坐标）",
+    "pro.bz.info":
+      "Bz是行星际磁场的南北分量。持续为负值有利于与地球磁层重联，增加极光出现的概率。",
+    "pro.bt.label": "Bt",
+    "pro.bt.info":
+      "Bt是行星际磁场的总强度。Bt越高且Bz为负，对磁层的潜在影响越强。",
+    "pro.speed.label": "太阳风速度",
+    "pro.speed.info":
+      "太阳风速度（公里/秒）。速度较高（500公里/秒以上）会增加地磁扰动的可能性。",
+    "pro.density.label": "太阳风密度",
+    "pro.density.info": "太阳风质子密度。密度骤增通常伴随日冕物质抛射的到来。",
+    "pro.scales.title": "NOAA等级",
+    "pro.scales.g": "G — 地磁暴",
+    "pro.scales.g.info":
+      "NOAA地磁暴等级，从G0（无）到G5（极端）。数值越高，极光可能出现得越强、纬度越低。",
+    "pro.scales.s": "S — 太阳辐射暴",
+    "pro.scales.s.info":
+      "NOAA太阳辐射暴等级，从S0到S5。影响无线电通信和极地航线飞行。",
+    "pro.scales.r": "R — 无线电中断",
+    "pro.scales.r.info":
+      "NOAA无线电中断等级，从R0到R5，由太阳耀斑引起，影响地球向阳面的短波通信。",
+    "pro.scales.updated": "数据时间：",
+    "pro.source":
+      "数据来源：NOAA空间天气预报中心（services.swpc.noaa.gov）。页面每5分钟自动刷新。",
     /*Description*/
     "description.title": "极光",
     "description.how": "地图和实际概率",
