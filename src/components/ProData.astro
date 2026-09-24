@@ -1,0 +1,54 @@
+---
+import { ChartTabs } from "./reactive/ChartTabs";
+import { ProLiveIndices } from "./reactive/ProLiveIndices";
+import { useAstroTranslations } from "../i18n/utils";
+const t = useAstroTranslations(Astro);
+---
+
+<section class="pro-page">
+  <h1>{t("pro.heading")}</h1>
+  <p class="intro" set:html={t("pro.intro")} />
+
+  <div class="cta-block">
+    <p set:html={t("pro.disclaimer")} />
+  </div>
+
+  <h2>{t("pro.kp.title")}</h2>
+  <p>{t("pro.kp.text")}</p>
+  <ChartTabs client:only="react" />
+
+  <h2>{t("pro.live.title")}</h2>
+  <p>{t("pro.live.text")}</p>
+  <ProLiveIndices client:only="react" />
+
+  <div class="cta-block source">
+    <p>{t("pro.source")}</p>
+  </div>
+</section>
+
+<style>
+  .pro-page {
+    padding: 20px 0 60px;
+  }
+
+  .intro {
+    margin-bottom: 10px;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-block.source {
+    margin: 40px 0 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .pro-page :global(a) {
+    color: #4fd1c5;
+  }
+</style>
