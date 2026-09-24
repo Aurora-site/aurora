@@ -204,7 +204,7 @@ export const ProLiveIndices = () => {
           value={dst ? `${dst.dst}` : isLoading ? "…" : "—"}
           unit="nT"
           info={t("pro.dst.info")}
-          updated={dst ? `UTC ${formatUpdated(dst.time_tag)}` : undefined}
+          updated={dst ? formatUpdated(dst.time_tag) : undefined}
         />
         <Card
           label={t("pro.bz.label")}
@@ -217,7 +217,7 @@ export const ProLiveIndices = () => {
           }
           unit="nT"
           info={t("pro.bz.info")}
-          updated={mag ? `UTC ${formatUpdated(mag.time_tag)}` : undefined}
+          updated={mag ? formatUpdated(mag.time_tag) : undefined}
         />
         <Card
           label={t("pro.bt.label")}
@@ -230,7 +230,7 @@ export const ProLiveIndices = () => {
           }
           unit="nT"
           info={t("pro.bt.info")}
-          updated={mag ? `UTC ${formatUpdated(mag.time_tag)}` : undefined}
+          updated={mag ? formatUpdated(mag.time_tag) : undefined}
         />
         <Card
           label={t("pro.speed.label")}
@@ -243,7 +243,7 @@ export const ProLiveIndices = () => {
           }
           unit="km/s"
           info={t("pro.speed.info")}
-          updated={wind ? `UTC ${formatUpdated(wind.time_tag)}` : undefined}
+          updated={wind ? formatUpdated(wind.time_tag) : undefined}
         />
         <Card
           label={t("pro.density.label")}
@@ -256,7 +256,7 @@ export const ProLiveIndices = () => {
           }
           unit="p/cm³"
           info={t("pro.density.info")}
-          updated={wind ? `UTC ${formatUpdated(wind.time_tag)}` : undefined}
+          updated={wind ? formatUpdated(wind.time_tag) : undefined}
         />
       </div>
 
