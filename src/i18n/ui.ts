@@ -32,9 +32,9 @@ export const ui = {
     "H.blog": "Блог",
 
     /*Pro page */
-    "pro.heading": "Данные для профессионалов",
+    "pro.heading": "Данные ПРО",
     "pro.intro":
-      "Здесь собраны показатели космической погоды из открытых данных NOAA SWPC в первозданном виде — без интерпретации в «вероятность увидеть сияние». Страница подойдёт тем, кто хочет самостоятельно анализировать геомагнитную обстановку: фотографам, исследователям, сообществам охотников за сиянием.",
+      "Здесь собраны показатели космической погоды в первозданном виде — без интерпретации в вероятность. Страница подойдёт тем, кто хочет самостоятельно анализировать геомагнитную обстановку.",
     "pro.disclaimer":
       'Если вам нужен простой прогноз «увижу ли я сияние сегодня» — используйте <a href="/#map">карту вероятности</a> или <a href="/app">приложение Polarlights</a>. Здесь — только сырые данные.',
     "pro.kp.title": "Kp-индекс",
@@ -334,8 +334,8 @@ export const ui = {
     "H.blog": `Blog`,
 
     /*Pro page */
-    "pro.heading": `Data for Professionals`,
-    "pro.intro": `Raw space weather data from NOAA SWPC's open data, without interpretation into an "aurora probability". This page is for those who want to analyze the geomagnetic situation themselves: photographers, researchers, and aurora-chasing communities.`,
+    "pro.heading": `PRO Data`,
+    "pro.intro": `Raw space weather data, without interpretation into a probability. This page is for those who want to analyze the geomagnetic situation themselves.`,
     "pro.disclaimer": `If you just want a simple "will I see the aurora tonight" forecast, use the <a href="/en/#map">probability map</a> or the <a href="/en/app">Polarlights app</a>. This page is raw data only.`,
     "pro.kp.title": `Kp index`,
     "pro.kp.text": `Planetary geomagnetic activity index for the last 3 and 27 days.`,
@@ -603,9 +603,9 @@ export const ui = {
     "H.where": "哪里可以看到极光？",
     "H.blog": "博客",
     /*Pro page */
-    "pro.heading": "专业数据",
+    "pro.heading": "PRO 数据",
     "pro.intro":
-      "本页展示来自NOAA SWPC的原始空间天气数据，未经过“观测概率”的解读处理。适合希望自行分析地磁状况的用户：摄影师、研究者和极光爱好者社区。",
+      "本页展示原始空间天气数据，不做“概率”解读。适合希望自行分析地磁状况的用户。",
     "pro.disclaimer":
       '如果您只想知道“今晚能否看到极光”，请使用<a href="/cn/#map">概率地图</a>或<a href="/cn/app">Polarlights应用</a>。本页仅提供原始数据。',
     "pro.kp.title": "Kp指数",

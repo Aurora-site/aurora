@@ -1,38 +1,81 @@
 ---
+import { getImage, Image } from "astro:assets";
+import auroraback_mb from "../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import { ChartTabs } from "./reactive/ChartTabs";
 import { ProLiveIndices } from "./reactive/ProLiveIndices";
 import { useAstroTranslations } from "../i18n/utils";
 const t = useAstroTranslations(Astro);
+
+const pageUrl = "https://polarlights.pro/pro/";
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: t("breadcrumbs.home"),
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: t("pro.heading"),
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
-<section class="pro-page">
-  <h1>{t("pro.heading")}</h1>
-  <p class="intro" set:html={t("pro.intro")} />
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  .description h1 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 64px;
+  }
 
-  <div class="cta-block">
-    <p set:html={t("pro.disclaimer")} />
-  </div>
+  .breadcrumbs {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
 
-  <h2>{t("pro.kp.title")}</h2>
-  <p>{t("pro.kp.text")}</p>
-  <ChartTabs client:only="react" />
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
 
-  <h2>{t("pro.live.title")}</h2>
-  <p>{t("pro.live.text")}</p>
-  <ProLiveIndices client:only="react" />
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
 
-  <div class="cta-block source">
-    <p>{t("pro.source")}</p>
-  </div>
-</section>
+  .breadcrumbs-current {
+    opacity: 0.95;
+  }
 
-<style>
-  .pro-page {
-    padding: 20px 0 60px;
+  #description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #description {
+      background-image: var(--auroraBackImageUrl);
+    }
   }
 
   .intro {
-    margin-bottom: 10px;
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .pro-content {
+    padding: 20px 0 60px;
   }
 
   .cta-block {
@@ -48,7 +91,46 @@ const t = useAstroTranslations(Astro);
     color: rgba(255, 255, 255, 0.6);
   }
 
-  .pro-page :global(a) {
+  .pro-content :global(a) {
     color: #4fd1c5;
   }
+
+  @media (max-width: 510px) {
+    .description h1 {
+      line-height: 60px;
+      font-size: 44px;
+    }
+  }
 </style>
+
+<section
+  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[20px] pb-5 text-center md:bg-[0px_20px] md:pt-[40px]"
+  id="description"
+>
+  <nav class="breadcrumbs" aria-label={t("breadcrumbs.ariaLabel")}>
+    <a href="/">{t("breadcrumbs.home")}</a><span class="breadcrumbs-sep">/</span
+    ><span class="breadcrumbs-current">{t("pro.heading")}</span>
+  </nav>
+  <h1>{t("pro.heading")}</h1>
+  <p class="intro" set:html={t("pro.intro")} />
+</section>
+
+<div class="pro-content">
+  <div class="cta-block">
+    <p set:html={t("pro.disclaimer")} />
+  </div>
+
+  <h2>{t("pro.live.title")}</h2>
+  <p>{t("pro.live.text")}</p>
+  <ProLiveIndices client:only="react" />
+
+  <h2>{t("pro.kp.title")}</h2>
+  <p>{t("pro.kp.text")}</p>
+  <ChartTabs client:only="react" />
+
+  <div class="cta-block source">
+    <p>{t("pro.source")}</p>
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
