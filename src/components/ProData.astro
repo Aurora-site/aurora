@@ -85,6 +85,10 @@ const breadcrumbLd = {
     background: rgba(255, 255, 255, 0.06);
   }
 
+  .live-text {
+    margin-bottom: 30px;
+  }
+
   .pro-content :global(a) {
     color: #4fd1c5;
   }
@@ -115,7 +119,7 @@ const breadcrumbLd = {
   </div>
 
   <h2>{t("pro.live.title")}</h2>
-  <p>{t("pro.live.text")}</p>
+  <p class="live-text">{t("pro.live.text")}</p>
   <ProLiveIndices client:only="react" />
 
   <h2>{t("pro.kp.title")}</h2>
