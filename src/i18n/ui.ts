@@ -337,7 +337,7 @@ export const ui = {
     "pro.kp.title": `Kp index`,
     "pro.kp.text": `Planetary geomagnetic activity index for the last 3 and 27 days.`,
     "pro.live.title": `Solar wind and magnetic field indices`,
-    "pro.live.text": `Data refreshes every few minutes, fetched directly from the NOAA Space Weather Prediction Center.`,
+    "pro.live.text": `Data on this page refreshes every 5 minutes.`,
     "pro.dst.label": `Dst index`,
     "pro.dst.info": `Dst (Disturbance storm time index) reflects the strength of Earth's ring current. The more negative the value, the stronger the geomagnetic storm.`,
     "pro.bz.label": `Bz (GSM)`,
@@ -350,13 +350,12 @@ export const ui = {
     "pro.density.info": `Solar wind proton density. Sharp jumps often accompany the arrival of a coronal mass ejection.`,
     "pro.scales.title": `NOAA scales`,
     "pro.scales.g": `G — geomagnetic storms`,
-    "pro.scales.g.info": `NOAA geomagnetic storm scale from G0 (none) to G5 (extreme). The higher the value, the stronger and further south the aurora may be visible.`,
+    "pro.scales.g.info": `Geomagnetic storm scale from G0 (none) to G5 (extreme). The higher the value, the stronger and further south the aurora may be visible.`,
     "pro.scales.s": `S — radiation storms`,
-    "pro.scales.s.info": `NOAA solar radiation storm scale from S0 to S5. Affects radio communication and polar flight routes.`,
+    "pro.scales.s.info": `Solar radiation storm scale from S0 to S5. Affects radio communication and polar flight routes.`,
     "pro.scales.r": `R — radio blackouts`,
-    "pro.scales.r.info": `NOAA radio blackout scale from R0 to R5, caused by solar flares. Affects HF radio on the sunlit side of Earth.`,
+    "pro.scales.r.info": `Radio blackout scale from R0 to R5, caused by solar flares. Affects HF radio on the sunlit side of Earth.`,
     "pro.scales.updated": `Data as of`,
-    "pro.source": `Data source: NOAA Space Weather Prediction Center (services.swpc.noaa.gov). Page refreshes every 5 minutes.`,
 
     /*Description*/
     "description.title": `Polar lights`,
@@ -608,7 +607,7 @@ export const ui = {
     "pro.kp.title": "Kp指数",
     "pro.kp.text": "过去3天和27天的全球地磁活动指数。",
     "pro.live.title": "太阳风与磁场指标",
-    "pro.live.text": "数据每隔几分钟从NOAA空间天气预报中心直接获取并更新。",
+    "pro.live.text": "本页数据每5分钟更新一次。",
     "pro.dst.label": "Dst指数",
     "pro.dst.info": "Dst指数反映地球磁层环电流的强度。数值越负，地磁暴越强。",
     "pro.bz.label": "Bz（GSM坐标）",
@@ -625,16 +624,14 @@ export const ui = {
     "pro.scales.title": "NOAA等级",
     "pro.scales.g": "G — 地磁暴",
     "pro.scales.g.info":
-      "NOAA地磁暴等级，从G0（无）到G5（极端）。数值越高，极光可能出现得越强、纬度越低。",
+      "地磁暴等级，从G0（无）到G5（极端）。数值越高，极光可能出现得越强、纬度越低。",
     "pro.scales.s": "S — 太阳辐射暴",
     "pro.scales.s.info":
-      "NOAA太阳辐射暴等级，从S0到S5。影响无线电通信和极地航线飞行。",
+      "太阳辐射暴等级，从S0到S5。影响无线电通信和极地航线飞行。",
     "pro.scales.r": "R — 无线电中断",
     "pro.scales.r.info":
-      "NOAA无线电中断等级，从R0到R5，由太阳耀斑引起，影响地球向阳面的短波通信。",
+      "无线电中断等级，从R0到R5，由太阳耀斑引起，影响地球向阳面的短波通信。",
     "pro.scales.updated": "数据时间：",
-    "pro.source":
-      "数据来源：NOAA空间天气预报中心（services.swpc.noaa.gov）。页面每5分钟自动刷新。",
     /*Description*/
     "description.title": "极光",
     "description.how": "地图和实际概率",
