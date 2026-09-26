@@ -314,7 +314,7 @@ export const ui = {
     "pro.title":
       "Space Weather Data for Professionals: Kp, Dst, Bz/Bt, Solar Wind | Polarlights",
     "pro.description":
-      "Live NOAA space weather indices: Kp index, Dst, interplanetary magnetic field Bz/Bt, solar wind speed and density, G/S/R scales. Auto-refreshing.",
+      "Live space weather indices from NOAA: Kp index, Dst, interplanetary magnetic field Bz/Bt, solar wind speed and density, and the G/S/R scales — refreshed automatically.",
     "meta.ogTitle": "Aurora Forecast. Map, Probability and Forecast",
     "meta.ogDescription":
       "Seeing the Northern Lights just got easier! Forecasts, notifications and tips for your luck. With us you won't miss the polar lights! Catch the Aurora",
@@ -325,14 +325,14 @@ export const ui = {
     "breadcrumbs.ariaLabel": `Breadcrumb`,
     "H.map": `Map`,
     "H.index": `Index`,
-    "H.pro": `Pro Data`,
+    "H.pro": `For Pros`,
     "H.how": `How to see`,
     "H.where": `Where to see`,
     "H.blog": `Blog`,
 
     /*Pro page */
     "pro.heading": `PRO Data`,
-    "pro.intro": `Raw space weather data, without interpretation into a probability. This page is for those who want to analyze the geomagnetic situation themselves.`,
+    "pro.intro": `Raw space weather data, shown without translating it into a probability. This page is for anyone who wants to analyze the geomagnetic situation themselves.`,
     "pro.disclaimer": `If you just want a simple "will I see the aurora tonight" forecast, use the <a href="/en/#map">probability map</a> or the <a href="/en/app">Polarlights app</a>. This page is raw data only.`,
     "pro.kp.title": `Kp index`,
     "pro.kp.text": `Planetary geomagnetic activity index for the last 3 and 27 days.`,
@@ -341,7 +341,7 @@ export const ui = {
     "pro.dst.label": `Dst index`,
     "pro.dst.info": `Dst (Disturbance storm time index) reflects the strength of Earth's ring current. The more negative the value, the stronger the geomagnetic storm.`,
     "pro.bz.label": `Bz (GSM)`,
-    "pro.bz.info": `Bz is the north-south component of the interplanetary magnetic field. Sustained negative values favor reconnection with Earth's magnetosphere and increase aurora chances.`,
+    "pro.bz.info": `Bz is the north-south component of the interplanetary magnetic field. A sustained negative value favors reconnection with Earth's magnetosphere and increases the chances of aurora.`,
     "pro.bt.label": `Bt`,
     "pro.bt.info": `Bt is the total strength of the interplanetary magnetic field. Higher Bt combined with negative Bz means a stronger potential effect on the magnetosphere.`,
     "pro.speed.label": `Wind speed`,
@@ -584,7 +584,7 @@ export const ui = {
       "在手机上看北极光！预测、提醒和贴士助您成功观赏。 有了我们，您不会错过极光！抓住极光吧！",
     "pro.title": "专业空间天气数据：Kp、Dst、Bz/Bt、太阳风 | Polarlights",
     "pro.description":
-      "NOAA实时空间天气指数：Kp指数、Dst、行星际磁场Bz/Bt、太阳风速度与密度、G/S/R等级。自动刷新。",
+      "NOAA实时空间天气指数：Kp指数、Dst指数、行星际磁场Bz/Bt、太阳风速度与密度，以及G/S/R等级，页面自动刷新。",
     "meta.ogTitle": "极光预报。地图、概率和预测",
     "meta.ogDescription":
       "观赏北极光变得更加容易！运气预测、通知和提示。与我们一起您不会错过北极光！捕捉北极光",
