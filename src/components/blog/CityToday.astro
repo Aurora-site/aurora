@@ -207,7 +207,7 @@ const breadcrumbLd = {
   .updated-badge {
     display: block;
     width: fit-content;
-    margin: 14px auto 0;
+    margin: 20px 0 0 auto;
     padding: 4px 14px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.12);
@@ -278,7 +278,6 @@ const breadcrumbLd = {
     </nav>
     <h1>
       {title}
-      <span class="updated-badge">{c.updatedPrefix}{updatedDisplay}</span>
     </h1>
     <p class="author-line">
       {c.author}
@@ -332,6 +331,8 @@ const breadcrumbLd = {
     </div>
 
     <slot name="gallery" />
+
+    <span class="updated-badge">{c.updatedPrefix}{updatedDisplay}</span>
   </div>
 </div>
 
