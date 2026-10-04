@@ -7,6 +7,8 @@ import auroraback_mb from "../../assets/auroraback_mb.png";
 const auroraBackImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback_app from "../../assets/auroraback_app.png";
 const auroraBackAppImageUrl = `url(${(await getImage({ src: auroraback_app })).src})`;
+import mapVideo from "../../assets/blog_map_video.mp4";
+import mapVideoPoster from "../../assets/blog_map_video_poster.jpg";
 const t = useAstroTranslations(Astro);
 
 const pageUrl = "https://polarlights.pro/app/";
@@ -216,6 +218,75 @@ const breadcrumbLd = {
       font-size: 40px;
     }
   }
+
+  .video-block {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 130px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    filter: drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
+      width 0.3s ease,
+      filter 0.3s ease;
+    z-index: 200;
+  }
+
+  .video-block.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .video-block.expanded {
+    width: 240px;
+    filter: drop-shadow(12px 12px 20px rgba(0, 0, 0, 0.85));
+  }
+
+  .map-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .video-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  @media (max-width: 480px) {
+    .video-block {
+      left: 12px;
+      bottom: 12px;
+      width: 110px;
+    }
+
+    .video-block.expanded {
+      width: 180px;
+    }
+  }
 </style>
 
 <section
@@ -295,7 +366,57 @@ const breadcrumbLd = {
     </div>
     <button class="slider-button right" id="appSlideRight">&#8250;</button>
   </div>
+
+  <div class="video-block" id="mapVideoBlock">
+    <video
+      id="mapVideo"
+      class="map-video"
+      src={mapVideo}
+      poster={mapVideoPoster.src}
+      muted
+      loop
+      playsinline
+      preload="metadata"></video>
+    <button
+      type="button"
+      class="video-close"
+      id="mapVideoClose"
+      aria-label="Закрыть видео">×</button
+    >
+  </div>
 </section>
+
+<script is:inline>
+  {
+    function initMapVideo() {
+      const block = document.getElementById("mapVideoBlock");
+      const video = document.getElementById("mapVideo");
+      const closeBtn = document.getElementById("mapVideoClose");
+
+      if (!block || !video || !closeBtn) return;
+
+      block.classList.add("visible");
+      video.play().catch(() => {});
+
+      video.addEventListener("click", () => {
+        if (!block.classList.contains("expanded")) {
+          block.classList.add("expanded");
+          video.muted = false;
+          video.play().catch(() => {});
+        }
+      });
+
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        block.classList.remove("visible", "expanded");
+        video.pause();
+        video.muted = true;
+      });
+    }
+
+    window.addEventListener("load", initMapVideo);
+  }
+</script>
 
 <script is:inline>
   {
