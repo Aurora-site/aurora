@@ -1,6 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import CityToday from "../components/blog/CityToday.astro";
+import photo1 from "../assets/moscow1.png";
+import photo2 from "../assets/moscow2.png";
+import photo3 from "../assets/moscow3.png";
 
 const pageUrl = "https://polarlights.pro/aurora-kirovsk/";
 const title =
@@ -21,7 +25,7 @@ const faq = [
   },
   {
     q: "Кировск южнее Мурманска — сияние там хуже видно?",
-    a: "Кировск расположен южнее Мурманска и Териберки, поэтому для ярких наблюдений иногда нужна чуть более высокая геомагнитная активность. Но в периоды повышенной активности сияние здесь видно не реже, а горы Хибин и малая засветка делают обзор очень комфортным.",
+    a: "В периоды повышенной активности сияние здесь видно не реже, а горы Хибин и малая засветка делают обзор очень комфортным. Всё же это такое же Заполярье.",
   },
   {
     q: "Когда лучше ехать в Кировск: только зимой, в сезон горнолыжного курорта?",
@@ -70,13 +74,20 @@ const relatedLinks = [
       Кировска — около 20 минут на такси. Автобусы также связывают Мурманск с
       обоими городами.
     </p>
+    <p>
+      Кроме того, в Апатитах есть свой аэропорт «Хибины», куда летают самолёты
+      из Москвы и Санкт-Петербурга — это самый быстрый способ добраться из
+      других регионов страны. Летом иногда добавляются сезонные рейсы, например
+      в Сочи и Анапу. Расписание и список направлений периодически меняются,
+      поэтому актуальные рейсы и перевозчиков стоит уточнять на сайте аэропорта
+      или у авиакомпаний перед поездкой.
+    </p>
 
     <h2>Где смотреть в Кировске</h2>
     <p>
-      Лучше отойти от центральных улиц и освещённых участков у подъёмников —
-      например, к окраинам города или открытым склонам Хибин, где городские огни
-      не мешают обзору. Горы вокруг также закрывают часть горизонта, поэтому
-      стоит выбирать точку с открытым видом на север.
+      В целом городская засветка в Кировске слабая, поэтому сияние часто видно
+      прямо в городе. А если сияние слабое и неяркое, лучше выехать за город —
+      туда, где небо максимально открыто и ничего не мешает обзору.
     </p>
 
     <h2>Когда сегодня лучше смотреть</h2>
@@ -85,6 +96,13 @@ const relatedLinks = [
       расположен южнее Мурманска, для яркого сияния здесь обычно нужна несколько
       более высокая активность. При ясном небе и повышенном Kp шансы увидеть
       сияние хорошие в любое время после наступления темноты.
+    </p>
+    <p>
+      <a
+        href="/#map"
+        onclick='try{localStorage.setItem("city:",JSON.stringify({name:"Кировск",name_ru:"Кировск",lat:67.6,long:33.7}))}catch(e){}'
+        >Смотреть карту с вероятностью, Kp и облачностью →</a
+      >
     </p>
 
     <h2>Практические советы</h2>
@@ -107,5 +125,124 @@ const relatedLinks = [
         случай облачности.
       </li>
     </ul>
+
+    <Fragment slot="gallery">
+      <style>
+        .images {
+          display: flex;
+          gap: 30px;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          margin: 10px 0 0 0;
+          white-space: nowrap;
+          justify-content: space-between;
+          padding-bottom: 24px;
+        }
+
+        .image-slider-container {
+          position: relative;
+          margin: 0 auto;
+          overflow: visible;
+        }
+
+        .imag {
+          flex: 0 0 auto;
+          width: 360px;
+          position: relative;
+          filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+          border-radius: 20px;
+        }
+
+        .slider-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: black;
+          border: none;
+          cursor: pointer;
+          padding: 5px 15px;
+          z-index: 1000;
+          font-size: 30px;
+        }
+
+        .slider-button.left {
+          left: -50px;
+          color: white;
+        }
+
+        .slider-button.right {
+          right: -50px;
+          color: white;
+        }
+
+        @media (max-width: 1300px) {
+          .images {
+            overflow-x: auto;
+          }
+        }
+
+        @media (max-width: 952px) {
+          .slider-button {
+            display: none !important;
+          }
+        }
+        @media (max-width: 482px) {
+          .imag {
+            width: 90%;
+          }
+        }
+      </style>
+      <div class="image-slider-container">
+        <button class="slider-button left" id="slideLeft">&#8249;</button>
+        <div class="images" id="slider">
+          <div class="imag">
+            <Image src={photo1} alt="Северное сияние" />
+          </div>
+          <div class="imag">
+            <Image src={photo2} alt="Северное сияние" />
+          </div>
+          <div class="imag">
+            <Image src={photo3} alt="Северное сияние" />
+          </div>
+        </div>
+        <button class="slider-button right" id="slideRight">&#8250;</button>
+      </div>
+      <script is:inline>
+        {
+          function initSlider() {
+            const slider = document.getElementById("slider");
+            const slideLeft = document.getElementById("slideLeft");
+            const slideRight = document.getElementById("slideRight");
+
+            if (!slider) return;
+
+            const totalWidth = Array.from(slider.children).reduce(
+              (sum, item) => sum + item.offsetWidth,
+              0,
+            );
+            const visibleWidth = slider.offsetWidth;
+
+            if (totalWidth > visibleWidth) {
+              slideLeft.style.display = "block";
+              slideRight.style.display = "block";
+
+              slideLeft.addEventListener("click", () => {
+                slider.scrollBy({ left: -380, behavior: "smooth" });
+              });
+
+              slideRight.addEventListener("click", () => {
+                slider.scrollBy({ left: 380, behavior: "smooth" });
+              });
+            } else {
+              slideLeft.style.display = "none";
+              slideRight.style.display = "none";
+            }
+          }
+
+          window.addEventListener("load", initSlider);
+          window.addEventListener("resize", initSlider);
+        }
+      </script>
+    </Fragment>
   </CityToday>
 </Layout>

@@ -1,6 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import CityToday from "../../components/blog/CityToday.astro";
+import photo1 from "../../assets/aurora_photo_1.png";
+import photo2 from "../../assets/aurora_photo_2.png";
+import photo3 from "../../assets/aurora_photo_3.png";
 
 const pageUrl = "https://polarlights.pro/en/aurora-teriberka/";
 const title =
@@ -116,5 +120,124 @@ const relatedLinks = [
         Plan to stay a few days: if one evening is cloudy, you'll have a backup.
       </li>
     </ul>
+
+    <Fragment slot="gallery">
+      <style>
+        .images {
+          display: flex;
+          gap: 30px;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          margin: 10px 0 0 0;
+          white-space: nowrap;
+          justify-content: space-between;
+          padding-bottom: 24px;
+        }
+
+        .image-slider-container {
+          position: relative;
+          margin: 0 auto;
+          overflow: visible;
+        }
+
+        .imag {
+          flex: 0 0 auto;
+          width: 360px;
+          position: relative;
+          filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+          border-radius: 20px;
+        }
+
+        .slider-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: black;
+          border: none;
+          cursor: pointer;
+          padding: 5px 15px;
+          z-index: 1000;
+          font-size: 30px;
+        }
+
+        .slider-button.left {
+          left: -50px;
+          color: white;
+        }
+
+        .slider-button.right {
+          right: -50px;
+          color: white;
+        }
+
+        @media (max-width: 1300px) {
+          .images {
+            overflow-x: auto;
+          }
+        }
+
+        @media (max-width: 952px) {
+          .slider-button {
+            display: none !important;
+          }
+        }
+        @media (max-width: 482px) {
+          .imag {
+            width: 90%;
+          }
+        }
+      </style>
+      <div class="image-slider-container">
+        <button class="slider-button left" id="slideLeft">&#8249;</button>
+        <div class="images" id="slider">
+          <div class="imag">
+            <Image src={photo1} alt="Northern Lights" />
+          </div>
+          <div class="imag">
+            <Image src={photo2} alt="Northern Lights" />
+          </div>
+          <div class="imag">
+            <Image src={photo3} alt="Northern Lights" />
+          </div>
+        </div>
+        <button class="slider-button right" id="slideRight">&#8250;</button>
+      </div>
+      <script is:inline>
+        {
+          function initSlider() {
+            const slider = document.getElementById("slider");
+            const slideLeft = document.getElementById("slideLeft");
+            const slideRight = document.getElementById("slideRight");
+
+            if (!slider) return;
+
+            const totalWidth = Array.from(slider.children).reduce(
+              (sum, item) => sum + item.offsetWidth,
+              0,
+            );
+            const visibleWidth = slider.offsetWidth;
+
+            if (totalWidth > visibleWidth) {
+              slideLeft.style.display = "block";
+              slideRight.style.display = "block";
+
+              slideLeft.addEventListener("click", () => {
+                slider.scrollBy({ left: -380, behavior: "smooth" });
+              });
+
+              slideRight.addEventListener("click", () => {
+                slider.scrollBy({ left: 380, behavior: "smooth" });
+              });
+            } else {
+              slideLeft.style.display = "none";
+              slideRight.style.display = "none";
+            }
+          }
+
+          window.addEventListener("load", initSlider);
+          window.addEventListener("resize", initSlider);
+        }
+      </script>
+    </Fragment>
   </CityToday>
 </Layout>
