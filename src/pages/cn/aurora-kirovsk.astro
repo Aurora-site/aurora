@@ -1,0 +1,227 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import CityToday from "../../components/blog/CityToday.astro";
+import photo1 from "../../assets/moscow1.png";
+import photo2 from "../../assets/moscow2.png";
+import photo3 from "../../assets/moscow3.png";
+
+const pageUrl = "https://polarlights.pro/cn/aurora-kirovsk/";
+const title = "基洛夫斯克北极光预报：实时概率与Kp指数";
+const metaDescription =
+  "查看基洛夫斯克当前的北极光出现概率和Kp指数，以及在希比内山滑雪度假区附近观赏北极光的最佳时间和地点。";
+const updatedISO = "2026-10-04";
+const updatedDisplay = "04.10.2026";
+
+const faq = [
+  {
+    q: "从摩尔曼斯克到基洛夫斯克要多久？",
+    a: "大约205公里。自驾大约需要3小时；乘坐班车或火车需要3.5到4.5小时。火车可到达邻近的阿帕季蒂，从那里乘出租车约20分钟即可到达基洛夫斯克。",
+  },
+  {
+    q: "能在滑雪度假区的雪道上直接看到北极光吗？",
+    a: "可以——晚上和夜间，「大武德亚夫尔」雪道及城镇周边的照明比大城市弱得多，因此那里也常能看到北极光。离城镇灯光和缆车越远，视野就越清晰。",
+  },
+  {
+    q: "基洛夫斯克在摩尔曼斯克以南，北极光会更难看到吗？",
+    a: "在地磁活动较强的时期，这里看到北极光的机会并不比别处少，而希比内山和较弱的光污染让观赏体验非常舒适。毕竟，这里同样属于北极圈内的极地地区。",
+  },
+  {
+    q: "什么时候去基洛夫斯克最好——只能在滑雪季的冬天吗？",
+    a: "摩尔曼斯克州的极光观测季节从8月底持续到4月，比滑雪季更长。许多游客会把白天滑雪和晚上观赏北极光结合起来，但也完全可以在初秋、雪道还没有积雪时前往。",
+  },
+];
+
+const relatedLinks = [
+  { href: "/cn/blog/aurora-murmansk", label: "摩尔曼斯克的北极光" },
+  { href: "/cn/blog/aurora-map", label: "北极光在线地图" },
+  { href: "/cn/blog/kp-index", label: "Kp指数是什么" },
+  { href: "/cn/blog/about-aurora", label: "俄罗斯的北极光" },
+];
+---
+
+<Layout title={title} description={metaDescription} variant="blog">
+  <CityToday
+    pageUrl={pageUrl}
+    title={title}
+    metaDescription={metaDescription}
+    updatedISO={updatedISO}
+    updatedDisplay={updatedDisplay}
+    lat={67.6}
+    long={33.7}
+    cityName="Кировск"
+    locationLabel="基洛夫斯克"
+    lang="cn"
+    nameEn="Kirovsk"
+    nameCn="基洛夫斯克"
+    heroAnswer="简要回答：基洛夫斯克是位于希比内山脚下的城镇，距摩尔曼斯克约205公里，以「大武德亚夫尔」滑雪度假区闻名。城市本身光污染不大，周围的山脉也形成了天然的暗夜区域。当前的概率和Kp指数请见下方面板。"
+    breadcrumbCurrent="基洛夫斯克今日北极光"
+    faq={faq}
+    relatedLinks={relatedLinks}
+  >
+    <h2>为什么选择基洛夫斯克</h2>
+    <p>
+      基洛夫斯克坐落在希比内山脚下，最著名的是「大武德亚夫尔」滑雪度假区，同时这里也因磷灰石矿而得名。此外，这里还拥有世界最北的高山植物园。这座城市明显比摩尔曼斯克和捷里别尔卡更靠南，但得益于山地地形和较弱的光污染，夜空依然足够暗，适合观赏北极光。
+    </p>
+
+    <h2>如何到达</h2>
+    <p>
+      基洛夫斯克距摩尔曼斯克约205公里，自驾大约需要3小时。火车可到达邻近的阿帕季蒂（3.5–4.5小时），从那里乘出租车约20分钟即可到达基洛夫斯克。班车也连接摩尔曼斯克与这两座城市。
+    </p>
+    <p>
+      此外，阿帕季蒂还有自己的机场「希比内」，有往返莫斯科和圣彼得堡的航班——这是从其他地区前往这里最快的方式。夏季有时会增加季节性航班，例如飞往索契和阿纳帕。航班时间表和目的地会有变动，出发前请在机场官网或航空公司处确认最新信息。
+    </p>
+
+    <h2>在基洛夫斯克哪里观赏</h2>
+    <p>
+      基洛夫斯克的城市光污染总体较弱，因此在城里常能看到北极光。但如果北极光比较暗淡，最好离开城市，前往视野最开阔、天空最少遮挡的地方。
+    </p>
+
+    <h2>今天什么时候观赏最好</h2>
+    <p>
+      请参考上方面板中的概率和Kp指数：由于基洛夫斯克位于摩尔曼斯克以南，这里出现明亮极光通常需要稍高一些的地磁活动。天空晴朗且Kp值较高时，天黑后的任何时间观赏机会都不错。
+    </p>
+    <p>
+      <a
+        href="/cn/#map"
+        onclick='try{localStorage.setItem("city:",JSON.stringify({name:"基洛夫斯克",name_ru:"Кировск",name_en:"Kirovsk",name_cn:"基洛夫斯克",lat:67.6,long:33.7}))}catch(e){}'
+        >查看带概率、Kp指数和云量的地图 →</a
+      >
+    </p>
+
+    <h2>实用小贴士</h2>
+    <ul>
+      <li>
+        如果计划滑雪后观赏北极光，请另外准备保暖衣物，与滑雪装备分开——晚上户外比白天雪道上更冷。
+      </li>
+      <li>在远离度假区灯光的地方，让眼睛适应黑暗10–15分钟。</li>
+      <li>带上相机或带三脚架的手机，长曝光可以拍到肉眼几乎看不见的北极光。</li>
+      <li>建议安排几天的行程，这样即使遇到多云天气也还有备用时间。</li>
+    </ul>
+
+    <Fragment slot="gallery">
+      <style>
+        .images {
+          display: flex;
+          gap: 30px;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          margin: 10px 0 0 0;
+          white-space: nowrap;
+          justify-content: space-between;
+          padding-bottom: 24px;
+        }
+
+        .image-slider-container {
+          position: relative;
+          margin: 0 auto;
+          overflow: visible;
+        }
+
+        .imag {
+          flex: 0 0 auto;
+          width: 360px;
+          position: relative;
+          filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+          border-radius: 20px;
+        }
+
+        .imag img {
+          max-width: 100%;
+          height: 100%;
+          border-radius: 20px;
+        }
+
+        .slider-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: black;
+          border: none;
+          cursor: pointer;
+          padding: 5px 15px;
+          z-index: 1000;
+          font-size: 30px;
+        }
+
+        .slider-button.left {
+          left: -50px;
+          color: white;
+        }
+
+        .slider-button.right {
+          right: -50px;
+          color: white;
+        }
+
+        @media (max-width: 1300px) {
+          .images {
+            overflow-x: auto;
+          }
+        }
+
+        @media (max-width: 952px) {
+          .slider-button {
+            display: none !important;
+          }
+        }
+        @media (max-width: 482px) {
+          .imag {
+            width: 90%;
+          }
+        }
+      </style>
+      <div class="image-slider-container">
+        <button class="slider-button left" id="slideLeft">&#8249;</button>
+        <div class="images" id="slider">
+          <div class="imag">
+            <Image src={photo1} alt="北极光" />
+          </div>
+          <div class="imag">
+            <Image src={photo2} alt="北极光" />
+          </div>
+          <div class="imag">
+            <Image src={photo3} alt="北极光" />
+          </div>
+        </div>
+        <button class="slider-button right" id="slideRight">&#8250;</button>
+      </div>
+      <script is:inline>
+        {
+          function initSlider() {
+            const slider = document.getElementById("slider");
+            const slideLeft = document.getElementById("slideLeft");
+            const slideRight = document.getElementById("slideRight");
+
+            if (!slider) return;
+
+            const totalWidth = Array.from(slider.children).reduce(
+              (sum, item) => sum + item.offsetWidth,
+              0,
+            );
+            const visibleWidth = slider.offsetWidth;
+
+            if (totalWidth > visibleWidth) {
+              slideLeft.style.display = "block";
+              slideRight.style.display = "block";
+
+              slideLeft.addEventListener("click", () => {
+                slider.scrollBy({ left: -380, behavior: "smooth" });
+              });
+
+              slideRight.addEventListener("click", () => {
+                slider.scrollBy({ left: 380, behavior: "smooth" });
+              });
+            } else {
+              slideLeft.style.display = "none";
+              slideRight.style.display = "none";
+            }
+          }
+
+          window.addEventListener("load", initSlider);
+          window.addEventListener("resize", initSlider);
+        }
+      </script>
+    </Fragment>
+  </CityToday>
+</Layout>
