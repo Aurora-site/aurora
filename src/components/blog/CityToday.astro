@@ -14,6 +14,7 @@ export interface Props {
   updatedDisplay: string;
   lat: number;
   long: number;
+  cityName: string;
   locationLabel: string;
   heroAnswer: string;
   breadcrumbCurrent: string;
@@ -29,6 +30,7 @@ const {
   updatedDisplay,
   lat,
   long,
+  cityName,
   locationLabel,
   heroAnswer,
   breadcrumbCurrent,
@@ -225,6 +227,7 @@ const breadcrumbLd = {
     <CityAuroraNow
       lat={lat}
       long={long}
+      cityName={cityName}
       locationLabel={locationLabel}
       client:only="react"
     />
