@@ -113,16 +113,16 @@ export const CityAuroraNow = ({
   };
 
   return (
-    <div className="my-6 flex flex-col gap-4 rounded-2xl bg-white/[0.06] p-5 text-left">
-      <div className="text-[15px] font-semibold text-white/80">
+    <div className="my-4 flex flex-col gap-2.5 rounded-xl bg-white/[0.06] p-4 text-left">
+      <div className="text-[13px] font-semibold text-white/70">
         Прогноз {locationLabel} прямо сейчас
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div className="flex flex-col gap-2 rounded-2xl bg-white/[0.06] p-4">
-          <span className="text-[13px] text-white/60">Вероятность сияния</span>
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="flex items-center gap-2">
+          <span className="text-[13px] text-white/60">Вероятность</span>
           <span
             className={cn(
-              "w-fit rounded-full px-3 py-0.5 text-[22px] font-bold text-black",
+              "rounded-full px-2.5 py-0.5 text-[17px] font-bold text-black",
               getProbabilityColor(probability),
             )}
           >
@@ -133,17 +133,17 @@ export const CityAuroraNow = ({
                 : "—"}
           </span>
         </div>
-        <div className="flex flex-col gap-2 rounded-2xl bg-white/[0.06] p-4">
+        <div className="flex items-center gap-2">
           <span className="text-[13px] text-white/60">Kp-индекс</span>
           <span
-            className="w-fit rounded-full px-3 py-0.5 text-[22px] font-bold text-black"
+            className="rounded-full px-2.5 py-0.5 text-[17px] font-bold text-black"
             style={{ backgroundColor: kpColor }}
           >
             {kp !== undefined ? kp : kpLoading ? "…" : "—"}
           </span>
         </div>
       </div>
-      <div className="flex flex-col gap-1 text-[12px] text-white/40">
+      <div className="flex flex-col gap-0.5 text-[11px] text-white/40">
         <span>Обновлено: {updatedAt}</span>
         <a
           href="/#map"
