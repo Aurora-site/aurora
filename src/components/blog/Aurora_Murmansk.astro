@@ -7,10 +7,11 @@ const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 import mmsk1 from "../../assets/aurora-Murmansk-1.png";
 import mmsk2 from "../../assets/aurora-Murmansk-2.png";
 import mmsk3 from "../../assets/aurora-Murmansk-3.png";
+import { CityAuroraNow } from "../reactive/CityAuroraNow";
 
 const pageUrl = "https://polarlights.pro/blog/aurora-murmansk/";
-const dateModifiedISO = "2026-09-07";
-const dateModifiedDisplay = "07.09.2026";
+const dateModifiedISO = "2026-10-04";
+const dateModifiedDisplay = "04.10.2026";
 // datePublishedISO: точная дата первой публикации статьи неизвестна,
 // поэтому в articleLd она намеренно не указывается (см. ниже).
 
@@ -307,6 +308,12 @@ const breadcrumbLd = {
     городе, несмотря на засветку, сияние часто заметно уже при Kp 2–3, а для
     ярких кадров лучше отъехать на несколько километров за город.
   </p>
+  <CityAuroraNow
+    lat={68.97}
+    long={33.09}
+    locationLabel="в Мурманске"
+    client:only="react"
+  />
 </section>
 
 <div class="pt-[25px] pb-[50px]">
