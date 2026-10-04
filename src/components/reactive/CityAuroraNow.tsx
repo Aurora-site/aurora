@@ -113,7 +113,7 @@ export const CityAuroraNow = ({
   };
 
   return (
-    <div className="my-4 flex flex-col gap-2.5 rounded-xl bg-white/[0.06] p-4 text-left">
+    <div className="my-4 flex flex-col gap-2.5 rounded-xl bg-white/[0.06] p-4 text-left md:bg-transparent">
       <div className="text-[13px] font-semibold text-white/70">
         Прогноз {locationLabel} прямо сейчас
       </div>
