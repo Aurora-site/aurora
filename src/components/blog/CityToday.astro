@@ -1,0 +1,270 @@
+---
+import { getImage } from "astro:assets";
+import auroraback_mb from "../../assets/auroraback_mb.png";
+const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
+import auroraback from "../../assets/auroraback.png";
+const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
+import { CityAuroraNow } from "../reactive/CityAuroraNow";
+
+export interface Props {
+  pageUrl: string;
+  title: string;
+  metaDescription: string;
+  updatedISO: string;
+  updatedDisplay: string;
+  lat: number;
+  long: number;
+  locationLabel: string;
+  heroAnswer: string;
+  breadcrumbCurrent: string;
+  faq: { q: string; a: string }[];
+  relatedLinks: { href: string; label: string }[];
+}
+
+const {
+  pageUrl,
+  title,
+  metaDescription,
+  updatedISO,
+  updatedDisplay,
+  lat,
+  long,
+  locationLabel,
+  heroAnswer,
+  breadcrumbCurrent,
+  faq,
+  relatedLinks,
+} = Astro.props;
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: metaDescription,
+  author: {
+    "@type": "Person",
+    name: "Надежда Горбатенко",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Polarlights",
+    url: "https://polarlights.pro",
+  },
+  dateModified: updatedISO,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Главная",
+      item: "https://polarlights.pro/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: breadcrumbCurrent,
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+  #city-today-description {
+    background-image: var(--auroraBackMbImageUrl);
+  }
+  @media (min-width: 768px) {
+    #city-today-description {
+      background-image: var(--auroraBackImageUrl);
+    }
+  }
+
+  .city-today h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  .city-today h3 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
+  .city-today p {
+    text-align: justify;
+  }
+  .city-today a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .city-today ul {
+    display: block;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  .city-today h1 {
+    font-size: 56px;
+  }
+
+  .description {
+    align-items: center;
+    text-align: center;
+  }
+
+  .description h2 {
+    font-family: "SongerGrotesqueBold";
+    font-size: 24px;
+    margin: 60px 0 85px 0;
+  }
+
+  .updated-badge {
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .breadcrumbs {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  .breadcrumbs a {
+    opacity: 0.85;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 6px;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .breadcrumbs-current {
+    opacity: 0.95;
+  }
+
+  .author-line {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    opacity: 0.85;
+    text-align: left;
+  }
+
+  .lead-answer {
+    max-width: 720px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .cta-block {
+    margin: 20px 0 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  @media (max-width: 510px) {
+    .city-today .description h1 {
+      font-size: 32px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
+<div class="city-today">
+  <section
+    class="description bg-contain bg-[center_50px] bg-no-repeat pt-[20px] pb-5 text-center md:bg-[0px_20px] md:pt-[40px]"
+    id="city-today-description"
+  >
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="/">Главная</a><span class="breadcrumbs-sep">/</span><span
+        class="breadcrumbs-current">{breadcrumbCurrent}</span
+      >
+    </nav>
+    <h1>
+      {title}
+      <span class="updated-badge">Обновлено: {updatedDisplay}</span>
+    </h1>
+    <p class="author-line">
+      Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
+      северного сияния.
+    </p>
+    <p class="lead-answer">
+      {heroAnswer}
+    </p>
+    <CityAuroraNow
+      lat={lat}
+      long={long}
+      locationLabel={locationLabel}
+      client:only="react"
+    />
+  </section>
+
+  <div class="pt-[25px] pb-[50px]">
+    <slot />
+
+    <h2>Частые вопросы</h2>
+    {
+      faq.map((item) => (
+        <>
+          <h3>{item.q}</h3>
+          <p>{item.a}</p>
+        </>
+      ))
+    }
+
+    <div class="mt-[60px] text-left">
+      <h2>Читайте также</h2>
+      <ul>
+        {
+          relatedLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-[40px] mb-[50px] text-left">
+      <a
+        class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
+        href="/">Перейти на главную страницу с картой и вероятностью</a
+      >
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
