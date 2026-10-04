@@ -19,6 +19,8 @@ type Props = {
   lat: number;
   /** Долгота точки наблюдения */
   long: number;
+  /** Название города в именительном падеже, например "Мурманск" — используется для предвыбора города на главной странице */
+  cityName: string;
   /** Название места в предложном падеже, например "в Мурманске" */
   locationLabel: string;
 };
@@ -62,7 +64,12 @@ const getCurrentKp = async (): Promise<number | undefined> => {
   return bestKp;
 };
 
-export const CityAuroraNow = ({ lat, long, locationLabel }: Props) => {
+export const CityAuroraNow = ({
+  lat,
+  long,
+  cityName,
+  locationLabel,
+}: Props) => {
   const client = useStore(queryClient);
 
   const { data: probability, isLoading: probLoading } = useQuery(
@@ -92,6 +99,18 @@ export const CityAuroraNow = ({ lat, long, locationLabel }: Props) => {
   const updatedAt = dayjs().format("HH:mm");
   const kpColor =
     kp !== undefined ? colorFormat({ kp_index: kp }, "kp_index") : "#9CA3AF";
+
+  const handleGoToMap = () => {
+    try {
+      localStorage.setItem(
+        "city:",
+        JSON.stringify({ name: cityName, name_ru: cityName, lat, long }),
+      );
+    } catch {
+      // localStorage может быть недоступен (приватный режим и т.п.) —
+      // в этом случае просто переходим на карту без предвыбора города.
+    }
+  };
 
   return (
     <div className="my-6 flex flex-col gap-4 rounded-2xl bg-white/[0.06] p-5 text-left">
@@ -124,9 +143,13 @@ export const CityAuroraNow = ({ lat, long, locationLabel }: Props) => {
           </span>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-2 text-[12px] text-white/40">
-        <span>Обновлено: {updatedAt}. Источник: NOAA SWPC.</span>
-        <a href="/#map" className="text-white/70 underline underline-offset-2">
+      <div className="flex flex-col gap-1 text-[12px] text-white/40">
+        <span>Обновлено: {updatedAt}</span>
+        <a
+          href="/#map"
+          onClick={handleGoToMap}
+          className="text-white/70 underline underline-offset-2"
+        >
           Карта и вероятность по часам →
         </a>
       </div>
