@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CityToday from "../../components/blog/CityToday.astro";
+
+const pageUrl = "https://polarlights.pro/en/aurora-teriberka/";
+const title =
+  "Northern Lights in Teriberka Today: Current Probability and Kp Index";
+const metaDescription =
+  "Live aurora probability and Kp index for Teriberka right now, plus when and where to watch the Northern Lights in this village on the Barents Sea coast.";
+const updatedISO = "2026-10-04";
+const updatedDisplay = "04.10.2026";
+
+const faq = [
+  {
+    q: "How far is it from Murmansk to Teriberka?",
+    a: "About 130 km. By car it takes roughly 2–2.5 hours. By bus (route No. 241, Murmansk — Teriberka — Lodeynoye) it takes about 3–3.5 hours; in winter some trips are cancelled due to weather, so check the schedule before you travel.",
+  },
+  {
+    q: "Can you see the aurora right in the village, or do you need to go somewhere?",
+    a: "Yes — Teriberka is a small village with almost no lighting of its own, so the aurora can often be seen just by stepping outside. For a wider view of the sky without houses and buildings nearby, head to an open stretch of the coast — the view there is unobstructed.",
+  },
+  {
+    q: "When is the best time to visit Teriberka for the Northern Lights?",
+    a: "The season is the same as across the Murmansk region: from late August to April, when the nights are dark. In winter the days are shorter, so there are more chances to see the aurora in the evening and at night.",
+  },
+  {
+    q: "Can I combine the trip with the 'ship graveyard' and the 'Leviathan' filming locations?",
+    a: "Yes — that's one of the reasons Teriberka became a popular destination. During the day you can see the film locations and the coastline, and in the evening watch the Northern Lights. We recommend staying a few days, so you have time for both, plus a backup evening in case the first one is cloudy.",
+  },
+];
+
+const relatedLinks = [
+  { href: "/en/blog/aurora-murmansk", label: "Northern Lights in Murmansk" },
+  { href: "/en/blog/aurora-map", label: "Northern Lights Map Online" },
+  { href: "/en/blog/kp-index", label: "Kp index: what it is" },
+  { href: "/en/blog/about-aurora", label: "Northern Lights in Russia" },
+];
+---
+
+<Layout title={title} description={metaDescription} variant="blog">
+  <CityToday
+    pageUrl={pageUrl}
+    title={title}
+    metaDescription={metaDescription}
+    updatedISO={updatedISO}
+    updatedDisplay={updatedDisplay}
+    lat={69.2}
+    long={35.2}
+    cityName="Териберка"
+    locationLabel="in Teriberka"
+    lang="en"
+    nameEn="Teriberka"
+    nameCn="捷里别尔卡"
+    heroAnswer="Quick answer: Teriberka is a village on the Barents Sea coast about 130 km from Murmansk, with almost no light pollution — one of the easiest places in the region to see the Northern Lights. Check the current probability and Kp index in the panel below."
+    breadcrumbCurrent="Northern Lights in Teriberka Today"
+    faq={faq}
+    relatedLinks={relatedLinks}
+  >
+    <h2>Why Teriberka</h2>
+    <p>
+      Teriberka lies north of Murmansk, right on the shore of the Barents Sea,
+      and is known worldwide as the filming location for Andrey Zvyagintsev's
+      film "Leviathan" (2014) — people still come here for the film locations
+      and the famous "ship graveyard" on the beach. But for aurora watching the
+      village also has a practical advantage: it's a small settlement with
+      almost no light pollution of its own, and the open sea horizon gives a
+      wide view of the sky.
+    </p>
+
+    <h2>How to get there</h2>
+    <p>
+      Teriberka is about 130 km from Murmansk. By car the drive takes roughly
+      2–2.5 hours; by bus (route No. 241) it takes about 3–3.5 hours. Buses run
+      on a seasonal schedule, and in winter trips are sometimes cancelled due to
+      weather — check the route and travel time before you go.
+    </p>
+
+    <h2>Where to watch in Teriberka</h2>
+    <p>
+      Thanks to the minimal light pollution, the aurora is often visible right
+      in the village. Especially where the horizon is open for almost 360
+      degrees and nothing blocks the sky.
+    </p>
+
+    <h2>When is best to watch today</h2>
+    <p>
+      Use the probability and Kp index in the panel above — they update in real
+      time. Besides activity, the main condition is clear skies: even with a
+      high probability, thick cloud cover can hide the aurora. It's best to
+      watch after dark, and be ready to wait — bright flares may not appear
+      right away.
+    </p>
+    <p>
+      <a
+        href="/en/#map"
+        onclick='try{localStorage.setItem("city:",JSON.stringify({name:"Teriberka",name_ru:"Териберка",name_en:"Teriberka",name_cn:"捷里别尔卡",lat:69.2,long:35.2}))}catch(e){}'
+        >See the map with probability, Kp index and cloud cover →</a
+      >
+    </p>
+
+    <h2>Practical tips</h2>
+    <ul>
+      <li>
+        Dress warmer than you think you need — on the open sea coast the cold
+        wind feels stronger.
+      </li>
+      <li>
+        Give your eyes 10–15 minutes to adjust to the dark before deciding
+        there's no aurora.
+      </li>
+      <li>
+        Bring a camera or a phone with a tripod — a long exposure can reveal the
+        aurora even when it's barely visible to the eye.
+      </li>
+      <li>
+        Plan to stay a few days: if one evening is cloudy, you'll have a backup.
+      </li>
+    </ul>
+  </CityToday>
+</Layout>

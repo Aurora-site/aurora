@@ -14,6 +14,8 @@ dayjs.extend(customParseFormat);
 
 const REFRESH_MS = 5 * 60 * 1000;
 
+type CityNowLang = "ru" | "en" | "cn";
+
 type Props = {
   /** Широта точки наблюдения */
   lat: number;
@@ -21,8 +23,47 @@ type Props = {
   long: number;
   /** Название города в именительном падеже, например "Мурманск" — используется для предвыбора города на главной странице */
   cityName: string;
-  /** Название места в предложном падеже, например "в Мурманске" */
+  /** Название места в предложном падеже, например "в Мурманске" (для en/cn — уже готовая фраза для вставки в LABELS.title) */
   locationLabel: string;
+  /** Язык блока. По умолчанию "ru" — поведение не меняется для существующих страниц. */
+  lang?: CityNowLang;
+  /** Имя города на английском (именительный падеж), например "Teriberka" — для корректного предвыбора города на главной при переходе с en/cn-страниц */
+  nameEn?: string;
+  /** Имя города на китайском (именительный падеж), например "捷里别尔卡" */
+  nameCn?: string;
+};
+
+const LABELS: Record<
+  CityNowLang,
+  {
+    title: (locationLabel: string) => string;
+    probability: string;
+    kp: string;
+    updatedPrefix: string;
+    mapLink: string;
+  }
+> = {
+  ru: {
+    title: (locationLabel) => `Прогноз ${locationLabel} прямо сейчас`,
+    probability: "Вероятность",
+    kp: "Kp-индекс",
+    updatedPrefix: "Обновлено: ",
+    mapLink: "Карта и вероятность по часам →",
+  },
+  en: {
+    title: (locationLabel) => `Aurora forecast ${locationLabel} right now`,
+    probability: "Probability",
+    kp: "Kp index",
+    updatedPrefix: "Updated: ",
+    mapLink: "Map and hourly probability →",
+  },
+  cn: {
+    title: (locationLabel) => `${locationLabel}北极光实时预报`,
+    probability: "出现概率",
+    kp: "Kp指数",
+    updatedPrefix: "更新时间：",
+    mapLink: "地图与每小时概率 →",
+  },
 };
 
 const getProbabilityColor = (prob?: number) => {
@@ -69,8 +110,12 @@ export const CityAuroraNow = ({
   long,
   cityName,
   locationLabel,
+  lang = "ru",
+  nameEn,
+  nameCn,
 }: Props) => {
   const client = useStore(queryClient);
+  const t = LABELS[lang];
 
   const { data: probability, isLoading: probLoading } = useQuery(
     {
@@ -99,12 +144,26 @@ export const CityAuroraNow = ({
   const updatedAt = dayjs().format("DD.MM.YYYY HH:mm");
   const kpColor =
     kp !== undefined ? colorFormat({ kp_index: kp }, "kp_index") : "#9CA3AF";
+  const mapHref = lang === "ru" ? "/#map" : `/${lang}/#map`;
 
   const handleGoToMap = () => {
     try {
+      const localizedName =
+        lang === "en"
+          ? nameEn || cityName
+          : lang === "cn"
+            ? nameCn || cityName
+            : cityName;
       localStorage.setItem(
         "city:",
-        JSON.stringify({ name: cityName, name_ru: cityName, lat, long }),
+        JSON.stringify({
+          name: localizedName,
+          name_ru: cityName,
+          name_en: nameEn || cityName,
+          name_cn: nameCn || cityName,
+          lat,
+          long,
+        }),
       );
     } catch {
       // localStorage может быть недоступен (приватный режим и т.п.) —
@@ -115,12 +174,12 @@ export const CityAuroraNow = ({
   return (
     <div className="my-4 flex flex-col gap-2.5 rounded-xl bg-white/[0.06] p-4 text-left md:bg-transparent">
       <div className="text-[13px] font-semibold text-white/70 md:text-[16px]">
-        Прогноз {locationLabel} прямо сейчас
+        {t.title(locationLabel)}
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
           <span className="w-[100px] text-[13px] text-white/60 md:w-[140px] md:text-[16px]">
-            Вероятность
+            {t.probability}
           </span>
           <span
             className={cn(
@@ -137,7 +196,7 @@ export const CityAuroraNow = ({
         </div>
         <div className="flex items-center gap-3">
           <span className="w-[100px] text-[13px] text-white/60 md:w-[140px] md:text-[16px]">
-            Kp-индекс
+            {t.kp}
           </span>
           <span
             className="rounded-full px-3 py-0.5 text-[20px] font-bold text-black"
@@ -148,13 +207,16 @@ export const CityAuroraNow = ({
         </div>
       </div>
       <div className="flex flex-col gap-0.5 text-[11px] text-white/40">
-        <span>Обновлено: {updatedAt}</span>
+        <span>
+          {t.updatedPrefix}
+          {updatedAt}
+        </span>
         <a
-          href="/#map"
+          href={mapHref}
           onClick={handleGoToMap}
           className="text-[11px] text-white/70 underline underline-offset-2 md:text-[16px]"
         >
-          Карта и вероятность по часам →
+          {t.mapLink}
         </a>
       </div>
     </div>
