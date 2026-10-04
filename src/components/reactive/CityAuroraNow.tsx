@@ -96,7 +96,7 @@ export const CityAuroraNow = ({
     client,
   );
 
-  const updatedAt = dayjs().format("HH:mm");
+  const updatedAt = dayjs().format("DD.MM.YYYY HH:mm");
   const kpColor =
     kp !== undefined ? colorFormat({ kp_index: kp }, "kp_index") : "#9CA3AF";
 
