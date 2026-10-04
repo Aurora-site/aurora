@@ -1,0 +1,256 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import CityToday from "../../components/blog/CityToday.astro";
+import photo1 from "../../assets/moscow1.png";
+import photo2 from "../../assets/moscow2.png";
+import photo3 from "../../assets/moscow3.png";
+
+const pageUrl = "https://polarlights.pro/en/aurora-kirovsk/";
+const title =
+  "Northern Lights in Kirovsk Today: Current Probability and Kp Index";
+const metaDescription =
+  "Live aurora probability and Kp index for Kirovsk right now, plus when and where to watch the Northern Lights near the Khibiny ski resort.";
+const updatedISO = "2026-10-04";
+const updatedDisplay = "04.10.2026";
+
+const faq = [
+  {
+    q: "How far is it from Murmansk to Kirovsk?",
+    a: "About 205 km. The drive takes roughly 3 hours; by bus or train it's 3.5 to 4.5 hours. The train goes to neighboring Apatity, and from there it's about a 20-minute taxi ride to Kirovsk.",
+  },
+  {
+    q: "Can you see the aurora right on the ski resort's slopes?",
+    a: "Yes — in the evening and at night, lighting on the slopes of Bolshoy Vudyavr and around the town is minimal compared to a large city, so the aurora is often visible there too. The further you get from the town's lights and the lifts, the clearer the view.",
+  },
+  {
+    q: "Kirovsk is south of Murmansk — is the aurora harder to see there?",
+    a: "During periods of higher activity, the aurora is seen here just as often, and the Khibiny Mountains along with the low light pollution make for a very comfortable view. After all, it's still the same Arctic region.",
+  },
+  {
+    q: "When is the best time to visit Kirovsk — only in winter, during the ski season?",
+    a: "The aurora season across the Murmansk region runs from late August to April, which is longer than the ski season. Many visitors combine skiing during the day with aurora watching in the evening, but you can also come in early autumn, before snow arrives on the slopes.",
+  },
+];
+
+const relatedLinks = [
+  { href: "/en/blog/aurora-murmansk", label: "Northern Lights in Murmansk" },
+  { href: "/en/blog/aurora-map", label: "Northern Lights Map Online" },
+  { href: "/en/blog/kp-index", label: "Kp index: what it is" },
+  { href: "/en/blog/about-aurora", label: "Northern Lights in Russia" },
+];
+---
+
+<Layout title={title} description={metaDescription} variant="blog">
+  <CityToday
+    pageUrl={pageUrl}
+    title={title}
+    metaDescription={metaDescription}
+    updatedISO={updatedISO}
+    updatedDisplay={updatedDisplay}
+    lat={67.6}
+    long={33.7}
+    cityName="Кировск"
+    locationLabel="in Kirovsk"
+    lang="en"
+    nameEn="Kirovsk"
+    nameCn="基洛夫斯克"
+    heroAnswer="Quick answer: Kirovsk is a town at the foot of the Khibiny Mountains, about 205 km from Murmansk, known for the Bolshoy Vudyavr ski resort. The town has little light pollution of its own, and the surrounding mountains create naturally dark patches of sky. Check the current probability and Kp index in the panel below."
+    breadcrumbCurrent="Northern Lights in Kirovsk Today"
+    faq={faq}
+    relatedLinks={relatedLinks}
+  >
+    <h2>Why Kirovsk</h2>
+    <p>
+      Kirovsk sits at the foot of the Khibiny Mountains and is best known for
+      the Bolshoy Vudyavr ski resort, as well as apatite ore mining, which gave
+      the town its name. It's also home to the world's northernmost polar-alpine
+      botanical garden. The town lies noticeably south of Murmansk and
+      Teriberka, but thanks to the mountainous terrain and low light pollution,
+      the evening sky here stays dark enough for aurora watching.
+    </p>
+
+    <h2>How to get there</h2>
+    <p>
+      Kirovsk is about 205 km from Murmansk — roughly a 3-hour drive. Trains run
+      to neighboring Apatity (3.5–4.5 hours), and from there it's about a
+      20-minute taxi ride to Kirovsk. Buses also connect Murmansk with both
+      towns.
+    </p>
+    <p>
+      Apatity also has its own airport, Khibiny, with flights from Moscow and
+      Saint Petersburg — the fastest way to get here from other parts of the
+      country. In summer, seasonal flights are sometimes added, for example to
+      Sochi and Anapa. The schedule and list of destinations change from time to
+      time, so check current flights and carriers with the airport or the
+      airlines before you travel.
+    </p>
+
+    <h2>Where to watch in Kirovsk</h2>
+    <p>
+      Light pollution in Kirovsk is generally low, so the aurora is often
+      visible right in town. If the aurora is faint, though, it's better to head
+      out of town to a spot with the clearest, most open view of the sky.
+    </p>
+
+    <h2>When is best to watch today</h2>
+    <p>
+      Check the probability and Kp index in the panel above: since Kirovsk is
+      south of Murmansk, a brighter aurora here usually needs somewhat higher
+      activity. With clear skies and an elevated Kp, your chances are good at
+      any time after dark.
+    </p>
+    <p>
+      <a
+        href="/en/#map"
+        onclick='try{localStorage.setItem("city:",JSON.stringify({name:"Kirovsk",name_ru:"Кировск",name_en:"Kirovsk",name_cn:"基洛夫斯克",lat:67.6,long:33.7}))}catch(e){}'
+        >See the map with probability, Kp index and cloud cover →</a
+      >
+    </p>
+
+    <h2>Practical tips</h2>
+    <ul>
+      <li>
+        If you plan to watch the aurora after skiing, bring warm clothes
+        separate from your ski gear — it's colder outside in the evening than on
+        the slopes during the day.
+      </li>
+      <li>
+        Give your eyes 10–15 minutes to adjust to the dark, away from the
+        resort's lit areas.
+      </li>
+      <li>
+        A camera or phone with a tripod can reveal the aurora even when it's
+        barely visible to the eye.
+      </li>
+      <li>
+        Plan to stay a few days, so you have backup time in case of cloud cover.
+      </li>
+    </ul>
+
+    <Fragment slot="gallery">
+      <style>
+        .images {
+          display: flex;
+          gap: 30px;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          margin: 10px 0 0 0;
+          white-space: nowrap;
+          justify-content: space-between;
+          padding-bottom: 24px;
+        }
+
+        .image-slider-container {
+          position: relative;
+          margin: 0 auto;
+          overflow: visible;
+        }
+
+        .imag {
+          flex: 0 0 auto;
+          width: 360px;
+          position: relative;
+          filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.8));
+          border-radius: 20px;
+        }
+
+        .imag img {
+          max-width: 100%;
+          height: 100%;
+          border-radius: 20px;
+        }
+
+        .slider-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: black;
+          border: none;
+          cursor: pointer;
+          padding: 5px 15px;
+          z-index: 1000;
+          font-size: 30px;
+        }
+
+        .slider-button.left {
+          left: -50px;
+          color: white;
+        }
+
+        .slider-button.right {
+          right: -50px;
+          color: white;
+        }
+
+        @media (max-width: 1300px) {
+          .images {
+            overflow-x: auto;
+          }
+        }
+
+        @media (max-width: 952px) {
+          .slider-button {
+            display: none !important;
+          }
+        }
+        @media (max-width: 482px) {
+          .imag {
+            width: 90%;
+          }
+        }
+      </style>
+      <div class="image-slider-container">
+        <button class="slider-button left" id="slideLeft">&#8249;</button>
+        <div class="images" id="slider">
+          <div class="imag">
+            <Image src={photo1} alt="Northern Lights" />
+          </div>
+          <div class="imag">
+            <Image src={photo2} alt="Northern Lights" />
+          </div>
+          <div class="imag">
+            <Image src={photo3} alt="Northern Lights" />
+          </div>
+        </div>
+        <button class="slider-button right" id="slideRight">&#8250;</button>
+      </div>
+      <script is:inline>
+        {
+          function initSlider() {
+            const slider = document.getElementById("slider");
+            const slideLeft = document.getElementById("slideLeft");
+            const slideRight = document.getElementById("slideRight");
+
+            if (!slider) return;
+
+            const totalWidth = Array.from(slider.children).reduce(
+              (sum, item) => sum + item.offsetWidth,
+              0,
+            );
+            const visibleWidth = slider.offsetWidth;
+
+            if (totalWidth > visibleWidth) {
+              slideLeft.style.display = "block";
+              slideRight.style.display = "block";
+
+              slideLeft.addEventListener("click", () => {
+                slider.scrollBy({ left: -380, behavior: "smooth" });
+              });
+
+              slideRight.addEventListener("click", () => {
+                slider.scrollBy({ left: 380, behavior: "smooth" });
+              });
+            } else {
+              slideLeft.style.display = "none";
+              slideRight.style.display = "none";
+            }
+          }
+
+          window.addEventListener("load", initSlider);
+          window.addEventListener("resize", initSlider);
+        }
+      </script>
+    </Fragment>
+  </CityToday>
+</Layout>
