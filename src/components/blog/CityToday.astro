@@ -107,6 +107,10 @@ const breadcrumbLd = {
     margin-bottom: 10px;
     font-size: 24px;
   }
+  .city-today .faq-heading {
+    margin-top: 70px;
+    font-size: 24px;
+  }
   .city-today h3 {
     margin-top: 25px;
     margin-bottom: 8px;
@@ -236,7 +240,7 @@ const breadcrumbLd = {
   <div class="pt-[25px] pb-[50px]">
     <slot />
 
-    <h2>Частые вопросы</h2>
+    <h2 class="faq-heading">Частые вопросы</h2>
     {
       faq.map((item) => (
         <>
