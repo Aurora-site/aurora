@@ -20,6 +20,12 @@ export interface Props {
   breadcrumbCurrent: string;
   faq: { q: string; a: string }[];
   relatedLinks: { href: string; label: string }[];
+  /** Язык страницы. По умолчанию "ru" — поведение не меняется для существующих страниц. */
+  lang?: "ru" | "en" | "cn";
+  /** Имя города на английском (именительный падеж) — для предвыбора города на карте с en-страниц */
+  nameEn?: string;
+  /** Имя города на китайском (именительный падеж) — для предвыбора города на карте с cn-страниц */
+  nameCn?: string;
 }
 
 const {
@@ -36,7 +42,51 @@ const {
   breadcrumbCurrent,
   faq,
   relatedLinks,
+  lang = "ru",
+  nameEn,
+  nameCn,
 } = Astro.props;
+
+const CHROME = {
+  ru: {
+    breadcrumbsAria: "Хлебные крошки",
+    home: "Главная",
+    homeHref: "/",
+    authorName: "Надежда Горбатенко",
+    author:
+      "Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза северного сияния.",
+    updatedPrefix: "Обновлено: ",
+    faqHeading: "Частые вопросы",
+    readAlso: "Читайте также",
+    goHome: "Перейти на главную страницу с картой и вероятностью",
+  },
+  en: {
+    breadcrumbsAria: "Breadcrumb",
+    home: "Home",
+    homeHref: "/en/",
+    authorName: "Nadezhda Gorbatenko",
+    author:
+      "Author: Nadezhda Gorbatenko, developer of Polarlights.pro — an aurora forecast service.",
+    updatedPrefix: "Updated: ",
+    faqHeading: "Frequently Asked Questions",
+    readAlso: "Read also",
+    goHome: "Go to the homepage with the map and probability",
+  },
+  cn: {
+    breadcrumbsAria: "面包屑导航",
+    home: "首页",
+    homeHref: "/cn/",
+    authorName: "Nadezhda Gorbatenko",
+    author:
+      "作者：娜杰日达·戈尔巴特科，Polarlights.pro（北极光预报服务）开发者。",
+    updatedPrefix: "更新时间：",
+    faqHeading: "常见问题",
+    readAlso: "延伸阅读",
+    goHome: "前往首页查看地图和概率",
+  },
+} as const;
+
+const c = CHROME[lang];
 
 const articleLd = {
   "@context": "https://schema.org",
@@ -45,7 +95,7 @@ const articleLd = {
   description: metaDescription,
   author: {
     "@type": "Person",
-    name: "Надежда Горбатенко",
+    name: c.authorName,
   },
   publisher: {
     "@type": "Organization",
@@ -79,8 +129,8 @@ const breadcrumbLd = {
     {
       "@type": "ListItem",
       position: 1,
-      name: "Главная",
-      item: "https://polarlights.pro/",
+      name: c.home,
+      item: `https://polarlights.pro${c.homeHref}`,
     },
     {
       "@type": "ListItem",
@@ -222,18 +272,16 @@ const breadcrumbLd = {
     class="description bg-contain bg-[center_50px] bg-no-repeat pt-[20px] pb-5 text-center md:bg-[0px_20px] md:pt-[40px]"
     id="city-today-description"
   >
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a href="/">Главная</a><span class="breadcrumbs-sep">/</span><span
-        class="breadcrumbs-current">{breadcrumbCurrent}</span
-      >
+    <nav class="breadcrumbs" aria-label={c.breadcrumbsAria}>
+      <a href={c.homeHref}>{c.home}</a><span class="breadcrumbs-sep">/</span
+      ><span class="breadcrumbs-current">{breadcrumbCurrent}</span>
     </nav>
     <h1>
       {title}
-      <span class="updated-badge">Обновлено: {updatedDisplay}</span>
+      <span class="updated-badge">{c.updatedPrefix}{updatedDisplay}</span>
     </h1>
     <p class="author-line">
-      Автор: Надежда Горбатенко, разработчик Polarlights.pro — сервиса прогноза
-      северного сияния.
+      {c.author}
     </p>
     <p class="lead-answer">
       {heroAnswer}
@@ -243,6 +291,9 @@ const breadcrumbLd = {
       long={long}
       cityName={cityName}
       locationLabel={locationLabel}
+      lang={lang}
+      nameEn={nameEn}
+      nameCn={nameCn}
       client:only="react"
     />
   </section>
@@ -250,7 +301,7 @@ const breadcrumbLd = {
   <div class="pt-[25px] pb-[50px]">
     <slot />
 
-    <h2 class="faq-heading">Частые вопросы</h2>
+    <h2 class="faq-heading">{c.faqHeading}</h2>
     {
       faq.map((item) => (
         <>
@@ -261,7 +312,7 @@ const breadcrumbLd = {
     }
 
     <div class="mt-[60px] text-left">
-      <h2>Читайте также</h2>
+      <h2>{c.readAlso}</h2>
       <ul>
         {
           relatedLinks.map((link) => (
@@ -276,7 +327,7 @@ const breadcrumbLd = {
     <div class="mt-[40px] mb-[50px] text-left">
       <a
         class="font-[SongerGrotesqueBold] text-[24px] font-bold underline underline-offset-2"
-        href="/">Перейти на главную страницу с картой и вероятностью</a
+        href={c.homeHref}>{c.goHome}</a
       >
     </div>
   </div>

@@ -1,0 +1,93 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CityToday from "../../components/blog/CityToday.astro";
+
+const pageUrl = "https://polarlights.pro/cn/aurora-teriberka/";
+const title = "捷里别尔卡北极光预报：实时概率与Kp指数";
+const metaDescription =
+  "查看捷里别尔卡当前的北极光出现概率和Kp指数，以及在这个巴伦支海沿岸村庄观赏北极光的最佳时间和地点。";
+const updatedISO = "2026-10-04";
+const updatedDisplay = "04.10.2026";
+
+const faq = [
+  {
+    q: "从摩尔曼斯克到捷里别尔卡要多久？",
+    a: "大约130公里。自驾大约需要2–2.5小时；乘坐241号班车（摩尔曼斯克—捷里别尔卡—洛杰伊诺耶）大约需要3–3.5小时，冬季部分班次会因天气取消，出发前请查询时间表。",
+  },
+  {
+    q: "在村子里就能看到北极光，还是需要去别的地方？",
+    a: "是的——捷里别尔卡是一个几乎没有照明的小村庄，很多时候只需走出门就能看到北极光。如果想要没有房屋和建筑遮挡的更开阔视野，可以前往开阔的海岸地带，那里视野完全不受阻挡。",
+  },
+  {
+    q: "什么时候去捷里别尔卡看北极光最好？",
+    a: "季节和摩尔曼斯克州其他地方一样：从8月底到4月，夜晚较暗的时候。冬季白天更短，因此晚上和夜间看到北极光的机会更多。",
+  },
+  {
+    q: "可以把这次旅行和参观「船只墓地」以及《利维坦》取景地结合起来吗？",
+    a: "可以——这正是捷里别尔卡成为热门目的地的原因之一。白天可以参观电影取景地和海岸线，晚上观赏北极光。建议安排几天的行程，这样既有时间做这两件事，也有备用的晚上以防第一晚多云。",
+  },
+];
+
+const relatedLinks = [
+  { href: "/cn/blog/aurora-murmansk", label: "摩尔曼斯克的北极光" },
+  { href: "/cn/blog/aurora-map", label: "北极光在线地图" },
+  { href: "/cn/blog/kp-index", label: "Kp指数是什么" },
+  { href: "/cn/blog/about-aurora", label: "俄罗斯的北极光" },
+];
+---
+
+<Layout title={title} description={metaDescription} variant="blog">
+  <CityToday
+    pageUrl={pageUrl}
+    title={title}
+    metaDescription={metaDescription}
+    updatedISO={updatedISO}
+    updatedDisplay={updatedDisplay}
+    lat={69.2}
+    long={35.2}
+    cityName="Териберка"
+    locationLabel="捷里别尔卡"
+    lang="cn"
+    nameEn="Teriberka"
+    nameCn="捷里别尔卡"
+    heroAnswer="简要回答：捷里别尔卡是巴伦支海沿岸的一个村庄，距摩尔曼斯克约130公里，几乎没有光污染，是该地区观赏北极光最方便的地方之一。当前的概率和Kp指数请见下方面板。"
+    breadcrumbCurrent="捷里别尔卡今日北极光"
+    faq={faq}
+    relatedLinks={relatedLinks}
+  >
+    <h2>为什么选择捷里别尔卡</h2>
+    <p>
+      捷里别尔卡位于摩尔曼斯克以北，就在巴伦支海岸边，因安德烈·萨金塞夫执导的电影《利维坦》（2014年）的取景地而闻名世界——人们至今仍会为了电影取景地和海滩上著名的「船只墓地」而来。但对观赏北极光而言，这个村庄还有一个实际优势：这是一个几乎没有自身光污染的小型聚居地，开阔的海平线让天空视野十分宽广。
+    </p>
+
+    <h2>如何到达</h2>
+    <p>
+      从摩尔曼斯克到捷里别尔卡大约130公里。自驾大约需要2–2.5小时，乘坐241号班车大约需要3–3.5小时。班车按季节调整时间表，冬季有时会因天气原因取消——出发前请务必确认路线和用时。
+    </p>
+
+    <h2>在捷里别尔卡哪里观赏</h2>
+    <p>
+      由于几乎没有光污染，在村子里就常能看到北极光。尤其是在地平线几乎360度开阔、没有任何遮挡的地方。
+    </p>
+
+    <h2>今天什么时候观赏最好</h2>
+    <p>
+      请参考上方面板中实时更新的概率和Kp指数。除了地磁活动外，最重要的条件是晴朗的天空：即使概率很高，浓厚的云层也可能遮住北极光。最好在天黑后观赏，并做好耐心等待的准备——明亮的光带可能不会立刻出现。
+    </p>
+    <p>
+      <a
+        href="/cn/#map"
+        onclick='try{localStorage.setItem("city:",JSON.stringify({name:"捷里别尔卡",name_ru:"Териберка",name_en:"Teriberka",name_cn:"捷里别尔卡",lat:69.2,long:35.2}))}catch(e){}'
+        >查看带概率、Kp指数和云量的地图 →</a
+      >
+    </p>
+
+    <h2>实用小贴士</h2>
+    <ul>
+      <li>穿得比你以为需要的更暖——在开阔的海岸边，寒风会让人感觉更冷。</li>
+      <li>让眼睛适应黑暗10–15分钟，再判断是否真的没有北极光。</li>
+      <li>带上相机或带三脚架的手机——长曝光可以拍到肉眼几乎看不见的北极光。</li>
+      <li>建议安排几天的行程：如果某一晚是多云天气，还有备用的机会。</li>
+    </ul>
+  </CityToday>
+</Layout>
