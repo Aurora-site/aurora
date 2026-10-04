@@ -114,12 +114,12 @@ export const CityAuroraNow = ({
 
   return (
     <div className="my-4 flex flex-col gap-2.5 rounded-xl bg-white/[0.06] p-4 text-left md:bg-transparent">
-      <div className="text-[13px] font-semibold text-white/70">
+      <div className="text-[13px] font-semibold text-white/70 md:text-[16px]">
         Прогноз {locationLabel} прямо сейчас
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
-          <span className="w-[100px] text-[13px] text-white/60">
+          <span className="w-[100px] text-[13px] text-white/60 md:w-[140px] md:text-[16px]">
             Вероятность
           </span>
           <span
@@ -136,7 +136,9 @@ export const CityAuroraNow = ({
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="w-[100px] text-[13px] text-white/60">Kp-индекс</span>
+          <span className="w-[100px] text-[13px] text-white/60 md:w-[140px] md:text-[16px]">
+            Kp-индекс
+          </span>
           <span
             className="rounded-full px-3 py-0.5 text-[20px] font-bold text-black"
             style={{ backgroundColor: kpColor }}
@@ -150,7 +152,7 @@ export const CityAuroraNow = ({
         <a
           href="/#map"
           onClick={handleGoToMap}
-          className="text-white/70 underline underline-offset-2"
+          className="text-[11px] text-white/70 underline underline-offset-2 md:text-[16px]"
         >
           Карта и вероятность по часам →
         </a>
