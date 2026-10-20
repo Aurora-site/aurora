@@ -102,53 +102,81 @@ const breadcrumbLd = {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 18px;
     padding: 10px 0 10px;
   }
 
   .store-badge {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 26px;
-    border-radius: 16px;
-    background: #386e784d;
-    border: 1px solid #ffffff1f;
+    gap: 16px;
+    padding: 12px 28px 12px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     text-decoration: none;
+    overflow: hidden;
     transition:
-      background 0.2s ease,
-      transform 0.2s ease;
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .store-badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, #18a5bf33, #00690933);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .store-badge:hover {
-    background: #386e7880;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    border-color: #18a5bf80;
+    box-shadow: 0 14px 32px rgba(0, 60, 50, 0.35);
+  }
+
+  .store-badge:hover::before {
+    opacity: 1;
+  }
+
+  .store-badge-icon-wrap {
+    display: flex;
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    overflow: hidden;
   }
 
   .store-badge-icon {
-    width: 34px;
-    height: 34px;
+    width: 52px;
+    height: 52px;
     object-fit: contain;
-    flex: 0 0 auto;
   }
 
   .store-badge-text {
     display: flex;
     flex-direction: column;
     text-align: left;
-    line-height: 1.25;
+    line-height: 1.3;
   }
 
   .store-badge-eyebrow {
     font-size: 12px;
-    opacity: 0.75;
+    opacity: 0.7;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.6px;
   }
 
   .store-badge-name {
     font-family: "SongerGrotesqueBold";
-    font-size: 20px;
+    font-size: 21px;
     color: white;
   }
 
@@ -294,7 +322,9 @@ const breadcrumbLd = {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Image class="store-badge-icon" src={ruStore} alt="RuStore" />
+      <span class="store-badge-icon-wrap">
+        <Image class="store-badge-icon" src={ruStore} alt="RuStore" />
+      </span>
       <span class="store-badge-text">
         <span class="store-badge-eyebrow">{t("app.download")}</span>
         <span class="store-badge-name">RuStore</span>
@@ -307,7 +337,9 @@ const breadcrumbLd = {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Image class="store-badge-icon" src={store} alt="App Store" />
+      <span class="store-badge-icon-wrap">
+        <Image class="store-badge-icon" src={store} alt="App Store" />
+      </span>
       <span class="store-badge-text">
         <span class="store-badge-eyebrow">{t("app.download")}</span>
         <span class="store-badge-name">App Store</span>
@@ -360,6 +392,24 @@ const breadcrumbLd = {
         video.pause();
         video.muted = true;
       });
+
+      const heroAnchor = document.querySelector(".store-badges");
+      if (heroAnchor && "IntersectionObserver" in window) {
+        const hideOnScrollPast = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                block.classList.remove("visible", "expanded");
+                video.pause();
+                video.muted = true;
+                hideOnScrollPast.disconnect();
+              }
+            });
+          },
+          { threshold: 0 },
+        );
+        hideOnScrollPast.observe(heroAnchor);
+      }
     }
 
     window.addEventListener("load", initMapVideo);
