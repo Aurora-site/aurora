@@ -93,94 +93,71 @@ const breadcrumbLd = {
     font-size: 24px;
   }
 
-  .app_screens {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 30px;
-    white-space: nowrap;
-    justify-content: space-evenly;
-  }
-
-  .app-slider-container {
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .stores_cards {
-    flex: 0 0 auto;
-    width: 350px;
-    height: 350px;
-    background-color: #386e784d;
-    border-radius: 20px;
-    position: relative;
-    padding: 10px 0;
-  }
-
-  .store_img {
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    width: 80px;
-  }
-
-  .just-button {
-    background-color: #18a5bf;
-    padding: 10px 50px;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 40px; /* Закрепляем кнопку внизу */
-    left: 50%;
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-    color: white;
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .just-button:hover {
-    background-color: #148fa5;
-  }
-
   p {
     font-size: 16px;
     text-align: left;
   }
 
-  .Name {
+  .store-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0 10px;
+  }
+
+  .store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 26px;
+    border-radius: 16px;
+    background: #386e784d;
+    border: 1px solid #ffffff1f;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .store-badge:hover {
+    background: #386e7880;
+    transform: translateY(-2px);
+  }
+
+  .store-badge-icon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .store-badge-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.25;
+  }
+
+  .store-badge-eyebrow {
+    font-size: 12px;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .store-badge-name {
+    font-family: "SongerGrotesqueBold";
     font-size: 20px;
-    padding: 10px 10px;
-    text-align: center;
-  }
-  .slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     color: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px 15px;
-    z-index: 1000;
-    font-size: 30px;
   }
 
-  .slider-button.left {
-    left: -50px;
-  }
-
-  .slider-button.right {
-    right: -50px;
-  }
   #description {
     background-image: var(--auroraBackImageUrl);
   }
   @media (min-width: 768px) {
     #description {
       background-image: var(--auroraBackAppImageUrl);
-    }
-  }
-  @media (max-width: 952px) {
-    .slider-button {
-      display: none !important;
     }
   }
 
@@ -203,19 +180,16 @@ const breadcrumbLd = {
     }
   }
 
-  @media (max-width: 482px) {
-    .imag,
-    .stores_cards {
-      width: 80%;
-    }
-
-    .just-button {
-      bottom: 20px;
-    }
-  }
   @media (max-width: 440px) {
     .app {
       font-size: 40px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .store-badge {
+      width: 100%;
+      justify-content: center;
     }
   }
 
@@ -313,58 +287,32 @@ const breadcrumbLd = {
     {t("App.mini-title1")}
   </h2>
 
-  <div class="app-slider-container">
-    <button class="slider-button left" id="appSlideLeft">&#8249;</button>
-    <div class="app_screens" id="appSlider">
-      <div class="stores_cards">
-        <div class="pt-[20px]">
-          <div class="flex justify-center">
-            <div class="store_img">
-              <Image src={ruStore} alt="Скрин приложения" />
-            </div>
-          </div>
-          <p class="Name pt-1.5 text-center font-bold">RuStore</p>
-          <div
-            class="pt-2.5 pr-3 pl-3 text-center text-[18px] whitespace-normal"
-          >
-            {t("app.for_android")}
-          </div>
-        </div>
-        <a
-          class="just-button"
-          href="https://www.rustore.ru/catalog/app/com.polarlights"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("app.download")}
-        </a>
-      </div>
+  <div class="store-badges">
+    <a
+      class="store-badge"
+      href="https://www.rustore.ru/catalog/app/com.polarlights"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Image class="store-badge-icon" src={ruStore} alt="RuStore" />
+      <span class="store-badge-text">
+        <span class="store-badge-eyebrow">{t("app.download")}</span>
+        <span class="store-badge-name">RuStore</span>
+      </span>
+    </a>
 
-      <div class="stores_cards">
-        <div class="pt-[20px]">
-          <div class="flex justify-center">
-            <div class="store_img">
-              <Image src={store} alt="Скрин приложения" />
-            </div>
-          </div>
-          <p class="Name pt-1.5 text-center font-bold">App Store</p>
-          <div
-            class="pt-2.5 pr-6 pl-6 text-center text-[18px] whitespace-normal"
-          >
-            {t("app.for_ios")}
-          </div>
-        </div>
-        <a
-          class="just-button"
-          href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("app.download")}
-        </a>
-      </div>
-    </div>
-    <button class="slider-button right" id="appSlideRight">&#8250;</button>
+    <a
+      class="store-badge"
+      href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Image class="store-badge-icon" src={store} alt="App Store" />
+      <span class="store-badge-text">
+        <span class="store-badge-eyebrow">{t("app.download")}</span>
+        <span class="store-badge-name">App Store</span>
+      </span>
+    </a>
   </div>
 
   <div class="video-block" id="mapVideoBlock">
@@ -415,46 +363,6 @@ const breadcrumbLd = {
     }
 
     window.addEventListener("load", initMapVideo);
-  }
-</script>
-
-<script is:inline>
-  {
-    function initSlider() {
-      const appSlider = document.getElementById("appSlider");
-      const appSlideLeft = document.getElementById("appSlideLeft");
-      const appSlideRight = document.getElementById("appSlideRight");
-
-      if (!appSlider) return;
-
-      // Проверяем, нужен ли скролл
-      const totalWidth = Array.from(appSlider.children).reduce(
-        (sum, item) => sum + item.offsetWidth,
-        0,
-      );
-      const visibleWidth = appSlider.offsetWidth;
-
-      if (totalWidth > visibleWidth) {
-        // Показываем кнопки и активируем прокрутку
-        appSlideLeft.style.display = "block";
-        appSlideRight.style.display = "block";
-
-        appSlideLeft.addEventListener("click", () => {
-          appSlider.scrollBy({ left: -380, behavior: "smooth" });
-        });
-
-        appSlideRight.addEventListener("click", () => {
-          appSlider.scrollBy({ left: 380, behavior: "smooth" });
-        });
-      } else {
-        // Скрываем кнопки, если скролл не нужен
-        appSlideLeft.style.display = "none";
-        appSlideRight.style.display = "none";
-      }
-    }
-
-    window.addEventListener("load", initSlider);
-    window.addEventListener("resize", initSlider);
   }
 </script>
 
