@@ -167,13 +167,13 @@ export const ui = {
 
     "App.feature1-title": "Уведомления",
     "App.feature1-text":
-      "Предупредим вас заранее, когда вероятность увидеть сияние в вашем городе станет высокой — учитываем Kp-индекс, геолокацию и облачность.",
+      "Предупредим заранее, когда вероятность увидеть сияние в вашем городе станет высокой. Учитываем Kp-индекс, геолокацию и облачность.",
     "App.feature2-title": "Карта",
     "App.feature2-text":
       "Показываем вероятность появления Авроры на карте по городам в реальном времени, чтобы вы могли выбрать лучшее место для наблюдения.",
     "App.feature3-title": "Kp-индекс",
     "App.feature3-text":
-      "Текущий и прогнозный Kp-индекс всегда под рукой — следите за динамикой и не пропустите лучший момент.",
+      "Текущий и прогнозный Kp-индекс всегда под рукой. Следите за динамикой и не пропустите лучший момент.",
     "App.mini-title2": "Светите ярче с нашим приложением!",
     "App.text-final": `Наблюдение за северным сиянием стало проще! С нашим приложением вы получите
     доступ к точным прогнозам и уведомлениям о солнечных вспышках. Настройте
@@ -453,13 +453,13 @@ export const ui = {
     "App.point5": "with notification of high probability",
     "App.feature1-title": "Notifications",
     "App.feature1-text":
-      "We will alert you in advance when the chance of seeing the aurora in your city gets high — based on the Kp index, your location and cloud cover.",
+      "We alert you in advance when the chance of seeing the aurora in your city gets high, based on Kp index, location and cloud cover.",
     "App.feature2-title": "Map",
     "App.feature2-text":
       "See the real-time probability of the aurora appearing across cities on the map, so you can pick the best spot to watch.",
     "App.feature3-title": "Kp index",
     "App.feature3-text":
-      "Keep the current and forecast Kp index at hand — track the trend and never miss the best moment.",
+      "Keep the current and forecast Kp index at hand. Track the trend and never miss the best moment.",
     "App.mini-title2": "Shine brighter with our mobile app!",
     "App.text-final": `Northern Lights viewing just got easier! With our app you will have access to accurate forecasts and notifications about solar flares.
                       Set up alerts so you don't miss a single opportunity to see this unforgettable spectacle. Join the Aurora community - download our app today!`,
@@ -721,7 +721,7 @@ export const ui = {
     "App.point5": "有关于极光高概率的通知",
     "App.feature1-title": "通知",
     "App.feature1-text":
-      "当您所在城市看到极光的概率升高时，我们会提前提醒您——综合考虑Kp指数、地理位置和云层情况。",
+      "当您所在城市看到极光的概率升高时，我们会提前提醒您。综合考虑Kp指数、地理位置和云层情况。",
     "App.feature2-title": "地图",
     "App.feature2-text":
       "实时查看各城市极光出现概率地图，帮您选择最佳观测地点。",
