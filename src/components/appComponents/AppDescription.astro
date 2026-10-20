@@ -166,10 +166,25 @@ const breadcrumbLd = {
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 640px) {
+    .store-badges {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+
     .store-badge {
       width: 100%;
       justify-content: center;
+    }
+
+    .store-badge--apple {
+      order: -1;
+    }
+
+    .store-badge-img {
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -269,7 +284,7 @@ const breadcrumbLd = {
 
   <div class="store-badges">
     <a
-      class="store-badge"
+      class="store-badge store-badge--rustore"
       href="https://www.rustore.ru/catalog/app/com.polarlights?rsm=1&mt_link_id=l394r2"
       target="_blank"
       rel="noopener noreferrer"
@@ -286,7 +301,7 @@ const breadcrumbLd = {
     </a>
 
     <a
-      class="store-badge"
+      class="store-badge store-badge--apple"
       href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
       target="_blank"
       rel="noopener noreferrer"
