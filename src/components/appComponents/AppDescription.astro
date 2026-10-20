@@ -1,7 +1,5 @@
 ---
-import { Image, getImage } from "astro:assets";
-import ruStore from "/src/assets/ruStore.png";
-import store from "/src/assets/AppStore.png";
+import { getImage } from "astro:assets";
 import { useAstroTranslations } from "../../i18n/utils";
 import auroraback_mb from "../../assets/auroraback_mb.png";
 const auroraBackImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
@@ -93,94 +91,53 @@ const breadcrumbLd = {
     font-size: 24px;
   }
 
-  .app_screens {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 30px;
-    white-space: nowrap;
-    justify-content: space-evenly;
-  }
-
-  .app-slider-container {
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .stores_cards {
-    flex: 0 0 auto;
-    width: 350px;
-    height: 350px;
-    background-color: #386e784d;
-    border-radius: 20px;
-    position: relative;
-    padding: 10px 0;
-  }
-
-  .store_img {
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    width: 80px;
-  }
-
-  .just-button {
-    background-color: #18a5bf;
-    padding: 10px 50px;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 40px; /* Закрепляем кнопку внизу */
-    left: 50%;
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-    color: white;
-    font-weight: 600;
-    font-size: 20px;
-  }
-
-  .just-button:hover {
-    background-color: #148fa5;
-  }
-
   p {
     font-size: 16px;
     text-align: left;
   }
 
-  .Name {
-    font-size: 20px;
-    padding: 10px 10px;
-    text-align: center;
-  }
-  .slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px 15px;
-    z-index: 1000;
-    font-size: 30px;
+  .store-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 10px 0 10px;
+    margin-bottom: 70px;
   }
 
-  .slider-button.left {
-    left: -50px;
+  @media (max-width: 640px) {
+    .store-badges {
+      margin-bottom: 40px;
+    }
   }
 
-  .slider-button.right {
-    right: -50px;
+  .store-badge {
+    display: inline-flex;
+    border-radius: 12px;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.04));
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.3s ease;
   }
+
+  .store-badge:hover {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 12px 24px rgba(0, 60, 50, 0.45));
+  }
+
+  .store-badge-img {
+    display: block;
+    height: 56px;
+    width: auto;
+  }
+
   #description {
     background-image: var(--auroraBackImageUrl);
   }
   @media (min-width: 768px) {
     #description {
       background-image: var(--auroraBackAppImageUrl);
-    }
-  }
-  @media (max-width: 952px) {
-    .slider-button {
-      display: none !important;
     }
   }
 
@@ -203,16 +160,6 @@ const breadcrumbLd = {
     }
   }
 
-  @media (max-width: 482px) {
-    .imag,
-    .stores_cards {
-      width: 80%;
-    }
-
-    .just-button {
-      bottom: 20px;
-    }
-  }
   @media (max-width: 440px) {
     .app {
       font-size: 40px;
@@ -313,58 +260,40 @@ const breadcrumbLd = {
     {t("App.mini-title1")}
   </h2>
 
-  <div class="app-slider-container">
-    <button class="slider-button left" id="appSlideLeft">&#8249;</button>
-    <div class="app_screens" id="appSlider">
-      <div class="stores_cards">
-        <div class="pt-[20px]">
-          <div class="flex justify-center">
-            <div class="store_img">
-              <Image src={ruStore} alt="Скрин приложения" />
-            </div>
-          </div>
-          <p class="Name pt-1.5 text-center font-bold">RuStore</p>
-          <div
-            class="pt-2.5 pr-3 pl-3 text-center text-[18px] whitespace-normal"
-          >
-            {t("app.for_android")}
-          </div>
-        </div>
-        <a
-          class="just-button"
-          href="https://www.rustore.ru/catalog/app/com.polarlights"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("app.download")}
-        </a>
-      </div>
+  <div class="store-badges">
+    <a
+      class="store-badge store-badge--rustore"
+      href="https://www.rustore.ru/catalog/app/com.polarlights?rsm=1&mt_link_id=l394r2"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="RuStore"
+    >
+      <img
+        class="store-badge-img"
+        src="/images/badges/rustore-badge.svg"
+        alt="Скачайте из RuStore"
+        width="156"
+        height="56"
+        loading="lazy"
+      />
+    </a>
 
-      <div class="stores_cards">
-        <div class="pt-[20px]">
-          <div class="flex justify-center">
-            <div class="store_img">
-              <Image src={store} alt="Скрин приложения" />
-            </div>
-          </div>
-          <p class="Name pt-1.5 text-center font-bold">App Store</p>
-          <div
-            class="pt-2.5 pr-6 pl-6 text-center text-[18px] whitespace-normal"
-          >
-            {t("app.for_ios")}
-          </div>
-        </div>
-        <a
-          class="just-button"
-          href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("app.download")}
-        </a>
-      </div>
-    </div>
-    <button class="slider-button right" id="appSlideRight">&#8250;</button>
+    <a
+      class="store-badge store-badge--apple"
+      href="https://apps.apple.com/ru/app/северное-сияние-карта-прогноз/id6744652523"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="App Store"
+    >
+      <img
+        class="store-badge-img"
+        src="/images/badges/appstore-badge-ru.svg"
+        alt="Загрузите в App Store"
+        width="168"
+        height="56"
+        loading="lazy"
+      />
+    </a>
   </div>
 
   <div class="video-block" id="mapVideoBlock">
@@ -412,49 +341,27 @@ const breadcrumbLd = {
         video.pause();
         video.muted = true;
       });
-    }
 
-    window.addEventListener("load", initMapVideo);
-  }
-</script>
-
-<script is:inline>
-  {
-    function initSlider() {
-      const appSlider = document.getElementById("appSlider");
-      const appSlideLeft = document.getElementById("appSlideLeft");
-      const appSlideRight = document.getElementById("appSlideRight");
-
-      if (!appSlider) return;
-
-      // Проверяем, нужен ли скролл
-      const totalWidth = Array.from(appSlider.children).reduce(
-        (sum, item) => sum + item.offsetWidth,
-        0,
-      );
-      const visibleWidth = appSlider.offsetWidth;
-
-      if (totalWidth > visibleWidth) {
-        // Показываем кнопки и активируем прокрутку
-        appSlideLeft.style.display = "block";
-        appSlideRight.style.display = "block";
-
-        appSlideLeft.addEventListener("click", () => {
-          appSlider.scrollBy({ left: -380, behavior: "smooth" });
-        });
-
-        appSlideRight.addEventListener("click", () => {
-          appSlider.scrollBy({ left: 380, behavior: "smooth" });
-        });
-      } else {
-        // Скрываем кнопки, если скролл не нужен
-        appSlideLeft.style.display = "none";
-        appSlideRight.style.display = "none";
+      const heroAnchor = document.querySelector(".store-badges");
+      if (heroAnchor && "IntersectionObserver" in window) {
+        const hideOnScrollPast = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                block.classList.remove("visible", "expanded");
+                video.pause();
+                video.muted = true;
+                hideOnScrollPast.disconnect();
+              }
+            });
+          },
+          { threshold: 0 },
+        );
+        hideOnScrollPast.observe(heroAnchor);
       }
     }
 
-    window.addEventListener("load", initSlider);
-    window.addEventListener("resize", initSlider);
+    window.addEventListener("load", initMapVideo);
   }
 </script>
 
