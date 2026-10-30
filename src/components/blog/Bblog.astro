@@ -13,6 +13,7 @@ import article7 from "../../assets/blog_kp_2.png";
 import article8 from "../../assets/blog_map_1.png";
 import article9 from "../../assets/teriberka-blog-card.png";
 import article10 from "../../assets/aurora_photo_5.png";
+import article11 from "../../assets/apatity-blog-card.png";
 import quota from "../../assets/quota.png";
 const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
 import auroraback from "../../assets/auroraback.png";
@@ -245,6 +246,19 @@ const breadcrumbLd = {
 
 <section class="tours pt-[20px] pb-[100px]">
   <div class="cards_blog">
+    <div class="tour-card_blog">
+      <Image src={article11} alt="Статья" />
+      <div class="tour-card_description_blog">
+        <div class="title"><h3>Северное сияние в Апатитах</h3></div>
+        <div class="text">
+          Город у подножия Хибинских гор с аэропортом и прямыми поездами из
+          Москвы и Петербурга — когда и где смотреть сияние
+        </div>
+        <div class="pl-[10px]">
+          <a href={getRelativeLocaleUrl(l, "/aurora-apatity")}>Читать</a>
+        </div>
+      </div>
+    </div>
     <div class="tour-card_blog">
       <Image src={article10} alt="Статья" />
       <div class="tour-card_description_blog">
