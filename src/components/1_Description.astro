@@ -9,7 +9,7 @@ const t = useAstroTranslations(Astro);
     isolation: isolate;
   }
 
-  .description-video {
+  .description-video-mask {
     position: absolute;
     top: 0;
     left: 50%;
@@ -17,11 +17,9 @@ const t = useAstroTranslations(Astro);
     max-width: 100vw;
     height: 100%;
     transform: translateX(-50%);
-    object-fit: cover;
-    object-position: center 35%;
-    filter: brightness(0.75) saturate(0.8);
     pointer-events: none;
     z-index: -2;
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(
       to bottom,
       black 0%,
@@ -34,6 +32,17 @@ const t = useAstroTranslations(Astro);
       black 55%,
       transparent 98%
     );
+  }
+
+  .description-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: brightness(0.75) saturate(0.8);
+    pointer-events: none;
   }
 
   .description-fade-top {
@@ -56,7 +65,7 @@ const t = useAstroTranslations(Astro);
     );
   }
 
-  .description > *:not(.description-video):not(.description-fade-top) {
+  .description > *:not(.description-video-mask):not(.description-fade-top) {
     position: relative;
     z-index: 1;
   }
@@ -90,10 +99,9 @@ const t = useAstroTranslations(Astro);
   }
 
   @media (max-width: 640px) {
-    .description-video {
+    .description-video-mask {
       top: 108px;
       height: 50%;
-      object-position: center 40%;
       -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
@@ -109,21 +117,27 @@ const t = useAstroTranslations(Astro);
         transparent 98%
       );
     }
+
+    .description-video {
+      object-position: center 40%;
+    }
   }
 </style>
 
 <section class="description pt-[80px] pb-5 text-center" id="description">
-  <video
-    class="description-video"
-    autoplay
-    loop
-    muted
-    playsinline
-    poster="/videos/aurora-hero-loop-poster.webp"
-  >
-    <source src="/videos/aurora-hero-loop.webm" type="video/webm" />
-    <source src="/videos/aurora-hero-loop.mp4" type="video/mp4" />
-  </video>
+  <div class="description-video-mask">
+    <video
+      class="description-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster="/videos/aurora-hero-loop-poster.webp"
+    >
+      <source src="/videos/aurora-hero-loop.webm" type="video/webm" />
+      <source src="/videos/aurora-hero-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="description-fade-top"></div>
   <h1>{t("description.title")}</h1>
   <h2>{t("description.how")}</h2>
