@@ -101,7 +101,18 @@ const t = useAstroTranslations(Astro);
   @media (max-width: 640px) {
     .description-video-mask {
       top: 108px;
-      height: 50%;
+      /* Fixed px height, not a percentage. A percentage height on an
+         absolutely positioned element whose containing block (#description)
+         has no explicit height of its own (it is sized by its text content)
+         is a well-known cross-browser ambiguity: different engines can
+         resolve it against different boxes. That mismatch would shift
+         where this mask's gradient physically lands on a real device
+         versus in this sandbox's Chromium, which matches the symptom
+         (a lighter band appearing roughly where the fade should be).
+         A fixed height removes that ambiguity entirely. 300px matches
+         what 50% was previously resolving to at the tested widths, so
+         the glow's on-screen position is unchanged. */
+      height: 300px;
       -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
@@ -120,6 +131,14 @@ const t = useAstroTranslations(Astro);
 
     .description-video {
       object-position: center 40%;
+    }
+
+    .description-fade-top {
+      /* Slightly taller than the desktop default: the video now starts
+         108px lower, so the opaque header-colored overlay needs a bit
+         more reach to keep comfortably overlapping the video's own
+         fade-in zone. */
+      height: 200px;
     }
   }
 </style>
