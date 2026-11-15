@@ -120,6 +120,11 @@ const t = useAstroTranslations(Astro);
 
     .description-video {
       object-position: center 40%;
+      /* По просьбе Нади: немного увеличиваем видео на мобильных — так оно
+         гарантированно перекрывает контейнер с запасом по краям (на случай,
+         если именно нехватка покрытия у края маски даёт светлую полосу),
+         а не только через object-fit: cover впритык. */
+      transform: scale(1.15);
     }
 
     .description-fade-top {
