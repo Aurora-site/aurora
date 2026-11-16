@@ -1,22 +1,77 @@
 ---
 import { useAstroTranslations } from "../i18n/utils";
-import { getImage } from "astro:assets";
-import auroraback_mb from "../assets/auroraback_mb.png";
-const auroraBackMbImageUrl = `url(${(await getImage({ src: auroraback_mb })).src})`;
-import auroraback from "../assets/auroraback.png";
-const auroraBackImageUrl = `url(${(await getImage({ src: auroraback })).src})`;
 const t = useAstroTranslations(Astro);
 ---
 
-<style define:vars={{ auroraBackMbImageUrl, auroraBackImageUrl }}>
+<style>
   #description {
-    background-image: var(--auroraBackMbImageUrl);
+    position: relative;
+    isolation: isolate;
   }
-  @media (min-width: 768px) {
-    #description {
-      background-image: var(--auroraBackImageUrl);
-    }
+
+  .description-video-mask {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: -2;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 55%,
+      transparent 98%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 55%,
+      transparent 98%
+    );
   }
+
+  .description-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: brightness(0.75) saturate(0.8);
+    pointer-events: none;
+  }
+
+  .description-fade-top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* Тот же запас по ширине, что и у .description-video-mask выше —
+       на случай той же субпиксельной щели 100vw в Safari. */
+    width: calc(100vw + 12px);
+    max-width: calc(100vw + 12px);
+    height: 170px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 27, 36, 1) 0%,
+      rgba(0, 27, 36, 0.85) 25%,
+      rgba(0, 27, 36, 0.5) 55%,
+      rgba(0, 27, 36, 0.18) 80%,
+      rgba(0, 27, 36, 0) 100%
+    );
+  }
+
+  .description > *:not(.description-video-mask):not(.description-fade-top) {
+    position: relative;
+    z-index: 1;
+  }
+
   .description h1 {
     font-family: "SongerGrotesqueBold";
     font-size: 64px;
@@ -44,12 +99,81 @@ const t = useAstroTranslations(Astro);
       margin: 50px 0 55px 0;
     }
   }
+
+  @media (max-width: 640px) {
+    .description-video-mask {
+      top: 108px;
+      height: 300px;
+      /* Боковая полоска, которую Надя нашла пинч-зумом: сама маска
+         растянута на 100vw и центрируется через translateX(-50%) - тот же
+         приём, что и с видео, но на уровень выше. На мобильном Safari
+         100vw может на доли пикселя разойтись с реальной шириной экрана,
+         и в эту щель между краем маски и краем экрана просвечивает фон
+         страницы. Даём маске небольшой запас по ширине (решение остаётся
+         центрированным автоматически, т.к. translateX(-50%) всегда
+         считается от текущей, уже увеличенной, ширины). */
+      width: calc(100vw + 12px);
+      max-width: calc(100vw + 12px);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 18%,
+        black 55%,
+        transparent 98%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 18%,
+        black 55%,
+        transparent 98%
+      );
+    }
+
+    .description-video {
+      object-position: center 40%;
+      /* Подтвердили тестом: scale(1.15) полосу убирает, но слишком сильно
+         обрезает видимое сияние — значит дело было в недостаточном покрытии
+         object-fit: cover на мобильных (скорее всего из-за субпиксельного
+         округления на Retina-экранах в Safari), а не в самой маске/градиенте.
+         Вместо заметного зума даём видео запас всего на несколько пикселей
+         по каждому краю — этого достаточно, чтобы перекрыть щель, но
+         практически незаметно глазу и не обрезает картинку сияния. */
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+    }
+
+    .description-fade-top {
+      /* Раньше тут держали непрозрачный синий фон растянутым на 380px —
+         это была защитная мера "на всякий случай", пока не нашли настоящую
+         причину полосы (нехватка покрытия object-fit: cover на пару px).
+         Теперь, когда сама причина закрыта через overscan на видео выше,
+         можно вернуть более короткий, лёгкий fade — ближе к десктопной
+         версии — чтобы сияние на мобильном снова было видно так же ярко. */
+      height: 200px;
+    }
+  }
 </style>
 
-<section
-  class="description bg-contain bg-[center_50px] bg-no-repeat pt-[80px] pb-5 text-center md:bg-[0px_20px]"
-  id="description"
->
+<section class="description pt-[80px] pb-5 text-center" id="description">
+  <div class="description-video-mask">
+    <video
+      class="description-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster="/videos/aurora-hero-loop-poster.webp"
+    >
+      <source src="/videos/aurora-hero-loop.webm" type="video/webm" />
+      <source src="/videos/aurora-hero-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="description-fade-top"></div>
   <h1>{t("description.title")}</h1>
   <h2>{t("description.how")}</h2>
   <p>{t("description.text1")}</p>
