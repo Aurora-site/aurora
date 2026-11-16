@@ -49,8 +49,10 @@ const t = useAstroTranslations(Astro);
     position: absolute;
     top: 0;
     left: 50%;
-    width: 100vw;
-    max-width: 100vw;
+    /* Тот же запас по ширине, что и у .description-video-mask выше —
+       на случай той же субпиксельной щели 100vw в Safari. */
+    width: calc(100vw + 12px);
+    max-width: calc(100vw + 12px);
     height: 170px;
     transform: translateX(-50%);
     pointer-events: none;
@@ -102,6 +104,16 @@ const t = useAstroTranslations(Astro);
     .description-video-mask {
       top: 108px;
       height: 300px;
+      /* Боковая полоска, которую Надя нашла пинч-зумом: сама маска
+         растянута на 100vw и центрируется через translateX(-50%) - тот же
+         приём, что и с видео, но на уровень выше. На мобильном Safari
+         100vw может на доли пикселя разойтись с реальной шириной экрана,
+         и в эту щель между краем маски и краем экрана просвечивает фон
+         страницы. Даём маске небольшой запас по ширине (решение остаётся
+         центрированным автоматически, т.к. translateX(-50%) всегда
+         считается от текущей, уже увеличенной, ширины). */
+      width: calc(100vw + 12px);
+      max-width: calc(100vw + 12px);
       -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
